@@ -86,7 +86,7 @@ body {
   flex-direction: column;
   align-items: center;
   justify-content: center;
-  font-size: 26px;
+  font-size: 36px;
   font-weight: 500;
   margin: 0 60px 22px;
   margin-top: 20px;
@@ -98,4 +98,10 @@ body {
 .main__wrapper a {
   color: aliceblue;
   text-decoration: none;
+}
+
+@media (max-width: 768.9px) {
+  a {
+    font-size: 16px;
+  }
 }/*# sourceMappingURL=title.css.map */
