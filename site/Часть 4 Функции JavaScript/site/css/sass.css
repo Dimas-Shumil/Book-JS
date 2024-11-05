@@ -1,0 +1,330 @@
+* {
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.header {
+  box-sizing: border-box;
+  width: 100%;
+  background-color: #fff;
+}
+.header__nav {
+  width: 90%;
+  margin: 30px 20px;
+  display: flex;
+  flex-direction: column;
+}
+.header__nav-title {
+  font-size: 22px;
+  margin-left: 45px;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+.header__nav ul {
+  display: flex;
+  width: 80%;
+  gap: 10px;
+}
+.header__nav li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1;
+  border-radius: 8px;
+  min-width: 16px;
+  max-width: 150px;
+  height: 10px;
+  background-color: #00bbf9;
+}
+.header__nav a {
+  cursor: pointer;
+  width: 100%;
+  height: 10px;
+  background-color: #00bbf9;
+  border-radius: 8px;
+}
+.header__nav a:link {
+  background-color: #bdfa07;
+}
+.header__nav a:visited {
+  background-color: #bdfa07;
+}
+.header__nav a:focus {
+  border: 1px solid grey;
+  background: #00bbf9;
+}
+.header__nav a:hover {
+  background-color: #00bbf9;
+  height: 15px;
+}
+.header__nav a:active {
+  background-color: #006daa;
+}
+
+.hr {
+  width: 80%;
+  height: 2px;
+  background-color: #707070;
+}
+
+.hr {
+  width: 90%;
+  margin-bottom: 30px;
+  margin-top: 30px;
+  background-color: #00b43f;
+  height: 3px;
+}
+
+h1 {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 22px;
+  margin: 0 20px 22px;
+  letter-spacing: 1px;
+}
+
+h2 {
+  display: inline-block;
+  font-size: 19px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  padding-left: 10px;
+  margin: 0 20px 22px;
+  letter-spacing: 1px;
+}
+
+h3 {
+  display: inline-block;
+  font-size: 19px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  border-left: 3px solid #00b43f;
+  padding-left: 10px;
+  margin: 0 20px 22px;
+  letter-spacing: 1px;
+}
+
+p {
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+  font-size: 16px;
+  margin: 0 20px 22px;
+  margin-top: 20px;
+  letter-spacing: 1px;
+}
+
+blockquote {
+  font-family: Arial, Helvetica, sans-serif;
+  font-size: 16px;
+  margin: 0 40px 22px;
+  margin-top: 20px;
+  letter-spacing: 1px;
+}
+
+.main {
+  width: 90%;
+}
+.main__wrapper {
+  width: 80%;
+  background-color: #fff;
+  padding-bottom: 20px;
+  filter: drop-shadow(5px 5px 5px #222);
+  filter: drop-shadow(5px 5px 5px #666666);
+}
+.main__wrapper-box_grey {
+  width: 90%;
+  border: 1px solid grey;
+  border-radius: 8px;
+  background-color: #f3f3f3;
+  margin-bottom: 30px;
+}
+.main__wrapper-box_pink {
+  width: 90%;
+  border: 1px solid grey;
+  border-radius: 8px;
+  background-color: #9d0054;
+  margin-bottom: 30px;
+  color: #fff;
+}
+.main__wrapper-border_box {
+  width: 90%;
+  border: 2px solid green;
+  border-radius: 8px;
+  margin-bottom: 30px;
+}
+.main__wrapper-conteiner {
+  width: 80%;
+  padding-bottom: 30px;
+}
+.main__wrapper-green {
+  color: #178253;
+}
+
+table {
+  width: 90%;
+}
+table td {
+  border: 1px solid grey;
+  padding: 10px 15px;
+}
+
+figure {
+  display: flex;
+  justify-content: center;
+}
+
+#myBtn {
+  display: none;
+  position: fixed;
+  bottom: 20px;
+  right: 30px;
+  z-index: 99;
+  border: none;
+  outline: none;
+  background-color: #00bbf9;
+  color: #fff;
+  cursor: pointer;
+  padding: 15px;
+  border-radius: 10px;
+  font-size: 18px;
+  filter: drop-shadow(5px 5px 5px #222);
+  filter: drop-shadow(5px 5px 5px #666666);
+}
+
+#myBtn:hover {
+  background-color: #006daa;
+}
+
+.main__btn-box {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 3px;
+  flex-shrink: 1;
+  cursor: pointer;
+  padding: 10px 15px;
+  margin: 10px 0px 20px 50px;
+  filter: drop-shadow(5px 5px 5px #222);
+  filter: drop-shadow(5px 5px 5px #666666);
+}
+
+.main__btn-box-o {
+  width: 100%;
+  display: none;
+  justify-content: center;
+  max-width: 100px;
+  margin-bottom: 30px;
+  padding: 3px 6px;
+  filter: drop-shadow(5px 5px 5px #222);
+  filter: drop-shadow(5px 5px 5px #666666);
+}
+
+.round {
+  text-decoration: none;
+  display: inline-block;
+  margin: 0 15px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  filter: drop-shadow(5px 5px 5px #222);
+  filter: drop-shadow(5px 5px 5px #666666);
+}
+
+.main__btn-box a {
+  text-decoration: none;
+  display: inline-block;
+  margin: 0 15px;
+  padding: 8px 16px;
+  border-radius: 4px;
+  filter: drop-shadow(5px 5px 5px #222);
+  filter: drop-shadow(5px 5px 5px #666666);
+}
+
+a:hover {
+  color: black;
+  background-color: #006daa;
+}
+
+.previous {
+  background-color: #ddd;
+  color: black;
+}
+
+.next {
+  background-color: #00bbf9;
+  color: #fff;
+}
+
+.round {
+  border-radius: 50%;
+}
+
+.bloc {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  border-radius: 4px;
+  filter: drop-shadow(5px 5px 5px #222);
+  filter: drop-shadow(5px 5px 5px #666666);
+}
+
+.sidenav {
+  height: 100%;
+  width: 0;
+  position: fixed;
+  z-index: 1;
+  top: 0;
+  right: 0;
+  background-color: #111;
+  overflow-x: hidden;
+  transition: 0.5s;
+  padding-top: 60px;
+}
+
+.sidenav a {
+  padding: 8px 8px 8px 32px;
+  text-decoration: none;
+  font-size: 25px;
+  color: #818181;
+  display: block;
+  transition: 0.3s;
+}
+
+.sidenav a:hover {
+  color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+  position: absolute;
+  top: 0;
+  right: 25px;
+  font-size: 36px;
+  margin-left: 50px;
+}
+
+.sidenav__btn {
+  position: absolute;
+  top: 15px;
+  right: 15px;
+  border: 1px solid grey;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 30px;
+  box-shadow: 5px 5px 5px #666666;
+}
+
+@media screen and (max-height: 450px) {
+  .sidenav {
+    padding-top: 15px;
+  }
+  .sidenav a {
+    font-size: 18px;
+  }
+}
+@media (max-width: 700.9px) {
+  .main__btn-box {
+    display: none;
+  }
+  .main__btn-box-o {
+    display: flex;
+    filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #666666);
+  }
+}/*# sourceMappingURL=sass.css.map */

@@ -1,0 +1,92 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="site/css/sass.css">
+    <title>JS part1</title>
+</head>
+
+<body>
+
+    <header class="header">
+        <nav class="header__nav">
+            <div class="header__nav-title">
+                1. Введение
+            </div>
+            <ul class="header__nav-ul">
+                <li><a href="index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page8.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page9.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <!-- main -->
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+            <div class="main__wrapper-conteiner">
+                <figure>
+                    <img src="site/img/jpg/m10_cover_improve.svg" width="40%" alt="">
+                </figure>
+
+                <p>Добро пожаловать в первый модуль, посвящённый главному языку этого курса — JavaScript. За плечами у
+                    вас
+                    месяц
+                    работы со структурой и стилизацией веб-страниц, и теперь вам предстоит освоить инструменты для
+                    придания
+                    сайтам динамики и интерактивности. </p>
+                <p>В этом модуле вы:</p>
+                <div class="main__box-list__text">
+                    <ol>
+                        <li>Изучите особенности JavaScript как языка программирования;</li>
+                        <li>Узнаете о примитивных и сложных типах данных;</li>
+                        <li>Познакомитесь с окружением (браузером);</li>
+                        <li>Напишете первый код, используя сайт-песочницу;</li>
+                        <li>Разберётесь в основных структурах языка: циклах, логических операторах и так
+                            далее.</li>
+                    </ol>
+                </div>
+            </div>
+
+            <!-- button -->
+            <div class="main__btn-box">
+                <a href="site/pages/page8.html" class="previous">&laquo; Назад</a>
+                <a href="site/pages/page2.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="site/pages/page8.html" class="previous round">&#8249;</a>
+                <a href="site/pages/page2.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+    </div>
+    <div class="footer"></div>
+    <script async src="../script/js.js"></script>
+</body>
+
+</html>

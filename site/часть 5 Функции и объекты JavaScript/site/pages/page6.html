@@ -1,0 +1,608 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Функции JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                6. Область видимости и контекст выполнения функций
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <p>Напоследок разберём одну из самых важных тем не только в рамках функций, но и во всём языке
+                    JavaScript — область видимости.</p>
+
+                <h2>Области видимости</h2>
+
+                <h3>Область видимости (от англ. scope) — это специфический механизм языка JavaScript, который
+                    определяет, где и каким образом переменные и функции могут быть доступны в коде. Она определяет, где
+                    в коде можно получить доступ к переменной или функции или сослаться на эту функцию.</h3>
+                <p>Проще всего область видимости наглядно представлять как область, ограниченную фигурными скобками {}.
+                </p>
+                <p>В JavaScript существует два типа области видимости: глобальная и локальная.</p>
+                <p>Глобальная область видимости относится к переменным и функциям, которые доступны из любой точки кода.
+                    В то время как локальная область видимости относится к переменным и функциям, доступным только
+                    внутри определённой функции.</p>
+                <p>Рассмотрим пример:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>function foo() {</p>
+                    <blockquote>const a = 1;</blockquote>
+                    <blockquote>function bar() {</blockquote>
+                    <blockquote>
+                        <blockquote>const b = 2;</blockquote>
+                        <blockquote>console.log(a + b);</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <blockquote>bar();</blockquote>
+                    <p>}</p>
+                    <p>foo();//3</p>
+                </div>
+                <p>И давайте определим на этом примере, где какие области видимости у нас есть.</p>
+
+                <figure>
+                    <img src="../images/INTFR_8_6_1 (1).png" width="60%" alt="">
+                    <p>Представление областей видимости.</p>
+                </figure>
+
+                <p>Итак, у любой программы есть глобальная область видимости.</p>
+                <h3>Глобальная область видимости (global scope) в JavaScript — это область видимости, которая
+                    распространяется на всю программу и доступна из любой части кода. В ней определены глобальные
+                    переменные и функции, которые могут быть использованы в любой части программы.</h3>
+                <p>Глобальные переменные и функции объявляются вне всех функций и блоков кода. Они могут быть определены
+                    как явно, например, с помощью ключевого слова var или let вне функций, так и неявно, например, путём
+                    присваивания значения переменной без её объявления. С точки зрения кода, глобальная область
+                    видимости выражается при помощи глобального объекта window в браузере или global в Node.js.</p>
+                <p>В нашем примере глобальная область видимости содержит в себе всю программу, а именно функцию foo.</p>
+                <p>Теперь рассмотрим локальные области видимости.</p>
+
+                <h3>Локальная область видимости (local scope) в JavaScript — это область видимости, которая
+                    распространяется только на определённую функцию или блок кода и доступна только внутри этой функции
+                    или блока. В этой области видимости могут быть определены локальные переменные и функции, которые не
+                    могут быть использованы вне этой области видимости.</h3>
+                <p>Локальные переменные и функции объявляются внутри функций или блоков кода с помощью ключевых слов
+                    var, let или const. Они могут быть использованы только внутри этой функции или блока кода и не могут
+                    быть доступны в других функциях или блоках. Это помогает избежать конфликтов имен и ошибок при
+                    работе с переменными и функциями в разных частях программы.</p>
+                <p>Когда функция определена, она создаёт новую локальную область видимости. Любые переменные и функции,
+                    объявленные в этой функции, доступны только в этой функции и во всех вложенных функциях.</p>
+                <p>В нашем примере есть две локальные области видимости — область видимости функции foo и функции bar.
+                    Причём область видимости функции bar входит в область видимости функции foo. Это означает, что
+                    функция bar может быть использована только внутри функции foo. При попытке вызвать функцию bar в
+                    глобальной области видимости рядом с foo повлечёт за собой ошибку ReferenceError: bar is not
+                    defined.</p>
+                <p>При обращении к переменной или функции в JavaScript, интерпретатор ищет её сначала в текущей
+                    локальной области видимости. Затем, если не находит, переходит к внешним областям видимости, пока не
+                    найдёт нужный идентификатор или не достигнет глобальной области видимости.</p>
+                <p>Важно помнить, что использование глобальных переменных и функций может привести к нежелательным
+                    эффектам. Например, к конфликтам имён, перезаписи значений из других частей программы, сложности
+                    отладки и тестирования. Поэтому рекомендуем использовать глобальные переменные и функции только при
+                    крайней необходимости. А лучше использовать локальные области видимости, чтобы избежать возможных
+                    проблем.</p>
+                <p>Закрепим это на примере. Модифицируем предыдущий код.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const b = 2;</p>
+                    <p>const a = 1;</p>
+                    <p>function foo() {</p>
+                    <blockquote>function bar() {</blockquote>
+                    <blockquote>
+                        <blockquote>console.log(a + b);</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <blockquote>bar();</blockquote>
+                    <p>}</p>
+                    <p>foo(); // 3</p>
+                </div>
+
+                <p>Мы вынесли константы a и b в глобальную область видимости. И в целом наш код почти не изменился за
+                    исключением места объявления и инициализации переменных.</p>
+                <p>Но тем самым мы забили глобальную область видимости ненужными для неё переменными и увеличили шанс
+                    изменения таких переменных.</p>
+
+                <div class="main__wrapper-box-ligtGreen">
+                    <p>Если переменная или функция используется только в рамках какой-то одной функции, то лучше
+                        объявить и инициализировать её в соответствующей локальной области видимости.</p>
+                </div>
+
+                <p>Области видимости создаются не только функциями, но и блоками. И логично именуются блочной областью
+                    видимости. Она была введена в стандарте ECMAScript 6 (ES6) и определяет область видимости
+                    переменных, которые объявлены с помощью ключевых слов let и const внутри блока кода. Например,
+                    внутри блоков if, for, while, switch и т.д.</p>
+                <p>У переменных, объявленных с помощью ключевого слова var, есть функциональная или глобальная область
+                    видимости. А вот переменные, объявленные с помощью let или const, существуют только в пределах
+                    блока, в котором они были определены.</p>
+
+                <div class="main__wrapper-box_blue">
+                    <p>var работает не очевидно — поэтому не рекомендуем объявлять с его помощью переменные.</p>
+                </div>
+
+                <p>Посмотрим на примере.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const a = 42</p>
+                    <p>console.log(a) // 42</p>
+                    <p>if (a > 21) {</p>
+                    <blockquote>const b = 43</blockquote>
+                    <blockquote>console.log(a) // 42</blockquote>
+                    <blockquote>console.log(b) // 43</blockquote>
+                    <p>}</p>
+                    <p>console.log(b) // ReferenceError: b is not defined</p>
+                </div>
+
+                <p>Как видите, при обращении к переменной b в глобальной области видимости мы получаем ошибку. Так как b
+                    создана внутри блока if и поэтому имеет локальную область видимости только внутри блока.</p>
+
+                <div class="main__wrapper-box-ligtGreen">
+                    <p>Попробуйте изменить модификатор const у переменной b блока if на var и посмотрите на результат.
+                    </p>
+                </div>
+
+                <h2>Замыкания</h2>
+
+                <p>Из-за такой особенности работы областей видимости, в JavaScript существуют замыкания (closure). Это
+                    механизм, который позволяет функции запоминать и иметь доступ к переменным из внешней (родительской)
+                    области видимости, даже после завершения работы этой области видимости. Функция, которая запоминает
+                    переменные из внешней области видимости и использует их, и называется замыканием.</p>
+                <p>Например, в следующем коде функция makeCounter создаёт и возвращает другую функцию counter, которая
+                    использует переменные count и step из внешней области видимости функции makeCounter. При каждом
+                    вызове функции counter эти переменные изменяются и сохраняются в замыкании, что позволяет иметь
+                    несколько независимых счетчиков:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>function makeCounter(step) {</p>
+                    <blockquote>let count = 0;</blockquote>
+                    <blockquote>return function counter() {</blockquote>
+                    <blockquote>
+                        <blockquote>count += step;</blockquote>
+                        <blockquote>console.log(count);</blockquote>
+                    </blockquote>
+                    <blockquote>};</blockquote>
+                    <p>}</p>
+                    <p>let counter1 = makeCounter(1);</p>
+                    <p> counter1(); // 1</p>
+                    <p>counter1(); // 2</p>
+                    <p>counter1(); // 3</p>
+                    <p>let counter2 = makeCounter(2);</p>
+                    <p>counter2(); // 2</p>
+                    <p>counter2(); // 4</p>
+                    <p>counter2(); // 6</p>
+                </div>
+                <p>В этом примере функция counter является замыканием, так как она использует переменные count и step из
+                    внешней области видимости функции makeCounter. При каждом вызове функции makeCounter создаётся новая
+                    локальная область видимости с переменными count и step, которые сохраняются в замыкании функции
+                    counter. Таким образом, каждый вызов функции makeCounter создаёт новое замыкание с независимыми
+                    переменными count и step.</p>
+
+                <div class="main__wrapper-box-ligtGreen">
+                    <p>Кстати, про механизм замыканий любят спрашивать на собеседованиях.</p>
+                </div>
+
+                <h2>Контекст</h2>
+
+                <p>В JavaScript контекст (context) — это значение ключевого слова this в определённой функции или блоке
+                    кода. Значение this зависит от того, как вызывается функция или как вызывается метод. И может
+                    меняться в зависимости от контекста, в котором выполняется функция.</p>
+                <p>Когда функция вызывается как метод объекта, this ссылается на этот объект. Если функция вызывается
+                    как глобальная функция, this ссылается на глобальный объект, такой как window в браузере или global
+                    в Node.js.</p>
+                <p>Рассмотрим на примере:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>function whatsThis() {</p>
+                    <blockquote>console.log(this === window)</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>Как видите, объект this является window, так как мы вызвали функцию из глобальной области видимости.
+                </p>
+                <p>Но, если мы разместим эту функцию внутри объекта, то получим другой результат.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const user = {</p>
+                    <blockquote>whatsThis() {</blockquote>
+                    <blockquote>
+                        <blockquote>console.log(this === window)</blockquote>
+                        <blockquote>console.log(this)</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <p>}</p>
+                    <p>user.whatsThis()</p>
+                    <p>// false</p>
+                    <p>// { whatsThis: ƒ whatsThis() }</p>
+                </div>
+
+                <p>Теперь this хранит в себе объект user.</p>
+                <p>Вернёмся к стрелочным функциям. В одном из прошлых юнитов мы упоминали, что стрелочные функции
+                    отличаются от других функций не только лаконичным синтаксисом, но ещё и кое-чем другим. А именно —
+                    контекстом.</p>
+
+                <div class="main__wrapper-box_blue">
+                    <p>Стрелочные функции не имеют своего контекста, а используют самый ближайший по иерархии, в котором
+                        они определены.</p>
+                </div>
+
+                <p>Модифицируем прошлый пример.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const user = {</p>
+                    <blockquote>hatsThis: () => {</blockquote>
+                    <blockquote>
+                        <blockquote>console.log(this === window)</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <p>}</p>
+                    <p>user.whatsThis() // true</p>
+                </div>
+
+                <p>Как видите, теперь this внутри функции whatsThis хранит в себе значение window, а не объект user.</p>
+                <p>Еще контекст можно менять принудительно. Для этого используют специальные встроенные функции bind,
+                    call и apply.</p>
+                <p>Кратко разберём каждую из них.</p>
+
+                <h2>bind</h2>
+
+                <p>bind — это метод объекта функции в JavaScript, который позволяет создать новую функцию с определённым
+                    значением this и, возможно, заданными аргументами, которые будут переданы при вызове этой функции.
+                </p>
+                <p>Синтаксис метода bind выглядит так:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>function.bind(thisArg[, arg1[, arg2[, ...]]])</p>
+                </div>
+
+                <p>&middot; function — функция, для которой создаётся новая привязанная функция.</p>
+                <p>&middot; thisArg — значение, которое будет использоваться как значение this при вызове новой функции.
+                </p>
+                <p>&middot; arg1, arg2, ... — аргументы, которые будут переданы при вызове новой функции после привязки
+                    this.</p>
+                <p>Пример:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const person = {</p>
+                    <blockquote>name: 'Dart Wader',</blockquote>
+                    <blockquote>greet: function () {</blockquote>
+                    <blockquote>
+                        <blockquote>console.log(`Меня зовут -- ${this.name}`);</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <p>};</p>
+                    <p>const secondPerson = {</p>
+                    <blockquote>name: 'Luke Skywalker'</blockquote>
+                    <p>};</p>
+                    <p>const greetLuke = person.greet.bind(secondPerson);</p>
+                    <p>greetLuke(); // Меня зовут -- Luke Skywalker</p>
+                </div>
+
+                <p>В этом примере мы создали объект person с методом greet, который выводит приветствие с именем
+                    объекта. Затем мы создали объект secondPerson с именем "Luke Skywalker". Потом мы использовали метод
+                    bind для создания новой функции greetLuke. Эта функция будет выводить приветствие с именем "Luke
+                    Skywalker", используя значение this, привязанное к объекту secondPerson. Затем мы вызвали функцию
+                    greetLuke, чтобы вывести приветствие.</p>
+                <p>bind может быть полезен во многих ситуациях. Например, когда мы хотим передать метод объекта как
+                    функцию обратного вызова, но хотим сохранить контекст выполнения для этого метода, чтобы он мог
+                    использовать свойства объекта. Или когда хотим создать каррированную версию функции с частичным
+                    применением аргументов.</p>
+
+                <div class="main__wrapper-box_blue">
+                    <p>Про каррирование можно подробнее почитать в статье на <a
+                            href="https://learn.javascript.ru/currying-partials"><span
+                                class="main__wrapper-span_green">JavaScript.ru</span></a>.</p>
+                </div>
+
+                <h2>call</h2>
+
+                <p>call — это встроенный метод JavaScript, который разработчики используют для вызова функций с
+                    указанием конкретного значения this и передачей аргументов в виде списка.</p>
+                <p>Синтаксис метода call выглядит следующим образом:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>function.call(thisArg, arg1, arg2, ...)</p>
+                </div>
+                <p>&middot; function — это функция, которую необходимо вызвать;</p>
+                <p>&middot; thisArg — значение, которое будет использоваться как this внутри функции;</p>
+                <p>&middot; arg1, arg2, ... — аргументы, которые будут переданы в функцию.</p>
+                <p>Когда функция вызывается с использованием call, значение this внутри функции устанавливается на
+                    thisArg, переданный в call. В противном случае, значение this будет зависеть от того, как функция
+                    была вызвана.</p>
+                <p>Пример:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const obj = { name: "John Wick" };</p>
+                    <p>function sayHello() {</p>
+                    <blockquote>console.log(`Hello, ${this.name}!`);</blockquote>
+                    <blockquote>}</blockquote>
+                    <p>sayHello.call(obj); // вызовет "Hello, John Wick!"</p>
+                </div>
+
+                <p>В примере мы создаём объект obj, у которого есть свойство name. Затем определяем функцию sayHello,
+                    которая выводит сообщение в консоль, используя свойство name объекта this. Затем вызываем sayHello с
+                    помощью call и передаем obj в качестве thisArg, что позволяет функции использовать name из объекта
+                    obj.</p>
+                <p>Метод call также можно использовать для вызова функций с изменением this на прототип объекта. Это
+                    может быть полезно, когда нужно вызывать метод объекта, но в контексте другого объекта.</p>
+
+                <h2>apply</h2>
+
+                <p>Функция apply — один из методов объекта функции в JavaScript, который позволяет вызвать функцию с
+                    заданным значением this и аргументами в виде массива.</p>
+                <p>Синтаксис вызова функции apply следующий:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>func.apply(thisArg, [argsArray])</p>
+                </div>
+
+                <p>Здесь func — это функция, которую мы хотим вызвать, thisArg — значение this для функции func во время
+                    ее вызова, argsArray — массив аргументов, передаваемых в функцию func.</p>
+                <p>Основное отличие apply от метода call: в apply аргументы передаются в виде массива, в то время как в
+                    call они передаются списком аргументов через запятую. Это может быть полезно, если у вас есть массив
+                    аргументов, который нужно передать функции.</p>
+                <p>Давайте рассмотрим пример использования apply. Предположим, у нас есть массив чисел. И мы хотим найти
+                    максимальное число в этом массиве. Мы можем использовать функцию Math.max для этой цели, которая
+                    принимает список чисел в качестве аргументов. Однако у нас есть массив. И мы не можем передать его
+                    как список аргументов.</p>
+                <p>Вот где нам пригодится apply:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const numbers = [1, 5, 2, 9, 3];</p>
+                    <p>const maxNumber = Math.max.apply(null, numbers);</p>
+                    <p>console.log(maxNumber); // 9</p>
+                </div>
+
+                <p>Здесь мы вызываем функцию Math.max с помощью apply, передавая ей массив чисел в качестве аргумента.
+                    Значение this мы передаём как null, так как для функции Math.max это значение не важно.</p>
+                <p>Также apply может быть использована для вызова функции, определённой с использованием стрелочной
+                    функции, которая не имеет собственной области видимости this. В этом случае мы можем использовать
+                    значение this родительской области видимости. Например:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const person = {</p>
+                    <blockquote>name: 'John',</blockquote>
+                    <blockquote>age: 30,</blockquote>
+                    <blockquote>sayHi() {</blockquote>
+                    <blockquote>
+                        <blockquote>console.log(`Hi, my name is ${this.name}`);</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <p>}</p>
+                    <p>const newPerson = {</p>
+                    <blockquote>name: 'Jane',</blockquote>
+                    <blockquote>age: 25</blockquote>
+                    <p>}</p>
+                    <p> person.sayHi.apply(newPerson); // Hi, my name is Jane</p>
+                </div>
+
+                <p>Здесь мы используем apply для вызова функции sayHi объекта person, передавая ей объект newPerson в
+                    качестве значения this. Как результат, мы получим вывод "Hi, my name is Jane".</p>
+                <p>Таким образом, области видимости в JavaScript играют важную роль в организации кода и его
+                    безопасности, помогают избежать конфликтов и ошибок при работе с переменными и функциями. А
+                    понимание контекста функции и замыканий важно для написания корректного и эффективного кода,
+                    поскольку они влияют на поведение функции и на то, к каким значениям они могут обращаться. Это также
+                    важно для работы с объектами и объектно-ориентированного программирования в JavaScript.</p>
+                <hr>
+
+                <h2>Задание 6.1</h2>
+
+                <p>Какие переменные доступны внутри функции?</p>
+                <blockquote>Все переменные, созданные внутри функции и внутри области видимости, в которой функция
+                    определена.</blockquote>
+                <hr>
+
+                <h2>Задание 6.2</h2>
+
+                <p>Что произойдет, если переменная с тем же именем уже определена внутри функции и глобально?</p>
+                <blockquote>Внутри функции будет использоваться локальная переменная.</blockquote>
+                <hr>
+
+                <h2>Задание 6.3</h2>
+
+                <p>Можно ли получить доступ к локальной переменной внутри другой функции?</p>
+                <blockquote>Нет, локальная переменная доступна только внутри функции, в которой она была создана.
+                </blockquote>
+                <hr>
+
+                <h2>Задание 6.4</h2>
+
+                <p>Создайте функцию multiply, которая будет принимать два числа и возвращать их произведение.
+                    Используйте метод bind, чтобы создать новую функцию doubleNumber, которая будет удваивать переданное
+                    ей число. Вызовите doubleNumber с параметром 5 и убедитесь, что она возвращает 10.</p>
+                <blockquote>Посмотреть код</blockquote>
+                <blockquote>
+                    <div class="main__wrapper-box_grey">
+                        <p>function multiply(x, y) {</p>
+                        <blockquote>return x * y;</blockquote>
+                        <p>}</p>
+                        <p>const doubleNumber = multiply.bind(null, 2);</p>
+                        <p>console.log(doubleNumber(5)); // Output: 10</p>
+                    </div>
+                </blockquote>
+                <hr>
+
+                <h2>Задание 6.5</h2>
+
+                <p>Создайте объект person с двумя свойствами: firstName и lastName. Далее функцию getFullName, которая
+                    будет возвращать полное имя в формате "firstName lastName". Используйте метод bind, чтобы создать
+                    новую функцию logFullName, которая будет выводить полное имя в консоль. Вызовите logFullName, чтобы
+                    убедиться, что она работает правильно.</p>
+                <blockquote>Посмотреть код</blockquote>
+                <blockquote>
+                    <div class="main__wrapper-box_grey">
+                        <p>const person = {</p>
+                        <blockquote>firstName: "John",</blockquote>
+                        <blockquote>lastName: "Doe"</blockquote>
+                        <p>};</p>
+                        <p>function getFullName() {</p>
+                        <blockquote>return this.firstName + " " + this.lastName;</blockquote>
+                        <p>}</p>
+                        <p>const logFullName = getFullName.bind(person);</p>
+                        <p>console.log(logFullName()); // выведет "John Doe" в консоль</p>
+                    </div>
+                </blockquote>
+                <hr>
+
+                <h2>Задание 6.6</h2>
+
+                <p>Создайте объект calculator с методами add и subtract, которые будут складывать и вычитать числа
+                    соответственно. Далее создайте объект numbers с двумя свойствами: x и y. Используйте метод call,
+                    чтобы вызвать методы add и subtract объекта calculator от имени объекта numbers.</p>
+                <blockquote>Посмотреть код</blockquote>
+                <blockquote>
+                    <div class="main__wrapper-box_grey">
+                        <p>// Создаем объект calculator с методами add и subtract</p>
+                        <p>const calculator = {</p>
+                        <blockquote>add: function (a, b) {</blockquote>
+                        <blockquote>
+                            <blockquote>return a + b;</blockquote>
+                        </blockquote>
+                        <blockquote>},</blockquote>
+                        <blockquote>subtract: function (a, b) {</blockquote>
+                        <blockquote>
+                            <blockquote>return a - b;</blockquote>
+                        </blockquote>
+                        <blockquote>}</blockquote>
+                        <p>};</p>
+                        <p>// Создаем объект numbers с двумя свойствами x и y</p>
+                        <p>const numbers = {</p>
+                        <blockquote>x: 5,</blockquote>
+                        <blockquote>y: 3</blockquote>
+                        <p>};</p>
+                        <p>// Вызываем метод add объекта calculator от имени объекта numbers</p>
+                        <p>const sum = calculator.add.call(numbers, numbers.x, numbers.y);</p>
+                        <p>console.log(sum); // 8</p>
+                        <p>// Вызываем метод subtract объекта calculator от имени объекта numbers</p>
+                        <p>const difference = calculator.subtract.call(numbers, numbers.x);</p>
+                    </div>
+                </blockquote>
+                <hr>
+
+                <h2>Задание 6.7</h2>
+
+                <p>Создайте объект car с методом drive, который будет выводить сообщение о том, что машина едет вперед.
+                    Создайте объект bike с методом ride, который будет выводить сообщение о том, что велосипед едет
+                    вперед. Используйте метод call, чтобы вызвать метод drive объекта car от имени объекта bike.</p>
+                <blockquote>Посмотреть код</blockquote>
+                <blockquote>
+                    <div class="main__wrapper-box_grey">
+                        <p>const car = {</p>
+                        <blockquote>drive() {</blockquote>
+                        <blockquote>
+                            <blockquote>console.log('The car is moving forward.');</blockquote>
+                        </blockquote>
+                        <blockquote>}</blockquote>
+                        <p>};</p>
+                        <p>const bike = {</p>
+                        <blockquote>ride() {</blockquote>
+                        <blockquote>
+                            <blockquote>console.log('The bike is moving forward.');</blockquote>
+                        </blockquote>
+                        <blockquote>}</blockquote>
+                        <p>};</p>
+                        <p>car.drive.call(bike); // вызов drive объекта car от имени объекта bike</p>
+                    </div>
+                </blockquote>
+                <hr>
+
+                <h2>Задание 6.8</h2>
+
+                <p>Создайте функцию getMaxNumber, которая будет принимать массив чисел в качестве параметра и возвращать
+                    максимальное число из массива. Используйте метод apply, чтобы вызвать функцию getMaxNumber с
+                    передачей массива чисел в качестве второго аргумента.</p>
+                <blockquote>Посмотреть код</blockquote>
+                <blockquote>
+                    <div class="main__wrapper-box_grey">
+                        <p>function getMaxNumber(numbers) {</p>
+                        <blockquote>return Math.max.apply(null, numbers);</blockquote>
+                        <p>}</p>
+                        <p>const numbers = [1, 5, 2, 8, 3];</p>
+                        <p>const maxNumber = getMaxNumber(numbers);</p>
+                        <p>console.log(maxNumber); // 8</p>
+                    </div>
+                </blockquote>
+                <hr>
+
+                <h2>Задание 6.9</h2>
+
+                <p>Создайте объект person с двумя свойствами: firstName и lastName. Создайте функцию greeting, которая
+                    будет принимать один параметр name и выводить сообщение вида "Hello, {firstName} {lastName}!" с
+                    использованием свойств объекта person. Используйте метод apply, чтобы вызвать функцию greeting от
+                    имени объекта person, передав в качестве параметра строку "John".</p>
+                <blockquote>Посмотреть код</blockquote>
+                <blockquote>
+                    <div class="main__wrapper-box_grey">
+                        <p>const person = {</p>
+                        <blockquote>firstName: "John",</blockquote>
+                        <blockquote> lastName: "Doe"</blockquote>
+                        <p>};</p>
+                        <p>function greeting(name) {</p>
+                        <blockquote>console.log(`Hello, ${this.firstName} ${this.lastName}!`);</blockquote>
+                        <p>}</p>
+                        <p>greeting.apply(person, ["John"]);</p>
+                    </div>
+                </blockquote>
+
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page5.html" class="previous">&laquo; Назад</a>
+                <a href="page7.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page5.html" class="previous round">&#8249;</a>
+                <a href="page7.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+    </div>
+</body>
+
+</html>

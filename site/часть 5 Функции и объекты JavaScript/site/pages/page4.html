@@ -1,0 +1,444 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Функции JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                4. Использование функций
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <p>Функции в JavaScript имеют особый статус и применение, в отличие от других языков программирования.
+                    Как правило, функции это какая-то особенная конструкция языка — они не являются отдельным типом, их
+                    можно только объявить или вызвать. Но не в JavaScript.</p>
+                <p>В JavaScript функции являются объектами первого класса. Это означает, что функции могут быть переданы
+                    в качестве аргументов в другие функции, возвращены из функций, присвоены переменным, сохранены в
+                    объектах и т.д. В общем, их можно использовать так же, как и другие типы данных.</p>
+                <p>С точки зрения движка JavaScript, функция — это объект Function. У него есть внутренний метод
+                    .call(), который отвечает за вызов функции.</p>
+
+                <div class="main__wrapper-box_pink">
+                    <p>В <a
+                            href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Function"><span
+                                class="main__wrapper-span_green">этой статье на MDN</span></a> вы можете подробнее
+                        познакомиться с объектом Function.</p>
+                </div>
+
+                <p>Теперь давайте детальнее рассмотрим различные способы использования функций в JavaScript.</p>
+
+                <h2>Использование функций в переменных</h2>
+
+                <p>С этим способом мы уже сталкивались в прошлом юните, когда рассматривали function expression и
+                    анонимные функции. Напомним, как он выглядит.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const subtract = function (a, b) {</p>
+                    <blockquote>console.log('Разница: ', a - b)</blockquote>
+                    <p>}</p>
+                    <p>subtract(1000, 7) // “Разница: 993”</p>
+                </div>
+
+                <p>В результате будет создана переменная substract, значением которой будет анонимная функция.</p>
+                <p>Также мы можем сохранять функции вида function declaration и стрелочные функции.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>// function declaration</p>
+                    <p>const subtract = function subtract(a, b) {</p>
+                    <blockquote>console.log('Разница: ', a - b)</blockquote>
+                    <p>}</p>
+                    <p>// стрелочная функция</p>
+                    <p>const subtractArrow = (a, b) => {</p>
+                    <blockquote>console.log('Разница в стрелочной функции: ', a - b)</blockquote>
+                    <p>}</p>
+                    <p>subtract(1000, 7) // "Разница: 993"</p>
+                    <p>subtractArrow(1000, 7) // "Разница в стрелочной функции: 993"</p>
+                </div>
+
+                <p>subtractArrow(1000, 7) // "Разница в стрелочной функции: 993"</p>
+                <p>А вот подход с сохранением в переменную стрелочной функции наоборот — очень широко применяется на
+                    практике за счет своей лаконичности и удобства использования. Удобство заключается в том, что вы тем
+                    самым ставите функции на один уровень восприятия с другими типами данных (объекты, строки, массивы и
+                    так далее). Это улучшает читаемость и качество кода в целом.</p>
+                <p>Интересно, что значение из одной переменной можно копировать без проблем в другую.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>function parentLog() {</p>
+                    <blockquote>console.log('Это тестовый лог!')</blockquote>
+                    <p>}</p>
+                    <p> const log = parentLog</p>
+                    <p>parentLog() // "Это тестовый лог!"</p>
+                    <p>log() // "Это тестовый лог!"</p>
+                </div>
+
+                <p>Переменная хранит ссылку на функцию, поэтому мы можем создавать множество переменных и все они будут
+                    с одинаковым значением в виде функции.</p>
+
+                <h2>Использование функций в качестве аргументов</h2>
+
+                <p>Помимо переменных, в JavaScript функции могут передаваться в качестве аргументов другим функциям. Это
+                    мощная возможность, которая позволяет использовать широкий спектр разных методов программирования.
+                    Например, функции обратного вызова (callback-функции), функции высшего порядка и функциональное
+                    программирование.</p>
+                <p>Представим, что мы занимаемся разработкой простого калькулятора на JavaScript. Он должен уметь
+                    выполнять различные операции с числами: сложение, вычитание, умножение. С помощью кода это можно
+                    выразить так.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>function calculate(x, y, operation) {</p>
+                    <blockquote>if (operation === 'add') {</blockquote>
+                    <blockquote>
+                        <blockquote>return x + y;</blockquote>
+                    </blockquote>
+                    <blockquote>} else if (operation === 'subtract') {</blockquote>
+                    <blockquote>
+                        <blockquote>return x - y;</blockquote>
+                    </blockquote>
+                    <blockquote>} else if (operation === 'multiply') {</blockquote>
+                    <blockquote>
+                        <blockquote>return x * y;</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <blockquote>return 0;</blockquote>
+                    <p>}</p>
+                    <p>console.log(calculate(5, 3, 'add')); // 8</p>
+                    <p>console.log(calculate(5, 3, 'subtract')); // 2</p>
+                    <p>console.log(calculate(5, 3, 'multiply')); // 15</p>
+                </div>
+
+                <p>Супер! У нас получился рабочий калькулятор, который может выполнять несколько операций.</p>
+                <p>Но что насчёт масштабируемости? Если нам понадобится добавить новую операцию, то необходимо добавить
+                    новое условие в функцию calculate и описать логику. Это не вызовет проблем, если у нас таких
+                    операций несколько и они простые — буквально в несколько строк. Но что, если их будут десятки и
+                    логика каждой из них будет в несколько десятков строк? А если больше? Такой код будет трудно
+                    поддерживать и вносить в него изменения.</p>
+                <p>Из такой ситуации можно выйти разными способами. Один из них — вынесение каждой операции в отдельную
+                    функцию и передача этих функций в качестве аргументов для функции calculate.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>function calculate(x, y, operation) {</p>
+                    <blockquote>return operation(x, y);</blockquote>
+                    <p>}</p>
+                    <p>function add(x, y) {</p>
+                    <blockquote>return x + y;</blockquote>
+                    <p>}</p>
+                    <p>function subtract(x, y) {</p>
+                    <blockquote>return x - y;</blockquote>
+                    <p>}</p>
+                    <p>function multiply(x, y) {</p>
+                    <blockquote>return x * y;</blockquote>
+                    <p>}</p>
+                    <p>console.log(calculate(5, 3, add)); // 8</p>
+                    <p>console.log(calculate(5, 3, subtract)); // 2</p>
+                    <p>console.log(calculate(5, 3, multiply)); // 15</p>
+                </div>
+
+                <p>Обратите внимание, насколько удобнее стало читать код. К тому же теперь функция calculate ничего не
+                    знает о реализации каждой операции. И знает лишь то, что они принимают несколько аргументов и
+                    возвращают какое-то значение.</p>
+                <p>Вся реализация каждой операции скрыта теперь в отдельной функции. Тем самым мы повысили
+                    масштабируемость нашей небольшой программы и сделали возможной одновременную работу нескольких
+                    разработчиков над кодом с минимальными конфликтами.</p>
+                <p>Функции, которые ожидают получить другую функцию в качестве параметра — частое явление в JavaScript.
+                    Даже встроенные методы, такие как forEach() и filter(), используют этот подход. Такие функции мы
+                    подробно рассмотрим в юните 8.5.</p>
+                <p>Ещё один случай использования функций как аргументов — это колбэк-функции (от англ. callback
+                    function). Колбэк-функцией называют функцию, которая передана в другую функцию в качестве аргумента,
+                    которая затем вызывается по завершению какого-либо действия. Ключевое отличие от обычной функции,
+                    которая передана в качестве аргумента, заключается в том, что вызов колбэк-функции происходит по
+                    завершению какого-либо действия (клика, ховера и так далее). Никаких отличий в поведении у таких
+                    функций нет. Это популярный и часто используемый паттерн в JavaScript.</p>
+
+                <div class="main__wrapper-box_blue">
+                    <p>Паттерн колбэков также часто используется в асинхронном программировании. Поэтому, при изучении
+                        этой темы, вы обязательно снова увидите колбэк-функции.</p>
+                </div>
+
+                <p>Колбэк-функции часто встречаются в повседневной разработке. Например, при работе с DOM API.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const firstTitleElement = document.querySelector('h1');</p>
+                    <p>function callbackFunction() {</p>
+                    <blockquote>firstTitleElement.style.background = 'blue';</blockquote>
+                    <p>}</p>
+                    <p>firstTitleElement.addEventListener('click', callbackFunction);</p>
+                </div>
+
+                <p>В примере выше мы создаём функцию callbackFunction. Она передаётся в качестве аргумента в функцию
+                    addEventListener. Далее она будет вызвана только тогда, когда пользователь кликнет на элемент
+                    firstTitleElement.</p>
+
+                <div class="main__wrapper-box_pink">
+                    <p>Подробнее про колбэк-функции можно прочитать на <a
+                            href="https://developer.mozilla.org/ru/docs/Glossary/Callback_function"><span
+                                class="main__wrapper-span_green">MDN</span></a>.</p>
+                </div>
+
+                <p>Так вы можете не бояться создавать свои функции и передавать их в качестве аргументов в другие
+                    функции.</p>
+
+                <h2>Использование функций в качестве возвращаемого значения</h2>
+
+                <p>Функции могут быть использованы как возвращаемое значение в других функциях в JavaScript.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>function makeAddFunc() {</p>
+                    <blockquote>console.log('Тут можем что-то сделать')</blockquote>
+                    <blockquote>return function (x, y) {</blockquote>
+                    <blockquote>
+                        <blockquote>return x + y;</blockquote>
+                    </blockquote>
+                    <blockquote>};</blockquote>
+                    <p>}</p>
+                    <p>const addFunc = makeAddFunc();</p>
+                    <p> console.log(addFunc(3, 5)); // 8</p>
+                    <p>console.log(addFunc(7, 5)); // 12</p>
+                </div>
+
+                <p>Функция makeAddFunc выводит текст в консоль и возвращает функцию для суммирования двух чисел.</p>
+                <p>Такое поведение на практике бесполезно. Поэтому усложним пример.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>function makeAdder(x) {</p>
+                    <blockquote>return function (y) {</blockquote>
+                    <blockquote>
+                        <blockquote>return x + y;</blockquote>
+                    </blockquote>
+                    <blockquote>};</blockquote>
+                    <p>}</p>
+                    <p>const add5 = makeAdder(5);</p>
+                    <p>console.log(add5(3)); // 8</p>
+                    <p>console.log(add5(7)); // 12</p>
+                </div>
+
+                <p>Разберём его.</p>
+                <p>Функция <em>makeAdder</em> принимает один аргумент x и возвращает новую функцию, которая принимает
+                    другой аргумент y и возвращает сумму x и y. Возвращаемая функция использует замыкание для доступа к
+                    значению x из внешней области видимости функции.</p>
+
+                <div class="main__wrapper-box-ligtGreen">
+                    <p>Про замыкание мы поговорим подробнее в юните 8.6 «Области видимости и контекст выполнения
+                        функции».</p>
+                </div>
+
+                <p>Строка const add5 = makeAdder(5); создаёт новую функцию add5, которая возвращает новую функцию,
+                    прибавляющую 5 к любому значению, переданному в качестве аргумента.</p>
+                <p>Когда вызывается add5(3), возвращаемая функция вызывается с 3 в качестве аргумента, в результате чего
+                    получается 5 + 3 = 8. Аналогично, когда вызывается add5(7), возвращаемая функция вызывается с 7 в
+                    качестве аргумента, в результате чего получается 5 + 7 = 12.</p>
+                <p>Такой подход часто используется для создания функций-конструкторов, каррирования и замыканий. К
+                    примеру, каррирование — это приём программирования, который позволяет превращать функции с
+                    несколькими аргументами в последовательность функций с одним аргументом. Такая особенность делает их
+                    удобными для использования в других частях кода.</p>
+                <p>Все примеры использования функций в JavaScript показывают, насколько мощными и гибкими могут быть
+                    функции в этом языке. В следующем юните мы подробно рассмотрим применение самых популярных
+                    встроенных функций высшего порядка в JavaScript — map, reduce и filter.</p>
+
+                <h2>Задание 4.1</h2>
+
+                <p>Напишите функцию, которая принимает два аргумента:</p>
+                <p>&bull; число x</p>
+                <p>&bull; функцию f</p>
+                <p>Функция должна возвратить результат выполнения функции f для аргумента x.</p>
+                <p>Пример использования:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const result = myFunc(10, function (num) { return num * 2; });</p>
+                    <p>console.log(result); // 20</p>
+                </div>
+                <blockquote>Посмотреть код</blockquote>
+                <div class="main__wrapper-box_grey">
+                    <p>const myFunc = (x, f) => f(x);</p>
+                </div>
+                <hr>
+
+                <h2>Задание 4.2</h2>
+
+                <p>Напишите функцию multiplyByTwo, которая принимает число и возвращает его удвоенное значение. Далее
+                    напишите функцию applyToNumber, которая принимает число и функцию в качестве аргументов и применяет
+                    эту функцию к числу. Используйте функцию applyToNumber для удвоения числа 5.</p>
+                <blockquote>Посмотреть код</blockquote>
+                <div class="main__wrapper-box_grey">
+                    <p>function multiplyByTwo(num) {</p>
+                    <blockquote>return num * 2;</blockquote>
+                    <p>}</p>
+                    <p>function applyToNumber(num, func) {</p>
+                    <blockquote>return func(num);</blockquote>
+                    <p>}</p>
+                    <p>let result = applyToNumber(5, multiplyByTwo);</p>
+                    <p>console.log(result); // 10</p>
+                </div>
+                <hr>
+
+                <h2>Задание 4.3</h2>
+
+                <p>Напишите функцию myReduce, которая принимает массив, функцию-аккумулятор и начальное значение в
+                    качестве аргументов. Функция-аккумулятор должна принимать два аргумента: аккумулирующее значение и
+                    текущий элемент массива. А ещё — возвращать новое аккумулирующее значение. Функция myReduce должна
+                    вернуть конечное аккумулирующее значение. Используйте функцию myReduce для вычисления суммы чисел от
+                    1 до 5.</p>
+                <blockquote>Посмотреть код</blockquote>
+                <div class="main__wrapper-box_grey">
+                    <p>function myReduce(array, accumulatorFunction, initialValue) {</p>
+                    <blockquote>let accumulator = initialValue;</blockquote>
+                    <blockquote>for (let i = 0; i &lsaquo; array.length; i++) {</blockquote>
+                    <blockquote>
+                        <blockquote>accumulator = accumulatorFunction(accumulator, array[i]);</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <blockquote>return accumulator;</blockquote>
+                    <p>}</p>
+                    <p>const sum = myReduce([1, 2, 3, 4, 5], (accumulator, currentValue) => accumulator + currentValue,
+                        0);</p>
+                    <p>console.log(sum); // Output: 15</p>
+                </div>
+                <p>Комментарий к ответу:</p>
+                <p>Функция myReduce принимает три аргумента: массив array, функцию-аккумулятор accumulatorFunction и
+                    начальное значение initialValue. Внутри функции myReduce создаётся переменная accumulator, которая
+                    инициализируется значением initialValue. Затем в цикле for перебираются все элементы массива array.
+                    Для каждого элемента функция-аккумулятор accumulatorFunction вызывается с двумя аргументами: текущим
+                    значением аккумулятора accumulator и текущим элементом массива array[i]. Результат
+                    функции-аккумулятора становится новым значением аккумулятора accumulator. В конце функция reduce
+                    возвращает конечное значение аккумулятора accumulator.</p>
+                <p>Для вычисления суммы чисел от 1 до 5 мы вызываем функцию myReduce и передаём ей массив [1, 2, 3, 4,
+                    5], функцию-аккумулятор (accumulator, currentValue) => accumulator + currentValue (которая
+                    складывает текущее значение аккумулятора с текущим элементом массива) и начальное значение 0.
+                    Результат вызова функции myReduce записывается в переменную sum и выводится на консоль.</p>
+
+                <h2>Задание 4.4</h2>
+
+                <p>Напишите функцию myMap, которая принимает массив и функцию-трансформер в качестве аргументов.
+                    Функция-трансформер должна принимать элемент массива и возвращать его преобразованное значение.
+                    Функция myMap должна вернуть новый массив, содержащий элементы исходного массива, преобразованные
+                    функцией-трансформером. Используйте функцию myMap для получения массива квадратов чисел от 1 до 5.
+                </p>
+                <blockquote>Посмотреть код</blockquote>
+                <div class="main__wrapper-box_grey">
+                    <p>function myMap(arr, transformer) {</p>
+                    <blockquote>const result = [];</blockquote>
+                    <blockquote>for (let i = 0; i &lsaquo; arr.length; i++) {</blockquote>
+                    <blockquote>
+                        <blockquote>result.push(transformer(arr[i]));</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <blockquote>return result;</blockquote>
+                    <p>}</p>
+                    <p>const numbers = [1, 2, 3, 4, 5];</p>
+                    <p>const squares = myMap(numbers, num => num * num);</p>
+                    <p>console.log(squares); // [1, 4, 9, 16, 25]</p>
+                </div>
+                <p>Комментарий к ответу:</p>
+                <p>В этом примере мы создали функцию myMap, которая принимает массив arr и функцию-трансформер
+                    transformer. Затем мы создаём пустой массив result, итерируемся по arr с помощью цикла for,
+                    применяем функцию-трансформер к каждому элементу arr и добавляем результат в массив result. Наконец,
+                    мы возвращаем массив result.</p>
+                <p>Затем мы используем функцию myMap, чтобы получить массив квадратов чисел от 1 до 5. Мы создаём массив
+                    numbers, содержащий числа от 1 до 5, и передаём этот массив в качестве первого аргумента функции
+                    myMap. В качестве второго аргумента мы передаём функцию, которая принимает число и возвращает его
+                    квадрат. Мы сохраняем результат в переменную squares и выводим её в консоль.</p>
+                <hr>
+
+                <h2>Задание 4.5</h2>
+
+                <p></p>
+                <blockquote>Посмотреть код</blockquote>
+                <div class="main__wrapper-box_grey">
+                    <p>function filterArray(arr, predicateFunc) {</p>
+                    <blockquote>let result = [];</blockquote>
+                    <blockquote>for (let i = 0; i &lsaquo; arr.length; i++) {</blockquote>
+                    <blockquote>
+                        <blockquote>if (predicateFunc(arr[i])) {</blockquote>
+                    </blockquote>
+                    <blockquote>
+                        <blockquote>
+                            <blockquote>result.push(arr[i]);</blockquote>
+                        </blockquote>
+                    </blockquote>
+                    <blockquote>
+                        <blockquote>}</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <blockquote>return result;</blockquote>
+                    <p>}</p>
+                    <p>function isPositive(num) {</p>
+                    <blockquote>return num > 0;</blockquote>
+                    <p>}</p>
+                    <p>let nums = [-1, 2, -3, 4, -5];</p>
+                    <p>let positiveNums = filterArray(nums, isPositive);</p>
+                    <p>console.log(positiveNums); // [2, 4]</p>
+                </div>
+                <p>Комментарий к ответу:</p>
+                <p>Здесь мы определили функцию filterArray. Она принимает массив и функцию-предикат в качестве
+                    аргументов и возвращает новый массив, содержащий только те элементы исходного массива, для которых
+                    функция-предикат вернула true. Затем мы определили функцию isPositive, которая принимает число и
+                    возвращает true, если оно положительное. И false в противном случае. Затем мы создали массив nums и
+                    применили функцию filterArray к этому массиву, передав функцию isPositive в качестве
+                    аргумента-предиката. Результат был сохранён в переменной positiveNums. Мы вывели её содержимое в
+                    консоль.</p>
+
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page3.html" class="previous">&laquo; Назад</a>
+                <a href="page5.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page3.html" class="previous round">&#8249;</a>
+                <a href="page5.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+    </div>
+</body>
+
+</html>

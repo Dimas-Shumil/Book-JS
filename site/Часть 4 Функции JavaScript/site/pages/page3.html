@@ -1,0 +1,148 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Функции JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                3. Function declaration vs Function expression
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page9.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <figure>
+                    <img src="../images/m11_cover_FE_and_FD.svg" width="50%" alt="">
+                </figure>
+
+                <h2>Два способа объявления функции</h2>
+                <hr class="hr">
+                <h3>Классическое объявление функции называется <span class="main__wrapper-green">Function Declaration
+                        (FD)</span>.</h3>
+                <p>Пример:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>function sum() {</p>
+                    <blockquote>const result = 1+2;</blockquote>
+                    <blockquote>console.log(result);</blockquote>
+                    <p>}</p>
+                </div>
+
+                <h3>Другой подход к объявлению функций — <span class="main__wrapper-green">Function Expression
+                        (FE)</span>.</h3>
+
+                <p>Пример:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const sum = function() {</p>
+                    <blockquote>const result = 1 + 2;</blockquote>
+                    <blockquote>console.log(result);</blockquote>
+                    <p>}</p>
+                </div>
+
+                <h2>Отличия:</h2>
+                <blockquote>&middot; Функции, объявленные как Function Declaration, создаются интерпретатором до
+                    выполнения кода, поэтому их можно вызвать до объявления.</blockquote>
+                <blockquote>&middot; Функции, объявленные как FE, ведут себя по-разному в зависимости от того, какой
+                    оператор был использован. Функции, объявленные как FD, всегда ведут себя одинаково.</blockquote>
+                <div class="main__wrapper-box_grey">
+                    <p>func1(); // ошибки нет</p>
+                    <p>func2(); // ошибка</p>
+                    <p>function func1(a, b) {</p>
+                    <blockquote>console.log('function 1 - FD');</blockquote>
+                    <p>}</p>
+                    <p>const func2 = function() {</p>
+                    <blockquote>console.log('function 2 - FE');</blockquote>
+                    <p>};</p>
+                    <p>func1(); // ошибки нет</p>
+                    <p>func2(); // ошибки нет</p>
+                </div>
+
+                <h2>Объявление через var, let и const</h2>
+                <hr class="hr">
+                <hr>
+                <p><strong>Задание 6.3.1</strong></p>
+                <p>Что такое функция?</p>
+                <blockquote>Блок программного кода, который определяется один раз и может выполняться (вызываться) многократно.</blockquote>
+                <hr>
+
+                <p><strong>Задание 6.3.2</strong></p>
+
+                <p>Существует несколько способов задать функцию:</p>
+                <blockquote>Function Expression</blockquote>
+                <blockquote>Function Declaration</blockquote>
+                <hr>
+
+                <p><strong>Задание 6.3.3</strong></p>
+
+                <p>Основное отличие FE и FD в том, что...</p>
+                <blockquote>Функции, объявленные через FD, можно вызывать до и после их объявления.</blockquote>
+
+
+
+
+
+
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page2.html" class="previous">&laquo; Назад</a>
+                <a href="page4.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page2.html" class="previous round">&#8249;</a>
+                <a href="page4.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+    </div>
+</body>
+
+</html>

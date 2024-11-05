@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>AJAX</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                4. Механизмы хранения данных на клиенте
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+            <div class="main__wrapper-conteiner">
+                <figure>
+                    <img src="../images/m14_storage.svg" width="45%" alt="">
+                </figure>
+
+                <h3>Хранение данных и выделение памяти</h3>
+
+                <p>В <i>JavaScript</i> память выделяется динамически при создании сущностей (то есть объектов, строк и
+                    так далее) и «автоматически» освобождается, когда они больше не используются. Этот процесс
+                    называется <span class="green"> сборкой мусора</span>. После закрытия приложения (вкладки в
+                    браузере, остановки сервера и прочего) вся выделенная память очищается.</p>
+                <p>Часто необходимо сохранять данные даже после закрытия вкладок браузера. Для этого браузеры имеют
+                    отдельные API с различными способами хранения данных.</p>
+
+                <h3>Хранение данных на стороне клиента (в браузере)</h3>
+
+                <p>Инструменты для хранения</p>
+                <p>Браузеры имеют много инструментов для хранения данных на клиенте:</p>
+                <div class="main__wrapper-box_grey">
+                    <blockquote><a
+                            href="https://developer.mozilla.org/ru/docs/Web/API/Window/sessionStorage">sessionStorage</a>
+                        — механизм хранения пар ключ-значение в течение одной сессии;</blockquote>
+                    <blockquote><a
+                            href="https://developer.mozilla.org/ru/docs/Web/API/Window/localStorage">localStorage</a> —
+                        механизм хранения пар ключ-значение, но данные не удаляются даже после закрытия браузера;
+                    </blockquote>
+                    <blockquote><a href="https://developer.mozilla.org/ru/docs/Web/HTTP/Cookies">cookie</a> — механизм
+                        хранения пар ключ-значение (небольшой фрагмент данных) для проставления меток флагов и прочего;
+                    </blockquote>
+                    <blockquote><a href="https://developer.mozilla.org/ru/docs/Web/API/Cache">Cache</a> — механизм
+                        хранения объектов запросов/ответов;</blockquote>
+                    <blockquote><a href="https://developer.mozilla.org/ru/docs/Web/API/IndexedDB_API">IndexedDB</a> —
+                        база данных в браузере.</blockquote>
+                </div>
+                <blockquote>1. Самый часто используемый механизм хранения данных на клиенте это <span class="green">
+                        cookie</span>. Обусловлено это тем, что «куки» легко передаются в заголовках запроса и не
+                    требуют лишнего управления ими в браузере. Чаще всего проставляются сервером в ответах на запросы
+                    клиента.</blockquote>
+                <p>Не записывайте данные в cookie на клиенте без крайней необходимости! Они предназначены <b>для
+                        хранения меток, флагов и идентификаторов</b>. Для сохранения данных используйте другие
+                    инструменты.</p>
+                <blockquote>2. Вторые по частоте использования — механизмы, относящиеся к <a
+                        href="https://developer.mozilla.org/en-US/docs/Web/API/Web_Storage_API">Web Storage API</a>. Это
+                    <span class="green">localStorage</span> (намного чаще) и <span class="green">sessionStorage</span>
+                    (в редких случаях). Работу с <i>localStorage</i> мы рассмотрим ниже.</blockquote>
+                <p><i>Cache API</i> и <i>IndexedDB</i> используются в сложных приложениях, чаще всего в паре с <a
+                        href="https://developer.mozilla.org/ru/docs/Web/API/Service_Worker_API">Service Worker</a>, и
+                    реализации работы приложения при отсутствии или перебоях с доступом в интернет.</p>
+                <hr class="hr">
+
+                <h3>Работа с localStorage и sessionStorage</h3>
+
+                <p>Работа с <span class="blue"> localStorage</span> реализуется через объект <span class="blue">
+                        window.localStorage</span> (или просто <span class="blue"> localStorage</span>). Этот объект
+                    предоставляет для работы следующие методы:</p>
+                <blockquote>&bull; <span class="blue"> localStorage.setItem</span>("myKey", "myValue") — запись данных <span
+                        class="blue"> "myValue"</span> по ключу <span class="blue"> "myKey"</span>;</blockquote>
+                <blockquote>&bull; <span class="blue"> localStorage.getItem</span>("myKey") — чтение данных по ключу <span
+                        class="blue"> "myKey"</span>;</blockquote>
+                <blockquote>&bull; <span class="blue"> localStorage.removeItem</span>("myKey") — удалить ключ <span
+                        class="blue"> "myKey"</span> и все данные по нему;</blockquote>
+                <blockquote>&bull; <span class="blue"> localStorage.clear</span>() — полностью очистить хранилище.</blockquote>
+                <p><span class="blue"> sessionStorage</span> работает точно так же, то есть он тоже имеет методы <span class="blue"> setItem</span> и <span class="blue"> getItem</span>, но очисткой занимается сам.</p>
+                <p><a href="https://codepen.io/vvysokiy/pen/bGVXONa">Пример работы с localStorage в codepen.io</a></p>
+                <p><a href="https://codepen.io/vvysokiy/pen/xxwvmOb">Пример работы с sessionStorage в codepen.io</a></p>
+                <hr class="hr">
+
+                <h3>Получение данных из API и запись в localStorage</h3>
+
+                <p>Мы можем комбинировать работы нескольких инструментов. Например, сделать запрос с помощью XHR и полученные данные сложить в localStorage. При последующих заходах на страницу проверять: если есть данные в localStorage — брать оттуда. Если нет — делать запрос.</p>
+                <p><a href="https://codepen.io/vvysokiy/pen/zYvgydY">Пример работы с localStorage + XHR + API в codepen.io</a></p>
+
+                <h3>Работа с cookie</h3>
+
+                <figure>
+                    <img src="../images/m14_cookie.png" width="20%" alt="">
+                </figure>
+                <p><a href="https://developer.mozilla.org/ru/docs/Web/API/Document/cookie">Работа с cookie</a> может осуществляться с двух сторон: <b>серверной</b> и <b>клиентской</b>.</p>
+                <h3>Серверная:</h3>
+                <p>Простановка в ответе на запросы заголовка "Set-Cookie" со значениями, какие куки проставить пользователю.</p>
+                <blockquote>Пример: "Set-Cookie: test_cookie_server=testCookie;"</blockquote>
+                <h3>Клиентская:</h3>
+                <p>Запись в свойство cookie объекта document.</p>
+                <blockquote> Пример: document.cookie = "test_cookie_client=testCookie;"</blockquote>
+                <div class="main__wrapper-box_pink">
+                    <p><b>ВАЖНО!</b> При записи куки с использованием document.cookie происходит изменение только упомянутой куки. Ранее проставленные куки не изменятся.</p>
+                </div>
+                <p>При простановке <span class="blue"> cookie</span> как на серверной, так и на клиентской стороне их можно настраивать с помощью <b>следующих свойств:</b></p>
+                <div class="main__wrapper-box_grey">
+                    <blockquote><b>domain</b> — к какому домену будет привязан cookie (по умолчанию к домену, на котором находитесь);</blockquote>
+                    <blockquote><b>path</b> — путь на сайте, по которому будет доступен cookie ;</blockquote>
+                    <blockquote><b>expires</b> — дата смерти cookie в GTM формате;</blockquote>
+                    <blockquote><b>max</b>-age — время жизни cookie в timestamp формате;</blockquote>
+                    <blockquote><b>secure</b> — флаг, что cookie можно передавать только по https;</blockquote>
+                    <blockquote><b>samesite</b> — настройка безопасности для предотвращения атак.</blockquote>
+                </div>
+                <p><a href="https://codesandbox.io/p/devbox/jscookieexample-cnvpk">Пример работы с cookie в codesandbox.io</a></p>
+                <hr class="hr">
+
+                <h2>Задача 9.4.1</h2>
+                <p>Какие параметры отвечают за время жизни cookie?</p>
+                <blockquote>max-age</blockquote>
+                <blockquote>expires</blockquote>
+                <hr class="hr">
+
+                <h2>Задача 9.4.2</h2>
+                <p>Каким методом можно удалить одно значение из localStorage?</p>
+                <blockquote>removeItem</blockquote>
+
+
+
+            </div>
+
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page3.html" class="previous">&laquo; Назад</a>
+                <a href="page5.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page3.html" class="previous round">&#8249;</a>
+                <a href="page5.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

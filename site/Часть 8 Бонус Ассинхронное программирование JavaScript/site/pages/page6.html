@@ -1,0 +1,241 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Бонус. Асинхронное программирование JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                6. Макротаски/микротаски
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page9.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <p>Мы уже говорили о цикле событий. Цикл работает, следит за задачами, за стеком и очередью, держит всё
+                    под контролем.</p>
+                <p>А ещё мы очень много говорили о разных задачах: промисах, коллбэках, запросах и так далее.</p>
+                <p>Но все эти задачи — не одинаковы. Разберём, какими они бывают и чем друг от друга отличаются.</p>
+                <p>Все задачи можно разделить на две категории:</p>
+                <blockquote>&bull; Макротаски или макрозадачи — setTimeout, операции ввода–вывода, события браузера,
+                    fetch и так далее. Это тяжёлые задачи, они выполняются дольше.</blockquote>
+                <blockquote>&bull; Микротаски или микрозадачи — then, catch, async/await. Задачи полегче, выполняются
+                    быстрее. Имеют больший приоритет, чем макрозадачи.</blockquote>
+                <p>Помимо скорости, у этих задач отличается ещё и очередь выполнения:</p>
+                <blockquote>1. Сначала выполняются макрозадачи.</blockquote>
+                <blockquote>2. Дальше выполняются все микрозадачи.</blockquote>
+                <blockquote>3. Затем происходит перерисовка страницы. Вносятся изменения.</blockquote>
+                <blockquote>4. Запускается следующая макрозадача.</blockquote>
+                <blockquote>5. См. пункт 2.</blockquote>
+                <p>Почему так? Потому что микрозадачи имеют более высокий приоритет. Им нужно выполниться до того, как
+                    перерисуется страница, изменится контекст, щёлкнется какая-то другая кнопка и так далее. Мал да удал
+                    — это про них. :)</p>
+                <p>Давайте разберём это на примере вот такого кода:</p>
+
+                <iframe src="../frame/frame6/frame6.-1.html" width="90%" height="500px" frameborder="0"></iframe>
+
+                <p>Если вы ожидали, что код выполнится последовательно — то это не так. Давайте поэтапно разберём каждую
+                    задачу:</p>
+                <blockquote>1. Первым делом регистрируется таймаут с помощью setTimeout. Он улетает в API браузера,
+                    чтобы через установленное время передать коллбэк в очередь.</blockquote>
+                <blockquote>2. Далее регистрируется второй таймаут. То же самое, но более длительная задержка. Пока что
+                    в консоли ничего.</blockquote>
+                <blockquote>3. Затем выводится в консоль синхронный код — «Выполнение вывода в консоль на строке 13,
+                    синхронный код».</blockquote>
+                <blockquote>4. На строке 15 создается промис, а затем вызывается метод then с коллбэком. Пока ничего не
+                    выводится в консоль.</blockquote>
+                <blockquote>5. И ещё один вывод синхронного кода — со строки 19.</blockquote>
+                <blockquote>6. Выполнение промиса со строки 15.</blockquote>
+                <blockquote>7. Выполнение следующей микрозадачи со строки 21.</blockquote>
+                <blockquote>8. Таймер истекает, и в консоли появляется надпись о новой макротаске — со строки 2.
+                </blockquote>
+                <blockquote>9. Далее тут же запускается микрозадача внутри этого таймера. Пока что к третьей макротаске
+                    не переходим.</blockquote>
+                <blockquote>10. И, наконец, завершается код макротаской со строки 8.</blockquote>
+                <p>Но так как у последней большой задачи микрозадач нет, то код завершается.</p>
+
+                <h2>Упражнение 6.1.</h2>
+
+                <p>Поработайте с последним примером. Допишите код так, чтобы у последнего таймаута на строке 8 тоже
+                    появились микрозадачи. Можете пользоваться промисами по аналогии.</p>
+                <details>
+                    <summary>Посмотреть код</summary>
+                    <div class="main__wrapper-box_grey">
+                        <p>setTimeout(() => {</p>
+                        <blockquote>console.log("Выполнение таймаута на строке 8, новая макрозадача");</blockquote>
+                        <blockquote>let p = Promise.reject("Выполнилась микрозадача таймаута с 8 строки.");</blockquote>
+                        <blockquote>p.catch((err) => console.log(err));</blockquote>
+                        <p>}, 2000);</p>
+                    </div>
+                </details>
+                <p>Да, логика работы событийного цикла не так проста, к сожалению. :)</p>
+                <p>Эту систему можно сравнить с готовкой, которой в этом модуле очень много. Представьте, что вы
+                    готовите салат и нарезаете три огурца. Нарезка одного огурца — макрозадача. А его добавление в
+                    тарелку для салата — микрозадача.</p>
+                <p>Сначала вы нарезаете один огурец. Вы держите в уме, что его надо добавить в тарелку. Но делаете это
+                    не сразу, а отправляете задачу в очередь. Получается микротаск.</p>
+                <p>Потом нарезаете второй огурец и третий. И уже после этого отправляете все овощи в тарелку разом. То
+                    есть выполняете микрозадачи после того, как стек макрозадач опустел. А потом настаёт время
+                    помидоров, но это уже другой цикл и другие макрозадачи!</p>
+                <p>На этом завершим тему микрозадач и макрозадач и перейдём наконец к DOM!</p>
+                <hr class="hr">
+            </div>
+
+            <h2>Упражнение 6.2.</h2>
+
+            <p>Что из этого является микрозадачей?</p>
+            <blockquote><span class="green">&#10004;</span> .then</blockquote>
+            <blockquote>setTimeout</blockquote>
+            <blockquote>setInterval</blockquote>
+            <blockquote><span class="green">&#10004;</span> .finally</blockquote>
+            <blockquote>console.log</blockquote>
+            <blockquote><span class="green">&#10004;</span> .catch</blockquote>
+            <hr class="hr">
+
+            <h2>Упражнение 6.3.</h2>
+
+            <p><b>Выберите последовательность строк в консоли после того, как выполнится этот код:</b></p>
+            <div class="main__wrapper-box_grey">
+                <p>console.log("Начало кода");</p>
+                <p>setTimeout(function () {</p>
+                <blockquote>console.log("Таймаут 1");</blockquote>
+                <blockquote>Promise.resolve().then(function () {</blockquote>
+                <blockquote>
+                    <blockquote>console.log("Микрозадача 1");</blockquote>
+                </blockquote>
+                <blockquote>});</blockquote>
+                <p>}, 0);</p>
+                <p>setTimeout(function () {</p>
+                <blockquote>console.log("Таймаут 2");</blockquote>
+                <blockquote>Promise.resolve()</blockquote>
+                <blockquote>
+                    <blockquote>.then(() => console.log("Микрозадача 1"))</blockquote>
+                    <blockquote>.then(() => console.log("Микрозадача 2"));</blockquote>
+                </blockquote>
+                <p>},0);</p>
+                <p>Promise.resolve().then(function () {</p>
+                <blockquote>console.log("Микрозадача 1");</blockquote>
+                <p>});</p>
+                <p>console.log("Конец кода");</p>
+            </div>
+            <p>1 строка</p>
+            <blockquote>Начало кода</blockquote>
+            <p>2 строка</p>
+            <blockquote>Конец кода</blockquote>
+            <p>3 строка</p>
+            <blockquote>Микрозадача 1</blockquote>
+            <p>4 строка</p>
+            <blockquote>Таймаут 1</blockquote>
+            <p>5 строка</p>
+            <blockquote>Микрозадача 1</blockquote>
+            <p>6 строка</p>
+            <blockquote>Таймаут 2</blockquote>
+            <p>7 строка</p>
+            <blockquote>Микрозадача 1</blockquote>
+            <p>8 сторока</p>
+            <blockquote>Микрозадач 2</blockquote>
+            <hr class="hr">
+
+            <div class="main__wrapper-conteiner">
+                <h2>Упражнение 6.4</h2>
+
+                <p>Напишите код, который включает два таймаута. У первого — 2 микротаски. У второго — одна. Можете
+                    использовать внутри любую логику, например, выводить что-то в консоль.</p>
+                <details>
+                    <summary>Посмотреть код</summary>
+                    <div class="main__wrapper-box_grey">
+                        <p>setTimeout(() => {</p>
+                        <blockquote>console.log("Первый таймаут");</blockquote>
+                        <blockquote>Promise.resolve().then(() =></blockquote>
+                        <blockquote>
+                            <blockquote>console.log("Первая микротаска первого таймаута")</blockquote>
+                        </blockquote>
+                        <blockquote>);</blockquote>
+                        <blockquote>Promise.resolve().then(() =></blockquote>
+                        <blockquote>
+                            <blockquote> console.log("Вторая микротаска первого таймаута")</blockquote>
+                        </blockquote>
+                        <blockquote>);</blockquote>
+                        <p>});</p>
+                        <p>setTimeout(() => {</p>
+                        <blockquote>console.log("Второй таймаут");</blockquote>
+                        <blockquote>Promise.reject().catch(() =></blockquote>
+                        <blockquote>
+                            <blockquote>console.log("Первая микротаска второго таймаута")</blockquote>
+                        </blockquote>
+                        <blockquote>);</blockquote>
+                        <p>});</p>
+                    </div>
+                </details>
+
+
+            </div>
+
+
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page5.html" class="previous">&laquo; Назад</a>
+                <a href="page7.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page5.html" class="previous round">&#8249;</a>
+                <a href="page7.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

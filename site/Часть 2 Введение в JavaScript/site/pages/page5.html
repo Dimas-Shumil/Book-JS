@@ -1,0 +1,508 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>JS part2</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+            <div class="header__nav-title">
+                5. Операции со строками
+            </div>
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html" title="Введение">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="../pages/pages2.html" title="Переменные">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="../pages/page3.html" title="Типы данных в JavaScript">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="../pages/page4.html" title="Операции с числами">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="#" title="Операции со строками">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="../pages/page6.html" title="Преобразование типов">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="../pages/page7.html" title="Ввод/вывод данных">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="../pages/page8.html" title="Операторы сравнения, логические оператор">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="../pages/page9.html" title="Ветвление">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="../pages/page10.html" title="Промежуточные итоги">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <hr class="hr">
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+            <div class="main__wrapper-conteiner">
+
+                <h3>Конкатенация</h3>
+
+                <p>Оператор + (плюс) — многофункциональный оператор в JavaScript</p>
+                <p>Ранее мы познакомились с ним в операциях с числами. Сейчас узнаем, что он умеет делать со строками.
+                </p>
+                <p>В строках тоже имеется операция сложения. Но называется она конкатенация:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let firstString = "Одна строка";</p>
+                    <p>let secondString = "другая строка";</p>
+                    <p>let thirdString = firstString + secondString; // Одна строкадругая строка</p>
+                </div>
+
+                <p>Как мы видим, строки просто «прижались» друг к другу и стали единым целым.</p>
+                <p>Чтобы при конкатенации строки не прижимались, можно в конце первой строки поставить пробел или
+                    «символ
+                    перевода строки» — \n.</p>
+
+                    <div class="main__wrapper-box_grey">
+                    <p>let firstString = "Одна строка";</p>
+                    <p>let secondString = "другая строка";</p>
+                    <p>let thirdString = firstString + secondString; // Одна строкадругая строка</p>
+                </div>
+
+                <p>Вот список похожих операторов:</p>
+
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>\n</td>
+                            <td>Перевод строки.</td>
+                        </tr>
+                        <tr>
+                            <td>/r</td>
+                            <td>
+                                <p>Означает символ «возврат каретки» — возврат позиции вывода к началу текущей строки
+                                    БЕЗ
+                                    перехода на следующую строку.</p>
+                                <p>Небольшое, но важное замечание про Windows. В Windows для перевода строк по умолчанию
+                                    используется \r\n. Такая комбинация хорошо работает только в Windows, но создаёт
+                                    проблемы при переносе в другие системы (например, когда в команде разработчиков есть
+                                    пользователи как Windows, так и Linux).</p>
+                                <p>Дело в том, что последовательность \r\n имеет разную трактовку в зависимости от
+                                    выбранной
+                                    кодировки. По этой причине, в среде разработчиков принято всегда использовать \n без
+                                    \r.
+                                </p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>\’, \”</td>
+                            <td>Кавычки. Если необходимо в строку вставить кавычки того же типа, как и при объявлении
+                                строки.</td>
+                        </tr>
+                        <tr>
+                            <td>\\</td>
+                            <td>Обратный слеш.</td>
+                        </tr>
+                        <tr>
+                            <td>\t</td>
+                            <td>Знак табуляции. Если нужно сделать, например, отступ начала абзаца.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <h3>Задание 5.1</h3>
+
+                <p>Сделайте строковую переменную poem и присвойте ей значение «Я помню чудное мгновенье: Передо мной
+                    явилась
+                    ты, Как мимолетное виденье, Как гений чистой красоты».</p>
+                <p>Каждая заглавная буква должна писаться на новой строчке.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>ответ:</p>
+                    <p>const poem = 'Я помню чудное мгновенье:\n Передо мной явилась ты,\n Как мимолетное виденье,\n Как
+                        гений чистой красоты';</p>
+                    <p>console.log(poem);</p>
+                </div>
+
+                <h3>Задание 5.2</h3>
+
+                <p>Задайте переменную example со строкой в таком виде: "Что-то называется "хорошо", а что-то "плохо"".
+                </p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>ответ</p>
+                    <p>let example = "Что-то называется \"хорошо\", а что-то \"плохо\"";</p>
+                </div>
+
+                <h3>let example = "Что-то называется \"хорошо\", а что-то \"плохо\"";</h3>
+                <p>Впишите недостающие символы:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>ответ</p>
+                    <p> let example = "Он отвечает на вопросы да __\ нет";</p>
+                </div>
+
+                <hr>
+
+                <h2>Шаблонные строки</h2>
+
+                <p>Позволяют вставить внутрь строки специальные языковые конструкции, которые будут выводить результат
+                    работы находящегося внутри них кода.</p>
+                <p>Специальные конструкции имеют вид — ${вычисляемое значение}.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p> `Если сложить 1 и 2, то будет ${1 + 2}.`// Если сложить 1 и 2, то будет 3.</p>
+                </div>
+                <div class="main__wrapper-box_grey">
+                    <p>let name = "Иван";</p>
+                    <p>let greatingWithName = `Привет, ${name}!`; //Привет, Иван!</p>
+                </div>
+
+                <p>Шаблонные строки при выводе значения сохраняют форматирование.</p>
+                <p>Если вам нужно написать стихотворение, то воспользуйтесь шаблонной строкой:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>`Я помню чудное мгновенье:</p>
+                    <p>Передо мной явилась ты,</p>
+                    <p>Как мимолетное виденье,</p>
+                    <p>Как гений чистой красоты.`</p>
+                </div>
+
+                <h2>Задание 5.4</h2>
+
+                <p>Напишите с помощью шаблонной строки фразу «Сумма переменных a и b равна 3». Задавать переменные не
+                    нужно.
+                </p>
+                <p>Входные данные: a = 1 и b = 2.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>ответ</p>
+                    <p> `Сумма переменных a и b равна ${a + b}`</p>
+                </div>
+
+                <h2>Задание 5.5</h2>
+
+                <p>С помощью шаблонной строки выведите обращение к пользователю с именем Василий.</p>
+                <p>Входные данные: const name = ‘Василий’.</p>
+                <p>Выходные данные: Привет, Василий!</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>ответ</p>
+                    <p>Привет, ${name}!`</p>
+                </div>
+
+                <h2>Задание 5.6</h2>
+
+                <p>Задано число секунд, которое прошло с начала суток.</p>
+                <p>Выведите в консоль фразу в формате «Точное время 12:00:00».</p>
+                <p>Для округления значения воспользуйтесь функцией <a
+                        href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Math/floor"><span
+                            class="wrapper__text">Math.floor()</span></a>, которая производит округление до ближайшего
+                    меньшего целого числа.</p>
+
+                    <div class="main__wrapper-box_grey">
+                    <p>ответ</p>
+                    <p>Math.floor(0.4) // 0</p>
+                    <p> Math.floor(1.6) // 1</p>
+                </div>
+
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Пример 1</td>
+                            <td>
+                                <p>Входные данные: 2340.</p>
+                                <p>Выходные данные: Точное время 0:39:0.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Пример 2</td>
+                            <td>
+                                <p>Входные данные: 3600.</p>
+                                <p>Выходные данные: Точное время 1:0:0.</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Пример 3</td>
+                            <td>
+                                <p>Входные данные: 13444.</p>
+                                <p>Выходные данные: Точное время 3:44:4.</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const startSecond = 2340;</p>
+                    <p>const second = Math.floor(startSecond % 3600 % 60);</p>
+                    <p>const minutes = Math.floor(startSecond % 3600 / 60);</p>
+                    <p>const hours = Math.floor(startSecond / 3600);</p>
+                    <p>console.log(`Точное время ${hours}:${minutes}:${second}`)</p>
+                </div>
+
+                <h2>Задание 5.7</h2>
+
+                <p>Вынесите название комплекта в переменную kitName. Используйте её внутри переменной slogan:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p> const slogan = 'При использовании нашего комплекта «Батут» ваши ракеты всегда будут возвращаться
+                        на
+                        Землю. «Батут» поможет экономить на производстве. «Батут» сократит вероятность падения ракеты в
+                        случайную точку.'</p>
+                </div>
+                <div class="main__wrapper-box_grey">
+                    <p>ответ</p>
+                    <p>const kitName = '«Батут»';</p>
+                    <p>const slogan = `При использовании нашего комплекта ${kitName} ваши ракеты всегда будут
+                        возвращаться
+                        на Землю. ${kitName} поможет экономить на производстве. ${kitName} сократит вероятность падения
+                        ракеты в случайную точку.`</p>
+                </div>
+
+                <h3>Методы и свойства для работы со строками</h3>
+
+                <h2>Длина строки</h2>
+
+                <p>Для определения длины строки достаточно после неё или переменной написать через точку слово length.
+                </p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let string = "Какая-то строка";</p>
+                    <p>string.length // 15</p>
+                    <p>"Какая-то строка".length // 15</p>
+                </div>
+
+                <p>Для строки слово length является свойством.</p>
+                <p>Чтобы закрепить полученные знания, давайте разберёмся, как мы сможем реализовать базовые приёмы
+                    валидации
+                    для форм авторизации и регистрации:</p>
+
+                <figure>
+                    <img src="../img/asset-v1_SkillFactory+INTFR+2023+type@asset+block@INTFR_6_5_1.png" width="60%"
+                        alt="">
+                </figure>
+
+                <h2>Задание 5.8</h2>
+
+                <p>Мы делаем валидацию для формы регистрации на сайте. У нас есть требование, что длина пароля должна
+                    быть
+                    больше 12 символов. Пароль записывается в переменную password. Напишите как мы можем узнать длину
+                    введённого пароля.</p>
+                <p>password.length</p>
+
+                <h2>Доступ к символам</h2>
+
+                <p>Чтобы получить определённый символ из строки, нужно указать его позицию внутри квадратных скобок
+                    [позиция]. Также для этого можно воспользоваться методом at(позиция).</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>Обратите внимание! Номер позиции начинается с 0.</p>
+                </div>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let someString = "Какая-то строка";</p>
+                    <p>someString[0] // К</p>
+                    <p>someString.at(1) // а</p>
+                </div>
+
+                <h3><strong>Метод</strong> — это фрагмент кода, который выполняет определённые действия. Каждому методу
+                    присваивается своё название. Методы могут как принимать аргументы, так и возвращать результат своей
+                    работы в место, откуда они были вызваны.</h3>
+
+                <p>Метод at() принимает на вход один аргумент — номер символа в строке. И возвращает найденный символ.
+                </p>
+                <p>Отличие метода at() от квадратных скобок состоит в работе с отрицательными значениями:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let someString = "Какая-то строка";</p>
+                    <p>someString[-1] // undefined</p>
+                    <p>someString.at(-1) // а</p>
+                </div>
+
+                <h2>Задание 5.9</h2>
+
+                <p>Имеется переменная email со значением «someemail@sf.ru». Найдите 1 и последний символы.</p>
+                <p>Входные данные: someemail@sf.ru</p>
+                <p>Выходные данные: s, u</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>ответ</p>
+                    <p>email[0]</p>
+                    <p>email[email.length - 1]</p>
+                    <p>// или</p>
+                    <p>email.at(0)</p>
+                    <p>email.at(-1)</p>
+                </div>
+
+                <h2>Изменение регистра</h2>
+
+                <p>Строки имеют два регистра:</p>
+                <p>1. ВЕРХНИЙ — все буквы прописные.</p>
+                <p>2.нижний — все буквы строчные.</p>
+                <p>Для перевода строки в верхний регистр используется метод toUpperCase().</p>
+                <p>Для перевода строки в нижний регистр используется метод toLowerCase().</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let someString = "Какая-то строка";</p>
+                    <p>someString.toUpperCase() // КАКАЯ-ТО СТРОКА</p>
+                    <p>someString.toLowerCase() // какая-то строка</p>
+                </div>
+
+                <p>Перевод в определённый регистр бывает полезным, когда вы получаете какую-то строку от пользователя и
+                    нужно сравнить её с вашей константой.</p>
+
+
+                <h2>Задание 5.10</h2>
+
+                <p>Мы всё ещё занимаемся валидацией формы на сайте. Теперь это форма авторизации. Пользователь может
+                    ввести
+                    значение в поле «Логин» как пожелает. Нам нужно проверить, что введённое значение совпадает со
+                    значением
+                    при регистрации. Для этого мы должны привести все буквы к одному регистру.</p>
+                <p>Вводимое значение записывается в переменную с названием userName.</p>
+                <p>Входные данные: SomeUserName</p>
+                <p>Выходные данные: someusername или SOMEUSERNAME</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>Ответ:</p>
+                    <p>userName.toLowerCase()</p>
+                    <p>// или</p>
+                    <p>userName.toUpperCase()</p>
+                </div>
+
+                <h2>Поиск подстроки</h2>
+
+                <p>Существует несколько методов для поиска наличия искомого значения в строке:</p>
+                <p>indexOf(searchValue, [fromIndex])</p>
+                <p>includes(searchString, [position])</p>
+                <p>startsWith(searchString, [position])</p>
+                <p>endsWith(searchString, [length])</p>
+                <p>Все эти методы имеют второй необязательный аргумент, который можно не указывать.</p>
+                <p>Метод indexOf() вернёт нам в ответ либо значения позиции с которой начинается искомая строка, либо
+                    -1,
+                    если ничего не найдено.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let firstString = "Не найдёшь!".indexOf("я"); // -1</p>
+                    <p>let secondString = "А здесь я найдётся".indexOf("я"); // 8</p>
+                </div>
+
+                <p>Метод includes() — самый современный из всех методов поиска.</p>
+                <p>Он, так же как и его коллеги startsWith() и endsWith(), ответит нам не индексом элемента, а булевым
+                    значением — true / false.</p>
+
+
+                <div class="main__wrapper-box_grey">
+                    <p>let exampleString = "Какой-то пример строки";</p>
+                    <p>exampleString.includes("то"); // true</p>
+                    <p>exampleString.startsWith("то"); // false</p>
+                    <p>exampleString.startsWith("то", 6); // true - так как указан индекс начала поиска</p>
+                    <p>exampleString.endsWith("то"); // false</p>
+                    <p>exampleString.endsWith("то", 6); // true - так как указан индекс окончания поиска</p>
+                </div>
+
+                <p>Эти методы широко применяются, когда необходимо изменить выполнение кода по определённому условию.
+                    Про
+                    условия мы поговорим подробно в юните «Ветвление».</p>
+
+                <h2>Задание 5.12</h2>
+
+                <p>Одной проверкой для переменной email мы решили не ограничиваться. Нам нужно проверить, что после
+                    знака
+                    «@» написано «skill».</p>
+                <p>Входные данные: someemail@skillfactory.ru и someemail@factory.ru</p>
+                <p>Выходные данные: true и false.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>Ответ:</p>
+                    <p>email.startsWith(‘skill’, email.indexOf(‘@’));</p>
+                    <p>// или </p>
+                    <p>const index = email.indexOf(‘@’)+1;</p>
+                    <p>email.startsWith(‘skill’, index);</p>
+                </div>
+
+                <h2>Получение подстроки</h2>
+
+                <p>Когда хотите получить подстроку, воспользуйтесь одним из 3-x методов: substring, substr и slice. Они
+                    все
+                    корректно выполняют задачу. Метод substr не описан в официальной спецификации JavaScript и может не
+                    работать в другом окружении, отличном от браузера. Однако на практике он работает везде.</p>
+                <p>Советуем обратить внимание на slice — он имеет больше «настроек», что позволяет ему быть более
+                    гибким.
+                    Если научитесь обращаться с ним, то этого метода будет достаточно.</p>
+                <p>Синтаксис метода: str.slice(start [, end]), где [, end] — необязательная часть и её можно опустить,
+                    передав только стартовую позицию. Метод возвращает часть строки от start до (не включая) end.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let str = "string";</p>
+                    <p>str.slice(0, 3); // str</p>
+                </div>
+
+                <p>Результат: 'str' — символы от 0 до 3 (не включая 3 (счёт идет от 0)).</p>
+
+                <div class="main__wrapper-box_blue">
+                    <p>&#10001;Есть ещё много полезных методов. Вы можете познакомиться с ними в <span
+                            class="wrapper__text"><a
+                                href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/String"><span class="green"> спецификации</span></a></span>.
+                    </p>
+                </div>
+
+                <h2>Задание 5.13</h2>
+
+                <p>Продолжаем работать с формой регистрации и полем email. На этот раз нам необходимо получить начало
+                    адреса до символа «@». Воспользуйтесь методом slice для решения этой задачи.</p>
+                <p>Входные данные: someemail@skillfactory.ru</p>
+                <p>Выходные данные: someemail</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>Ответ:</p>
+                    <p>email.slice(0, email.indexOf(‘@’));</p>
+                </div>
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page4.html" class="previous">&laquo; Назад</a>
+                <a href="page6.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page4.html" class="previous round">&#8249;</a>
+                <a href="page6.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+    </div>
+            <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+            <script async src="../script/js.js"></script>
+
+            <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+</body>
+
+</html>

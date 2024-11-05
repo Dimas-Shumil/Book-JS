@@ -1,0 +1,669 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>js3</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                2. Циклы
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <hr class="hr">
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+            <div class="main__wrapper-conteiner">
+
+                <figure>
+                    <img src="../img/asset-v1_SkillFactory+INTFR+2023+type@asset+block@INTFR_7_2_1.gif" width="50%"
+                        alt="">
+                    <p>Визуальный пример цикла — панды по кругу совершают одни и те же действия.</p>
+                </figure>
+
+                <p>Циклы помогают избавиться от многократного написания однотипного кода. Они могут выполнить
+                    какую-нибудь часть кода несколько раз. Например, вывести 100 раз на экран слово «Привет».</p>
+                <p>Вместо того, чтобы 100 раз писать команду вывода «Привет», мы создадим цикл, который вызовет эту
+                    команду 100 раз.</p>
+                <p>Каждый проход цикла называется итерацией. Проход цикла или итерация — это повторение записанных в
+                    цикле команд.</p>
+                <p>Чтобы лучше понять, что такое проход цикла или итерация, выберите одну из панд, которые катаются с
+                    горки на картинке в начале юнита. Каждый раз когда панда начинает забираться по лестнице —
+                    начинается новая итерация.</p>
+                <p>Ещё один пример. Нам нужно вывести для пользователя уведомление через определённое количество секунд.
+                    Для решения этой задачи мы можем написать таймер. Пользователь вводит время, когда таймер должен
+                    сработать, нажимает кнопку «Старт». Таймер начинает работу.</p>
+                <p>Чтобы не писать код под каждое возможное время, мы можем получить от пользователя значение и в цикле
+                    сверять текущее время с тем, что задал пользователь.</p>
+
+                <figure>
+                    <img src="../img/asset-v1_SkillFactory+INTFR+2023+type@asset+block@INTFR_7_2_2.png" width="70%"
+                        alt="">
+                    <p>Блок-схема цикла таймера.</p>
+                </figure>
+
+                <p>В верхнем ромбе мы создаём условие, которое должно иметь булевый тип.</p>
+                <p>Например:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>1 === 2 // false</p>
+                    <p>'some string' === 'some string' // true</p>
+                    <p>45 > 46 // false</p>
+                </div>
+
+                <p>Если условие истинно, то есть имеет значение true, то мы движемся по левому пути к блоку «Что-то
+                    делаем с переменной».</p>
+                <p>В этом блоке может содержаться любой код, который необходим разработчику. Как только блок кода
+                    выполнится, мы опять попадём в ромб с условием. Этот блок называется «Тело цикла».</p>
+                <p>А что, если условие станет ложным? Например, значение переменной будет больше необходимого значения.
+                    Тогда мы пойдём по правому пути — к блоку «Вывод сообщения».</p>
+
+                <figure>
+                    <img src="../img/asset-v1_SkillFactory+INTFR+2023+type@asset+block@INTFR_7_2_3.png" width="50%"
+                        alt="">
+                    <p>Схематичное изображение цикла.</p>
+                </figure>
+
+                <p>Код внутри тела цикла не будет выполнен, пока не выполнится условие.</p>
+
+                <h2>Разновидности циклов</h2>
+
+                <p>В JavaScript есть несколько видов циклов:</p>
+                <p>&#10148; while</p>
+                <p>&#10148; do…while</p>
+                <p>&#10148; for</p>
+
+                Разберём каждый из них подробнее.
+
+                <h2>while</h2>
+
+                <p>Цикл while сначала проверяет, что условие истинно — имеет значение true. А уже потом начинает
+                    выполнение тела цикла. Другими словами: сначала подумает, а потом сделает.</p>
+                <p>У этого цикла следующий синтаксис:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>while( условие ) {</p>
+                    <blockquote>// тело цикла</blockquote>
+                    <p>}</p>
+                    <p>let value = 0; // создаём изменяемую переменную</p>
+                    <p>while (value &lsaquo; 10) { // проверяем условие</p>
+                    <p>value = value + 1; // увеличиваем переменную на 1</p>
+                    <p>}</p>
+                </div>
+                <p>Если нам нужно пропустить какую-нибудь итерацию цикла, например value === 5, то для этого у нас есть
+                    2 специальных команды.</p>
+
+            </div>
+
+            <p>Задание 2.1</p>
+            <p><strong>Будет ли выполнен цикл?</strong></p>
+
+            <div class="main__wrapper-box_grey">
+                <p>let value = 0</p>
+                <p>while(variable) {</p>
+                <blockquote>console.log(variable)</blockquote>
+                <p>}</p>
+            </div>
+            <p>Нет</p>
+            <p><strong>Ответ</strong></p>
+            <p>Верно:</p>
+            <p>Цикл выполняться не будет. Переменная имеет значение 0, которое при приведении к булевому типу станет
+                равно false.</p>
+
+            <p>Задание 2.2</p>
+
+            <p><strong>Сколько раз выполнится цикл:</strong></p>
+
+            <div class="main__wrapper-box_grey">
+                <p>let variable = 0; </p>
+                <p>while(variable &lsaquo;= 5) {</p>
+                <blockquote>console.log(variable);</blockquote>
+                <blockquote>variable += 1;</blockquote>
+                <p>}</p>
+            </div>
+            <p><strong>6</strong></p>
+            <p><strong>ответ:</strong></p>
+            <p>Верно:Цикл будет выполнен 6 раз. В условии цикла идёт проверка ещё и на равенство переменной значению 5.
+            </p>
+
+
+            <div class="main__wrapper-conteiner">
+                <h2>Задание 2.3</h2>
+
+                <p>Напишите цикл while, который выводит в консоль значение переменной test от 1 до 7. В задании нужно
+                    создать переменную и увеличивать её значение.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>// Решение 1</p>
+                    <p>let test = 1;</p>
+                    <p>while (test &lsaquo; 8) {</p>
+                    <blockquote>console.log(test);</blockquote>
+                    <blockquote>test += 1;</blockquote>
+                    <blockquote>// или </blockquote>
+                    <blockquote>test = test + 1;</blockquote>
+                    <p>}</p>
+
+                    <p>// Решение 2</p>
+                    <p>let test = 1;</p>
+                    <p>while (test &lsaquo;= 8) {</p>
+                    <blockquote>console.log(test);</blockquote>
+                    <blockquote>test += 1;</blockquote>
+                    <blockquote>// или </blockquote>
+                    <blockquote>test = test + 1;</blockquote>
+                    <p>}</p>
+                </div>
+
+                <h2>continue</h2>
+
+                <p>Цикл сразу переходит на следующую итерацию. Код, который находится после данной команды, не
+                    запускается.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let value = 0;</p>
+                    <p>while (value &lsaquo; 10) {</p>
+                    <blockquote>value = value + 1;</blockquote>
+                    <blockquote>if (value === 5) { continue; }</blockquote>
+                    <blockquote>console.log(value);</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>В итоге выполнения этого кода мы получим вывод в консоль: 1, 2, 3, 4, 6, 7, 8, 9. Обратите внимание,
+                    что цифры 5 в выводе нет.</p>
+                <p>В примере используется метод console.log() . Он выводит значение в консоль разработчика, которую
+                    можно открыть в браузере. Например, в Chrome:</p>
+                <p>1. нажимаем на правую кнопку мыши в окне браузера,</p>
+                <p>2. выбираем «Просмотреть код»,</p>
+                <p>3. в появившейся панели открываем вкладку «Консоль».,</p>
+
+                <h2>break</h2>
+
+                <p>Цикл полностью останавливает работу и начинает выполняться код, находящийся после цикла.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let value = 0;</p>
+                    <p>while (value &lsaquo 10) {</p>
+                    <blockquote>value = value + 1;<blockquote>
+                            <blockquote>if (value === 5) { break; }</blockquote>
+                            <blockquote>console.log(value);</blockquote>
+                            <p>}</p>
+                </div>
+                <p>В итоге выполнения кода мы получим вывод в консоль: 1, 2, 3, 4. Как мы видим, в выводе оказалось
+                    всего четыре числа. Это произошло из-за того, что в цикле встретилось число 5, а по условию на этом
+                    числе цикл должен прервать работу.
+                </p>
+            </div>
+
+
+            <p>Задание 2.4</p>
+            <p><strong>Что нужно вписать вместо ???, чтобы получить вывод в консоль 5, 4, 3, 1:</strong></p>
+
+            <div class="main__wrapper-box_grey">
+                <p>let value = 5;</p>
+                <p>while(value > 0) {</p>
+                <blockquote>console.log(value);</blockquote>
+                <blockquote></blockquote>
+                <blockquote>value -= 1;</blockquote>
+                <blockquote>???</blockquote>
+                <p>}</p>
+            </div>
+
+            <hr class="hr">
+
+            <p>Задание 2.5</p>
+            <p><strong>Что нужно вписать вместо ???, чтобы получить вывод в консоль 5, 4, 3:</strong></p>
+            <p>Примечание. Воспользуйтесь условием и оператором break</p>
+
+            <div class="main__wrapper-box_grey">
+                <p>let value = 5;</p>
+                <p>while (value > 0) {</p>
+                <p>console.log(value);</p>
+                <p>???</p>
+                <p>value -= 1;</p>
+                <p>}</p>
+            </div>
+
+            <hr class="hr">
+
+            <div class="main__wrapper-conteiner">
+                <h2>do…while</h2>
+                <p>В отличие от цикла while, этот цикл сначала делает, а потом думает. Это значит, что тело цикла
+                    выполнится как минимум раз, даже если условие будет ложным.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>do {</p>
+                    <blockquote>// тело цикла</blockquote>
+                    <p> } while( условие )</p>
+                </div>
+                <div class="main__wrapper-box_grey">
+                    <p>let value = 11;</p>
+                    <p>do {</p>
+                    <blockquote>console.log(value);</blockquote>
+                    <blockquote>value = value + 1;</blockquote>
+                    <p>}while (value &lsaquo; 10)</p>
+                </div>
+                <p>При выполнении этого кода мы получим один вывод в консоль, хотя значение переменной больше 10.</p>
+            </div>
+            <hr class="hr">
+
+            <p>Задание 2.6</p>
+
+            <p><strong>Сколько раз будет выведено сообщение в консоль?</strong></p>
+
+            <div class="main__wrapper-box_grey">
+                <p>let variable = 0;</p>
+                <p>do {</p>
+                <blockquote>console.log(variable);</blockquote>
+                <blockquote>variable += 1;</blockquote>
+                <p>} while (variable &lsaquo; 2)</p>
+            </div>
+            <p><strong>2</strong></p>
+
+            <hr class="hr">
+
+            <p>Задание 2.7</p>
+            <p><strong>Будет ли вывод в консоль?</strong></p>
+
+            <div class="main__wrapper-box_grey">
+                <p>let variable = 3;</p>
+                <p>do {</p>
+                <blockquote>console.log (variable);</blockquote>
+                <p>} while (variable &lsaquo; 3);</p>
+            </div>
+            <p><strong>да</strong></p>
+            <p><strong>Ответ</strong></p>
+            <p>Верно:Вывод будет из-за особенности цикла do…while. Он сначала выполняет код, а уже потом проверяет
+                условие.</p>
+
+            <hr class="hr">
+
+            <div class="main__wrapper-conteiner">
+                <h2>for</h2>
+                <p>Этот цикл сложнее предыдущих циклов по устройству. Но при этом он самый распространённый.</p>
+                <p>for состоит из трёх частей:</p>
+                <p>1. Начальное значение — задаётся один раз в начале цикла.</p>
+                <p>2. Условие — проверяется на каждой итерации цикла.</p>
+                <p>3. Шаг — выражение выполняется после каждой итерации.</p>
+                <p>Записывается цикл следующим образом:</p>
+
+
+                <div class="main__wrapper-box_grey">
+                    <p>for(начальное значение; условие; шаг цикла) {</p>
+                    <blockquote>// тело цикла</blockquote>
+                    <p>}</p>
+                </div>
+
+                <div class="main__wrapper-box_lightblue">
+                    <p><strong>Обратите внимание!</strong> Каждая из частей цикла отделяется от следующей точкой с
+                        запятой.
+                    </p>
+                </div>
+
+                <p>Ранее мы говорили, что переменным нужно давать осмысленные, говорящие названия.</p>
+                <p>Цикл for не исключение. Однако чаще всего в нём используют название начального значения, которое
+                    состоит
+                    из одной буквы: i, k, j.</p>
+                <p>Например, для вывода цифр от 0 до 10 цикл for будет выглядеть так:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>for (let i = 0; i &lsaquo;= 10; i = + 1) {</p>
+                    <blockquote>console.log(i);</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>Как работает этот код:</p>
+                <p>1. Мы задали начальное значение переменной i в первой части.</p>
+                <p>2. Во второй части проверяем, меньше числа 10 или равна ему переменная i.</p>
+                <p>3. В третьей части цикла увеличиваем значение переменной на 1 после каждой итерации</p>
+                <p>4. Как только значение переменной станет больше 10, цикл перестанет выполняться.</p>
+
+                <div class="main__wrapper-box_lightblue">
+                    <p>Главная особенность цикла for: все части в нём — необязательные.</p>
+                </div>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let i = 0;</p>
+                    <p>for (; i &lsaquo; 10; i += 1) {</p>
+                    <blockquote>// тело цикла</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>Также вы можете не объявлять центральную часть цикла — условие:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>for (let i = 0; ; i += 1) {</p>
+                    <blockquote>// тело цикла</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>И даже не объявить третью часть цикла — шаг:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>for (let i = 0; i > 10;) {</p>
+                    <blockquote>// тело цикла</blockquote>
+                    <p>}</p>
+                </div>
+
+                <div class="main__wrapper-box_lightblue">
+                    <p>Важно! Даже если какая-то часть цикла пропускается, точку с запятой всё равно нужно поставить.
+                    </p>
+                </div>
+
+                <p>Для цикла for, также как и для цикла while, работают команды continue и break:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>for (let i = 0; i &lsaquo; 10; i += 1) {</p>
+                    <blockquote>if (i === 5) { // если i равно 5, то</blockquote>
+                    <blockquote>
+                        <blockquote>continue; // пропускаем вызов следующего кода и переходим к следующей итерации цикла
+                        </blockquote>
+                        <blockquote>}</blockquote>
+                        <blockquote>console,log(i); // 0, 1, 2, 3, 4, 6, 7, 8, 9</blockquote>
+                        <p>}</p>
+                    </blockquote>
+                </div>
+                <div class="main__wrapper-box_grey">
+                    <p>for (let i = 0; i &lsaquo; 10; i += 1) {</p>
+                    <blockquote>if (i > 5) { // если i больше 5, то</blockquote>
+                    <blockquote>
+                        <blockquote>break; // прерываем выполнение цикла</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <blockquote> console.log(i); // 0, 1, 2, 3, 4, 5</blockquote>
+                    <p>}</p>
+                </div>
+            </div>
+
+            <hr class="hr">
+
+            <p>Задание 2.8</p>
+
+            <p><strong>Что нужно записать на месте знаков вопроса ???, чтобы получить вывод в консоль чисел 1, 2, 3,
+                    4:</strong></p>
+
+            <div class="main__wrapper-box_grey">
+                <p>???</p>
+                <p>for (; variable &lsaquo; 5; variable += 1) {</p>
+                <blockquote>console.log(variable);</blockquote>
+                <p>}</p>
+            </div>
+            <blockquote>let variable = 1</blockquote>
+
+            <hr class="hr">
+
+            <p>Задание 2.9</p>
+            <p><strong>Что нужно записать на месте знаков вопроса ???, чтобы получить вывод в консоль чисел 5, 4, 3, 2,
+                    1, 0:</strong></p>
+
+            <div class="main__wrapper-box_grey">
+                <p>for (let i = 5; i >= 0; ???) {</p>
+                <blockquote>console.log(i);</blockquote>
+                <p>}</p>
+            </div>
+            <blockquote><strong>i--</strong></blockquote>
+
+            <hr class="hr">
+
+            <div class="main__wrapper-conteiner">
+                <h2>Использование циклов на практике</h2>
+
+                <p>for — самый используемый цикл. Поиск по Github выдаёт 28 миллионов файлов, где встречается данная
+                    конструкция. Для цикла while и do…while эта цифра равна 14.2 миллиона. </p>
+
+                <figure>
+                    <img src="../img/asset-v1_SkillFactory+INTFR+2023+type@asset+block@INTFR_7_2_4.png" width="50%"
+                        alt="">
+                    <p>Результаты поиска для цикла for.</p>
+                </figure>
+                <figure>
+                    <img src="../img/asset-v1_SkillFactory+INTFR+2023+type@asset+block@INTFR_7_2_5.png" width="50%"
+                        alt="">
+                    <p>Результаты поиска для циклов while и do…while.</p>
+                </figure>
+
+                <p>Он используется для:</p>
+                <p>&#10148; перебора элементов массива;</p>
+                <p>&#10148; заполнения массива значениями;</p>
+                <p>&#10148; перебора элементов массивоподобных объектов.</p>
+                <p>Циклы while и do…while используются, когда изначально неизвестно количество необходимых повторений.
+                </p>
+                <p>Например, цикл do…while может быть настроен на ввод пользователем чисел. Мы не знаем, сколько чисел
+                    захочет ввести пользователь. Но на каждое мы должны делать какое-то действие. Например, подсчитывать
+                    сумму всех введённых чисел.</p>
+                <p>Давайте разберём эту задачу подробнее.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let num; // здесь будем сохранять число введённое пользователем</p>
+                    <p>let sum = 0; // переменная для хранения суммы чисел</p>
+                    <p>// используем цикл do...while так как нужно выполнить код хотя бы один раз</p>
+                    <p>do {</p>
+                    <blockquote>num = +prompt('Введите число'); // получаем значение от пользователя и приводим к типу
+                        number </blockquote>
+                    <blockquote>if (typeof num === 'number') { // проверяем, что в переменной записано число, так как
+                        может быть значение NaN или null, если пользователь отказался вводить данные</blockquote>
+                    <blockquote>
+                        <blockquote>console.log(`Введено число: ${num}`); // вывод в консоль</blockquote>
+                        <blockquote>sum += num; // прибавляем к переменной введённое значение</blockquote>
+                        <blockquote>console.log(`Сумма введённых чисел: ${sum}`); // вывод в консоль</blockquote>
+                        <blockquote>}</blockquote>
+                        <p>} while (num) // будет выполняться, если в переменной записано значение, отличное от null,
+                            false или undefined</p>
+                        <p>console.log(`Общая сумма: ${sum}`); // вывод в консоль</p>
+                    </blockquote>
+                </div>
+
+                <p>Часто можно встретить вложенность одного цикла for в другой.</p>
+                <p>Сейчас эта возможность поможет нам вывести таблицу умножения в консоль. А далее при работе с
+                    массивами и объектами сможем работать с вложенными в них элементами.</p>
+                <p>Пример с выводом таблицы умножения:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>for (let i = 1; i &lsaquo;= 10; i += 1) {</p>
+                    <blockquote>for (j = 1; j &lsaquo;= 10; j += 1) {</blockquote>
+                    <blockquote>
+                        <blockquote>console.log(`${i} * ${j} = ${i * j}`);</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <blockquote>console.log('\n');</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>В результате мы получим вывод:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>1 * 1 = 1</p>
+                    <p>1 * 2 = 2</p>
+                    <p>1 * 3 = 3</p>
+                    <p>1 * 4 = 4</p>
+                    <p>1 * 5 = 5</p>
+                    <p>1 * 6 = 6</p>
+                    <p>1 * 7 = 7</p>
+                    <p>1 * 8 = 8</p>
+                    <p>1 * 9 = 9</p>
+                    <p>1 * 10 = 10</p>
+                </div>
+
+                <p>Давайте разберём, как это работает:</p>
+                <p>1. for (let i = 1; i &lsaquo;= 10; i += 1) { — создаём внешний цикл.</p>
+                <p> &#10148; Создаётся переменная i со значением 1, добавляем условие по достижении которого цикл будет
+                    завершён i &lsaquo;= 10 и указываем шаг цикла равный 1.</p>
+                <p> &#10148; Внешний цикл начинает свою работу.</p>
+                <p>1. Получает значение переменной i.</p>
+                <p>2. Проверяет, что переменная соответствует условию.</p>
+                <p>3. Если переменная соответствует условию, то запускается код внутри цикла.</p>
+                <p>4. Ждёт выполнения внутреннего кода.</p>
+                <p>5. Изменяет значение переменной i.</p>
+                <p>6. Начинает работу с п. 1.</p>
+
+                <p>2. for (j = 1; j &lsaquo;= 10; j += 1) { — создаём внутренний цикл.</p>
+                <p>&#10148; Создаётся переменная j со значением 1, добавляем условие по достижении которого цикл будет
+                    завершён j &lsaquo;= 10 и указываем шаг цикла равный 1.</p>
+                <p>&#10148; Внутренний цикл начинает работу</p>
+                <blockquote>1. Получает значение переменной j.</blockquote>
+                <blockquote>2. Проверяет, что переменная соответствует условию.</blockquote>
+                <blockquote>3. Если переменная соответствует условию, то запускает код внутри цикла.</blockquote>
+                <blockquote>4. Ждёт выполнение внутреннего кода.</blockquote>
+                <blockquote>5. Изменяет значение переменной j.</blockquote>
+                <blockquote>6. Начинает работу с п. 1.</blockquote>
+
+                <p>3. С помощью шаблонной строки выводится сообщение в консоль из внутреннего цикла.</p>
+                <p>4. После завершения внутреннего цикла выводится сообщение в консоль.</p>
+                <p>Таким образом, внешний цикл запускается всего 10 раз, а внутренний каждый раз после запуска внешнего
+                    — 100 раз.</p>
+
+                <h2>Бесконечные циклы</h2>
+
+                <p>В процессе написания кода можно случайно создать бесконечный цикл.</p>
+                <p>Иногда разработчики создают их специально. Например, ожидание действий пользователя можно сделать как
+                    бесконечный цикл. Представим, что две программы выполняются параллельно. Одну из них пользователь
+                    использует в текущий момент, а вторая ждёт определённого действия от пользователя, чтобы начать
+                    выполнение. Дождавшись его, вторая программа начнёт выполнять свой код. Она может после этого как
+                    завершиться, так и опять встать в режим ожидания.</p>
+                <p>Но это скорее исключение из правила.</p>
+                <p>Бесконечные циклы могут быть опасны.</p>
+                <p>От бесконечного цикла среда, в которой он исполняется, может зависнуть. В лучшем случае вы сможете
+                    закрыть среду выполнения (например, окно браузера), и находящийся в ней код перестанет работать. В
+                    худшем случае компьютер придётся экстренно перезагружать, потому что система перестанет отвечать на
+                    действия пользователя.</p>
+                <p>Вот пример бесконечного цикла:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let i = 0;</p>
+                    <p>while (i &lsaquo; 10) {</p>
+                    <blockquote>console.log(i);</blockquote>
+                    <p>}</p>
+                </div>
+                <p>В примере происходит инициализация переменной и запуск цикла. Значение переменной нигде не изменяется
+                    и проверка i &lsaquo; 10 всегда будет выдавать true. Цикл вышел бесконечным.</p>
+            </div>
+
+            <hr class="hr">
+
+            <p>Задание 2.10</p>
+            <p><strong>Какие циклы бывают в JavaScript?</strong></p>
+            <blockquote>for</blockquote>
+            <blockquote>while</blockquote>
+            <blockquote>do...while</blockquote>
+
+            <hr class="hr">
+
+            <p>Задание 2.11</p>
+            <p><strong>На сайте есть горизонтальный слайдер изображений. Слева и справа в нём — стрелки для
+                    пролистывания изображения. Какой цикл лучше использовать для блокировки одной из стрелок, если
+                    изображения с её стороны закончились?</strong></p>
+            <blockquote>while</blockquote>
+            <p>Ответ</p>
+            <p>верно:</p>
+            <p>Лучше использовать для проверки цикл while. Он в начале проверит, есть ли ещё изображения в нужной
+                стороне. Если изображения есть, начнётся выполнение внутреннего кода</p>
+
+            <hr class="hr">
+
+            <div class="main__wrapper-conteiner">
+                <h2>Задание 2.12</h2>
+                <p>Выведите в консоль все числа от 1 до 100 кратные трём. Для решения используйте цикл for.</p>
+                <p>Входные данные: 1…100</p>
+                <p>Выходные данные: 3, 6, 9, 12 и т.д.</p>
+
+
+                <div class="main__wrapper-box_grey">
+                    <p>for (let i = 0; i &lsaquo; 100; i += 1) {</p>
+                    <blockquote>if (i % 3 === 0) {</blockquote>
+                    <blockquote>
+                        <blockquote>console.log(i);</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <p>}</p>
+                </div>
+
+                <h2>Задание 2.13</h2>
+                <p>Посчитайте сумму чисел от 1 до включительно 10 с помощью цикла while. Запишите её в переменную sum и
+                    выведите в консоль. Начальное значение определите в переменной number.</p>
+                <p>Входные данные: 1, 2, 3, 4, 5, 6, 7, 8, 9, 10.</p>
+                <p>Выходные данные: 55.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let sum = 0;</p>
+                    <p>let number = 1;</p>
+                    <p>while (number &lsaquo;= 10) {</p>
+                    <blockquote>sum += number;</blockquote>
+                    <blockquote>number += 1;</blockquote>
+                    <p>}</p>
+                </div>
+
+                <h2>Задание 2.14</h2>
+                <p>Дана строка «Привет, мир!». Она записана в переменную leftToRight. Переберите и запишите все символы строки в обратном порядке в переменную rightToleft.</p>
+                <p>Входные данные: Привет, мир!</p>
+                <p>Выходные данные: !рим ,тевирП</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const leftToRight = 'Привет, мир!';</p>
+                    <p>let rightToLeft = '';</p>
+                    <p>for (let i = leftToRight.length - 1; i >= 0; i -= 1) {</p>
+                        <blockquote>rightToLeft += leftToRight[i];</blockquote>
+                        <p>}</p>
+                        <p>console.log(rightToLeft);</p>
+
+                </div>
+
+
+
+            </div>
+
+
+
+
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="../../index.html" class="previous">&laquo; Назад</a>
+                <a href="../pages/page3.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="../../index.html" class="previous round">&#8249;</a>
+                <a href="../pages/page3.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+    </div>
+</body>
+
+</html>

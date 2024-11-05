@@ -1,0 +1,108 @@
+* {
+    box-sizing: border-box;
+    margin: 0 auto;
+    padding: 0;
+}
+
+$blue: #23419f;
+$green: #178253;
+$teal: #006daa;
+$red: #c32d3a;
+$yellow: #ffd900;
+$white: #fff;
+$dark-gray: #454545;
+$primary: #0a3055;
+$secondary: #454545;
+$brand: #9d0054;
+$success: #bdfa07;
+$info: #006daa;
+$warning: #ffd900;
+$anger: #c32d3a;
+$light: #e1dddb;
+$dark: #273f2f;
+$gray: #707070;
+$accent-a: #00bbf9;
+$accent-b: #fe8;
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+
+
+
+.header {
+    box-sizing: border-box;
+    width: 100%;
+    background-color: $white;
+
+    &__nav {
+        width: 90%;
+        margin: 30px 20px;
+        display: flex;
+        flex-direction: column;
+
+        &-title {
+            font-size: 22px;
+            margin-left: 45px;
+            margin-bottom: 20px;
+            letter-spacing: 1px;
+            font-family:$font-family-sans-serif;
+        }
+
+
+        ul {
+            display: flex;
+            width: 80%;
+            gap: 10px;
+            // flex-basis: calc(16% - 15px);
+        }
+
+        li {
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            flex: 1 1;
+            border-radius: 8px;
+            min-width: 16px;
+            max-width: 150px;
+            height: 10px;
+            background-color: $accent-a;
+
+        }
+
+        a {
+            cursor: pointer;
+            width: 100%;
+            height: 10px;
+            background-color: $accent-a;
+            border-radius: 8px;
+
+            &:link {
+                background-color: $success;
+            }
+
+            &:visited {
+                // border: 2px solid grey;
+                background-color: $success;
+            }
+
+            &:focus {
+                border: 1px solid grey;
+                background: $accent-a;
+            }
+
+            &:hover {
+                background-color: $accent-a;
+                height: 15px;
+            }
+
+            &:active {
+                background-color: $info;
+            }
+        }
+    }
+}
+.hr {
+    width: 80%;
+    height: 2px;
+    background-color: $gray;
+}

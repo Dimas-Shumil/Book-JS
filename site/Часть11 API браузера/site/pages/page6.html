@@ -1,0 +1,197 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>API браузера</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                6.Event Source, WebSocket
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page9.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+            <div class="main__wrapper-conteiner">
+                <figure>
+                    <img src="../images/m15_cover_websocket.svg" width="45%" alt="">
+                </figure>
+                <p>До этого мы рассматривали классический способ клиент-серверного взаимодействия <span class="green">
+                        request/response</span>.</p>
+                <p>Вспомним алгоритм:</p>
+                <div class="main__wrapper-box_grey">
+                    <ol>
+                        <li>Открывается канал передачи данных;</li>
+                        <li>Клиент делает запрос до сервера;</li>
+                        <li>Сервер формирует и отправляет ответ клиенту;</li>
+                        <li>Канал передачи данных закрывается.</li>
+                    </ol>
+                </div>
+                <p>Иногда в приложениях требуется постоянно держать канал данных <b>открытым</b>. В схеме
+                    request/response инициатором выступает клиент. Сервер не может отправить данные клиенту без
+                    инициативы со стороны клиента. Для реализации различных приложений (например, чат или система
+                    серверных уведомлений) необходимо, чтобы сервер мог отправлять данные клиенту <b>без запроса с его
+                        стороны</b>. Для это существует несколько инструментов. Рассмотрим их ниже.</p>
+                <h3>EventSource. Реализация и применение</h3>
+                <p>Интерфейс <a href="https://developer.mozilla.org/ru/docs/Web/API/EventSource">EventSource</a>
+                    используется для получения серверных событий (Server-sent events). Он устанавливает соединение с
+                    сервером по HTTP и получает события в формате text/event-stream без закрытия соединения.</p>
+                <p>Схема работы следующая:</p>
+                <ol>
+                    <li>Открывается канал передачи данных;</li>
+                    <li>Соединение висит открытым. Сервер может отправлять события без дополнительных запросов со
+                        стороны клиента;</li>
+                    <li>Канал передачи данных закрывается или клиентом, или сервером.</li>
+                </ol>
+                <div class="main__wrapper-border_green">
+                    <p>После установки <a
+                            href="https://developer.mozilla.org/ru/docs/Web/API/EventSource">EventSource</a>-соединения
+                        по этому каналу отправлять сообщения клиенту может только сервер. Клиент может отправить данные
+                        только в момент установки соединения.</p>
+                </div>
+                <p>Открытие соединения на стороне клиента:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const eventSource = new EventSource("/url/");</p>
+                    <p>// Подписка на получение данных с сервера</p>
+                    <p>eventSource.onmessage = (event) => {</p>
+                    <blockquote>console.log(JSON.parse(event.data))</blockquote>
+                    <p>}</p>
+                </div>
+                <p>Поддержка открытого соединения на стороне сервера (пример с express.js):</p>
+                <div class="main__wrapper-box_grey">
+                    <p>.get("/url/", (req, res) => {</p>
+                    <blockquote>res.writeHead(200, {
+                        <blockquote>"Content-Type": "text/event-stream",</blockquote>
+                        <blockquote>"Connection": "keep-alive",</blockquote>
+                        <blockquote>"Cache-Control": "no-cache"</blockquote>
+                        });
+                    </blockquote>
+                    <blockquote>res.write('data: "открытие соединения"\n\n');</blockquote>
+                    <p>})</p>
+                </div>
+                <p>EventSource используется в случаях, когда клиенту нет необходимости постоянно отправлять данные на сервер, но необходимо часто их получать. Это могут быть графики, обновляемые в реальном времени, слежение за отправкой уведомлений с сервера и прочее.</p>
+                <p><a href="https://codesandbox.io/p/devbox/jseventsourceexample-0jwyb?file=%2Fsrc%2Findex.js">Пример работы с EventSource в codesandbox.io</a></p>
+                <hr class="hr">
+                <h3>WebSocket</h3>
+                <p><a href="https://developer.mozilla.org/ru/docs/Web/API/WebSocket">WebSocket</a> позволяет открыть постоянное двунаправленное сетевое соединение между браузером пользователя и сервером. С помощью его API вы можете отправить сообщение на сервер и получить ответ без выполнения HTTP-запроса, причём этот процесс будет событийно-управляемым.</p>
+                <p>Данный инструмент используют для:</p>
+                <div class="main__wrapper-box_grey">
+                    <ul>
+                        <li>Реализации чата;</li>
+                        <li>Онлайн-редакторов (текста, кода, графических и так далее)</li>
+                        <li>Различных инструментов банковской сферы;</li>
+                        <li>Всего, что требует постоянного получения информации с сервера.</li>
+                    </ul>
+                </div>
+                <p>Работа с WebSocket в браузере представлена классом WebSocket. Для открытия WebSocket-соединения необходимо создать экземпляр класса WebSocket.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const websocket = new WebSocket('wss://ws.ifelse.io/');</p>
+                </div>
+                <p>Есть несколько <b>событий слежения</b> за websocket-соединением:</p>
+                <blockquote>&bull; <i>open</i> — срабатывает, когда соединение готово отсылать и принимать данные;</blockquote>
+                <blockquote>&bull; <i>close</i> — срабатывает, когда соединение закрывается;</blockquote>
+                <blockquote>&bull; <i>message</i> — событие, обрабатывающее все получаемые сообщения;</blockquote>
+                <blockquote>&bull; <i>error</i> — срабатывает, когда происходит ошибка соединения.</blockquote>
+                <p>Также есть несколько методов:</p>
+                <blockquote>&bull; websocket.send(message) — отправка данных по WebSocket-соединению;</blockquote>
+                <blockquote>&bull; websocket.close() — закрытие соединения.</blockquote>
+                <p><a href="https://codepen.io/vvysokiy/pen/NWxgKYM">Пример реализации WebSocket в codepen.io</a></p>
+                <hr class="hr">
+                <h2>Задание 10.6.1</h2>
+                <p>Как происходит клиент-серверное взаимодействие с использованием EventSource?</p>
+                <blockquote>Сервер может регулярно отправлять данные, клиент не может</blockquote>
+                <hr class="hr">
+                <h2>Задание 10.6.2</h2>
+                <p>Как происходит клиент-серверное взаимодействие с использованием WebSocket?</p>
+                <blockquote>Клиент и сервер могут регулярно обмениваться данными</blockquote>
+                <hr class="hr">
+                <h3>Практика</h3>
+                <figure>
+                    <img src="../images/m10_homework (2).svg" width="45%" alt="">
+                </figure>
+                <p>Эта итоговая практика потребует от вас комбинации алгоритмов решения как актуального модуля, так и ранее изученных тем (инструменты работы в браузере).</p>
+                <h3>Задание 3.</h3>
+                <ol>
+                    <li>
+                        <p>Реализовать чат на основе эхо-сервера wss://echo-ws-service.herokuapp.com.</p>
+                        <p>Интерфейс состоит из input, куда вводится текст сообщения, и кнопки «Отправить».</p>
+                        <p>При клике на кнопку «Отправить» сообщение должно появляться в окне переписки.</p>
+                        <p>Эхо-сервер будет отвечать вам тем же сообщением, его также необходимо выводить в чат:</p>
+                        <figure>
+                            <img src="../images/m15_practice1.png" width="45%" alt="">
+                        </figure>
+                    </li>
+                    <li>
+                        <p>Добавить в чат механизм отправки гео-локации:</p>
+                        <figure>
+                            <img src="../images/m15_practice2.png" width="45%" alt="">
+                        </figure>
+                        <p>При клике на кнопку «Гео-локация» необходимо отправить данные серверу и в чат вывести ссылку на <a href="https://www.openstreetmap.org/#map=18/53.745677/91.360038">https://www.openstreetmap.org/</a> с вашей гео-локацией. <b>Сообщение, которое отправит обратно эхо-сервер, не выводить.</b></p>
+                    </li>
+                </ol>
+                <hr class="hr">
+            </div>
+
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page5.html" class="previous">&laquo; Назад</a>
+                <a href="page7.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page5.html" class="previous round">&#8249;</a>
+                <a href="page7.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

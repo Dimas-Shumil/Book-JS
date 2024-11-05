@@ -1,0 +1,207 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="site/css/sass.css">
+    <title>JS3</title>
+</head>
+
+<body>
+
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                1. Введение
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page5.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+            <div class="main__wrapper-conteiner">
+                <p>Мы уже изучили основы синтаксиса JavaScript, узнали языковые конструкции switch и if…else. Научились
+                    работать с примитивными типами данных и взаимодействовать с пользователем.</p>
+                <p>В этом модуле вы познакомитесь с циклами, объектами и массивами. Это сложные структуры данных, с
+                    которыми
+                    вам предстоит постоянно работать в реальных проектах.</p>
+                <p>Начнём с циклов. Узнаете, как они помогают сократить написание однообразного кода.</p>
+                <p>Затем разберётесь, что такое массивы и научитесь с ними работать.</p>
+                <p>После перейдёте к объектам. Это важная структура данных для любого разработчика, потому что данные с
+                    сервера и обратно чаще всего отправляют в виде объектов.</p>
+                <p>И закончите модуль изучением таких структур данных, как Map и Set.</p>
+                <p>А пока повторите пройденный материал.</p>
+
+                <hr class="hr">
+
+                <p>Задание 1.1</p>
+
+                <p><strong>Будет ли выведен результат в консоль?</strong></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const first = true;</p>
+                    <p>const second = 2;</p>
+                    <p>if (first > 2) {</p>
+                    <blockquote>console.log('Yes');</blockquote>
+                    <p>}</p>
+                </div>
+                <blockquote>Нет, не будет.</blockquote>
+                <p><strong>Ответ</strong></p>
+                <p>Верно:</p>
+                <p>Значение не будет выведено в консоль. При таком условии переменная first будет приведена к типу
+                    number и
+                    мы получим значение 1. Условие в скобках выдаст false. Блок кода с вызовом консоли не будет
+                    выполнен.
+                </p>
+
+                <hr class="hr">
+
+                <div class="main__wrapper-conteiner">
+
+                    <h2>Задание 1.2</h2>
+
+                    <p>Есть переменная x, которая может принимать любое значение. Напишите программу, которая в
+                        зависимости
+                        от типа данных x выводит в консоль сообщение вида: «x — число».</p>
+                    <p>Опишите три случая, когда x равно числу, строке или логическому типу. В других случаях выводите
+                        сообщение: «Тип x не определён».</p>
+                    <p>Использовать prompt в задаче не нужно.</p>
+
+                    <table>
+                        <tbody>
+                            <tr>
+                                <td>Вариант 1:</td>
+                                <td>Входные данные: x = 5</td>
+                                <td>Выходные данные: х — число</td>
+                            </tr>
+                            <tr>
+                                <td>Вариант 2:</td>
+                                <td>Входные данные: х = “Строка”</td>
+                                <td>Выходные данные: х — строка</td>
+                            </tr>
+                            <tr>
+                                <td>Вариант 3:</td>
+                                <td>Входные данные: x = true</td>
+                                <td>Выходные данные: х — логический тип</td>
+                            </tr>
+                            <tr>
+                                <td>Вариант 4:</td>
+                                <td>Входные данные: х = null</td>
+                                <td>Выходные данные: Тип х не определён</td>
+                            </tr>
+                        </tbody>
+                    </table>
+                    <blockquote>Посмотреть ответ</blockquote>
+
+                    <div class="main__wrapper-box_grey">
+                        <p>// Решить можно несколькими способами</p>
+                        <p>// Объявление переменной общее для всех способов</p>
+                        <p>const x = 5;</p>
+                        <p>// или</p>
+                        <p>const = "Строка"; </p>
+                        <p>// или </p>
+                        <p>const x = true;</p>
+                        <p>// Решение 1</p>
+                        <p>switch (typeof x) {</p>
+                        <blockquote>case "number":</blockquote>
+                        <blockquote>
+                            <blockquote>console.log("x — число");</blockquote>
+                            <blockquote>break;</blockquote>
+                        </blockquote>
+                        <blockquote>case "string":</blockquote>
+                        <blockquote>
+                            <blockquote>console.log("х — строка");</blockquote>
+                            <blockquote>break;</blockquote>
+                        </blockquote>
+                        <blockquote>case "boolean":</blockquote>
+                        <blockquote>
+                            <blockquote>console.log("х — логический тип");</blockquote>
+                            <blockquote>break;</blockquote>
+                        </blockquote>
+                        <blockquote>default</blockquote>
+                        <blockquote>
+                            <blockquote>console.log(" Тип х не определён");</blockquote>
+                        </blockquote>
+                        <p>}</p>
+
+                        <p>// Решение 2</p>
+
+                        <p>if (typeof x === "number") {</p>
+                        <blockquote>console.log("x — число");</blockquote>
+                        <p>} else if (typeof x === "string") {</p>
+                        <blockquote>console.log("х — строка");</blockquote>
+                        <p>} else if (typeof x === "boolean") {</p>
+                        <blockquote>console.log("х — логический тип");</blockquote>
+                        <p>} else {</p>
+                        <blockquote>console.log(" Тип х не определён");</blockquote>
+                        <p>}</p>
+                    </div>
+
+                    <h2>Задание 1.3</h2>
+
+                    <p>Есть две переменные — х и y. Присвойте переменной х значение «Чётное число» или «Нечётное число»
+                        в
+                        зависимости от переменной y.</p>
+                    <p>Решение должно быть написано в одну строку.</p>
+                    <blockquote>ответ:</blockquote>
+                    <div class="main__wrapper-box_grey">
+                        <blockquote>x = y % 2 === 0 ? "Чётное число" : "Нечётное число";</blockquote>
+                    </div>
+
+                </div>
+
+                <!-- кнопки -->
+                <div class="main__btn-box">
+                    <a href="site/pages/page5.html" class="previous">&laquo; Назад</a>
+                    <a href="site/pages/page2.html" class="next">Вперед &raquo;</a>
+                </div>
+                <div class="main__btn-box-o">
+                    <a href="site/pages/page5.html" class="previous round">&#8249;</a>
+                    <a href="site/pages/page2.html" class="next round">&#8250;</a>
+                </div>
+
+            </div>
+
+
+            <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+            <script async src="site/script/js.js"></script>
+
+            <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+
+        </div>
+
+</body>
+
+</html>

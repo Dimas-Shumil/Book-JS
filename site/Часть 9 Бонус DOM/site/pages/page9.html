@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Бонус DOM</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                9. Итоги
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+                <p>Вы завершили очередной модуль! Поздравляю, теперь вы ещё на шаг ближе к работе фронтенд-разработчиком.</p>
+                <p>В этом модуле вы:</p>
+                <blockquote><span class="green"> &#10004;</span> Научились работать с DOM-инструментами: document и window. Знаете, как управлять DOM и вкладкой браузера через глобальные объекты.</blockquote>
+                <blockquote><span class="green">&#10004;</span> Освоили querySelector, getElementById, getElementsByClassName. Поняли, как по-разному доставать элементы из разметки и динамически управлять ими.</blockquote>
+                <blockquote><span class="green">&#10004;</span> Попрактиковались в создании HTML-элементов из скрипта с помощью createElement, createTextNode и innerHTML. Теперь умеете менять HTML-разметку из скрипта.</blockquote>
+                <blockquote><span class="green">&#10004;</span> Разобрались, как устанавливать новые стили для элементов через style. Знаете, как динамически менять стили элементов без изменения CSS-файла.</blockquote>
+                <blockquote><span class="green">&#10004;</span> Поработали с методом classList и научились удалять, менять и добавлять классы элементам. Теперь можете создавать анимации для своих проектов.</blockquote>
+                <blockquote><span class="green">&#10004;</span> Научились получать размеры элементов и задавать им новые. Умеете получать координаты элемента в окне или документе и работать с этими значениями.</blockquote>
+                <blockquote><span class="green">&#10004;</span> А также ещё глубже погрузились в тему событий браузера. Научились обрабатывать скролл страницы, ввод данных в инпут и отправку формы.</blockquote>
+                <hr class="hr">
+
+                <h2>Упражнение 9.1</h2>
+
+                <p>Назовите метод, с помощью которого вы можете достучаться до элемента по id.</p>
+                <blockquote>getElementById <span class="green">&#10004;</span></blockquote>
+                <hr class="hr">
+
+                <h2>Упражнение 9.2</h2>
+
+                <p>Напишите код, в котором вы создаёте div, два параграфа, а затем добавляете div в документ, а параграфы в div. Текст внутри параграфов — произвольный.</p>
+                <hr class="hr">
+
+                <h2>Упражнение 9.3</h2>
+
+                <p>Что такое window?</p>
+                <blockquote>Глобальный объект, который предоставляет методы для управления окном браузера; <span class="green">&#10004;</span></blockquote>
+                <hr class="hr">
+
+                <h2>Упражнение 9.4</h2>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const paragraph = document.querySelector('.text-block')</p>
+                </div>
+                <blockquote>Напишите код, в котором элементу paragraph задаётся светло голубой фон.</blockquote>
+                <hr class="hr">
+
+                <h2>Упражнение 9.5</h2>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const link = document.querySelector('a');</p>
+                </div>
+                <blockquote>Напишите код, в котором вы проверяете, что у элемента есть класс .active.</blockquote>
+                <hr class="hr">
+
+                <h2>Упражнение 9.6</h2>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const container = document.getElementById('container');</p>
+                </div>
+                <blockquote>Напишите код, в котором получаете высоту и ширину элемента с помощью getBoundingClientRect.</blockquote>
+                <hr class="hr"> 
+
+                <h2>Упражнение 9.7</h2>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const btn = document.querySelector('btn');</p>
+                    <p>function clickHandler() {</p>
+                    <p>console.log('Click')</p>
+                    <p>}</p>
+                    <p>btn.addEventListener('click', clickHandler);</p>
+                </div>
+                <blockquote>Напишите код удаления слушателя с кнопки btn.</blockquote>
+
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page8.html" class="previous">&laquo; Назад</a>
+                <a href="../../index.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page8.html" class="previous round">&#8249;</a>
+                <a href="../../index.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+    </div>
+</body>
+
+</html>

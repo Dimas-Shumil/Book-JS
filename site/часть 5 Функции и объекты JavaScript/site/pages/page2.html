@@ -1,0 +1,383 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Функции и объекты JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                2. Знакомство с функциями
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html" class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <p>Функции могут быть созданы разными способами. Но чаще всего для этого используют ключевое слово
+                    function.</p>
+                <p>Давайте создадим простую функцию и разберём её структуру.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>function helloSkillFactory() {</p>
+                    <blockquote>// тут располагаются инструкции</blockquote>
+                    <p>}</p>
+                </div>
+                <p>Структура у всех функций при создании в JavaScript одинаковая. Она состоит из следующих частей:</p>
+                <ol>
+                    <li>Ключевое слово function, которое говорит JavaScript о том, что далее будет описана функция;</li>
+                    <li>Имя функции, по которому можно эту функцию вызывать в разных частях программы. В примере выше
+                        это helloSkillFactory;</li>
+                    <li>Круглые скобки (), в которых можно передавать аргументы функции;</li>
+                    <li>Фигурные скобки {}, внутри которых располагаются инструкции, исполняющиеся каждый раз при вызове
+                        функции. Также всё, что находится внутри этих фигурных скобок, называют телом функции.</li>
+                </ol>
+                <p>Остальные способы создания функций рассмотрим в следующем юните. А сейчас детально разберём этот
+                    способ.</p>
+                <p>В примере выше функция helloSkillFactory ничего не делает и не возвращает никаких результатов. Теперь
+                    создадим функцию, которая будет выполнять самую простую операцию — вывод информации в консоль.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>function helloSkillFactory() {</p>
+                    <blockquote>console.log('Привет, студент SkillFactory!')</blockquote>
+                    <p>}</p>
+                </div>
+                <p>Круто! Теперь наша функция что-то умеет делать. Давайте научимся её вызывать.</p>
+                <p>Вызов функции происходит просто. Достаточно использовать имя, которое было дано функции при создании
+                    и круглые скобки (). Они и инициируют вызов функции.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>function helloSkillFactory() {</p>
+                    <blockquote>console.log('Привет, студент SkillFactory!')</blockquote>
+                    <p>}</p>
+                    <p>helloSkillFactory()</p>
+                </div>
+                <p>Так при вызове функции в консоль мы увидим текст, который передали в функцию console.log.</p>
+                <div class="main__wrapper-box-ligtGreen">
+                    <p>Рекомендуем самостоятельно запускать все примеры, которые приведены в этом и других модулях. Это
+                        позволит вам быстрее освоиться в коде и чувствовать себя увереннее.</p>
+                    <p>В случае с функциями в JavaScript вы можете использовать как консоль любого браузера, так и
+                        специализированные инструменты. Например, программа <a href="https://runjs.app/">RunJS</a>
+                        позволяет быстро запускать функции и видеть их результат (или ошибки).</p>
+                </div>
+                <p>В функции helloSkillFactory мы используем самую простую конструкцию, которую только можно представить
+                    в JavaScript — вывод в консоль с помощью функции console.log. Но в функциях могут быть разные по
+                    сложности конструкции. Например, создание переменных, циклы, условные конструкции, вызов других
+                    функций и так далее.</p>
+                <p>Проще говоря — в теле функций может быть любой JavaScript-код. В следующих примерах мы постепенно
+                    будем повышать сложность используемого тела функции, чтобы вы могли увидеть большую часть их
+                    возможностей.</p>
+                <p>Теперь поговорим про аргументы.</p>
+
+                <h2>Аргументы функции</h2>
+
+                <h3>Аргументы функции ещё называют параметрами функции. Это набор значений, которые передаются в функции
+                    при вызове. Эти значения могут быть использованы в теле функции для вычислений. Аргументы могут быть
+                    любого типа данных. Например, числа, строки, объекты и даже другие функции.</h3>
+
+                <p>Аргументы функции указываются внутри круглых скобок () после имени функции, разделённые запятыми.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>function showText(text) {</p>
+                    <blockquote>console.log(text)</blockquote>
+                    <p>}</p>
+                    <p>function sum(a, b) {</p>
+                    <blockquote>const result = a + b;</blockquote>
+                    <blockquote>console.log('Сумма: ', result)</blockquote>
+                    <p>}</p>
+                    <p>function multiply(a, b, c) {</p>
+                    <blockquote>let result = a * b * c;</blockquote>
+                    <blockquote> if (result &lsaquo; 10) {</blockquote>
+                    <blockquote>
+                        <blockquote>console.log('Произведение меньше 10')</blockquote>
+                    </blockquote>
+                    <blockquote>} else {</blockquote>
+                    <blockquote>
+                        <blockquote>console.log('Произведение больше 10')</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <p>}</p>
+                    <p>showText('Этот текст будет показан в консоли, круто!')</p>
+                    <p>sum(2, 2) // 4</p>
+                    <p>multiply(1, 2, 3) // “Произведение меньше 10”</p>
+                </div>
+                <p>В примерах выше приведены несколько функций с разным количеством аргументов — от 1 до 3. Но
+                    JavaScript никак не ограничивает в их количестве. Поэтому у вас может быть 5, 10 или даже 20
+                    аргументов.</p>
+                <p>Но лучше не использовать их слишком много. Такой код трудно поддерживать и читать другим
+                    специалистам. В среднем разработчики используют до 3 – 5 аргументов.</p>
+                <p>Обратите внимание, что в функциях sum и multiply мы используем не только вывод значений в консоль, но
+                    также создаём переменные result, где сохраняем результат вычисления. А в функции multiply мы
+                    используем условную конструкцию для того, чтобы понять, больше или меньше 10 получившееся
+                    произведение.</p>
+                <div class="main__wrapper-box_blue">
+                    <p>Поэкспериментируйте с разными аргументами в функциях sum и multiply и посмотрите, как будет
+                        меняться результат. Попробуйте изменить значения аргументов или не использовать их вовсе.</p>
+                </div>
+                <p>Функции также могут принимать аргументы по умолчанию. Такие аргументы будут использованы, если при
+                    вызове функции аргумент не передан. Вот пример функции, которая принимает два аргумента и
+                    устанавливает значение по умолчанию для второго аргумента:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>function greet(name, greeting = "Привет") {</p>
+                    <blockquote>console.log(greeting + ' ' + name + '!');</blockquote>
+                    <p>}</p>
+                    <p>greet("Джон Сноу"); // "Привет Джон Сноу!"</p>
+                    <p>greet("Джон Сноу", "Привет"); // "Привет Джон Сноу!" в консоль</p>
+                </div>
+                <p>В этом примере функция greet принимает два аргумента: name и greeting. Если значение для greeting не
+                    передано при вызове функции, то используется значение по умолчанию "Привет".</p>
+                <p>Как видите, мы можем использовать один и тот же участок кода (читай — функцию) для получения разного
+                    результата в зависимости от входящих аргументов. В своё время концепция функций сильно продвинула
+                    языки программирования вперёд, сделала их более гибкими и функциональными.</p>
+                <p>Но это ещё не все возможности функций, которые существуют. Разберём ещё одну важную концепцию.</p>
+                <p>До этого момента все рассмотренные нами функции что-то делали, но не сохраняли результат их
+                    выполнения. Для этой цели нам понадобятся возвращаемые значения.</p>
+
+                <h2>Возвращаемое значение функции</h2>
+
+                <h3>Возвращаемое значение функции — это значение, которое функция возвращает при её вызове. Это может
+                    быть любое значение, включая примитивные типы данных (например, числа, строки, логические значения),
+                    объекты и даже функции.</h3>
+
+                <p>Чтобы вернуть значение из функции, мы используем ключевое слово return. Немного модифицируем функцию
+                    sum из прошлого примера.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>function sum(a, b) {</p>
+                    <blockquote>const result = a + b</blockquote>
+                    <blockquote>return result</blockquote>
+                    <p>}</p>
+                    <p>let resultSum = sum(1, 2)</p>
+                    <p>let resultAnotherSum = sum(3, 7)</p>
+                    <p>console.log('Сумма: ', resultSum) // "Сумма: 3"</p>
+                    <p>console.log('Другая сумма: ', resultAnotherSum) // "Другая сумма: 10"</p>
+                </div>
+                <p>Теперь функция sum не просто вычисляет сумму значений, переданных ей в аргументах. Она также
+                    возвращает результат, который можно использовать дальше по ходу выполнения программы.</p>
+                <p>Ещё один небольшой пример, но теперь с возвращаемым объектом.</p>
+                <div class="main__wrapper-box_grey">
+                    <p> function createUser(name, age) {</p>
+                    <blockquote>return {</blockquote>
+                    <blockquote>
+                        <blockquote>userName: name,</blockquote>
+                        <blockquote>userAge: age</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <p>}</p>
+                    <p>let jediUser = createUser('Оби-ван Кеноби', 74)</p>
+                    <p>console.log('Новый пользователь: ', jediUser) // "'Новый пользователь: ' { userName: 'Оби-ван
+                        Кеноби', userAge: 74 }"</p>
+                </div>
+                <p>Как упоминалось выше, функции могут возвращать и другие функции. Но об этом подробнее поговорим
+                    позже, в юните 8.4 «Использование функций».</p>
+                <p>На этом знакомство с функциями подходит к концу. В этом юните были перечислены все базовые концепции
+                    работы функции, актуальные не только в JavaScript, но и во многих других языках программирования.
+                    Например, в Python, Go, Java и так далее.</p>
+                <p>В следующем юните детально поговорим про остальные способы объявления функций в JavaScript.</p>
+                <hr>
+
+                <p><strong>Задание 2.1</strong></p>
+                <p>Что выведет в консоль код ниже?</p>
+                <div class="main__wrapper-box_grey">
+                    <p>function sum(a, b) {</p>
+                    <blockquote>return a + b</blockquote>
+                    <p>}</p>
+                    <p>function multiply(a, b) {</p>
+                    <blockquote>return a * b;</blockquote>
+                    <p>}</p>
+                    <p>function divide(a, b) {</p>
+                    <blockquote>return a / b;</blockquote>
+                    <p>}</p>
+                    <p>sum(multiply(2, 3), divide(10, 2))</p>
+                </div>
+                <blockquote>11</blockquote>
+                <hr>
+
+                <p><strong>Задание 2.2</strong></p>
+
+                <p>Как вызвать функцию square для числа 5?</p>
+                <div class="main__wrapper-box_grey">
+                    <p>function square(number) {</p>
+                    <blockquote>return number * number;</blockquote>
+                    <p>}</p>
+                </div>
+                <blockquote>square(5)</blockquote>
+                <hr>
+
+                <p><strong>Задание 2.3</strong></p>
+
+                <p>Что вернёт функция square при вызове без аргументов?</p>
+                <div class="main__wrapper-box_grey">
+                    <p>function square(number) {</p>
+                    <blockquote>return number * number;</blockquote>
+                    <p>}</p>
+                </div>
+                <blockquote>NaN</blockquote>
+                <hr>
+
+                <p><strong>Задание 2.4</strong></p>
+
+                <p>Что делает следующая функция?</p>
+                <div class="main__wrapper-box_grey">
+                    <p>function addNumbers(numbers) {</p>
+                    <blockquote>let result = 0;</blockquote>
+                    <blockquote>for (let i = 0; i &lsaquo; numbers.length; i++) {</blockquote>
+                    <blockquote>
+                        <blockquote>result += numbers[i];</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <blockquote>return result;</blockquote>
+                    <p>}</p>
+                </div>
+                <blockquote>Возвращает сумму всех чисел в массиве.</blockquote>
+                <hr>
+
+                <p><strong>Задание 2.5</strong></p>
+
+                <p>Напишите функцию greet, которая будет принимать на вход аргумент name и выводить в консоль следующий
+                    текст,</p>
+                <div class="main__wrapper-box_grey">
+                    <p> Привет, NAME !</p>
+                </div>
+                <p>где NAME — это значение аргумента name.</p>
+                <p><strong>Ответ:</strong></p>
+                <div class="main__wrapper-box_grey">
+                    <p>function greet(name) {</p>
+                    <blockquote>console.log('Привет, ' + name + '!');</blockquote>
+                    <p>}</p>
+                </div>
+                <hr>
+
+                <p><strong>Задание 2.6</strong></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>function calculateSum(a, b) {</p>
+                    <blockquote>return a + b;</blockquote>
+                    <p>}</p>
+                    <p>let result = calculateSum(2, 3);</p>
+                    <p>console.log(result);</p>
+                </div>
+                <p>Можно ли вызвать функцию calculateSum с одним аргументом?</p>
+                <blockquote>Нет</blockquote>
+                <hr>
+
+                <p><strong>Задание 2.7</strong></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>function calculateSum(a, b) {</p>
+                    <blockquote>return a + b;</blockquote>
+                    <p>}</p>
+                    <p>let result = calculateSum(2, 3);</p>
+                    <p>console.log(result);</p>
+                </div>
+                <p>Какое значение будет присвоено переменной result, если вызвать функцию calculateSum(4, "3")?</p>
+                <blockquote>"43"</blockquote>
+                <hr>
+
+                <p><strong>Задание 2.8</strong></p>
+
+                <p>Реализуйте функцию sqrt, которая будет принимать на вход число и возвращать его квадратный корень.
+                </p>
+                <blockquote>Для вычисления квадратного корня используйте Math.sqrt().</blockquote>
+                <div class="main__wrapper-box_grey">
+                    <p>function sqrt(number) {</p>
+                    <blockquote>return Math.sqrt(number);</blockquote>
+                    <p>}</p>
+                </div>
+                <hr>
+
+                <p><strong>Задание 2.9</strong></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>function sum(a, b) {</p>
+                    <blockquote> return a + b;</blockquote>
+                    <p>}</p>
+                    <p>console.log(sum(2,3,4));</p>
+                </div>
+                <p>Модифицируйте функцию sum так, чтобы вызов функции sum(3, 5, 2) работал корректно и ожидаемо
+                    реализации.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>function sum(a, b, c) {</p>
+                    <blockquote>return a + b + c;</blockquote>
+                    <p>}</p>
+                </div>
+                <hr>
+
+                <p><strong>Задание 2.10</strong></p>
+
+                <p>Напишите функцию passwordCheck, которая будет проверять пароль на равенство какому-либо ключевому
+                    слову (ключевое слово выберите сами). В случае, если пароль будет соответствовать, вернётся значение
+                    true. В противном случае вернётся значение false и в консоль будет выведен текст «Неверный пароль!
+                    Повторите ввод».</p>
+                <div class="main__wrapper-box_grey">
+                    <p>function passwordCheck(pass) {</p>
+                    <blockquote>f (pass === 'qwerty123') {</blockquote>
+                        bol 
+                        <blockquote>return true;</blockquote>
+                        <blockquote>} else {</blockquote>
+                            <blockquote>
+                                <blockquote>console.log('Неверный пароль! Повторите ввод');</blockquote>
+                                <blockquote>return false;</blockquote>
+                            </blockquote>
+                            <blockquote>}</blockquote>
+                            <p>}</p>
+                            <p>passwordCheck("quesry") // false</p>
+                            <p>passwordCheck("'qwerty123'") // true</p>
+                </div>
+
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="../../index.html" class="previous">&laquo; Назад</a>
+                <a href="page3.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="../../index.html" class="previous round">&#8249;</a>
+                <a href="page3.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+    </div>
+</body>
+
+</html>

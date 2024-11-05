@@ -1,0 +1,594 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>js3</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                4. Объекты
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <p>Объекты — это сложная структура данных. В JavaScript объектом является почти всё. Например, если вы
+                    сделаете вызов метода typeof для массива, то в ответ получите тип «объект».</p>
+                <p>В объекте хранятся значения любых типов. Каждое такое значение записывается в уникальный ключ. Ключ
+                    должен быть уникальным в рамках одного объекта. Можно сказать, что ключ — имя переменной, а его
+                    значение или свойство — значение переменной.</p>
+
+                <h3>Создание объекта</h3>
+
+                <p>Объект можно создать двумя способами:</p>
+                <p>&middot; const obj = {};</p>
+                <p>&middot; const obj = new Object();</p>
+                <p>Они равнозначны. Но чаще пользуются первым, потому что он проще. Остановимся на нём.</p>
+                <p>Между фигурных скобок можно указывать свойства объекта. Они отделены друг от друга запятыми.</p>
+                <p>Свойство объекта имеет формат ключ: значение.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>vconst obj = {</p>
+                    <blockquote>first: 'First',</blockquote>
+                    <blockquote>second: 'Second'</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>Объект можно представить в виде папки на рабочем столе компьютера. Ключ — название папки,
+                    значение — содержимое папки.</p>
+                <p>Например, мы хотим положить школьные фотографии за 10 класс в папку с названием «Школа 10 класс».
+                    Получается, что мы обращаемся к объекту с ключом «Школа 10 класс». А внутрь будем складывать
+                    фотографии — значения для данного ключа.</p>
+                <p>Ключ может быть только строкового типа, а значение может иметь любой тип.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const obj = {</p>
+                    <blockquote>first: 'string',</blockquote>
+                    <blockquote>second: '1',</blockquote>
+                    <blockquote>third: ['string','in','array'],</blockquote>
+                    <blockquote>fourth{</blockquote>
+                    <blockquote>
+                        <blockquote>inner: 'object'</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>Но здесь не обошлось без нюансов:</p>
+                <p>1. Если ключ состоит из одного слова, то можно его писать без кавычек.</p>
+                <p>2. Если ключ состоит из двух и более слов, то нужно писать в кавычках.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const men = {</p>
+                    <blockquote>name: 'Ivan',</blockquote>
+                    <blockquote>'eyes color': 'green'</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>Допустим, пользователь на сайте заполняет анкету. Мы получаем в переменную name имя пользователя.
+                    Далее его имя нужно вместе с другими данными передать на сервер в виде объекта user.</p>
+                <p>Ранее мы добавляли в объект различные значения напрямую. А как быть, если значение записано в
+                    переменную?</p>
+                <p>Нам достаточно написать эту переменную в качестве свойства ключа:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const name = 'Василий';</p>
+                    <p>const userName = {</p>
+                    <blockquote>userName = 'name',</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>Если в объекте ключ имеет то же название, что и переменная, то запись сократится:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const name = 'Василий';</p>
+                    <p>const user = {</p>
+                    <blockquote>name,</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>Это равносильно записи:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const name = 'Василий';</p>
+                    <p>const user = {</p>
+                    <blockquote>name = name,</blockquote>
+                    <p>}</p>
+                </div>
+
+                <h3>Доступ к свойствам</h3>
+
+                <p>Для получения значения элемента массива мы обращались к нему по индексу:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const arr = ['some', 'string'];</p>
+                    <p>arr[0] // some</p>
+                </div>
+
+                <p>У объектов нет индексов. Но у них есть ключи, которые в рамках объекта должны быть уникальными.
+                </p>
+                <p>Чтобы получить значение свойства объекта, нужно обратиться к нему по ключу:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const obj = {</p>
+                    <blockquote>some: 'value',</blockquote>
+                    <blockquote>data: '2022-01-12'</blockquote>
+                    <p>}</p>
+                    <p> obj.some //value</p>
+                    <p>obj['some'] /value</p>
+                </div>
+
+                <p>Обращение к ключу объекта происходит через точку. Но объекты не так просты, как массивы. Здесь
+                    нет единственно верного способа.</p>
+                <p>Обращение к ключу с помощью точки возможно только для ключей, которые состоят из одного слова.
+                    Если имя ключа состоит из нескольких слов, то мы будем обращаться к нему с помощью квадратных
+                    скобок:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const man = {</p>
+                    <blockquote>name: 'Ivan',</blockquote>
+                    <blockquote>'eyes color':'green'</blockquote>
+                    <p>}</p>
+                    <p>man['eyes color']//green</p>
+                </div>
+                <hr class="hr">
+            </div>
+            <p>Задание 4.1</p>
+            <p><strong>Выберите правильный способ получения значения:</strong></p>
+            <blockquote>obj.a</blockquote>
+            <blockquote>obj['a']</blockquote>
+            <blockquote>obj['super property']</blockquote>
+
+            <hr class="hr">
+
+            <div class="main__wrapper-conteiner">
+
+                <h3>Динамические свойства</h3>
+
+                <p>Давайте представим, что у нас есть массив строк, которые являются названиями ключей объекта:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const keyName = ['first','second',therd];</p>
+                </div>
+
+                <p>И есть объект:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const obj = {</p>
+                    <blockquote>first: 'some',</blockquote>
+                    <blockquote>second: 'Value',</blockquote>
+                    <blockquote>third: '1'</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>Мы хотим вывести в консоль все значения свойств объекта. Как использовать имеющиеся данные, чтобы
+                    решить эту задачу?</p>
+                <p>На помощь приходит возможность получения значения свойства из переменной. Возьмём цикл for…of для
+                    массивов. В цикле каждое значение массива будем использовать как ключ для свойства объекта:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>for (<strong>let</strong> key <strong>of</strong> keyNames) { // начинаем перебор элементов
+                        массива</p>
+                    <blockquote>console.log(obj[key]); // вместо переменной key подставится её значение</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>После выполнения цикла мы увидим в консоли значения ключей массива — Some, Value и 1.</p>
+
+                <hr class="hr">
+            </div>
+
+            <p>Задание 4.2</p>
+
+            <p>Есть переменная key = 'some'. Выведите значение свойства some у объекта obj в консоль.</p>
+            <blockquote>console.log(obj[key])</blockquote>
+            <hr class="hr">
+
+            <div class="main__wrapper-conteiner">
+                <h2>Задание 4.3</h2>
+                <p>Есть массив keyNames, значения которого совпадают с ключами объекта obj. Добавьте значения ключей
+                    объекта в новый массив keyValues.</p>
+                <p>Входные данные:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const keyNames = ['first', 'second', 'third'];</p>
+                    <p>const obj = {</p>
+                    <blockquote>first: 1,</blockquote>
+                    <blockquote>second: 2,</blockquote>
+                    <blockquote>third: 3,</blockquote>
+                    <p>}</p>
+                    <p>const keyValue = []</p>
+                </div>
+                <p>Выходные данные: [1, 2, 3]</p>
+                <blockquote>Посмотреть ответ</blockquote>
+
+                <div class="main__wrapper-box_grey">
+                    <p>for (let key of keyNames) {</p>
+                    <blockquote>keyValues.push(obj[key]);</blockquote>
+                    <p>}</p>
+                </div>
+
+                <h3>Добавление свойств</h3>
+
+                <p>Мы создали какой-то объект, но обнаружили, что забыли добавить несколько свойств в него. В этом нет
+                    ничего страшного — мы можем добавить их даже после создания объекта.</p>
+                <p>Вот, как это можно сделать:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const obj = {};</p>
+                    <p>obj.first = 'Первый способ';</p>
+                    <p>obj['second'] = 'Второй способ';</p>
+                    <p>console.log(obj);</p>
+                    <p>// obj = {</p>
+                    <p>// first: 'Первый способ',</p>
+                    <p>// second: 'Второй способ'</p>
+                    <p>// }</p>
+                </div>
+
+                <p>Это похоже на доступ к свойствам объекта. Если свойства в объекте нет, то оно будет создано. А если
+                    свойство уже есть, то у него изменится значение.</p>
+
+                <h3>Удаление свойства</h3>
+
+                <p>Удаление свойства происходит с помощью ключевого слова delete:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>delete obj.first // true</p>
+                </div>
+
+                <h3>Изменение свойств</h3>
+
+                <p>Изменение значения свойств происходит так же, как и добавление:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const user = {</p>
+                    <blockquote>name: 'Витя',</blockquote>
+                    <p>}</p>
+                    <p>userName = 'Дима';</p>
+                    <p>console.log(user);//{name:'Дима'}</p>
+                </div>
+
+                <p>Обратите внимание: если вы попытаетесь изменить значение свойства и напишите несуществующее в объекте
+                    свойство, то оно создастся и никакой ошибки вы не увидите.</p>
+                <p>Если где-то дальше в коде вы обращаетесь к нужному свойству, то вы ожидаете увидеть в нём значение.
+                    Так как значение было ошибочно записано в другое свойство, вы можете получить ошибку либо нужный код
+                    не будет выполнен.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const user = {};</p>
+                    <p>user.age = 'Вова';</p>
+                    <p><strong>if</strong> (user.name === 'Вова') { // сейчас код внутри блока не будет выполнен.
+                        свойства name нет в объекте user</p>
+                    <blockquote>// что-то делаем, если пользователя зовут Вова</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>Поэтому перед операцией изменения значения стоит проверить существование свойства в объекте, чтобы
+                    избежать возможных проблем далее при обращении к нужному свойству.</p>
+
+                <h3>Проверка существования свойства</h3>
+
+                <p>Проверить существование можно двумя способами:</p>
+                <p>1 Через оператор равенства == или оператор строгого равенства ===.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>obj.name === undefined</p>
+                </div>
+
+                <p>Если результат будет true, то свойства в объекте не существует. Но что делать, когда значение
+                    свойства undefined?</p>
+                <p>В этом случае нужно использовать оператор in. Значение нужного ключа записывается в виде строки.
+                    Также можно указать имя переменной, в которое записано значение ключа:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const key = 'name';</p>
+                    <p>console.log('name' <strong>in</strong> obj)</p>
+                    <p>console.log(key <strong>in</strong> obj)</p>
+                </div>
+
+                <hr class="hr">
+            </div>
+            <h2>Задание 4.4</h2>
+
+            <p><strong>Выберите правильный способ добавления свойства в объект.</strong></p>
+            <blockquote>obj.a = ''</blockquote>
+            <blockquote>obj['a'] = ''</blockquote>
+            <hr class="hr">
+
+            <h2>Задание 4.5</h2>
+
+            <p><strong>Выберите правильный способ удаления свойства из объекта.</strong></p>
+            <blockquote>delete obj.a</blockquote>
+            <hr class="hr">
+
+            <h2>Задание 4.6</h2>
+
+            <p><strong>Выберите правильный способ проверки нахождения свойства в объекте.</strong></p>
+            <blockquote>obj.a === undefined</blockquote>
+            <blockquote>obj.a == undefined</blockquote>
+            <blockquote>'a' in obj</blockquote>
+            <hr class="hr">
+
+            <div class="main__wrapper-conteiner">
+
+                <h3>Перебор свойств</h3>
+
+                <p>Для перебора свойств объекта мы можем использовать специальную разновидность цикла for — for…in.</p>
+                <p>Записывается этот цикл также, как и цикл for…of:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p><strong>for</strong> (<strong>let</strong> key <strong>in</strong> obj) {</p>
+                    <blockquote>// тело цикла выполняется для каждого ключа объекта</blockquote>
+                    <p>}</p>
+                </div>
+                <div class="main__wrapper-box_grey">
+                    <p><strong>const</strong> user = {</p>
+                    <blockquote>name: 'Luna',</blockquote>
+                    <blockquote>age: '40',</blockquote>
+                    <blockquote>hairColor: 'black',</blockquote>
+                    <p>}</p>
+
+                    <p> <strong>for</strong> (<strong>let</strong> key <strong>in</strong> user) {</p>
+                    <blockquote>// ключи</blockquote>
+                    <blockquote>console.log(key); // name, age, hairColor</blockquote>
+                    <blockquote></blockquote>
+                    <blockquote>// значение ключей</blockquote>
+                    <blockquote>console.log(user[key]); // Luna, 40, black</blockquote>
+                    <p>}</p>
+                </div>
+
+                <h2>Задание 4.7</h2>
+
+                <p>Выведите все значения ключей объекта в консоль.</p>
+                <p>Входные данные:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const obj = {</p>
+                    <blockquote>first: 'First',</blockquote>
+                    <blockquote>second: 'Second'</blockquote>
+                    <p>}</p>
+                </div>
+                <p>Выходные данные: First и Second</p>
+                <blockquote>ответ</blockquote>
+
+                <div class="main__wrapper-box_grey">
+                    <p>for (let key in obj) {</p>
+                    <blockquote>console.log(obj[key]);</blockquote>
+                    <p>}</p>
+                </div>
+
+                <h2>Задание 4.8</h2>
+
+                <p>Создайте 2 переменные name со значением Alex и age со значением 28. Нужно создать объект user,
+                    записать значение переменной name ключу name, а значение переменной age ключу age. После этого
+                    перебрать все ключи объекта и вывести их значение в консоль.</p>
+                <blockquote>ответ</blockquote>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const name = 'Alex';</p>
+                    <p>const age = 28;</p>
+                    <p>const user = {</p>
+                    <blockquote>name,</blockquote>
+                    <blockquote>age</blockquote>
+                    <p>}</p>
+                    <p>for (let key in user) {</p>
+                    <blockquote>console.log(user[key])</blockquote>
+                    <p>}</p>
+                </div>
+
+                <h2>Деструктуризация объектов</h2>
+
+                <p>Так же, как и массивы, объекты можно деструктурировать. Идея этой операции здесь та же самая —
+                    вытащить значение и создать переменную в одну строку. Но реализация отличается.</p>
+                <p>В массивах деструктуризация выглядит следующим образом:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const array = [1, 2, 3];</p>
+                    <p>const [first, , third] = array; // 1 и 3</p>
+                </div>
+
+                <p>Мы можем придумать любые названия переменным. Чтобы получить нужное значение, нам нужно, чтобы у
+                    созданной переменной был такой же порядковый номер в деструктурирующем массиве, как у значения в
+                    основном массиве.</p>
+                <p>В объектах нам важен не порядок, а ключ:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const obj = {</p>
+                    <blockquote>first: 'First',</blockquote>
+                    <blockquote>second: 'Second',</blockquote>
+                    <blockquote>third: 'Third',</blockquote>
+                    <p>}</p>
+                    <p>const { first, third, second } = obj; // First, Third, Second</p>
+                </div>
+
+                <p>Обратите внимание, что при деструктуризации массива мы используем массив для объявления переменных. А
+                    при деструктуризации объекта — объект.</p>
+                <p>Представим, что у нас есть такой код:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const first = 'First variable';</p>
+                    <p>const obj = {</p>
+                    <blockquote>first: 'First',</blockquote>
+                    <blockquote>second: 'Second'</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>Если мы проведём деструктуризацию объекта, то получим ошибку. Так как переменная с именем first уже
+                    есть в коде.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const { first, second } = obj; // Ошибка, переменная first создана ранее.</p>
+                </div>
+
+                <p>Чтобы избежать подобной ошибки, мы можем изменить имя деструктурируемой переменной. Для изменения
+                    имени нужно использовать двоеточие:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const { oldName: newName } = someObject;</p>
+                </div>
+                <div class="main__wrapper-box_grey">
+                    <p>const { first: firstObjValue, second } = obj; </p>
+                    <p>console.log(first); // First variable</p>
+                    <p>console.log(firstObjectValue); // First</p>
+                </div>
+
+                <h3>Объект как массив</h3>
+
+                <p>У объектов есть ещё интересная особенность. Мы можем получить все ключи объекта и сделать из них
+                    массив. Можем получить все значения объекта и тоже сделать из них массив. А можем получить все ключи
+                    и значения и сделать из них массив массивов!</p>
+                <p>В этом нам поможет конструктор Object со своими методами Object.keys, Object.values и Object.entries:
+                </p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const obj = {</p>
+                    <blockquote>first: 'First',</blockquote>
+                    <blockquote>second: 'Second'</blockquote>
+                    <p>Object.keys(obj) // [first, second]</p>
+                    <p>Object.values(obj) // ['First', 'Second']</p>
+                    <p>Object.entries(obj) // [[first, 'First'], [second, 'Second']]</p>
+                    <p>}</p>
+                </div>
+
+                <p>Зачем нам может понадобиться массив массивов?</p>
+                <p>Например для вывода значений в таблицу.</p>
+                <p>Первый элемент внутреннего массива будет названием или id столбца, а второй значением ячейки.</p>
+                <hr class="hr">
+            </div>
+
+            <h2>Задание 4.9</h2>
+            <p>Имеется объект:</p>
+
+            <div class="main__wrapper-box_grey">
+                <p>const obj = {</p>
+                <blockquote>first: 'First',</blockquote>
+                <blockquote>second: 'Second'</blockquote>
+                <p>}</p>
+            </div>
+            <p><strong>Сделайте в одну строчку получение первой пары ключ: значение данного объекта.</strong></p>
+            <blockquote>Object.entries(obj)[0]</blockquote>
+            <hr class="hr">
+
+            <div class="main__wrapper-conteiner">
+                <h2>Задание 4.10</h2>
+
+                <p>Продолжим работать с объектом из задания 4.9.</p>
+                <p>Создайте переменную keys и запишите в неё все ключи объекта. Затем создайте переменную values и
+                    запишите в неё все значения ключей объекта.</p>
+                <p>Создайте строковую переменную result и запишите в неё в формате “ключ — значение, ключ — значение”
+                    данные из массивов keys и values.</p>
+                <p>Выведите в консоль переменную result.</p>
+
+                <div class="main__wrapper-box_lightblue">
+                    <p>Не пишите код, основываясь только на текущих входных данных. Нужно код писать так, чтобы он
+                        работал правильно с любыми входными данными нужного формата.</p>
+                </div>
+
+                <h2>Пример №1.</h2>
+                <p><strong>Входные данные:</strong></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const obj = {</p>
+                    <blockquote>first: 'First',</blockquote>
+                    <blockquote>second: 'Second'</blockquote>
+                    <p>}</p>
+                </div>
+                <p><strong>Выходные данные: first — First, second — Second</strong></p>
+
+                <h2>Пример № 2.</h2>
+                <p><strong>Входные данные:</strong></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const exampleObj = {</p>
+                    <blockquote>first: 'First',</blockquote>
+                    <blockquote>second: 'Second',</blockquote>
+                    <blockquote>third: 'Third'</blockquote>
+                    <p>}</p>
+                </div>
+                <p><strong>Выходные данные: first — First, second — Second, third — Third</strong></p>
+                <blockquote><strong>ответ</strong></blockquote>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const obj = {</p>
+                    <blockquote>first: "First",</blockquote>
+                    <blockquote>second: "Second"</blockquote>
+                    <p>}</p>
+                    <p>const keys = Object.keys(obj);</p>
+                    <p>const values = Object.values(obj);</p>
+                    <p>let result = '';</p>
+                    <p>for (let i = 0; i &lsaquo; keys.length; i += 1) {</p>
+                    <blockquote>if (i &lsaquo; keys.length - 1) {</blockquote>
+                    <blockquote>
+                        <blockquote>result += `${keys[i]} - ${values[i]}, `;</blockquote>
+                    </blockquote>
+                    <blockquote>} else {</blockquote>
+                    <blockquote>
+                        <blockquote>result += `${keys[i]} - ${values[i]}`;</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <p>}</p>
+                    <p>console.log(result)</p>
+                </div>
+
+
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page3.html" class="previous">&laquo; Назад</a>
+                <a href="page5.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page3.html" class="previous round">&#8249;</a>
+                <a href="page5.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+    </div>
+
+
+    <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+    <script async src="../script/js.js"></script>
+
+    <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+    </div>
+</body>
+
+</html>

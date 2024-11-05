@@ -1,0 +1,162 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Функции JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                5. Функции высшего порядка
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page9.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <figure>
+                    <img src="../images/m11_cover_high_order.svg" width="50%" alt="">
+                </figure>
+                <h2>Функциональное программирование</h2>
+                <hr class="hr">
+
+                <p>Понятие функции одно из основных в программировании. С помощью них можно реализовать всё что угодно,
+                    делая код переиспользуемым и лаконичным. С каждым днём всё популярнее становится <span
+                        class="main__wrapper-green">функциональное
+                        программирование</span>, основой которого, как можно догадаться, является функция. </p>
+                <div class="main__wrapper-box_grey">
+                    <p>Особенностью функционального подхода является его <span
+                            class="main__wrapper-green">декларативность</span> — когда мы описываем конечный
+                        результат, а не полный алгоритм действия.</p>
+                </div>
+                <p>Например, <strong>императивный</strong> подход на вопрос «Как пройти в библиотеку?» отвечает:</p>
+                <ol>
+                    <li>Садись на автобус.</li>
+                    <li>Выходи на остановке «улица Ленина».</li>
+                    <li>Иди прямо.</li>
+                    <li>Поверни направо.</li>
+                    <li>Найди здание с номером 52.</li>
+                    <li>Открой дверь.</li>
+                </ol>
+                <p><strong>Декларативный</strong> же подход отвечает на тот же самый вопрос гораздо короче — «Ленина,
+                    52».</p>
+                <div class="main__wrapper-box_grey">
+                    <p>Но это не единственная особенность. Также с понятием функционального программирования тесно
+                        связаны чистые функции, иммутабельность данных и многое другое, о чём мы будем говорить позднее.
+                    </p>
+                    <p>А сейчас разберём определение first-class citizen or object — функции высшего порядка (или
+                        функции первого класса, или объекты первого класса). </p>
+                </div>
+                <p>В <em>JavaScript</em> все функции являются объектами первого класса — они могут быть переданы как
+                    аргумент, возвращены из функции и присвоены переменной.</p>
+                <p><strong>Пример:</strong></p>
+                <div class="main__wrapper-box_grey">
+                    <p>function example(func){</p>
+                    <blockquote>// вызываем функцию, которую приняли как аргумент</blockquote>
+                    <p>func();</p>
+                    <p>// возвращаем функцию</p>
+                    <p>return function(){</p>
+                    <blockquote>console.log('internal function')</blockquote>
+                    <blockquote>}</blockquote>
+                    <p>}</p>
+                    <p>// функция, которую будем передавать как аргумент в функцию example</p>
+                    <p>function argFunc(){</p>
+                    <blockquote>console.log('function from arguments')</blockquote>
+                    <p>}</p>
+                    <p>// в переменную resultFunc записываем результат выполнения функции example</p>
+                    <p>// функция, которая передаётся как аргумент, должна быть без круглых скобок</p>
+                    <p>const resultFunc = example(argFunc);</p>
+                    <p>// после вызова example() внутри неё будет вызвана функция argFunc, которую мы передали как
+                        аргумент, и в консоли будет текст: function from arguments</p>
+                    <p>// вызываем функцию</p>
+                    <p>resultFunc(); // 'internal function</p>
+                </div>
+                <p>Дополнительно можно прочитать <a href="https://habr.com/ru/articles/261723/">в этой статье.</a></p>
+                <hr>
+
+                <p><strong>Задание 6.5.1</strong></p>
+
+                <p>Что такое функции высшего порядка?</p>
+                <blockquote>Функции, которые могут принимать другие функции как аргумент и возвращать функции как
+                    значение</blockquote>
+                <hr>
+
+                <p><strong>Задание 6.5.2</strong></p>
+
+                <p>В <em>JavaScript</em> все функции являются объектами.</p>
+                <blockquote>Да</blockquote>
+                <hr>
+
+                <h2>Практика</h2>
+                <hr class="hr">
+
+                <figure>
+                    <img src="../images/m10_homework (2).svg" width="50%" alt="">
+                </figure>
+
+                <h3>Задание 3.</h3>
+                <p>Написать функцию, которая принимает число как аргумент и возвращает функцию, которая также принимает
+                    число как аргумент и возвращает сумму этих двух чисел. Выведите в консоль результат.</p>
+
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page4.html" class="previous">&laquo; Назад</a>
+                <a href="page6.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page4.html" class="previous round">&#8249;</a>
+                <a href="page6.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+    </div>
+</body>
+
+</html>

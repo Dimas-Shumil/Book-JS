@@ -1,0 +1,328 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>AJAX</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                3. XHR
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+            <div class="main__wrapper-conteiner">
+                <figure>
+                    <img src="../images/m14_tools.svg" width="45%" alt="">
+                </figure>
+                <h3>Инструменты реализации запросов в JS</h3>
+
+                <p>Для реализации запросов из JavaScript-кода существуют два основных инструмента: <a
+                        href="https://developer.mozilla.org/ru/docs/Web/API/XMLHttpRequest">XHR</a> (XMLHttpRequest) и
+                    более современный <a
+                        href="https://developer.mozilla.org/ru/docs/Web/API/Fetch_API/Using_Fetch">Fetch</a>. </p>
+                <p>Есть другие инструменты, предоставляемые сторонними библиотеками, например:</p>
+                <blockquote><a href="https://api.jquery.com/jquery.ajax/">jQuery.ajax(),</a></blockquote>
+                <blockquote><a href="https://api.jquery.com/jQuery.getJSON/">jQuery.getJSON(),</a></blockquote>
+                <blockquote><a href="https://github.com/axios/axios">Axios.</a></blockquote>
+                <p>И другие. Но все они реализуют функции-обёртки над нативными реализациями XHR и Fetch, предоставляя
+                    более удобный функционал работы с запросами.</p>
+                <h2>Различия XHR и Fetch:</h2>
+                <blockquote>XHR работает на основе <a
+                        href="https://developer.mozilla.org/ru/docs/Glossary/Callback_function">callback</a>. Fetch
+                    работает на основе <a
+                        href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise">promise</a>
+                    (будет изучаться далее);</blockquote>
+                <blockquote>XHR запрос может быть синхронным (как обычный код) или асинхронным (рассмотрим далее). Fetch
+                    реализует только асинхронный код.</blockquote>
+
+                <h3>XHR как метод реализации запросов</h3>
+
+                <p>Работа с XHR реализуется через класс XMLHttpRequest. У него есть инструменты для управления
+                    запросами:</p>
+                <blockquote><a href="https://developer.mozilla.org/ru/docs/Web/API/XMLHttpRequest/open">request.open</a>
+                    — функция инициализации запроса;</blockquote>
+                <blockquote><a
+                        href="https://developer.mozilla.org/ru/docs/Web/API/XMLHttpRequest/load_event">request.onload</a>
+                    — свойство, которому можно присвоить callback-функцию, которая сработает, если запрос успешно
+                    отработал;</blockquote>
+                <blockquote><a
+                        href="https://developer.mozilla.org/ru/docs/Web/API/XMLHttpRequest/progress_event">request.onprogress</a>
+                    — свойство, которому можно присвоить callback-функцию, которая будет срабатывать во время выполнения
+                    запроса, уведомляя вас о прогрессе;</blockquote>
+                <blockquote><a
+                        href="https://developer.mozilla.org/ru/docs/Web/API/XMLHttpRequest/error_event">request.onerror</a>
+                    — свойство, которому можно присвоить callback-функцию, которая сработает, если запрос завершился
+                    ошибкой;</blockquote>
+                <blockquote><a href="https://developer.mozilla.org/ru/docs/Web/API/XMLHttpRequest/send">request.send</a>
+                    — метод отправки запроса.</blockquote>
+                <p>Есть и другие методы и свойства, но это основные.</p>
+                <p><b>Пример XHR запроса:</b></p>
+                <div class="main__wrapper-box_grey">
+                    <p>const xhr = new XMLHttpRequest();</p>
+                    <p>xhr.onload = function() {</p>
+                    <blockquote>console.log(`Статус: ${xhr.status}; Результат: ${xhr.response}`)</blockquote>
+                    <p>};</p>
+                    <p>xhr.onerror = function() {</p>
+                    <blockquote>console.log('Ошибка запроса');</blockquote>
+                    <p>};</p>
+                    <p>xhr.open("get", "https://picsum.photos/v2/list", true);</p>
+                    <p>xhr.send();</p>
+                </div>
+
+                <h2>Подробнее про open</h2>
+                <p>Метод <span class="blue"> open</span> принимает <b>три основных параметра</b>:</p>
+                <blockquote>1. <a href="https://developer.mozilla.org/ru/docs/Web/HTTP/Methods">Метод HTTP-запроса</a>.
+                    Методов много, но основные это <a
+                        href="https://developer.mozilla.org/ru/docs/Web/HTTP/Methods/GET">GET</a> и <a
+                        href="https://developer.mozilla.org/ru/docs/Web/HTTP/Methods/POST">POST</a>. Разница в них в
+                    некоторых заголовках и принципе передачи данных. При GET-запросе данные передаются в строке запроса.
+                    При POST-запросе данные передаются в теле запроса.</blockquote>
+                <blockquote>Для более детальной информации можно воспользоваться <a
+                        href="https://developer.mozilla.org/ru/docs/Web/HTTP">документацией по HTTP-протоколу от
+                        MDN</a>.</blockquote>
+                <blockquote>2. URL, запрос к которому вы реализуете.</blockquote>
+                <blockquote>3. Флаг синхронного/асинхронного кода. Можно не указывать, по умолчанию асинхронно (true).
+                </blockquote>
+                <div class="main__wrapper-box_pink">
+                    <p><b>ВАЖНО</b>! В реальных проектах используйте только асинхронные запросы. При осуществлении
+                        запроса синхронно сайт зависнет до тех пор, пока не получит ответ запроса.</p>
+                </div>
+                <hr class="hr">
+
+                <h2>Задание 9.3.1</h2>
+                <p>Какие инструменты для запросов предоставляет JS (нативные)?</p>
+                <blockquote>Fetch</blockquote>
+                <blockquote>XMLHttpRequest</blockquote>
+                <hr class="hr">
+
+                <h3>Запрос и обработка JSON-данных с удалённого сервера</h3>
+
+                <p>Мы будем работать с форматом данных JSON, так как это наиболее удобный, понятный и легко
+                    преобразуемый формат для JavaScript.</p>
+                <p>Также мы будем использовать API сервиса <a
+                        href="https://jsonplaceholder.typicode.com/photos?_limit=8">https://jsonplaceholder.typicode.com/photos?_limit=8</a>.
+                    Он позволяет получать данные о фотографиях в формате JSON. В частности, мы будем осуществлять
+                    запросы по следующему URL: <a
+                        href="https://jsonplaceholder.typicode.com/photos?_limit=8">https://jsonplaceholder.typicode.com/photos?_limit=8</a>.
+                </p>
+                <blockquote><a href="https://codepen.io/SkillFactory/pen/PoEvLpN">Пример работы с XHR в codepen.io</a>
+                </blockquote>
+                <blockquote><a href="https://codepen.io/vvysokiy/pen/xxwvjzO">Пример работы с XHR, обёрнутым в функцию,
+                        и отображением результата</a></blockquote>
+                <hr class="hr">
+
+                <h3>Введение в асинхронность. Как работает асинхронный код</h3>
+
+                <p>Асинхронное программирование в JavaScript — это работа с <a
+                        href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Event_loop">event loop и очередью
+                        вызовов</a>. Это одна из концепций, которая делает JavaScript таким мощным и универсальным. Для
+                    продвижения дальше вам необходимо чётко понимать, как работает асинхронный код в JavaScript.</p>
+                <p>JavaScript является однопоточным, но с возможностью реализации асинхронности.</p>
+                <div class="main__wrapper-border_green">
+                    <p><span class="green"> Однопоточный</span> — это значит, что JavaScript не может выполнять две
+                        функции одновременно. Все функции выполняются друг за другом в соответствии с их положением в
+                        очереди выполнения.</p>
+                </div>
+                <p>Другими словами, у нас есть очередь (очередь вызовов), в которую попадают все функции, выполняемые
+                    вашим кодом. И пока не выполнится предыдущая функция, следующая не начнёт свое выполнение.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>В JavaScript есть два вида кода:</p>
+                    <blockquote>1. Синхронный,</blockquote>
+                    <blockquote>2. Асинхронный.</blockquote>
+                </div>
+
+                <h3>Синхронный код</h3>
+
+                <p>Пример 1: все функции здесь синхронные и выполняются в порядке, согласно которому записаны в коде.
+                </p>
+                <div class="main__wrapper-box_grey">
+                    <p>function f1() { console.log("1") };</p>
+                    <p>function f2() { console.log("2") };</p>
+                    <p>f2(); f1(); f2(); // В консоль выведется 2 1 2</p>
+                </div>
+
+                <h3>Асинхронный код</h3>
+
+                <p>Самый простой и давно существующий способ — асинхронные <i>callback</i>-функции.</p>
+                <p>Пример 2: здесь мы работаем с очередью вызовов. Стоит заметить, что, как и в первом примере, код в
+                    самих функциях <span class="blue"> f1</span> и <span class="blue"> f2</span> является синхронным.
+                </p>
+                <div class="main__wrapper-box_grey">
+                    <p>function f1() { console.log("1") };</p>
+                    <p>function f2() { console.log("2") };</p>
+                    <p>const btn = document.querySelector("button"); // кнопка на странице</p>
+                    <p>f2();</p>
+                    <p>btn.addEventListener("click", f1); </p>
+                    <p>f2(); // В консоль выведется 2 2.</p>
+                    <p>// Когда мы совершим клик по кнопке, то функция f1 попадет в очередь</p>
+                    <p>// вызовов и выполнится. В результате в консоль выведется 1</p>
+                </div>
+                <p>Это тот случай, когда событие пользователя (клик на кнопку) добавляет в очередь новую функцию для
+                    выполнения.</p>
+                <a href="https://codepen.io/vvysokiy/pen/YzwXWpa">Этот пример в codepen.io</a>
+
+                <h3>Некоторые способы реализации асинхронного кода</h3>
+
+                <p>Есть три основных инструмента реализации асинхронного кода на callback. И два из них вам уже хорошо
+                    знакомы:</p>
+                <blockquote><a href="https://developer.mozilla.org/ru/docs/Web/API/Window/setTimeout">setTimeout,</a>
+                </blockquote>
+                <blockquote><a
+                        href="https://developer.mozilla.org/en-US/docs/Web/API/Window/setInterval">setInterval,</a>
+                </blockquote>
+                <blockquote><a href="https://developer.mozilla.org/ru/docs/Web/API/XMLHttpRequest">XHR
+                        (XMLHttpRequest).</a></blockquote>
+                <p>Напомним, что setTimeout ставит функцию в очередь выполнения один раз через какой-то промежуток
+                    времени (не выполняет, а ставит в очередь на выполнение). Используется для отложенного запуска кода
+                    или оптимизаций.</p>
+                <p>Пример использования: </p>
+                <div class="main__wrapper-box_grey">
+                    <p>setTimeout(f, 1000);</p>
+                </div>
+                <div class="main__wrapper-box_grey">
+                    <p>Она принимает два параметра:</p>
+                    <blockquote>f — callback-функцию, которая встанет в очередь через определённый промежуток времени;
+                    </blockquote>
+                    <blockquote>1000 — количество миллисекунд, через которые функция встанет в очередь.</blockquote>
+                </div>
+
+                <p><a href="https://codepen.io/vvysokiy/pen/oNbXzva">Пример <span class="blue"> setTimeout</span> в
+                        codepen.io</a></p>
+                <p>Функция setInterval ставит функцию в очередь выполнения регулярно через какой-то промежуток времени
+                    (не выполняет, а ставит в очередь на выполнение). Остановить работу <span class="blue">
+                        setInterval</span> можно с помощью
+                    функции <span class="blue"> clearInterval</span>.</p>
+                <p>Пример использования:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const id = setInterval(f, 1000);</p>
+                </div>
+                <div class="main__wrapper-box_grey">
+                    <p>Она принимает два параметра:</p>
+                    <blockquote>f — callback-функцию, которая встанет в очередь через определённый промежуток времени;
+                    </blockquote>
+                    <blockquote>1000 — количество миллисекунд, через которые функция встанет в очередь.</blockquote>
+                </div>
+                <p>Вызов setInterval возвращает ID функции, позволяющий остановить работу функции. Пример использования:
+                </p>
+                <div class="main__wrapper-box_grey">
+                    <p>clearInterval(id);</p>
+                </div>
+                <p><a href="https://codepen.io/vvysokiy/pen/oNbXzLJ">Пример setInterval в codepen.io</a></p>
+                <p>Ранее мы работали именно с асинхронным запросом к API с помощью XHR.</p>
+                <p><a href="https://codepen.io/vvysokiy/pen/YzwXWrv">Пример показывает разницу между синхронным и
+                        асинхронным XHR.</a></p>
+                <hr class="hr">
+
+                <h2>Задание 9.3.2</h2>
+                <details>
+                    <summary>Какой тип запроса не блокирует выполнение другого JS на странице?</summary>
+                    <blockquote>асинхронный</blockquote>
+                </details>
+                <hr class="hr">
+
+                <h2>Задание 9.3.3</h2>
+                <details>
+                    <summary>Какие инструменты из перечисленных ниже могут реализовать асинхронный код?</summary>
+                    <blockquote>Fetch</blockquote>
+                    <blockquote>XMLHttpRequest</blockquote>
+                    <blockquote>setTimeout</blockquote>
+                    <blockquote>setInterval</blockquote>
+                </details>
+                <hr class="hr">
+
+                <h3>Практика</h3>
+
+                <figure>
+                    <img src="../images/m10_homework (1).svg" width="45%" alt="">
+                </figure>
+
+                <h3>Задание 3</h3>
+
+                <p>Напишите код приложения, интерфейс которого представляет собой input и кнопку. В input можно ввести
+                    любое число. При клике на кнопку происходит следующее:</p>
+                <blockquote>Если число не попадает в диапазон от 1 до 10 — выводить ниже текст «число вне диапазона от 1
+                    до 10».</blockquote>
+                <blockquote>Если число попадает в диапазон от 1 до 10 — сделать запрос c помощью XHR по URL <a
+                        href="https://jsonplaceholder.typicode.com/photos?_limit=5">https://jsonplaceholder.typicode.com/photos?_limit=5</a>,
+                    где get-параметр limit — это введённое число.</blockquote>
+                <div class="main__wrapper-box_grey">
+                    <p><b>Пример</b>. Если пользователь ввёл 8, то запрос будет вида: <a
+                            href="https://jsonplaceholder.typicode.com/photos?_limit=5">https://jsonplaceholder.typicode.com/photos?_limit=8</a>.
+                    </p>
+                    <p>После получения данных вывести ниже картинки на экран.</p>
+                </div>
+                <details>
+                    <summary><span class="green"> Подсказка</span></summary>
+                    <blockquote>Получение данных из input:</blockquote>
+                    <blockquote>
+                        <div class="main__wrapper-box_grey">
+                            <p>const value = document.querySelector('input').value;</p>
+                        </div>
+                    </blockquote>
+                </details>
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page2.html" class="previous">&laquo; Назад</a>
+                <a href="page4.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page2.html" class="previous round">&#8249;</a>
+                <a href="page4.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Функции JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                8. Функции в ES6
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page9.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <figure>
+                    <img src="../images/m11_cover_arrow.svg" width="50%" alt="">
+                </figure>
+
+                <h2>Стрелочные функции</h2>
+                <hr class="hr">
+
+                <p>Стрелочные функции были введены в <a
+                        href="https://en.wikipedia.org/wiki/ECMAScript#6th_Edition_-_ECMAScript_2015">ES2015</a>.</p>
+                <p>Если раньше единственной правильной записью функции была такая: </p>
+                <div class="main__wrapper-box_grey">
+                    <p>function sayMyName (name) {</p>
+                    <blockquote>console.log('My name is ' + name);</blockquote>
+                    <p>}</p>
+                </div>
+                <p>То теперь возможен и другой вариант. С помощью <em>Function Expression</em> мы также можем объявить
+                    стрелочную
+                    функцию — <span class="main__wrapper-green">Arrow Function</span>.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const sayMyName = name => {</p>
+                    <blockquote>console.log('My name is ' + name);</blockquote>
+                    <p>}</p>
+                </div>
+                <p>Так что нет необходимости записывать ключевое слово function.</p>
+                <p>Если параметр один, фигурные скобки {} не нужны:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const logText = text => console.log(text);</p>
+                    <p>const sayHelloWorld = () => console.log('Hello, world!');</p>
+                    <p>const sum = (a, b) => a + b;</p>
+                </div>
+                <p>Но если параметр один и с ним будут происходить какие-то манипуляции, тогда фигурные скобки так же
+                    будут нужны. Например:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const logUppercaseText = text => {</p>
+                    <p>const uppercaseText = text.toUpperCase();</p>
+                    <p>console.log(uppercaseText);</p>
+                    <p>};</p>
+                </div>
+                <p>Если параметров не ожидается или же, наоборот, их больше одного, но с ним будут происходить какие-то
+                    манипуляции или в теле будет какая-то логика, фигурные скобки обязательны.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const fatBodyArrowFunction = (a, b, c) => {</p>
+                    <p>// тут производятся сложные вычисления на несколько строк кода.</p>
+                    <p>// если нужно что-то вернуть из такой функции — используйте return</p>
+                    <p>// иначе функция будет вести себя как процедура</p>
+                    <p>const result = a + b + c;</p>
+                    <p>return result;</p>
+                    <p>};</p>
+                </div>
+
+                <h2>Особенности:</h2>
+
+                <div class="main__wrapper-box_grey">
+                    <ul>
+                        <li>Короткий синтаксис.</li>
+                        <li>Отсутствие привязки к this (подробнее поговорим об этом дальше).</li>
+                        <li>Нельзя использовать как конструктор (подробнее поговорим об этом дальше).</li>
+                        <li>Нет псевдомассива arguments.</li>
+                    </ul>
+                </div>
+                <p>Стрелочные функции не могут обратиться к параметру arguments во время вызова. Если попытаться это
+                    сделать, то произойдёт ошибка:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const func = () => console.log(arguments);</p>
+                    <p>func() // Uncaught ReferenceError: arguments is not defined</p>
+                </div>
+                <p>Дополнительно о стрелочных функциях <a
+                        href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Functions/Arrow_functions">здесь</a>.
+                </p>
+                <hr>
+
+                <p><strong>Задание 6.8.1</strong></p>
+
+                <p>Стрелочные функции — это функции вида:</p>
+                <blockquote>const foo = (x) => x</blockquote>
+                <hr>
+
+                <p><strong>Задание 6.8.2</strong></p>
+                <blockquote>Короткий синтаксис</blockquote>
+                <blockquote>Отсутствие привязки к this</blockquote>
+                <blockquote>Нельзя использовать как конструктор</blockquote>
+                <hr>
+                <h2>Практика</h2>
+                <hr class="hr">
+
+                <figure>
+                    <img src="../images/m10_homework (4).svg" width="50%" alt="">
+                </figure>
+
+                <h3>Задание 5.</h3>
+
+                <p>Напишите функцию, которая принимает два натуральных числа <strong>x</strong> и <strong>n</strong> и возвращает <strong>x</strong> в степени <strong>n</strong>. Иначе
+                    говоря, умножает x на себя n раз и возвращает результат.</p>
+
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page7.html" class="previous">&laquo; Назад</a>
+                <a href="page9.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page7.html" class="previous round">&#8249;</a>
+                <a href="page9.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="site/script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+    </div>
+</body>
+
+</html>

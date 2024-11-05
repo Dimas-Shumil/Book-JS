@@ -1,0 +1,346 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Бонус DOM</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                6.Управление классами элементов
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page9.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+            <div class="main__wrapper-conteiner">
+                <p>Вы постоянно работаете с классами. Умеете задавать их в разметке, получать в CSS или использовать как
+                    ключ до элемента в JS.</p>
+                <p>Иногда в работе очень нужно задать какому-нибудь элементу класс, а через какое-то время его снять.
+                </p>
+                <p>Например, это понадобится при создании сложных анимаций, всплывающих окон, подсказок и так далее. Или
+                    если вам нужно выделить активную ссылку среди других ссылок, чтобы пользователь знал, на каком он
+                    разделе.</p>
+                <p>К счастью для нас, всё это делается очень легко благодаря свойству classList.</p>
+
+                <h2>classList</h2>
+                <h3>classList — свойство, благодаря которому вы можете манипулировать классами элементов.</h3>
+                <p>Давайте создадим в index.html какой-нибудь элемент, например:</p>
+                <p>// index.html</p>
+                <div class="main__wrapper-box_grey">
+                    <p>&lsaquo;div class="container div wrapper">&lsaquo;/div></p>
+                </div>
+                <p>И перейдём в консоль DevTools. Там обратимся к этому элементу и получим classList:</p>
+                <figure>
+                    <img src="../images/asset-v1_SkillFactory+INTFR+2023+type@asset+block@INTFR_10_7.png" width="100%"
+                        alt="">
+                    <figcaption>Объект classList</figcaption>
+                </figure>
+                <p>Мы получили каждый класс под отдельным индексом, длину списка и свойство value. В нём хранится
+                    значение атрибута class — единой строкой.</p>
+                <p>Но пока что мы видим только значения. Как удалять классы, менять их и добавлять?</p>
+                <p>Заглянем поглубже — в прототип этого объекта. И увидим интересные вещи:</p>
+                <figure>
+                    <img src="../images/asset-v1_SkillFactory+INTFR+2023+type@asset+block@INTFR_10_4.png" width="90%"
+                        alt="">
+                    <figcaption>Методы classList</figcaption>
+                </figure>
+                <p>Уже похоже на то, что нам нужно. Обратите внимание на строчки:</p>
+                <blockquote>&#10144; <b>add</b> — добавить.</blockquote>
+                <blockquote>&#10144; <b>remove</b> — удалить.</blockquote>
+                <blockquote>&#10144; <b>toggle</b> — переключить.</blockquote>
+                <p>И так далее.</p>
+                <p>Это методы, с помощью которых можно управлять классами. Давайте разберём некоторые из них поближе.
+                </p>
+
+                <h2>classList.add</h2>
+
+                <p>Вы знаете, как удобно стилизовать элементы не через инлайн и не по тегам, а через классы. Их можно
+                    задавать нескольким элементам или комбинировать несколько классов.</p>
+                <p>Но что если мы хотим задать элементу какие-то временные стили? Например, подсветить, а потом сделать
+                    как было. Или показать модальное окно, а потом скрыть.</p>
+                <p>Для этого нужно динамически добавлять класс. И возможно это только благодаря JS и методу add.</p>
+
+                <iframe src="../frame/frame6-2.html" width="90%" height="300px" frameborder="0"></iframe>
+
+                <p>В примере у нас самая простая шапка сайта с навигацией. Изначально в разметке нет никаких классов. Но
+                    в CSS мы уже написали несколько блоков стилей для класса link.</p>
+                <p>Осталось только добавить для ссылок в навигации нужные классы. Для этого воспользуемся методом
+                    classList.add.</p>
+                <p>Синтаксис:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>element.classList.add("класс");</p>
+                    <p>element.classList.add("класс 1","класс 2","класс 3", ...)</p>
+                </div>
+                <p>Всё сработало. Ссылки теперь выглядят живо и лаконично.</p>
+
+                <h2>Упражнение 6.1</h2>
+                <p>Сделайте то же самое с header. Добавьте класс со стилями в СSS, а затем задайте этот класс элементу в
+                    JS.</p>
+
+                <h2>classList.remove</h2>
+                <p>Добавили, теперь можно и удалить.</p>
+                <iframe src="../frame/frame6-3.html" width="90%" height="300px" frameborder="0"></iframe>
+                <p>Перед нами та же шапка, но появились нюансы. Теперь у активной ссылки другой цвет. Но активная ссылка
+                    — динамический элемент. Нужно, чтобы каждая из четырёх ссылок меняла свой цвет, если вы на неё
+                    нажимаете.</p>
+                <p>Для этого используем комбо из classList.add и classList.remove. Синтаксис у этого свойства
+                    аналогичный. Меняется только название: с add на remove.</p>
+                <p>Логика простая. Мы получаем элементы-ссылки и вешаем на каждую слушатель клика.</p>
+                <p>При клике достаём элементы, на которых уже есть класс активной ссылки. Удаляем этот класс отовсюду, а
+                    на текущий элемент наоборот вешаем.</p>
+                <p>Готово. Понажимайте на ссылки и убедитесь, что всё работает.</p>
+
+                <h2>Упражнение 6.2</h2>
+                <p>Добавьте в пример блок с контентом. Сделайте так, чтобы его было видно только когда активна первая
+                    ссылка. При клике на остальные ссылки — элемент должен быть скрыт. Создайте для скрытия элемента
+                    отдельный класс.</p>
+
+                <h2>classList.toggle</h2>
+
+                <p>Этот метод — симбиоз двух предыдущих методов. Он удаляет класс, если он есть на элементе, и
+                    добавляет, если его там нет.</p>
+                <p>Toggle с английского значит переключение. Если свет включён, то вы его выключаете. А если выключен —
+                    включаете. Всё просто.</p>
+                <p>Этот метод пригодится, чтобы, например, скрывать или отображать элементы. Если что-то открыто и
+                    видимо — скрыть. Если ничего нет — показать.</p>
+
+                <iframe src="../frame/frame6-4.html" width="90%" height="350px" frameborder="0"></iframe>
+
+                <p>Cейчас на нашем div-е есть только один класс — box. И поэтому цвет его фона — голубой. Но если нажать
+                    на элемент, то цвет сменится на приятный салатовый.</p>
+                <p>А если нажать снова — голубой вернётся на место. Так работает переключатель класса —
+                    classList.toggle.</p>
+
+                <h2>Упражнение 6.3</h2>
+                <p>Добавьте в пример два параграфа с текстом. В одном написано, что цвет фона — голубой. Во втором — что
+                    зелёный. Параграфы должны появляться соответственно цвету div-а.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>if (element.classList.contains("active")) {</p>
+                    <blockquote>document.querySelector(".green").style.display = "block";</blockquote>
+                    <blockquote>document.querySelector(".blue").style.display = "none";</blockquote>
+                    <p>} else {</p>
+                    <blockquote>document.querySelector(".green").style.display = "none";</blockquote>
+                    <blockquote>document.querySelector(".blue").style.display = "block";</blockquote>
+                    <p>}</p>
+                </div>
+
+                <h2>classList.replace</h2>
+
+                <p>Ещё один удобный элемент, который позволит вам менять классы элемента с одного на другой.</p>
+                <p>Синтаксис:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>element.classList.replace('что заменить', 'на что заменить')</p>
+                </div>
+
+                <div class="main__wrapper-box_blue">
+                    <p>Этот метод возвращает булевое значение. Если замена прошла успешно — то значение будет равно
+                        true. Если нет — false.</p>
+                    <p>Где пригодится это значение? Вы можете использовать его для дальнейшей логики. Например, если всё
+                        успешно — сделать то-то. А если нет — ничего не делать.</p>
+                </div>
+
+                <iframe src="../frame/frame6-5.html" width="90%" height="300px" frameborder="0"></iframe>
+
+                <p>В примере есть картинка и кнопка-сердечко. Если нажать на кнопку, то запустится логика
+                    classList.replace и заменит один класс на другой.</p>
+                <p>Это своего рода простой аналог ситуации, где элемент меняет свой стиль после того, как его лайкнули.
+                </p>
+
+                <h2>Упражнение 6.4</h2>
+                <p>Напишите логику, при которой определяется, успешно ли прошла замена одного класса картинки на другой.
+                    И если всё успешно — выведите какое-нибудь визуальное сообщение, что картинка была лайкнута. Дизайн
+                    и логика на ваше усмотрение.</p>
+                <hr class="hr">
+            </div>
+
+            <h2>Упражнение 6.5</h2>
+            <p>Напишите строку, в которой заменяете у ссылки в переменной link класс: с active на disabled.</p>
+            <blockquote>link.classList.replace ('active', 'disabled');</blockquote>
+            <hr class="hr">
+            <div class="main__wrapper-conteiner">
+                <h2>classList.contains</h2>
+
+                <p>Иногда не хочется полагаться на авось. Есть там эти классы или их нет… Хочется знать наверняка. И
+                    если классов нет — не совершать лишних движений.</p>
+                <p>Так тоже можно. Встречайте classList.contains.</p>
+                <h3>classList.contains уточняет, содержит ли элемент переданный класс. Результат — булевое значение.
+                    Есть класс — true. Нет класса — false.</h3>
+                <p>Где можно использовать этот метод? Например, когда вы хотите проверить картинку на лайкнутость и в
+                    зависимости от ответа что-то с ней сделать.</p>
+                <iframe src="../frame/frame6-6.html" width="90%" height="400px" frameborder="0"></iframe>
+                <p>Не будем голословными и создадим именно такую логику. Используем classList.toggle и
+                    classList.contains, чтобы переключать классы и делать проверку на лайк.</p>
+                <p>Теперь вы можете бесконечно лайкать коробочки и снимать свои лайки. Никто не узнает.</p>
+
+                <h2>Упражнение 6.6</h2>
+                <p>Напишите попап, который будет открываться по нажатию на кнопку. Постройте логику вокруг проверки,
+                    есть ли на попапе активный класс или нет. Дизайн любой, но красивый.</p>
+                <p>Вы справились с новой темой! Поздравляю. Вы научились работать с классами: динамически их добавлять,
+                    удалять и переключать. А также проверять наличие класса у элемента. Пришло время практики.</p>
+                <hr class="hr">
+
+                <h2>Упражнение 6.7</h2>
+                <p>Создайте разметку формы, несколько инпутов и кнопку.</p>
+                <p>Если инпуты не пусты, то после нажатия кнопки плавно появляется модальное окно и оповещает
+                    пользователя, что данные отправлены. Через несколько секунд так же плавно исчезает.</p>
+
+                <details>
+                    <summary><span class="green">Решение</span></summary>
+                    <p>//html</p>
+                    <div class="main__wrapper-box_grey">
+                        <p>&lsaquo;form id="myForm"></p>
+                        <blockquote>&lsaquo;label for="name">Имя:&lsaquo;/label></blockquote>
+                        <blockquote>&lsaquo;input type="text" id="name" name="name">&lsaquo;br>&lsaquo;br></blockquote>
+                        <blockquote>&lsaquo;label for="email">Email:&lsaquo;/label></blockquote>
+                        <blockquote>&lsaquo;input type="email" id="email" name="email">&lsaquo;br>&lsaquo;br>
+                        </blockquote>
+                        <blockquote>&lsaquo;label for="message">Сообщение:&lsaquo;/label></blockquote>
+                        <blockquote>&lsaquo;textarea id="message"
+                            name="message">&lsaquo;/textarea>&lsaquo;br>&lsaquo;br></blockquote>
+                        <blockquote>&lsaquo;button type="button" onclick="submitForm()">Отправить&lsaquo;/button>
+                        </blockquote>
+                        <p>&lsaquo;/form></p>
+                        <p>&lsaquo;div class="modal"></p>
+                        <blockquote>&lsaquo;h3>Данные отправлены!&lsaquo;/h3></blockquote>
+                        <p>&lsaquo;/div></p>
+                    </div>
+                    <p>//css</p>
+                    <div class="main__wrapper-box_grey">
+                        <p>.modal {</p>
+                        <blockquote>position: fixed;</blockquote>
+                        <blockquote>display: flex;</blockquote>
+                        <blockquote>align-items: center;</blockquote>
+                        <blockquote>justify-content: center;</blockquote>
+                        <blockquote>z-index: 1;</blockquote>
+                        <blockquote>top: 50%;</blockquote>
+                        <blockquote>left: 50%;</blockquote>
+                        <blockquote>width: 300px;</blockquote>
+                        <blockquote>height: 200px;</blockquote>
+                        <blockquote>font-family: helvetica;</blockquote>
+                        <blockquote> background-color: lightgreen;</blockquote>
+                        <blockquote>transition: all 0.4s ease;</blockquote>
+                        <blockquote>transform: translate(-50%, -50%);</blockquote>
+                        <blockquote> opacity: 0;</blockquote>
+                        <p>}</p>
+                    </div>
+                    <p>//JS</p>
+                    <div class="main__wrapper-box_grey">
+                        <p>function submitForm() {</p>
+                        <blockquote>const name = document.getElementById("name").value;</blockquote>
+                        <blockquote>const email = document.getElementById("email").value;</blockquote>
+                        <blockquote>const message = document.getElementById("message").value;</blockquote>
+                        <blockquote>if (name !== "" && email !== "" && message !== "") {</blockquote>
+                        <blockquote>
+                            <blockquote>const modal = document.querySelector(".modal");</blockquote>
+                            <blockquote>modal.style.opacity = 1;</blockquote>
+                            <blockquote>setTimeout(function () {</blockquote>
+                            <blockquote>
+                                <blockquote>modal.style.opacity = 0;</blockquote>
+                            </blockquote>
+                            <blockquote>}, 2000);</blockquote>
+                            <blockquote>document.getElementById("myForm").reset();</blockquote>
+                            }
+                        </blockquote>
+                        <p>}</p>
+                    </div>
+                </details>
+                <hr class="hr">
+            </div>
+
+            <h2>Упражнение 6.8</h2>
+            <p>Выберите все методы, которые есть в classList:</p>
+            <blockquote>find</blockquote>
+            <blockquote>include</blockquote>
+            <blockquote>toggle <span class="green">&#10004;</span></blockquote>
+            <blockquote>replace <span class="green">&#10004;</span></blockquote>
+            <blockquote>delete</blockquote>
+            <hr class="hr">
+            <div class="main__wrapper-conteiner">
+                <h2>Упражнение 6.9</h2>
+                <p>Создайте небольшую галерею товаров. У каждого товара есть кнопка — добавить в корзину. При нажатии на
+                    неё товар должен получать новый класс. И визуально отличаться от не добавленных в корзину товаров.
+                    Можете скрывать кнопку добавления в корзину после того, как она была нажата.</p>
+                <blockquote>
+                    <details>
+                        <summary><span class="green">Решение</span></summary>
+                        <a href="https://codepen.io/SkillFactory/pen/mdQvOqV">Решение</a>
+                    </details>
+                </blockquote>
+                <hr class="hr">
+
+                <h2>Упражнение 6.10</h2>
+                <p>Напишите простой слайдер из трёх картинок. Каждая появляется на 3 секунды. По истечении этого времени
+                    появляется следующая картинка. Картинки можете выбрать любые.</p>
+                <blockquote>
+                    <details>
+                        <summary><span class="green">Решение</span></summary>
+                        <a href="https://codepen.io/SkillFactory/pen/WNYPoXE?editors=0011">Решение</a>
+                    </details>
+                </blockquote>
+                <hr class="hr">
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page5.html" class="previous">&laquo; Назад</a>
+                <a href="page7.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page5.html" class="previous round">&#8249;</a>
+                <a href="page7.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

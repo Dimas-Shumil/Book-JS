@@ -1,0 +1,103 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>AJAX</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                7. Финальное задание
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+            <div class="main__wrapper-conteiner">
+                <h3>Практика</h3>
+
+                <figure>
+                    <img src="../images/m10_homework (3).svg" width="45%" alt="">
+                </figure>
+                <p>Задания в этом модуле были выстроены по принципу увеличения сложности. Это итоговая практика потребует от вас комбинации алгоритмов решения из предыдущих заданий.</p>
+
+                <h3>Задание 5.</h3>
+
+                <p>Написать код приложения, интерфейс которого состоит из двух input и кнопки. В input можно ввести любое число.</p>
+                <blockquote>&bull; Заголовок первого input — «номер страницы».</blockquote>
+                <blockquote>&bull; Заголовок второго input — «лимит».</blockquote>
+                <blockquote>&bull; Заголовок кнопки — «запрос».</blockquote>
+                <p>При клике на кнопку происходит следующее:</p>
+                <blockquote>&bull; Если число в первом input не попадает в диапазон от 1 до 10 или не является числом — выводить ниже текст «Номер страницы вне диапазона от 1 до 10»;</blockquote>
+                <blockquote>&bull; Если число во втором input не попадает в диапазон от 1 до 10 или не является числом — выводить ниже текст «Лимит вне диапазона от 1 до 10»;</blockquote>
+                <blockquote>&bull; Если и первый, и второй input не в диапазонах или не являются числами — выводить ниже текст «Номер страницы и лимит вне диапазона от 1 до 10»;</blockquote>
+                <blockquote>&bull; Если числа попадают в диапазон от 1 до 10 — сделать запрос по URL <a href="https://jsonplaceholder.typicode.com/photos?_page=0&_limit=5">https://jsonplaceholder.typicode.com/photos?_page=0&_limit=5</a>, где GET-параметр _page — это число из первого input, а GET-параметр _limit — это введённое число второго input.</blockquote>
+                <div class="main__wrapper-box_grey">
+                    <p><b>Пример</b>. Если пользователь ввёл 5 и 7, то запрос будет вида <a href="https://jsonplaceholder.typicode.com/photos?_page=5&_limit=5">https://jsonplaceholder.typicode.com/photos?_page=5&_limit=7</a></p>
+                </div>
+                <p>После получения данных вывести список картинок на экран.</p>
+                <p>Если пользователь перезагрузил страницу, то ему должны показываться картинки из последнего успешно выполненного запроса (использовать localStorage).</p>
+                <hr class="hr">
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page6.html" class="previous">&laquo; Назад</a>
+                <a href="page8.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page6.html" class="previous round">&#8249;</a>
+                <a href="page8.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

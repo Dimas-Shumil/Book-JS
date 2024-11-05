@@ -1,0 +1,285 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Функции JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                5.ООП в ES6
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <figure>
+                    <img src="../images/m12_cover_oop_es6.svg" width="50%" alt="">
+                </figure>
+
+                <p>Классы в JavaScript ничего не имеют общего с классами в C++, например. Механизм работает иначе — нет
+                    приватных (private) и защищённых (protected) полей, но разработка новых фич ведется постоянно. Хотя
+                    синтаксис очень похож на класс в классическом его понимании.</p>
+                <p>Также вы должны запомнить, что классы — это лишь синтаксический сахар* над обычным прототипным
+                    наследованием. Это очень важный момент.</p>
+                <p><strong>*Синтаксический</strong> сахар (англ. syntactic sugar) в языке программирования — это
+                    синтаксические возможности, применение которых не влияет на поведение программы, но делает
+                    использование языка более удобным для человека.</p>
+                <p>Итак, ключевое слово class определяет экземпляр. После ключевого слова class название класса принято
+                    писать с большой буквы.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>class Parent {</p>
+                    <p>constructor(ownCity) {</p>
+                    <p>this.ownCity = ownCity;</p>
+                    <p>this.hasFlat = true;</p>
+                    <p>}</p>
+                    <p>getInfo(){</p>
+                    <p>console.log(`I live in the ${this.ownCity}`)</p>
+                    <p>}</p>
+                    <p>}</p>
+                </div>
+
+                <p>Ключевое слово class идентифицирует блок, содержимое которого определяет члены прототипа функции.</p>
+                <p>Рассмотрим пример приведенный выше:</p>
+                <p>Запись class Parent создает специальную функцию с именем Parent;</p>
+                <p>Constructor определяет сигнатуру функции и ее тело (то, что записывалось через this.PROPERTY для
+                    функции-конструктора)</p>
+                <p>Сравним аналогичную запись для функции-конструктора:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>function Parent (ownCity) {</p>
+                    <p>this.ownCity = ownCity,</p>
+                    <p>this.hasFlat = true;</p>
+                    <p>}</p>
+                    <p>Parent.prototype.getInfo(){</p>
+                    <p>console.log(`I live in the ${this.ownCity}`)</p>
+                    <p>}</p>
+                </div>
+
+                <p>Создание нового экземпляра в обоих случаях происходит с использованием ключевого слова new.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let Parent = new Parent('Moscow');</p>
+                </div>
+                <p>Нельзя забывать — классы не поднимаются, как функции, поэтому прежде чем создавать экземпляры,
+                    объявите конструкцию.</p>
+                <p>Далее предстоит разобраться с механизмом, который разработчики привычно называют <span
+                        class="green">наследованием</span>.</p>
+                <p>Чтобы установить делегирующую связь [[Prototype]] между двумя прототипами функции, используют слово
+                    extends.</p>
+                <p><strong>Например:</strong></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>class Child extends Parent { constructor(isStudent, city, ownCity){</p>
+                    <blockquote>super(ownCity);</blockquote>
+                    <blockquote>this.isStudent = isStudent;</blockquote>
+                    <blockquote>this.city = isStudent ? city : ownCity;</blockquote>
+                    <p>}</p>
+                    <p>getInfo(){</p>
+                    <blockquote>if (this.isStudent) {</blockquote>
+                    <blockquote>
+                        <blockquote>return `I live and study in the ${this.city}`</blockquote>
+                    </blockquote>
+                    <p>} else {</p>
+                    <p> return super.getInfo();</p>
+                    <blockquote>
+                        <blockquote>}</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <p>}</p>
+                    <p>const student = new Child(true, 'Piter')</p>
+                    <p>student.getInfo()</p>
+                    <p>const employee = new Child(false, 'New York')</p>
+                    <p>employee.getInfo()</p>
+                </div>
+                <p>При написании примера вы могли заметить слово super, в которое были внесены свойства родителя. Это
+                    ключевое слово автоматически ссылается на родительский конструктор, а внутри себя ссылается на
+                    родительский объект, чтобы получить доступ к методу или свойству. </p>
+                <p>При обращении к методу через super.method() получается то же самое, что и обращение к
+                    Parent.prototype; В конструкторе super указывает на объект Parent.</p>
+                <p>Для того, чтобы определить, от какого конкретно класса отнаследован потомок, существует оператор
+                    <span class="green">instanceof</span>.
+                </p>
+
+                <div class="main__wrapper-box_grey">
+                    <p> console.log(Child instanseof Parent) // true</p>
+                </div>
+                <p>Создадим независимый класс Animal:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>Class Animal {}</p>
+                    <p>console.log(Children instanseof Animal) // false</p>
+                </div>
+                <hr class="hr">
+
+                <p>Задание 7.5.1</p>
+
+                <p>Классы к JavaScript...</p>
+                <blockquote>Позволяют реализовать прототипное наследование</blockquote>
+                <hr class="hr">
+
+                <div class="main__wrapper-box_grey">
+                    <p><img src="../images/book_1 (1).png" width="20px" alt="book"> Дополнительно</p>
+                    <p><a href="https://www.youtube.com/watch?v=GhbhD1HR5vk&list=PL0zVEGEvSaeHBZFy6Q8731rcwk0Gtuxub">
+                            (ENG) Cерия видео об объектах</a></p>
+                </div>
+
+                <p>В двух предыдущих видео мы разобрали достаточно информации, чтобы начать работать с классами, но
+                    вероятно, вам будет интересно узнать еще кое-что.</p>
+                <p>А именно, как работают статические методы класса и как выглядят классы после их преобразования
+                    браузером. </p>
+                <p>Ключевое слово static позволяет объявить статические методы и свойства в классе. Они добавляются
+                    непосредственно в объект-функцию, а не в объект-прототип.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>class Amazing {</p>
+                    <blockquote>static cool() {</blockquote>
+                    <blockquote>
+                        <blockquote>console.log('cool')</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <blockquote>wow() {</blockquote>
+                    <blockquote>
+                        <blockquote>console.log('wow');</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <p>}</p>
+                    <p>class Wonderful extends Amazing {</p>
+                    <blockquote>static awesome() {</blockquote>
+                    <blockquote>
+                        <blockquote>super.cool();</blockquote>
+                        <blockquote>console.log('awesome')</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <blockquote>great() {</blockquote>
+                    <blockquote>
+                        <blockquote>super.cool();</blockquote>
+                        <blockquote>console.log('great')</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <p>}</p>
+                    <p>Amazing.cool();</p>
+                    <p>Wonderful.cool();</p>
+                    <p>Wonderful.awesome();</p>
+                    <p>const instance = new Wonderful();</p>
+                    <p>instance.great();</p>
+                    <p>instance.awesome();</p>
+                    <p>instance.cool();</p>
+                </div>
+                <hr class="hr">
+
+                <p>Задание 7.5.2</p>
+
+                <p>Статичные методы класса...</p>
+                <blockquote>Добавляются непосредственно в объект функцию, а не в объект-прототип</blockquote>
+                <hr class="hr">
+
+                <p>Задание 7.5.3</p>
+
+                <p>Делегирующая связь [ [Prototype] ] между двумя прототипами функции устанавливается с помощью</p>
+                <blockquote>extends</blockquote>
+                <hr class="hr">
+
+                <h2>Babel</h2>
+
+                <hr class="hr">
+                <p>В завершении хотелось бы напомнить, что не все браузеры поддерживают стандарт ES6.</p>
+
+                <div class="main__wrapper-border_green">
+                    <p>Есть такая вещь, как <a href="https://babeljs.io/"><span class="green">Babel</span></a> — это
+                        транспайлер. Он переписывает современный JavaScript в стандарт ES5. </p>
+                </div>
+                <p>Когда говорят о Babel, имеют в виду две возможности:</p>
+
+                <blockquote>1. Для того, чтобы распарсить код, разработчики используют различные инструменты, такие как
+                    webpack, подключая в него плагин Babel. Это экономит время, при разработке он транспилится в режиме
+                    реального времени.</blockquote>
+                <blockquote>2. Использование библиотек-полифиллов. Если траспайлер не может распарсить код по какой-то
+                    причине, можно поискать решения самостоятельно. Самые известные сейчас — это <a
+                        href="https://babeljs.io/repl#?browsers=defaults%2C%20not%20ie%2011%2C%20not%20ie_mob%2011&build=&builtIns=false&corejs=3.21&spec=false&loose=false&code_lz=Q&debug=false&forceAllTransforms=false&modules=false&shippedProposals=false&evaluate=false&fileSize=false&timeTravel=false&sourceType=module&lineWrap=true&presets=env%2Creact%2Cstage-2&prettier=false&targets=&version=7.10.3&externalPlugins=&assumptions=%7B%7D"><span
+                            class="green">babel-repl</span></a> и онлайн-сервис <a href="https://polyfill.io/v3/"><span
+                            class="green">polyfill.io.</span></a></blockquote>
+                            <hr class="hr">
+
+                            <h2>Практика</h2>
+                            <hr class="hr">
+
+                            <figure>
+                                <img src="../images/m10_homework.svg" width="60%" alt="">
+                            </figure>
+
+                            <h3>Задание 5.</h3>
+
+                            <p>Переписать консольное приложение из предыдущего юнита на классы.</p>
+                            <p>Общие требования:</p>
+
+                            <div class="main__wrapper-box_grey">
+                                <p>	&bull; Имена классов, свойств и методов должны быть информативными;</p>
+                                <p>	&bull; Соблюдать best practices;</p>
+                                <p>	&bull; Использовать синтаксис ES6.</p>
+                            </div>
+
+
+
+
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page4.html" class="previous">&laquo; Назад</a>
+                <a href="page6.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page4.html" class="previous round">&#8249;</a>
+                <a href="page6.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+    </div>
+</body>
+
+</html>

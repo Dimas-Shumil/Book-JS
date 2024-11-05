@@ -1,0 +1,340 @@
+@import "../sass/header.scss";
+
+$blue: #23419f;
+$green: #178253;
+$teal: #006daa;
+$red: #c32d3a;
+$yellow: #ffd900;
+$white: #fff;
+$dark-gray: #454545;
+$primary: #0a3055;
+$secondary: #454545;
+$brand: #9d0054;
+$success: #bdfa07;
+$info: #006daa;
+$warning: #ffd900;
+$anger: #c32d3a;
+$light: #f3f3f3;
+$dark: #273f2f;
+$gray: #707070;
+$pink: #c9578641;
+$accent-a: #00bbf9;
+$accent-b: #fe8;
+$font-family-sans-serif: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+$font-family-monospace: SFMono-Regular, Menlo, Monaco, Consolas, "Liberation Mono", "Courier New", monospace;
+
+// generic 
+
+.hr {
+    width: 90%;
+    margin-bottom: 30px;
+    margin-top: 30px;
+}
+
+h1 {
+    font-family: $font-family-sans-serif;
+    font-size: 22px;
+    margin: 0 20px 22px;
+    letter-spacing: 1px;
+}
+
+h2 {
+    display: inline-block;
+    font-size: 19px;
+    font-family: $font-family-sans-serif;
+    padding-left: 10px;
+    margin: 0 20px 22px;
+    letter-spacing: 1px;
+}
+
+h3 {
+    display: inline-block;
+    font-size: 19px;
+    font-family: $font-family-sans-serif;
+    border-left: 3px solid #00b43f;
+    padding-left: 10px;
+    margin: 0 20px 22px;
+    letter-spacing: 1px;
+}
+
+p {
+    font-family: $font-family-sans-serif;
+    font-size: 16px;
+    font-weight: 400;
+    margin: 0 20px 22px;
+    margin-top: 20px;
+    letter-spacing: 1px;
+
+}
+
+blockquote {
+    font-family: Arial, Helvetica, sans-serif;
+    font-size: 16px;
+    margin: 0 40px 22px;
+    margin-top: 20px;
+    letter-spacing: 1px;
+}
+
+figure {
+    display: flex;
+    flex-direction: column;
+    margin-bottom: 20px;
+}
+
+.main {
+    // border: 1px solid grey;
+    width: 90%;
+
+    &__wrapper {
+        width: 80%;
+        background-color: $white;
+        padding-bottom: 20px;
+        filter: drop-shadow(5px 5px 5px #222);
+        filter: drop-shadow(5px 5px 5px #666666);
+
+        &-box_grey {
+            width: 90%;
+            border: 1px solid grey;
+            border-radius: 4px;
+            background-color: $light;
+            margin-bottom: 30px;
+        }
+
+        &-box_blue {
+            width: 90%;
+            border: 1px solid grey;
+            border-radius: 8px;
+            background-color: $accent-a;
+            margin-bottom: 30px;
+            color: $white;
+        }
+
+        &-box_pink {
+            width: 90%;
+            border: 1px solid grey;
+            border-radius: 8px;
+            background-color: $pink;
+            margin-bottom: 30px;
+            color: $dark;
+        }
+
+        &-border_green {
+            width: 90%;
+            border: 2px solid green;
+            border-radius: 8px;
+            margin-bottom: 30px;
+        }
+
+
+        &-conteiner {
+            width: 80%;
+            padding-bottom: 30px;
+        }
+
+        & .green {
+            color: #00b43f;
+        }
+
+        & .blue {
+            background-color: #00bbf925;
+            border-radius: 8px;
+            padding: 0px 3px;
+        }
+
+        & .red {
+            color: $red ;
+        }
+    }
+}
+
+table {
+    width: 90%;
+
+    & td {
+        border: 1px solid grey;
+        padding: 10px 15px;
+    }
+}
+
+figure {
+    display: flex;
+    justify-content: center;
+    filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #666666);
+}
+
+
+// кнопка прокрутки вверх
+
+#myBtn {
+    display: none;
+    // скрыть по умолчанию
+    position: fixed;
+    // Фиксированное / липкое положение
+    bottom: 20px;
+    // Поместите кнопку в нижней части страницы
+    right: 30px;
+    // Разместить кнопку 30 пикселей от правого
+    z-index: 99;
+    // Убедитесь, что он не перекрывается 
+    border: none;
+    // Удалить границы
+    outline: none;
+    // /* Удалить контур */
+    background-color: $accent-a;
+    // Установка цвета фона
+    color: $white;
+    // Цвет текста
+    cursor: pointer;
+    padding: 15px;
+    border-radius: 10px;
+    font-size: 18px;
+    filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #666666);
+}
+
+#myBtn:hover {
+    background-color: $teal;
+}
+
+//  для кнопок вперед назад
+
+.main__btn-box {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    gap: 3px;
+    flex-shrink: 1;
+    cursor: pointer;
+    padding: 10px 15px;
+    margin: 10px 0px 20px 50px;
+    filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #666666);
+
+}
+
+.main__btn-box-o {
+    width: 100%;
+    display: none;
+    justify-content: center;
+    max-width: 100px;
+    margin-bottom: 30px;
+    padding: 3px 6px;
+    filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #666666);
+}
+
+.round {
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 15px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #666666);
+}
+
+.main__btn-box a {
+    text-decoration: none;
+    display: inline-block;
+    margin: 0 15px;
+    padding: 8px 16px;
+    border-radius: 4px;
+    filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #666666);
+}
+
+a:hover {
+    color: black;
+    background-color: $teal;
+}
+
+.previous {
+    background-color: #ddd;
+    color: black;
+}
+
+.next {
+    background-color: $accent-a;
+    color: $white;
+}
+
+.round {
+    border-radius: 50%;
+}
+
+.bloc {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    border-radius: 4px;
+    filter: drop-shadow(5px 5px 5px #222);
+    filter: drop-shadow(5px 5px 5px #666666);
+}
+
+// меню ссылок
+.sidenav {
+    height: 100%;
+    width: 0;
+    position: fixed;
+    z-index: 1;
+    top: 0;
+    right: 0;
+    background-color: #111;
+    overflow-x: hidden;
+    transition: 0.5s;
+    padding-top: 60px;
+}
+
+.sidenav a {
+    padding: 8px 8px 8px 32px;
+    text-decoration: none;
+    font-size: 25px;
+    color: #818181;
+    display: block;
+    transition: 0.3s;
+}
+
+.sidenav a:hover {
+    color: #f1f1f1;
+}
+
+.sidenav .closebtn {
+    position: absolute;
+    top: 0;
+    right: 25px;
+    font-size: 36px;
+    margin-left: 50px;
+}
+
+.sidenav__btn {
+    position: absolute;
+    top: 15px;
+    right: 15px;
+    border: 1px solid grey;
+    border-radius: 5px;
+    cursor: pointer;
+    font-size: 30px;
+}
+
+@media screen and (max-height: 450px) {
+    .sidenav {
+        padding-top: 15px;
+    }
+
+    .sidenav a {
+        font-size: 18px;
+    }
+}
+
+@media (max-width:700.9px) {
+    .main__btn-box {
+        display: none;
+    }
+
+    .main__btn-box-o {
+        display: flex;
+        filter: drop-shadow(5px 5px 5px #222);
+        filter: drop-shadow(5px 5px 5px #666666);
+    }
+}

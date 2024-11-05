@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>JS part1</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+            <div class="header__nav-title">
+                <p><strong>7.Ассоциативные массивы</strong></p>
+            </div>
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html" title="Введение"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page2.html" title="Програмирование на JavaScript: основы"><span
+                            class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page3.html" title="Логический тип и ветвление"><span
+                            class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page4.html" title="Строки. Числа"><span class="header__nav-ul_link"></span></a>
+                </li>
+                <li><a href="../pages/page5.html"
+                        title="Массивы и базовые методы работы с ними. Практикуемся с командой debugger"><span
+                            class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page6.html" title="циклы"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#" title="Ассоциативные массивы"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page8.html" title="итоги"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#" title="обратная связь"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+            <div class="main__wrapper-conteiner">
+                <figure>
+                    <img src="../img/svg/m10_cover_keys.svg" width="45%" alt="">
+                </figure>
+
+                <div class="main__wrapper-border_green">
+                    <p><span class="green">Ассоциативный массив</span> — это массив, у которого в
+                        качестве
+                        ключей
+                        используются строки.</p>
+                </div>
+
+                <p>Представить структуру данных ассоциативного массива можно как совокупность пар
+                    <strong>«ключ-значение»</strong>. В
+                    ассоциативном массиве каждое значение связано с определённым ключом. Доступ к значению
+                    осуществляется по
+                    имени ключа.
+                </p>
+                <p>В <em>JavaScript</em> объекты являются ассоциативными массивами. </p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let user = { // объект</p>
+                    <blockquote> name: "Ivan", // под ключом "name" хранится значение "Ivan"</blockquote>
+                    <blockquote> age: 30 // под ключом "age" хранится значение 30</blockquote>
+                    <p>};</p>
+                </div>
+
+                <p>Такие объекты используются для хранения <strong>именованных коллекций</strong>, а массивы, с
+                    которыми
+                    вы
+                    познакомились ранее, для хранения <strong>упорядоченных коллекций</strong>.</p>
+                <p>Литерал объекта всё же не является настоящим ассоциативным массивом, и поэтому в некоторых
+                    ситуациях
+                    его
+                    использование может привести к неожиданным результатам. В стандарте ES2015 появились структуры,
+                    которые
+                    могут стать отличной альтернативой объектам: Map, Set, WeakMap и WeakSet. </p>
+                <p>** Литерал объекта оформляется в фигурных скобках {}.</p>
+                <p>Как было указано в начале, у ассоциативного массива в качестве ключей используются строки. То
+                    есть,
+                    когда
+                    в JS создается объект с числовым свойством, оно приводится к строке. Любое значение свойства
+                    приводится
+                    к строке.</p>
+                <p>В случае, когда есть необходимость задать имя свойства любого другого типа (отличного от строки,
+                    даже
+                    объектом), можно использовать <span class="green">структуру Map</span>; она позволяет
+                    использовать ключи любого типа.</p>
+                <p><span class="green">Объект Set</span> — это особый вид коллекции: «множество» значений
+                    (без
+                    ключей), где каждое значение может появляться только один раз. То есть, в таком объекте могут
+                    храниться
+                    только уникальные значения.</p>
+                <p>WeakMap и WeakSet — более сложные структуры, о них вы можете почитать в <a
+                        href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/WeakMap">документации</a>.
+                </p>
+                <hr class="hr">
+
+                <h3>Map</h3>
+
+                <p>Рассмотрим поподробнее структуру Map на примере</p>
+
+                <p>1. Создаём объект с помощью ключевого слова new. C помощью него можно создавать такие структуры,
+                    как
+                    объекты, строки, массивы и так далее:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let map = new Map();</p>
+                </div>
+
+                <p>2. Используя метод .set() запишем несколько свойств с ключами различных типов:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>map.set("1", "string"); </p>
+                    <p>// строка в качестве ключа</p>
+                    <p>map.set(1, "number"); </p>
+                    <p>// цифра как ключ</p>
+                    <p>map.set(true, "boolean");</p>
+                    <p>// булевое значение как ключ</p>
+                </div>
+
+                <p>3. Обратимся к свойствам:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>console.log(map.get(1));</p>
+                    <p>number</p>
+                    <p>console.log(map.get("1"));</p>
+                    <p>String</p>
+                </div>
+
+                <p>4. Проверим, сколько элементов содержит объект map, используя свойство size:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>alert(map.size); </p>
+                </div>
+
+                <figure>
+                    <img src="../img/svg/m10_map.png" width="50%" alt="">
+                </figure>
+
+                <p>5. Пробежимся циклом по объекту map. Для обхода ассоциативных массивов как раз подойдет цикл
+                    for..of:
+                </p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let fruits = new Map([</p>
+                    <blockquote>["apple", "green"],</blockquote>
+                    <blockquote>["strawberry", "red"],</blockquote>
+                    <blockquote>["blueberry", "blue"]</blockquote>
+                    <p>]);</p>
+                </div>
+
+                <p>6. Для перебора по ключам — названию фрукта, используем метод .keys() (получаем название
+                    свойства):/p>
+
+                <div class="main__wrapper-box_grey">
+                    <p><strong>for</strong> (<strong>let</strong> name <strong>of</strong> fruits.keys()) {</p>
+                    <blockquote>console.log(name); // apple, strawberry, blueberry</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>7. Для перебора по <strong>значениям</strong> — цвету фрукта, используем метод .values()
+                    (получаем
+                    значение свойства):</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>for (let color of fruits.values()) {</p>
+                    <blockquote>console.log(color); // green, red, blue</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>8. Для перебора по элементам в формате [ключ, значение] делаем следующее:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p><strong>for</strong> (<strong>let</strong> elem <strong>of</strong> fruits) { // то же самое,
+                        что
+                        и
+                        recipeMap.entries()</p>
+                    <blockquote>console.log(elem); // apple, green, strawberry, red, blueberry, blue</blockquote>
+                    <p>}</p>
+                </div>
+
+                <h2>Практика</h2>
+
+                <figure>
+                    <img src="../img/svg/m10_homework (4).svg" width="45%" alt="">
+                </figure>
+
+                <h3>Задание 8.</h3>
+
+                <p>Создайте произвольный массив Map. Получите его ключи и выведите в консоль все значения в виде
+                    «Ключ —
+                    Х,
+                    значение — Y».</p>
+                <p>Используйте шаблонные строки.</p>
+            </div>
+            <div class="main__btn-box">
+                <a href="page6.html" class="previous">&laquo; Назад</a>
+                <a href="page8.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page6.html" class="previous round">&#8249;</a>
+                <a href="page8.html" class="next round">&#8250;</a>
+            </div>
+            <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+        </div>
+    </div>
+    <script async src="../script/js.js"></script>
+
+</body>
+
+</html>

@@ -1,0 +1,327 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>DOM JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                3. Работа с DOM
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <figure>
+                    <img src="../images/m13_DOM_work.svg" width="50%" alt="">
+                </figure>
+
+                <h2>Навигация и классификация узлов</h2>
+                <hr class="hr">
+
+                <h3>ParentNodes</h3>
+
+                <p>Кроме деления по типам, узлы делятся на дочерние и родительские. Соответственно, для обращения к
+                    элементам, вложенных в DOM-узел, существует два типа навигационных ссылок:</p>
+                <p><b>Для всех узлов:</b></p>
+                <blockquote>parentNode</blockquote>
+                <p><b>Только для узлов-элементов:</b></p>
+                <blockquote>parentElement</blockquote>
+
+                <h3>ChildNodes</h3>
+                <p>Дочерние узлы делятся ещё на два типа:</p>
+                <blockquote>
+                    <div class="main__wrapper-border_green">
+                        <p><span class="green">Дочерние узлы (</span>childNodes) — элементы, которые лежат
+                            непосредственно внутри того элемента, к которому обращаются (неглубокая вложенность): body
+                            для HTML.</p>
+                        <p><span class="green">Потомки</span> (children) — все элементы, которые лежат внутри тега,
+                            включая вложенные в другие теги: body, div, ul, li, b для HTML.</p>
+                    </div>
+                </blockquote>
+
+                <p><b>Для всех узлов:</b></p>
+                <blockquote><em>childNode, firstChild, lastChild</em></blockquote>
+
+                <p><b>Только для узлов-элементов:</b></p>
+                <blockquote><em>children, firstElementChild, lastElementChild</em></blockquote>
+
+                <div class="main__wrapper-box_grey">
+                    <p>Родительские узлы определяются однозначно. Обратиться к родительскому свойству можно через
+                        parentElement или parentNode. Они оба возвращают родителя.</p>
+                    <p>Но есть небольшой нюанс:</p>
+                    <p>&lsaquo; parentElement вернёт узел-элемент,</p>
+                    <p>&lsaquo; parentNode — любого родителя.</p>
+                </div>
+
+                <p><b>Пример:</b></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>document.documentElement.parentNode === document</p>
+                    <p>document.documentElement.parentElement === null</p>
+                </div>
+
+                <div class="main__wrapper-box_pink">
+                    <p><b>ВАЖНО!</b> document — не узел, а объект.</p>
+                </div>
+                <p>Для всех остальных узлов результат одинаковый.</p>
+                <p><b>firstChild, lastChild</b></p>
+                <p>Свойства firstChild и lastChild обеспечивают быстрый доступ к первому и последнему дочернему элементу
+                    из списка childNodes.</p>
+                <p>Проверить, существуют ли вообще дочерние узлы, можно с помощью функции elem.hasChildNodes().</p>
+                <p>childNodes — это псевдомассив, который можно перебрать с помощью for ... of.</p>
+
+                <div class="main__wrapper-box_pink">
+                    <p><b>ВАЖНО!</b> Цикл for ... in не подходит для перебора.</p>
+                </div>
+                <p>Методы массивов для childNodes НЕ работают, но его можно преобразовать в массив, используя методы
+                    built-in object Array, а затем использовать необходимые методы. Например, Map или forEach.</p>
+
+                <div class="main__wrapper-box_pink">
+                    <p><b>ВАЖНО!</b> Изменить DOM, оперируя элементами childNodes, НЕЛЬЗЯ. Для этого существуют
+                        специальные методы, о которых вы узнаете далее.</p>
+                </div>
+
+                <h2>Siblings</h2>
+
+                <blockquote>
+                    <div class="main__wrapper-border_green">
+                        <p><span class="green">Siblings</span> (соседи) — узлы, у которых один и тот же родитель.</p>
+                    </div>
+                </blockquote>
+                <p><b>Правый</b> (следующий) узел — nextSibling.</p>
+                <p><b>Левый</b> (предыдущий) узел — previousSibling.</p>
+                <p><b>Родитель</b> — parentNode.</p>
+                <p>Например, теги head и body — соседи.</p>
+                <p><b>Для всех узлов:</b></p>
+                <blockquote><em>previousSibling, nextSibling</em></blockquote>
+                <p><b>Только для узлов-элементов:</b></p>
+                <blockquote><em>previousElementSibling, nextElementSibling</em></blockquote>
+                <hr class="hr">
+
+                <h2>Поиск элемента в DOM</h2>
+                <hr class="hr">
+
+                <p>1. <b>по id</b></p>
+                <blockquote><em>document.getElementById(id)</em></blockquote>
+                <p>Принимает id как строку. Возвращает элемент — объект.</p>
+
+                <p>2. <b>По названию тега</b></p>
+                <blockquote><em>document.getElementsByTagName(tagName)</em></blockquote>
+                <p>Принимает название тега как строку. Возвращает массив элементов.</p>
+
+                <p>3. <b>По имени класса</b></p>
+                <blockquote><em>document.getElementsByClassName(className)</em></blockquote>
+                <p>Принимает имя класса как строку. Возвращает массив элементов.</p>
+
+                <p>4. <b>По любому CSS-селектору</b></p>
+                <blockquote><em>document.querySelector(selector)</em></blockquote>
+                <p>Принимает селектор как строку, первый символ или его отсутствие указывает на селектор (. — класс, # —
+                    id, отсутствие — имя тега). Возвращает первый элемент.</p>
+
+                <p>5. <b>По любому селектору</b></p>
+                <blockquote><em>document.querySelectorAll(selector)</em></blockquote>
+                <p>Принимает селектор как строку, первый символ или его отсутствие указывает на селектор (. — класс, # —
+                    id, отсутствие — имя тега). Возвращает массив элементов.</p>
+
+                <h2>Изменение элементов</h2>
+                <hr class="hr">
+
+                <p>1. <b>Добавление элемента</b></p>
+                <blockquote><em>document.createElement(elem)</em></blockquote>
+                <p>Принимает название тега и значение для этого атрибута как строку.</p>
+                <p><b>Пример:</b></p>
+
+                <h3>1. Создаём элемент</h3>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const customDiv = document.createElement("div");</p>
+                </div>
+
+                <h3>2. Заполняем его</h3>
+
+                <div class="main__wrapper-box_grey">
+                    <p>customDiv.innerHTML = "&lsaquo;span id=\"custom\">Привет!&lsaquo;/span>";</p>
+                </div>
+
+                <h3>3. Ищем родительский элемент и добавляем созданный элемент в дерево DOM</h3>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const parent = document.getElementById("id");</p>
+                    <p>document.body.insertBefore(customDiv, parent);</p>
+                </div>
+
+                <p>Обратите внимание на innerHTML — это довольно интересный метод, с помощью которого можно удобно
+                    совершать манипуляции с DOM, и как вы могли заметить, он может являться альтернативой для
+                    document.createElement.</p>
+                <p>Давайте попробуем переписать пример, добавив динамичности в виде шаблонных строк.</p>
+
+                <h3><b>1. Описываем переменную, которая будет контентом новых тегов</b></h3>
+
+                <div class="main__wrapper-box_grey">
+                    <p> const content = "Привет!"</p>
+                </div>
+
+                <h3><b>2. Ищем родительский элемент и добавляем новые элементы в дерево DOM</b></h3>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const parent = document.getElementById("id");</p>
+                    <p>parent.innerHTML = `
+                    <div><span id="custom"> ${content}</span></div>`;</p>
+                </div>
+
+                <p>И ещё один вариант — метод <span class="green">insertAdjacentHTML</span>.</p>
+                <blockquote>
+                    <div class="main__wrapper-border_green">
+                        <p>insertAdjacentHTML() разбирает указанный текст как HTML или XML и вставляет полученные узлы
+                            (nodes) в DOM-дерево в указанную позицию. Данная функция не переписывает имеющиеся элементы.
+                        </p>
+                    </div>
+                </blockquote>
+
+                <p>Принимает как аргументы строки — position и контент.</p>
+                <p>Position определяет позицию добавляемого элемента относительно элемента, вызвавшего метод. Должно соответствовать одному из следующих значений (чувствительно к регистру):</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p><span class="blue"> 'beforebegin':</span> до самого element (до открывающего тега);</p>
+                    <p><span class="blue"> 'afterbegin':</span> сразу после открывающего тега element (перед первым потомком);</p>
+                    <p><span class="blue"> 'beforeend':</span> сразу перед закрывающим тегом element (после последнего потомка);</p>
+                    <p><span class="blue"> 'afterend':</span> после element (после закрывающего тега).</p>
+                </div>
+
+                <p>Ищем родительский элемент и добавляем новые элементы в дерево DOM:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const parent = document.getElementById(<span class="red">"id"</span>);</p>
+                    <p>parent.insertAdjacentHTML( <span class="red"> 'afterend'</span>, `&lsaquo;div>&lsaquo;span id=<span class="red">"custom"> ${content}</span>&lsaquo;/span>&lsaquo;/div>`);</p>
+                </div>
+                <p>Документация <a href="https://developer.mozilla.org/ru/docs/Web/API/Document/createElement">здесь</a>, <a href="https://developer.mozilla.org/ru/docs/Web/API/Element/innerHTML">здесь</a> и <a href="https://developer.mozilla.org/ru/docs/Web/API/Element/insertAdjacentHTML">здесь</a>.</p>
+                <p>2. <b>Удаление элемента</b></p>
+                <blockquote><em><span class="blue">elem.removeChild(child)</span></em></blockquote>
+                <p>Принимает <em>child</em> — элемент, который должен быть удалён.</p>
+                <p><em>elem</em> — родительский элемент, из которого будет удалён <em>child</em>.</p>
+                
+                <p><b>Пример:</b></p>
+
+                <h3>1. Ищем элемент, который должен быть удалён и его родителя</h3>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const removed = <span  class="red">document.getElementById("custom")</span>;</p>
+                    <p>const div = <span  class="red">document.querySelector("div")</span>;</p>
+                </div>
+
+                <h3>2. Удаляем</h3>
+
+                <div class="main__wrapper-box_grey">
+                    <p>div.<span  class="red">removeChild</span>(removed)</p>
+                </div>
+
+                <p>Изучить больше примеров можно <a href="http://shpargalkablog.ru/2013/08/appendchild-removechild-javascript.html">здесь</a>.</p>
+                <hr class="hr">
+
+                <p>Задание 8.3.1.</p>
+                <p>Какие свойства можно использовать для навигации по элементам?</p>
+                <blockquote><span class="blue">parentNode</span></blockquote>
+                <blockquote><span class="blue">previousSibling</span></blockquote>
+                <blockquote><span class="blue">lastChild</span></blockquote>
+                <hr class="hr">
+
+                <p>Задание 8.3.2</p>
+                <p>Разница между узлом и узлом-элементом...</p>
+                <blockquote>в том, что узлы-элементы — это HTML теги, а во множество узлов входят и другие, например, document</blockquote>
+                <hr class="hr">
+
+                <p>Задание 8.3.3</p>
+                <p><b>Задача</b></p>
+                <p>Соотнесите методы с их назначением.</p>
+
+                <p><b>Поиск</b></p>
+                <blockquote><span  class="blue">getElementById</span></blockquote>
+                <blockquote><span  class="blue">getElementsByTagName</span></blockquote>
+                <blockquote><span  class="blue">getElementsByClassName</span></blockquote>
+                <blockquote><span  class="blue">querySelector</span></blockquote>
+                <blockquote><span  class="blue">querySelectorAll</span></blockquote>
+
+                <p><b>Изменение</b></p>
+                <blockquote><span  class="blue">innerHTML</span></blockquote>
+                <blockquote><span  class="blue">setAttribute</span></blockquote>
+                <blockquote><span  class="blue">style.propery</span></blockquote>
+                <blockquote><span  class="blue">innerHTML</span></blockquote>
+                
+                <p><b>Добавление</b></p>
+                <blockquote><span  class="blue">createElement</span></blockquote>
+                <blockquote><span  class="blue">insertAdjacentHTML</span></blockquote>
+         
+
+                <p><b>Удаление</b></p>
+                <blockquote><span  class="blue">removeChild</span></blockquote>
+              
+
+
+
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page2.html" class="previous">&laquo; Назад</a>
+                <a href="page4.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page2.html" class="previous round">&#8249;</a>
+                <a href="page4.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

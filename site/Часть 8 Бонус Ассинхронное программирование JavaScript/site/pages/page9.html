@@ -1,0 +1,140 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Бонус. Асинхронное программирование JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                9. Итоги
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <p>Вот и подошёл к концу модуль! Поздравляю, вы отлично справляетесь.</p>
+                <div class="main__wrapper-box_blue">
+                    <h2>В этом модуле вы:</h2>
+                    <blockquote>&bull; Разобрались с задачами и целями асинхронного программирования;</blockquote>
+                    <blockquote>&bull; Узнали, как работать с async/await и составлять цепочку запросов с помощью then;
+                    </blockquote>
+                    <blockquote>&bull; Изучили синтаксис Promise-ов;</blockquote>
+                    <blockquote>&bull; Поняли, для чего нужны setInterval и setTimeout, где применять каждый метод;
+                    </blockquote>
+                    <blockquote>&bull; Освоили тему Event Loop, микро- и макрозадач;</blockquote>
+                    <blockquote>&bull; Научились работать с addEventListener.</blockquote>
+                </div>
+                <p>Предлагаю вам решить несколько тестовых заданий и закрепить полученные знания.</p>
+                <hr class="hr">
+                <h2>Упражнение 9.1.</h2>
+
+                <p>утверждения, которые верны для асинхронного программирования:</p>
+                <blockquote>JS – однопоточный язык программирования.</blockquote>
+                <blockquote>Асинхронные функции не блокируют основной поток выполнения задач.</blockquote>
+                <hr class="hr">
+
+                <h2>Упражнение 9.2.</h2>
+
+                <p>Напишите метод, с помощью которого можно дождаться выполнения всех промисов параллельно.</p>
+                <blockquote>Promise.all()</blockquote>
+                <hr class="hr">
+
+                <h2>Упражнение 9.3.</h2>
+
+                <p>В каком случае при использовании fetch промис завершится ошибкой (rejected, а не fulfilled)?</p>
+                <blockquote>Если запрос не выполнился, ему что-то помешало</blockquote>
+                <hr class="hr">
+
+                <h2>Упражнение 9.4</h2>
+
+                <p>все макрозадачи:</p>
+                <blockquote>setTimeout() и setInterval()</blockquote>
+                <blockquote>requestAnimationFrame</blockquote>
+                <blockquote>Клик на кнопку</blockquote>
+                <hr class="hr">
+
+                <h2>Упражнение 9.5.</h2>
+
+                <p>Напишите название функции, с помощью которой можно обнулить таймаут (setTimeout) по его ID.</p>
+                <blockquote>clearTimeout()</blockquote>
+                <hr class="hr">
+
+                <h2>Упражнение 9.6</h2>
+
+                <p>Расположите в нужном порядке этапы всплытия при нажатии на ссылку:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>&lsaquo;nav></p>
+                    <blockquote>&lsaquo;div></blockquote>
+                    <blockquote>
+                        <blockquote>&lsaquo;a href="example.com">Click me!&lsaquo;/a></blockquote>
+                    </blockquote>
+                    <blockquote>&lsaquo;/div></blockquote>
+                    <p>&lsaquo;/nav></p>
+                </div>
+                <hr class="hr">
+                <blockquote>Желаем вам удачи в следующем модуле!</blockquote>
+
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page8.html" class="previous">&laquo; Назад</a>
+                <a href="../../index.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page8.html" class="previous round">&#8249;</a>
+                <a href="../../index.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="site/script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+    </div>
+</body>
+
+</html>

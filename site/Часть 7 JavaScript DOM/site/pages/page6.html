@@ -1,0 +1,567 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>DOM JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                6. Работа с HTML-формами
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#" title="Работа с HTML-формами"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <figure>
+                    <img src="../images/m13_cover_forms.svg" width="50%" alt="">
+                </figure>
+
+                <h2>Из чего состоят формы</h2>
+
+                <hr>
+
+                <p>HTML-элемент &lsaquo;form> определяет форму для сбора информации, вводимой пользователем:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>&lsaquo;form></p>
+                    <blockquote>&lsaquo;!-- элементы формы --&rsaquo;</blockquote>
+                    <p>&lsaquo;/form></p>
+                </div>
+                <div class="main__wrapper-border_green">
+                    <p><span class="green">Элементы формы</span> — это различные типы полей для ввода информации, такие
+                        как текстовые поля,
+                        чекбоксы, радио-кнопки и так далее.</p>
+                </div>
+
+                <h2>Элемент &lsaquo;input> и семантическая верстка</h2>
+
+                <p>Элемент &lsaquo;input> может быть отображен различными путями, в зависимости от атрибута type.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>&lsaquo;form></p>
+                    <blockquote>&lsaquo;input type="text" name="form_input"></blockquote>
+                    <p>&lsaquo;/form></p>
+                </div>
+
+                <p>Вот некоторые из них:</p>
+
+                <figure>
+                    <img src="../images/m13_input_types.png" width="80%" alt="">
+                    <figcaption>Источник: <a href="https://htmlbook.ru/html/input/type">htmlbook.ru</a></figcaption>
+                </figure>
+
+                <p>Семантическая верстка подразумевает использование специальных HTML-элементов с определенной ролью —
+                </p>
+                <p>вместо <span class="blue">&lsaquo;input type="button"></span> — <span
+                        class="blue">&lsaquo;button></span>,</p>
+                <p>вместо <span class="blue">&lsaquo;div class="navigation"></span> — <span
+                        class="blue">&lsaquo;nav></span> и так далее.</p>
+                <p>Они однозначно описывают свой смысл или назначение как для браузеров, так и для веб-разработчиков.
+                </p>
+                <hr class="hr">
+
+                <h2>Отправка формы на сервер</h2>
+                <hr class="hr">
+
+                <p>Чтобы связать элементы формы, можно использовать тег label.</p>
+                <p>Он устанавливает связь между определенной меткой, в качестве которой обычно выступает текст, и
+                    элементом формы (&lsaquo;input>, &lsaquo;select>, &lsaquo;textarea>). Такая связь необходима, чтобы
+                    изменять значения элементов формы при нажатии курсором мыши на текст. Кроме того, с помощью
+                    &lsaquo;label> можно устанавливать горячие клавиши на клавиатуре и переходить на активный элемент
+                    подобно ссылкам.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p><b>Связь можно установить двумя способами:</b></p>
+                    <blockquote>1. Использовать id внутри элемента формы и указании его имени в качестве атрибута for
+                        тега &lsaquo;label>;</blockquote>
+                    <blockquote>2. Поместить элемент формы внутрь контейнера &lsaquo;label>.</blockquote>
+                </div>
+
+                <p>Для отправки данных тег form содержит специальный атрибут — action.</p>
+                <p>Он указывает на обработчик, к которому обращаются данные формы при их отправке на сервер. В качестве
+                    обработчика выступает url (ссылка на сервер). После выполнения обработчиком действий по работе с
+                    данными формы он возвращает новый HTML-документ.</p>
+                <p>Если атрибут action отсутствует, текущая страница перезагружается, возвращая все элементы формы к их
+                    значениям по умолчанию.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p> <span class="blue">&lsaquo;!DOCTYPE html></span></p>
+                    <p>&lsaquo;html></p>
+                    <p>&lsaquo;head></p>
+                    <blockquote>&lsaquo;meta charset=<span class="red">"utf-8"</span>></blockquote>
+                    <blockquote>&lsaquo;meta name=<span class="red">"viewport"</span> content=<span
+                            class="red">"width=device-width"</span>></blockquote>
+                    <blockquote>&lsaquo;title>JS Bin&lsaquo;/title></blockquote>
+                    <blockquote>&lsaquo;style></blockquote>
+                    <blockquote>
+                        <blockquote>input {</blockquote>
+                    </blockquote>
+                    <blockquote>
+                        <blockquote>
+                            <blockquote>width:<span class="red"> 200px</span>;</blockquote>
+                            <blockquote>margin: <span class="red">20px 0</span>;</blockquote>
+                        </blockquote>
+                    </blockquote>
+                    <blockquote>
+                        <blockquote>}</blockquote>
+                    </blockquote>
+                    <blockquote>&lsaquo;/style></blockquote>
+                    <p>&lsaquo;/head></p>
+                    <p>&lsaquo;body></p>
+                    <blockquote>&lsaquo;form action=<span class="red">"https://yandex.ru/search/"</span> target=<span
+                            class="red">"_blank">&lsaquo;</span>/form>
+                    </blockquote>
+                    <blockquote>
+                        <blockquote>&lsaquo;label for=<span class="red">"search"</span>>Поиск в
+                            Яндекс:&lsaquo;/label>&lsaquo;br></blockquote>
+                        <blockquote>&lsaquo;input type=<span class="red">"search"</span> id=<span
+                                class="red"></span>"search" name="text" placeholder=<span class="red">"Введите поисковый
+                                запрос"</span>>&lsaquo;br></blockquote>
+                        <blockquote>&lsaquo;button type=<span class="red">"submit"</span>>Искать&lsaquo;/button>
+                        </blockquote>
+                    </blockquote>
+                    <blockquote>>&lsaquo;/form></blockquote>
+                    <p>&lsaquo;/body></p>
+                    <p>&lsaquo;/html></p>
+                </div>
+
+                <figure>
+                    <img src="../images/m13_yandex.png" width="30%" alt="">
+                </figure>
+
+                <p><b>Описание примера:</b></p>
+
+                <p>При введении запроса и клике на «Искать», кнопка <span class="blue">&lsaquo;button
+                        type="submit"</span>> отправляет данные с
+                    формы обработчику формы.</p>
+                <p>Как уже говорилось ранее, обработчиком формы обычно является страница сервера со скриптом для
+                    обработки введенных данных (в нашем случае — Яндекс). Обработчик формы указывается в атрибуте
+                    <span class="blue">action</span>.
+                </p>
+                <p>Атрибут <span class="blue">target</span> отвечает за то, откроется результат отправленной формы в
+                    новой вкладке или текущем
+                    окне. Чтобы результат формы открылся в новой вкладке, используйте значение <span
+                        class="blue">_blank</span>.</p>
+
+                <div class="main__wrapper-box_pink">
+                    <p><b>ВАЖНО!</b> Каждый элемент формы должен иметь атрибут name для отправки.</p>
+                </div>
+
+                <h2>Method</h2>
+                <hr class="hr">
+
+                <p>Существует еще один атрибут, не менее важный, чем <span class="blue">action</span> — это <span
+                        class="blue">method</span>. Он определяет, как будет отправлен запрос.</p>
+
+                <h3>Метод get</h3>
+
+                <p>Метод <span class="blue">get</span> передает данные на сервер через адресную строку браузера. При
+                    формировании запроса к серверу все переменные и их значения формируют последовательность вида:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>www.anysite.ru/form.php?var1=1&var2=2</p>
+                </div>
+
+                <p>Имена и значения переменных присоединяются к адресу сервера после знака ? и разделяются между собой
+                    знаком &. Все специальные символы и буквы, отличные от латинских, кодируются в формате %nn, пробел
+                    заменяется на +. Этот метод нужно использовать, если не передается больших объемов информации. </p>
+
+                <h3>Метод post</h3>
+
+                <p>Если вместе с формой предполагается отправка какого-либо файла, этот метод не подойдет. Метод post
+                    применяется для пересылки данных больших объемов, а также конфиденциальной информации и паролей.
+                    Данные, отправляемые с помощью этого метода, не видны в заголовке URL, так как они содержатся в теле
+                    сообщения.</p>
+                <p>По умолчанию, в теге <span class="blue">form method="get"</span>. </p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>Подробнее об отправке запросов и работе с сервером, вы изучите в модуле про AJAX, в котором вам
+                        будет показана работа с разным типом запросов.</p>
+                </div>
+                <hr class="hr">
+
+                <p>Задание 8.6.1</p>
+
+                <p>Какое значение нужно использовать для атрибута, чтобы форма отображалась следующим образом?</p>
+                <figure>
+                    <img src="../images/m13_radio.png" width="40%" alt="">
+                </figure>
+                <details>
+                    <summary>Ответ</summary>
+                    Radio
+                </details>
+                <hr class="hr">
+
+                <h2>Валидация</h2>
+                <hr class="hr">
+
+                <p>Наверняка, вы не раз встречались с тем, что когда хотели заполнить какие-то данные в форме, совершали
+                    ошибку и получали сообщение вроде «Поле заполнено неверно».</p>
+
+                <figure>
+                    <img src="../images/m13_validation.png" width="40%" alt="">
+                </figure>
+
+                <div class="main__wrapper-border_green">
+                    <p>Проверка данных, введенных в форму, называется <span class="green">валидацией</span>.</p>
+                </div>
+
+                <p>Существует <b>три</b> вида валидаций: мгновенная, по потере фокуса и по отправке формы.</p>
+
+                <p>1. <span class="green">Мгновенная валидация</span> возможна только в тех случаях, когда в процессе
+                    ввода понятно, что значение
+                    некорректное. Обычно такие ошибки связаны с неправильной раскладкой клавиатуры (кириллица вместо
+                    латиницы) или вводом букв в цифровое поле (ip-адрес и тд.) Для этих случаев используются поля с
+                    масками (см. номер телефона);</p>
+
+                <figure>
+                    <img src="../images/m13_data_form.png" width="80%" alt="">
+                </figure>
+                <p>2. <span class="green">По потере фокуса</span> — когда пользователь убирает фокус с поля, которое
+                    заполняет (кликает по другому полю, например);</p>
+                <p>3. <span class="green">По отправке формы</span> — при клике на кнопку <em>submit</em> (или любое
+                    другое действие, отправляющее форму).</p>
+                <p>Существует два разных способа проверки формы:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p> &bull; <b>Проверка на стороне клиента</b> — при заполнении в браузере, прежде чем данные будут
+                        отправлены на сервер. Можно валидировать форму с помощью JavaScript либо использовать встроенную
+                        проверку — есть специальные функции проверки формы HTML5. </p>
+                    <p> &bull; <b>Проверка на стороне сервера</b> — возникает на сервере после отправки данных.
+                        Серверный код используется для проверки данных перед их сохранением в базе данных. Если данные
+                        не проходят проверку валидности, ответ отправляется обратно клиенту, чтобы сообщить
+                        пользователю, какие исправления должны быть сделаны. </p>
+                </div>
+
+                <p>Стремитесь к использованию комбинированной проверки на стороне клиента и сервера.</p>
+                <p>Способов валидации огромное множество. Например, можно использовать:</p>
+                <p>&bull; <a href="https://developer.mozilla.org/ru/docs/Web/CSS/:valid">css классы</a> (и <a
+                        href="https://developer.mozilla.org/ru/docs/Web/CSS/:invalid">здесь</a>);</p>
+                <p>&bull; атрибут <a
+                        href="https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#attr-required">required</a>;
+                </p>
+                <p>&bull; регулярные выражения* (атрибут <a
+                        href="https://developer.mozilla.org/ru/docs/Web/HTML/Element/input#attr-pattern">pattern</a>).
+                </p>
+                <p>И другие.</p>
+
+                <blockquote>
+                    <div class="main__wrapper-border_green">
+                        <p>*<span class="green"> Регулярное выражение</span> (<em>regexp</em>) — это шаблон, который
+                            используется для соответствия комбинаций
+                            символов в текстовых строках, поэтому он идеально подходит для проверки формы (а также для
+                            многих других целей в <em>JavaScript</em>). Регулярные выражения довольно сложны. </p>
+                    </div>
+                </blockquote>
+                <p>Почитать больше о валидации <a href="https://guides.kontur.ru/principles/forms/validation/">здесь</a>
+                    и <a href="https://developer.mozilla.org/ru/docs/Learn/Forms/Form_validation">здесь</a>.</p>
+
+                <h2>Пример формы</h2>
+
+                <details>
+                    <summary><span class="green">HTML-код</span></summary>
+                    <div class="main__wrapper-box_grey">
+                        <p><span class="blue"> &lsaquo;!DOCTYPE html></span></p>
+                        <p>&lsaquo;html></p>
+                        <p>&lsaquo;head></p>
+                        <blockquote>&lsaquo;meta charset=<span class="red">"utf-8"</span>></blockquote>
+                        <blockquote>&lsaquo;meta name=<span class="red">"viewport"</span> content=<span
+                                class="red">"width=device-width"</span>></blockquote>
+                        <blockquote>&lsaquo;title>JS Bin&lsaquo;/title></blockquote>
+                        <p>&lsaquo;/head></p>
+                        <p>&lsaquo;body></p>
+                        <blockquote>&lsaquo;form class=<span class="red">"form"</span>></blockquote>
+                        <blockquote>
+                            <blockquote>&lsaquo;h2 class=<span class="red">"form__title"</span>>From here&lsaquo;/h2>
+                            </blockquote>
+                            <blockquote>&lsaquo;p class=<span class="red">"form__notice"</span>>* required
+                                fields&lsaquo;/p></blockquote>
+                            <blockquote>&lsaquo;hr></blockquote>
+                            <blockquote>&lsaquo;label class=<span class="red">"label"</span>>&lsaquo;/label>
+                            </blockquote>
+                        </blockquote>
+                        <blockquote>
+                            <blockquote>
+                                <blockquote>&lsaquo;span class=<span
+                                        class="red">"label__title"</span>>Name:&lsaquo;/span></blockquote>
+                                <blockquote>&lsaquo;input class=<span class="red">"label__input"</span> type="text"
+                                    placeholder="Name" required>
+                                </blockquote>
+                            </blockquote>
+                        </blockquote>
+                        <blockquote>
+                            <blockquote>&lsaquo;/label></blockquote>
+                        </blockquote>
+                        <blockquote>
+                            <blockquote>
+                                <blockquote>&lsaquo;label class=<span class="red">"label"</span>></blockquote>
+                            </blockquote>
+                        </blockquote>
+                        <blockquote>
+                            <blockquote>&lsaquo;span class=<span class="red">"label__title"</span>>Gender:&lsaquo;/span>
+                            </blockquote>
+                            <blockquote>&lsaquo;input class="<span class="red">label__input"</span> type=<span
+                                    class="red">"text"</span> placeholder=<span class="red">"Male or Female"</span>
+                                pattern=<span class="red">"Male|Female"</span> required></blockquote>
+                        </blockquote>
+                        <blockquote>&lsaquo;/label></blockquote>
+                        <blockquote>&lsaquo;label class=<span class="red">"label"</span>></blockquote>
+                        <blockquote>
+                            <blockquote>&lsaquo;span class=<span class="red">"label__title"</span>>Email:&lsaquo;/span>
+                            </blockquote>
+                            <blockquote>&lsaquo;input class=<span class="red">"label__input"</span> type=<span
+                                    class="red">"email"</span> placeholder=<span class="red">"email@domain.com"</span>
+                                required></blockquote>
+                            <blockquote>&lsaquo;span class=<span class="red">"label__hint"</span>>Form field
+                                hint&lsaquo;/span></blockquote>
+                        </blockquote>
+                        <blockquote>&lsaquo;/label></blockquote>
+
+                        <blockquote>&lsaquo;label class=<span class="red">"label"</span>></blockquote>
+                        <blockquote>
+                            <blockquote>&lsaquo;span class=<span
+                                    class="red">"label__title"</span>>Website:&lsaquo;/span></blockquote>
+                            <blockquote>&lsaquo;input class=<span class="red">"label__input"</span> type=<span
+                                    class="red">"url" </span>placeholder=<span class="red">"www.example.com"</span>
+                                required></blockquote>
+                            <blockquote>&lsaquo;span class=<span class="red">"label__hint"</span>>Form field
+                                hint&lsaquo;/span></blockquote>
+                        </blockquote>
+                        <blockquote>&lsaquo;/label></blockquote>
+                        <blockquote>&lsaquo;label class=<span class="red">"label"</span>></blockquote>
+                        <blockquote>
+                            <blockquote>&lsaquo;span class=<span
+                                    class="red">"label__title"</span>>Message:&lsaquo;/span></blockquote>
+                            <blockquote>&lsaquo;textarea class=<span class="red">"textarea"</span>>&lsaquo;/textarea>
+                            </blockquote>
+                        </blockquote>
+                        <blockquote>&lsaquo;/label></blockquote>
+                        <blockquote>&lsaquo;button class=<span class="red">"form__submit"</span>>Submit&lsaquo;/button>
+                        </blockquote>
+                        <blockquote>&lsaquo;/form></blockquote>
+                        <p>&lsaquo;/body></p>
+                        <p>&lsaquo;/html></p>
+                    </div>
+                </details>
+
+                <details>
+                    <summary><span class="green">CSS-код</span></summary>
+                    <div class="main__wrapper-box_grey">
+                        <p>* {</p>
+                        <blockquote>padding: 0;</blockquote>
+                        <blockquote> margin: 0;</blockquote>
+                        <p>}</p>
+                        <p>body {</p>
+                        <blockquote>font-size: 16px;</blockquote>
+                        <blockquote>padding-top: 20px;</blockquote>
+                        <p>}</p>
+                        <p><span class="red">.form</span> {</p>
+                        <blockquote>width: <span class="red">585px;</span></blockquote>
+                        <blockquote>margin: <span class="red">0</span> auto;</blockquote>
+                        <blockquote>display: flex;</blockquote>
+                        <blockquote>flex-direction: column;</blockquote>
+                        <blockquote>font-family: Arial, Helvetica, sans-serif;</blockquote>
+                        <p>}</p>
+                        <p><span class="red">.form__notice</span> {</p>
+                        <blockquote>color: <span class="red">#ff3f3f;</span></blockquote>
+                        <blockquote> margin-bottom:<span class="red"> 5px;</span></blockquote>
+                        <p>}</p>
+                        <p><span class="red">.label</span> {</p>
+                        <blockquote>display: flex;</blockquote>
+                        <blockquote>margin-top: <span class="red">20px</span>;</blockquote>
+                        <blockquote>position: relative;</blockquote>
+                        <p>}</p>
+                        <p><span class="red">.label__title</span> {</p>
+                        <blockquote>width:<span class="red"> 65px</span>;</blockquote>
+                        <blockquote>margin-right: <span class="red">33px</span>;</blockquote>
+                        <blockquote>font-weight: bold;</blockquote>
+                        <p>}</p>
+                        <p><span class="red">.textarea</span> {</p>
+                        <blockquote>margin-bottom: <span class="red">25px</span>;</blockquote>
+                        <blockquote>resize: none;</blockquote>
+                        <blockquote>box-sizing: border-box;</blockquote>
+                        <blockquote>width: <span class="red">288px</span>;</blockquote>
+                        <blockquote>height: <span class="red">90px</span>;</blockquote>
+                        <p>}</p>
+                        <p><span class="red">.label__input,</span></p>
+                        <p><span class="red">.textarea</span> {</p>
+                        <blockquote>padding: <span class="red">9px</span>;</blockquote>
+                        <blockquote>border-radius: <span class="red">5px</span>;</blockquote>
+                        <blockquote>border: <span class="red">2px</span> solid<span class="red"> #343435</span>;</blockquote>
+                        <p>}</p>
+                        <p><span class="red">.form__submit</span> {</p>
+                        <blockquote>font-weight: bold;</blockquote>
+                        <blockquote> margin-bottom: <span class="red">70px</span>;</blockquote>
+                        <blockquote>width: <span class="red">115px</span>;</blockquote>
+                        <blockquote>height: <span class="red">35px</span>;</blockquote>
+                        <blockquote>border-radius: <span class="red">5px</span>;</blockquote>
+                        <blockquote>background: <span class="red">#f3f3f3</span>;</blockquote>
+                        <blockquote>border: <span class="red">2px</span> solid <span class="red">#b9b9ba</span>;</blockquote>
+                        <blockquote>cursor: pointer;</blockquote>
+                        <p>}</p>
+                        <p><span class="red">.label__hint</span> {</p>
+                        <blockquote> font-size: <span class="red">12px</span>;</blockquote>
+                        <blockquote>font-weight: bold;</blockquote>
+                        <blockquote>position: absolute;</blockquote>
+                        <blockquote>left: <span class="red">405px</span>;</blockquote>
+                        <blockquote>padding: <span class="red">6px</span>;</blockquote>
+                        <blockquote>width: <span class="red">130px</span>;</blockquote>
+                        <blockquote>background-color: <span class="red">#d45252</span>;</blockquote>
+                        <blockquote>color: white;</blockquote>
+                        <blockquote>text-align: center;</blockquote>
+                        <blockquote>vertical-align: center;</blockquote>
+                        <blockquote>opacity: <span class="red">0</span>;</blockquote>
+                        <p>}</p>
+                        <p><span class="red">,label__hint::before</span>{</p>
+                        <blockquote>content: <span class="red">''</span>;</blockquote>
+                        <blockquote>width:<span class="red"> 0</span>;</blockquote>
+                        <blockquote>height:<span class="red"> 0</span>;</blockquote>
+                        <blockquote>border-top:<span class="red"> 10px</span> solid transparent;</blockquote>
+                        <blockquote>border-bottom: <span class="red">10px</span> solid transparent;</blockquote>
+                        <blockquote>border-right: <span class="red">10px</span> solid<span class="red"> #d45252</span>;</blockquote>
+                        <blockquote>position: absolute;</blockquote>
+                        <blockquote>left: <span class="red">-5px</span>;</blockquote>
+                        <blockquote>top: <span class="red">50%</span>;</blockquote>
+                        <blockquote>transform: translateY(-50%);</blockquote>
+                        <p>}</p>
+                        <p><span class="red">.label__input:invalid + .label__hin</span>t {</p>
+                        <blockquote>opacity:<span class="red"> 1</span>;</blockquote>
+                        <p>}</p>
+                    </div>
+                </details>
+                <hr class="hr">
+
+                <div class="main__wrapper-box_grey">
+                    <p><b><img src="../images/book_1.png" width="25px" alt=""> Дополнительные материалы по regexp</b>
+                    </p>
+                    <p>1. <a
+                            href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/RegExp">Документация</a>
+                    </p>
+                    <p>2. <a href="https://learn.javascript.ru/regular-expressions">Регулярные выражения</a></p>
+                </div>
+                <hr class="hr">
+
+                <p>Задание 8.6.2</p>
+
+                <p>Что такое семантическая верстка?</p>
+                <blockquote>использование специальных тегов с конкретным смыслом (button, header и тд)</blockquote>
+                <hr class="hr">
+
+                <p>Задание 8.6.3</p>
+
+                <p>В теге form атрибут method...</p>
+                <blockquote>Принимает два значения: get и post, которые определяют тип запроса к серверу</blockquote>
+                <hr class="hr">
+
+                <p>Задание 8.6.4</p>
+
+                <p>Что такое валидация полей формы?</p>
+                <blockquote>Проверка данных, введенных в форму</blockquote>
+                <hr class="hr">
+
+                <h2>*Практика</h2>
+                <hr class="hr">
+
+                <figure>
+                    <img src="../images/m10_homework.svg" width="40%" alt="">
+                </figure>
+
+                <h2>Слайдер для фото</h2>
+
+                <div class="main__wrapper-box_pink">
+                    <p><b>*ВАЖНО!</b> Это задание не является обязательным. Вы можете отработать изученные в этом модуле
+                        темы в
+                        тренажере JavaScript. Но если вы хотите больше заданий и чувствуете в себе силы на реализацию
+                        чего-то более сложного, предлагаем выполнить следующее задание.</p>
+                </div>
+
+                <div class="main__wrapper-border_green">
+                    <p>Реализуйте слайдер для фото, исходя из требований ниже.</p>
+                </div>
+
+                <h2>Общие требования:</h2>
+                <div class="main__wrapper-box_grey">
+                    <p>&bull; Должна быть возможность пролистывать фото. Например, добавить 2 кнопки вперед и назад
+                        (предыдущее, следующее и так далее);</p>
+                    <p>&bull; При клике «назад» на первом фото должно открываться последнее. При клике «вперед» на
+                        последнем фото должно открываться первое;</p>
+                    <p>&bull; Блок, в котором располагаются изображения, не должен меняться под размер картинок;</p>
+                    <p>&bull; Добавить анимацию при переключении фото;</p>
+                    <p>&bull; На входе — массив изображений. Их может быть любое количество. Нельзя завязываться на
+                        порядковый номер элемента;</p>
+                    <p>&bull; Картинки можно положить в папку <em>asset</em>. Либо использовать стороннее API, сделав
+                        GET запрос для получения изображений;</p>
+                    <p>&bull; Соблюдать семантическую верстку;</p>
+                    <p>&bull; Использовать селекторы по тегу для задания стилей нельзя. Использовать классы. В случае,
+                        когда есть необходимость — селектор по id;</p>
+                    <p>&bull; Дизайн произвольный. Минимум — застилизовать кнопки (добавить <em>hover</em>) и обеспечить
+                        для них <em>accessibility</em>: переключение по <em>tab, outline, cursor</em>.</p>
+                </div>
+
+
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page5.html" class="previous">&laquo; Назад</a>
+                <a href="page7.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page5.html" class="previous round">&#8249;</a>
+                <a href="page7.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

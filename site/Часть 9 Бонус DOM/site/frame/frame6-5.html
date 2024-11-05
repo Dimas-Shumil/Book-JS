@@ -1,0 +1,199 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>CodePen Embed - classList.replace</title>
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="JOj5lo0umMy46hxvq6JySbTp3HeMtRYdUI29y6fBiU00vYryxZE44Wq6mjnQnZ3mzqQMARTHTSh31egOFwb4ag==" />
+<link rel="stylesheet" media="all" href="https://cpwebassets.codepen.io/assets/embed/embed-33cedda414aa70caa96fcf996c35d6ce012ec18cd3e60b3ca5218af0476108ec.css" />
+<style>
+    .hide {
+      display: none !important;
+    }
+    .embed-footer,
+    .embed-nav {
+      background: #fefefe;
+      
+    }
+    .embed-nav .code-types a,
+    .embed-nav .result-button-list a,
+    .action-button {
+      color: #333333;
+      background-color: #eeeeee;
+    }
+    .embed-nav .code-types a.active,
+    .embed-nav .result-button-list a.active,
+    .action-button.active {
+      background: #cccccc;
+      color: #333333;
+      box-shadow: inset 0px 3px #333333;
+    }
+    .embed-nav .logo-wrap .edit-on-codepen {
+      color: #333333;
+    }
+
+    .embed-nav svg {
+      stroke: #333333 !important;
+    }
+  </style>
+<link rel="stylesheet" media="all" href="https://cpwebassets.codepen.io/assets/editor/themes/classic-11a07298fe68d05065b0fe718ba52b0a413be15b705ec0903f296411e9beb8fe.css" />
+</head>
+<body id="the-body" style="border: 1px solid #eeeeee; --borderWidth: 1px;" class="codepen-embed-body split-output static">
+<nav class="embed-nav group" id="embed-nav">
+<ul class="code-types">
+<li class="code-type">
+<a id="html-link" href="#html-box" role="button" aria-pressed="false">
+HTML
+</a>
+</li>
+<li class="code-type">
+<a id="css-link" href="#css-box" role="button" aria-pressed="false">
+CSS
+</a>
+</li>
+<li class="code-type">
+<a id="js-link" href="#js-box" role="button" class="active" aria-pressed="true">
+JS
+</a>
+</li>
+</ul>
+<ul class="result-button-list">
+<li class="results results-type">
+<a id="result-link" href="#result-box" class="active" aria-pressed="true" role="button">
+Result
+</a>
+</li>
+<li>
+<a href="#resources-link" id="skip-results-iframe-link">Skip Results Iframe</a>
+</li>
+</ul>
+<div class="logo-wrap" id="edit-area">
+<a class="edit-on-codepen" target="_blank" rel="noopener" href="https://codepen.io/SkillFactory/pen/zYMeoZm" title="Edit on CodePen">
+<div class="large-logo">
+<span id="edit-on-text" class="open-on">EDIT ON</span>
+<svg id="embed-codepen-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 138 26" fill="none" stroke="#000" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="CodePen">
+<path d="M80 6h-9v14h9m34-14h-9v14h9m-3-7h-6m-28 0h-6m51 7V6l11 14V6M22 16.7L33 24l11-7.3V9.3L33 2 22 9.3v7.4zm22 0L33 9.3l-11 7.4m0-7.4l11 7.3 11-7.3M33 2v7.3m0 7.4V24m55-10h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14M15 8c-1.3-1.3-3-2-5-2-4 0-7 3-7 7s3 7 7 7c2 0 3.7-.8 5-2m49-5c0 4-3 7-7 7h-5V6h5c4 0 7 3 7 7z" />
+</svg>
+</div>
+<div class="box-logo">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 0 26 26" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3" role="img" aria-label="Edit on CodePen">
+<path id="icon-codepen-box" d="M22 16.7L33 24l11-7.3V9.3L33 2 22 9.3v7.4zm22 0L33 9.3l-11 7.4m0-7.4l11 7.3 11-7.3M33 2v7.3m0 7.4V24" />
+</svg>
+</div>
+</a>
+</div>
+</nav>
+<div id="output" data-border-style="thin" data-header="true">
+<div id="html-box" class="code-wrap code-box box " role="region" aria-label="HTML">
+<pre tabindex="0"><code data-lang="htmlmixed" id="actual-html-code">&lt;div class=&quot;image-container&quot;&gt;
+  &lt;img src=&quot;https://images.unsplash.com/photo-1548567117-02328f050eaa?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1770&amp;q=80&quot; alt=&quot;Изображение&quot; class=&quot;image not-liked&quot;&gt;
+  &lt;button id=&quot;like-button&quot; class=&quot;like-button&quot;&gt;❤️&lt;/button&gt;
+&lt;/div&gt;</code></pre>
+</div>
+<div id="css-box" class="code-wrap code-box box " role="region" aria-label="CSS">
+<pre tabindex="0"><code data-lang="css" id="actual-css-code">.image-container {
+  position: relative;
+  display: flex;
+  width: fit-content;
+  margin: auto;
+}
+
+.image {
+  width: 300px;
+  height: 300px;
+}
+
+.like-button {
+  position: absolute;
+  top: 10px;
+  right: 10px;
+  font-size: 24px;
+  background-color: transparent;
+  border: none;
+  cursor: pointer;
+}
+
+.not-liked {
+  border: 10px dotted #1f3f72;
+}
+
+.liked {
+  border: 10px dotted #e46bf4;
+}
+</code></pre>
+</div>
+<div id="js-box" class="code-wrap code-box box active" role="region" aria-label="JS">
+<pre tabindex="0"><code data-lang="javascript" id="actual-js-code">const image = document.querySelector(&quot;.image&quot;);
+const likeButton = document.getElementById(&quot;like-button&quot;);
+likeButton.addEventListener(&quot;click&quot;, () =&gt; {
+  image.classList.replace(&quot;not-liked&quot;, &quot;liked&quot;);
+  likeButton.innerHTML = &quot;💖&quot;;
+});
+</code></pre>
+</div>
+<div id="result-box" class="code-box active zoom-1" role="region" aria-label="Result">
+<iframe allow="accelerometer *; bluetooth *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *" allowfullscreen="true" allowpaymentrequest="true" allowTransparency="true" class="result-iframe  " frameborder="0" id="result-iframe" loading="lazy" name="CodePen Preview for classList.replace" sandbox="allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups-to-escape-sandbox allow-popups allow-presentation allow-same-origin allow-scripts allow-top-navigation-by-user-activation" scrolling="yes" title="CodePen Preview for classList.replace" data-src="https://codepen.io/SkillFactory/fullembedgrid/zYMeoZm?animations=run&type=embed" src="https://codepen.io/SkillFactory/fullembedgrid/zYMeoZm?animations=run&type=embed">
+  </iframe>
+</div>
+<div id="about-box">
+<div class="about-container">
+<div class="about-user">
+<a href="https://codepen.io/SkillFactory" target="_blank" rel="noopener"><img src="https://assets.codepen.io/7838599/internal/avatars/users/default.png?fit=crop&amp;format=auto&amp;height=256&amp;version=1690207156&amp;width=256" loading="lazy" alt class="about-image"></a>
+<div class="about-user-info">
+<p>
+This Pen is owned by <a href="https://codepen.io/SkillFactory" target="_blank" rel="noopener">Skillfactory</a> on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.
+It is a fork of <a href="https://codepen.io/elizaveta-malysheva/fullpage/PoxboGE?default-tab=js%2Cresult&amp;height=300&amp;name=cp_embed_4&amp;slug-hash=zYMeoZm&amp;theme-id=light&amp;user=SkillFactory&amp;view=">this Pen.</a>
+</p>
+<p>
+<a href="/SkillFactory" target="_blank" rel="noopener" class="about-user-more">
+See more by @SkillFactory on CodePen
+</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="resources-box" class="resources-box">
+<h3>External CSS</h3>
+<p>
+This Pen doesn't use any external CSS resources.
+</p>
+<h3>External JavaScript</h3>
+<p>
+This Pen doesn't use any external JavaScript resources.
+</p>
+</div>
+</div>
+<footer class="embed-footer" id="embed-footer">
+<button id="resources-link" class="resources-link action-button bottom left" href="#resources-box" aria-pressed="false" role="button">
+Resources
+</button>
+<ul class="scaling-choices bottom right">
+<li><button class="action-button" id="zoom-button-1">1×</button></li>
+<li><button class="action-button" id="zoom-button-05">0.5×</button></li>
+<li><button class="action-button" id="zoom-button-025">0.25×</button></li>
+</ul>
+<button id="rerun-button" class="action-button rerun-button bottom right">
+Rerun
+</button>
+</footer>
+<script nonce="YFzNX2GDm/s=">
+    __processedPen = {"html":"&lt;div class=&quot;image-container&quot;&gt;\n  &lt;img src=&quot;https://images.unsplash.com/photo-1548567117-02328f050eaa?ixlib=rb-4.0.3&amp;ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&amp;auto=format&amp;fit=crop&amp;w=1770&amp;q=80&quot; alt=&quot;Изображение&quot; class=&quot;image not-liked&quot;&gt;\n  &lt;button id=&quot;like-button&quot; class=&quot;like-button&quot;&gt;❤️&lt;/button&gt;\n&lt;/div&gt;","css":".image-container {\n  position: relative;\n  display: flex;\n  width: fit-content;\n  margin: auto;\n}\n\n.image {\n  width: 300px;\n  height: 300px;\n}\n\n.like-button {\n  position: absolute;\n  top: 10px;\n  right: 10px;\n  font-size: 24px;\n  background-color: transparent;\n  border: none;\n  cursor: pointer;\n}\n\n.not-liked {\n  border: 10px dotted #1f3f72;\n}\n\n.liked {\n  border: 10px dotted #e46bf4;\n}","js":"const image = document.querySelector(&quot;.image&quot;);\nconst likeButton = document.getElementById(&quot;like-button&quot;);\nlikeButton.addEventListener(&quot;click&quot;, () =&gt; {\n  image.classList.replace(&quot;not-liked&quot;, &quot;liked&quot;);\n  likeButton.innerHTML = &quot;💖&quot;;\n});"};
+    __preprocessors = {
+      "html": "none",
+      "css": "none",
+      "js": "none"
+    };
+    __preprocessorNames = {
+      "html": "HTML",
+      "css": "CSS",
+      "js": "JS"
+    };
+    __editable = false;
+    __embed_prefill = false;
+  </script>
+<script src="https://cpwebassets.codepen.io/assets/embed/embed-d492f8b0f63f0a8ba679c9cd0a2fffbaa24504a7928435ba1bfc1859f904e02b.js"></script>
+<script nonce="YFzNX2GDm/s=">(function(){function c(){var b=a.contentDocument||a.contentWindow.document;if(b){var d=b.createElement('script');d.nonce='YFzNX2GDm/s=';d.innerHTML="window.__CF$cv$params={r:'8cdbf78dd9ff0b87',t:'MTcyODExNjE2MC4wMDAwMDA='};var a=document.createElement('script');a.nonce='YFzNX2GDm/s=';a.src='/cdn-cgi/challenge-platform/scripts/jsd/main.js';document.getElementsByTagName('head')[0].appendChild(a);";b.getElementsByTagName('head')[0].appendChild(d)}}if(document.body){var a=document.createElement('iframe');a.height=1;a.width=1;a.style.position='absolute';a.style.top=0;a.style.left=0;a.style.border='none';a.style.visibility='hidden';document.body.appendChild(a);if('loading'!==document.readyState)c();else if(window.addEventListener)document.addEventListener('DOMContentLoaded',c);else{var e=document.onreadystatechange||function(){};document.onreadystatechange=function(b){e(b);'loading'!==document.readyState&&(document.onreadystatechange=e,c())}}}})();</script></body>
+</html>

@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Функции JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                3. Прототип и конструктор объекта
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <figure>
+                    <img src="../images/m12_cover_prototype.svg" width="50%" alt="">
+                </figure>
+
+                <div class="main__wrapper-border_green">
+                    <p><span class="green">Прототип (Prototype)</span> — это объект, который служит вспомогательным
+                        объектом (делегатом), к характеристикам которого может обратиться оригинальный объект, в случае,
+                        если сам оригинальный объект не обладает нужной характеристикой.</p>
+                </div>
+                <p>Прототип хранит общий функционал и предоставляет к нему совместный доступ множеству объектов. Не
+                    нужно повторять один и тот же функционал в каждом объекте. Общие методы можно вынести в отдельный
+                    объект и через механизм прототипа обеспечить к нему совместный доступ.</p>
+                <p>Каждый объект имеет ноль или несколько свойств, которые называются <strong>собственными(own)</strong>
+                    и единственную внутреннюю ссылку на прототип.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const person = {</p>
+                    <p>city: "Moscow"</p>
+                    <p>}</p>
+                    <p>// создаем объект с прототипом</p>
+                    <p>const student = Object.create(person);</p>
+                    <p>// добавляем собственное свойство объекту student</p>
+                    <p>student.ownCity = "Piter";</p>
+                    <p>// обращаемся к свойству, которого нет в объекте student, но есть в его прототипе person </p>
+                    <p>console.log(student.city); // Moscow</p>
+                </div>
+
+                <p>Cвойство __proto__ содержит внутреннюю ссылку на прототип объекта. Это свойство есть абсолютно у всех
+                    объектов в JavaScript.</p>
+                <p>При создании объекта через литерал {}, его прототипом автоматически становится специальный built-in
+                    объект, который уже содержит ряд методов для работы с объектом.</p>
+                <p>Данный прототип единственный и будет предоставлять доступ к своим методам всем объектам, созданным в
+                    программе.</p>
+
+                <figure>
+                    <img src="../images/m12_proto_code.png" width="80%" alt="">
+                </figure>
+
+                <p>Таким образом, через __proto__, можно обращаться ТОЛЬКО через консоль. В программах так писать
+                    нельзя! Это свойство является скрытым системным и такое обращение является ошибкой. Чтобы получить
+                    доступ к __proto__ можно использовать свойство <span class="green">getPrototypeOf</span>.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>Object.getPrototypeOf(student); // person</p>
+                </div>
+
+                <p>Вернемся к примеру и попробуем перебрать свойства объекта:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>for (let key in student) {</p>
+                    <blockquote>console.log(key); // city, ownCity</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>Как можно заметить, в консоли появились свойства из прототипа. Чтобы вывести только собственные
+                    свойства объекта, можно использовать метод <span class="green">hasOwnProperty</span>.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>for (let key in student) {</p>
+                    <blockquote>if (student.hasOwnProperty(key)) {</blockquote>
+                    <blockquote>
+                        <blockquote>console.log(key); // ownCity</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <p>}</p>
+                </div>
+                <hr class="hr">
+
+                <p>Задание 7.3.1</p>
+
+                <p>Для чего нужен прототип?</p>
+                <blockquote>Обеспечить совместный доступ к методам и свойствам объекта-делегата (родителя, записанного в
+                    прототип), вместо многократного копирования одного и того же кода</blockquote>
+                <hr>
+
+                <h2>Функции как объекты</h2>
+
+                <hr class="hr">
+
+                <p>В JavaScript есть одна особенность. Несмотря на то, что:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const f = function() {</p>
+                    <p>}</p>
+                    <p>typeof f; // ’function’</p>
+                </div>
+                <p><strong>Функция в JavaScript это — тоже объект!</strong></p>
+                <p>Можно создавать свойства как в обычном объекте:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const f = function() {</p>
+                    <p>}</p>
+                    <p>f.static = 1000;</p>
+                </div>
+
+                <p>Но такое использование встречается редко. Кроме классического использования, функции часто используют
+                    как конструкторы. Об этом поговорим подробнее чуть позднее.</p>
+                <p>У любой функции есть свойство Prototype — оно по умолчанию является объектом с единственным свойством
+                    constructor, которое ссылается на саму функцию.</p>
+
+                <div class="main__wrapper-box_blue">
+                    <p><strong>ВАЖНО!</strong> Prototype есть только у функций</p>
+                    <p>__proto__ есть у всех объектов</p>
+                    <p>Prototype !== __proto__</p>
+                </div>
+
+                <p>Свойство Prototype используется, когда функция-конструктор вызывается через ключевое слово new. </p>
+                <hr>
+                <h2>Встроенные и объекты-обертки</h2>
+
+                <hr class="hr">
+
+                <p>Задание 7.3.2</p>
+
+                <p>С помощью какого метода можно определить собственное свойство объекта?</p>
+                <blockquote>hasOwnProperty</blockquote>
+                <hr class="hr">
+
+                <div class="main__wrapper-box_grey">
+                    <p><strong><img src="../images/book_1.png" width="25px" alt=""> Дополнительно</strong></p>
+                    <p><a href="https://learn.javascript.ru/new-prototype">Свойство F.prototype и создание объектов
+                            через new</a></p>
+                </div>
+                <hr>
+
+                <p>Задание 7.3.3</p>
+                <p>Выберите верные утверждения</p>
+                <blockquote><strong>да</strong></blockquote>
+                <blockquote>__proto__и prototype - разные свойства</blockquote>
+                <blockquote>__proto__есть абсолютно у всех объектов</blockquote>
+                <blockquote>к __proto__нельзя обращаться на прямую в коде</blockquote>
+                <blockquote>Для обращения к __proto__сущесвует метод getPrototypeOf</blockquote>
+                <blockquote>
+                    <blockquote>нет</blockquote>
+                    <blockquote>prototype усть у всех объектов кроме функций</blockquote>
+                    <blockquote>Можно удалить свойство объекта с помощью оператора in</blockquote>
+                    <blockquote>Для обращения к prototype существует метод getPrototype</blockquote>
+                </blockquote>
+                <hr class="hr">
+
+                <h2>Практика</h2>
+
+                <hr class="hr">
+
+                <figure>
+                    <img src="../images/m10_homework.svg" width="50%" alt="">
+                </figure>
+
+                <h3>Задание 1.</h3>
+
+                <p>Написать, функцию, которая принимает в качестве аргумента объект и выводит в консоль все ключи и значения только собственных свойств. Данная функция не должна возвращать значение.</p>
+
+                <h3>Задание 2.</h3>
+
+                <p>Написать функцию, которая принимает в качестве аргументов строку и объект, а затем проверяет есть ли у переданного объекта свойство с данным именем. Функция должна возвращать true или false.</p>
+
+                <h3>Задание 3.</h3>
+
+                <p>Написать функцию, которая создает пустой объект, но без прототипа.</p>
+
+
+
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page2.html" class="previous">&laquo; Назад</a>
+                <a href="page4.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page2.html" class="previous round">&#8249;</a>
+                <a href="page4.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+    </div>
+</body>
+
+</html>

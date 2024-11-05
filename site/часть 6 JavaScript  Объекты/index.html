@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="site/css/sass.css">
+    <title>Объекты JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                1. Введение
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page6.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <figure>
+                    <img src="site/images/m12_cover_start.svg" width="50%" alt="">
+                </figure>
+
+                <p>В этом модуле подробно поговорим об объектах. А именно:</p>
+
+                <div class="main__wrapper-box_blue">
+                    <p>&bull; проведем параллель с реальной жизнью, а также узнаем об особенностях и отличии от примитивных типов данных;</p>
+                    <p>&bull; вспомним, что такое built-in object и поговорим об объектах-обертках;</p>
+                    <p>&bull; рассмотрим еще один тип функций — конструктор;</p>
+                    <p>&bull; поговорим об ООП и его реализации в JavaScript через функции и классы.</p>
+                </div>
+
+                <div class="main__wrapper-border_green">
+                    <p>Кроме этого, в Тренажёре по JavaScript  вы можете дополнительно отработать эту тему в разделах:</p>
+                    <p>1. Объекты (3 задания);</p>
+                    <p>2. Объектно-ориентированное программирование (2 задания);</p>
+                    <p>3. this (5 заданий).</p>
+                </div>
+
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="site/pages/page6.html" class="previous">&laquo; Назад</a>
+                <a href="site/pages/page2.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="site/pages/page6.html" class="previous round">&#8249;</a>
+                <a href="site/pages/page2.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="site/script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+    </div>
+</body>
+
+</html>

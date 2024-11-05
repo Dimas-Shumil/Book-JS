@@ -1,0 +1,640 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Бонус. Асинхронное программирование JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                3. Асинхронные операции с использованием Promise
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page9.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <p>Погружаемся дальше в мир асинхронного программирования. В этот раз мы познакомимся с Promise. Этот
+                    инструмент позволяет работать с асинхронным кодом и обрабатывать его результат и ошибки.</p>
+                <p>До промисов асинхронное программирование работало на коллбэках. А это значит, что, если коллбэков
+                    было много, то такой код превращался в нечитаемое полотно. Такие ситуации называли «адом коллбэков».
+                </p>
+
+                <div class="main__wrapper-box_blue">
+                    <p>Если коротко, то «ад» — это когда коллбэков становится очень много и они вложены друг в друга.
+                        Как матрёшка, пакеты в пакете или сковородки в духовке.</p>
+                </div>
+
+                <figure>
+                    <img src="../images/INTFR_9_3_1.png" width="70%" alt="">
+                    <label for="">Визуализация Event Loop. Источник: medium.com</label>
+                </figure>
+
+                <p>Поэтому сегодня мы будем говорить о промисах. Это ещё один кит, на котором стоит современная
+                    веб-разработка.</p>
+                <p>Итак, что это?</p>
+                <h3>Promise — это объект для работы с асинхронными функциями. Он хранит в себе своё состояние. И в
+                    зависимости от состояния может отрабатывать разные задачи.</h3>
+                <p>Промис в переводе с английского — «обещание».</p>
+                <p>Представьте: вы приходите в магазин за хлебом. За конкретным — кукурузным с семечками. А продавец
+                    говорит: подождите, я сейчас схожу посмотрю, остался ли он. Продавец пообещал что-то сделать с вашим
+                    запросом. С этого момента промис в обработке.</p>
+                <p>Дальше варианта два. Кукурузный с семечками есть — и тогда вы получаете его в руки. Или его нет —
+                    придётся брать батон или черный с тмином.</p>
+                <p>Так же и у результата промисов — два варианта. Либо всё прошло успешно, либо нет.</p>
+
+                <h2>Состояния промисов</h2>
+
+                <p>У промиса есть три состояния:</p>
+                <p> &bull; pending — это значит, что промис в состоянии ожидания результата;</p>
+                <p> &bull; fulfilled — это значит, что промис завершен;</p>
+                <p> &bull; rejected — означает, что промис отклонён.</p>
+                <p>Разберём эти состояния на примере с хлебом.</p>
+                <p>Когда вы пришли в магазин и попросили дать хлеб, запустился процесс промиса. Пока продавец проверяет,
+                    есть ли нужный товар, статус промиса — pending.</p>
+                <p>Как только продавец определился с наличием или отсутствием хлеба, статус промиса меняется. Если хлеб
+                    наш, то статус промиса — fulfilled. Если сегодня без кукурузного — то rejected.</p>
+                <p>Есть важный момент. Смотрите, если хлеба сегодня нет — это значит, что его точно нет. И не будет.
+                    Приходите завтра.</p>
+                <p>То же самое со статусом промиса. Как только он установился, его уже нельзя поменять. Благодаря этому
+                    промисы — надёжный инструмент для работы с асинхронным кодом.</p>
+
+                <h2>Синтаксис</h2>
+                <p>Синтаксис создания Promise выглядит, например, так:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const Promise = new Promise((resolve, reject) => {</p>
+                    <blockquote>setTimeout(() => {</blockquote>
+                    <blockquote>
+                        <blockquote>const randomNum = Math.random();</blockquote>
+                        <blockquote>randomNum > 0.5 ? resolve(randomNum) : reject('Число меньше или равно 0.5');
+                        </blockquote>
+                    </blockquote>
+                    <blockquote>}, 500);</blockquote>
+                    <p>});</p>
+                </div>
+
+                <p>Чтобы создать экземпляр нового промиса, мы используем ключевое слово new.</p>
+
+                <div class="main__wrapper-box_blue">
+                    <p>Небольшое лирическое отступление. В прошлом модуле вы уже встречались с созданием экземпляра
+                        объекта с помощью <span class="blue"> new</span>.</p>
+                    <p>Это частая запись. Суть такова: у вас есть абстрактный общий класс. И на его основе вы можете
+                        создать много одинаковых объектов. Поэтому ключевое слово называется new. То есть — как бы тот
+                        же, но новый.</p>
+                    <p>Давайте разберём это с помощью понятных образов.</p>
+                    <p>У вас есть рецепт пирога. Инструкция с количеством ингредиентов, их названием и температурой
+                        духовки. По ней вы можете создать столько пирогов, сколько вашей душе угодно. Главное, следовать
+                        инструкции.</p>
+                    <p>Это можно было бы написать так:</p>
+                </div>
+                <blockquote>
+                    <div class="main__wrapper-box_grey">
+                        <p>class Pie {</p>
+                        <blockquote>constructor(flavour) {</blockquote>
+                        <blockquote>
+                            <blockquote>this.flavour = flavour;</blockquote>
+                        </blockquote>
+                        <blockquote>}</blockquote>
+                        <blockquote>pieInfo() {</blockquote>
+                        <blockquote>
+                            <blockquote>console.log(`Начинка этого пирога - ${this.flavour}`);</blockquote>
+                        </blockquote>
+                        <blockquote>}</blockquote>
+                        <p>}</p>
+                        <p>const cherryPie = new Pie("вишня");</p>
+                        <p>cherryPie.pieInfo() // Начинка этого пирога - вишня.</p>
+                    </div>
+                </blockquote>
+                <p>Продолжаем. Создаём новый объект на базе Promise. И передаём в него функцию. Обратите внимание на
+                    аргументы: resolve и reject.</p>
+                <p>Resolve — переводит статус промиса в fulfilled. А reject — в rejected. Не забывайте их прописывать. В
+                    них вся прелесть промисов.</p>
+                <p>В нашем примере мы используем setTimeout, чтобы сымитировать асинхронность. И передаём в него
+                    коллбэк. Надеюсь, ещё про них не забыли. В этом коллбэке несложная логика.</p>
+                <p>Чтобы создать вариативность и чередовать статусы fulfilled и rejected, мы сделали переменную
+                    randomNum. Туда помещается рандомное число от 0 до 1 с помощью Math.random().</p>
+                <p>А дальше условие: если число больше 0.5, то используем функцию resolve и переведём статус промиса в
+                    fulfilled. А если меньше, то отклоним промис с помощью reject. Эти коллбеки и их выполнение лежат на
+                    плечах API браузера. Помните такой?</p>
+                <p>Используем этот код в примере:</p>
+
+                <iframe src="../frame/Frame3-1/index.html" width="90%" height="500px" frameborder="0"></iframe>
+
+                <p>Нажимайте на кнопку и смотрите, что будет появляться в консоли. Каждый раз при нажатии создаётся
+                    новый промис, генерируется новое число, которое обрабатывается либо через reject, либо через
+                    resolve.</p>
+
+                <h2>Упражнение 3.1.</h2>
+
+                <p>Напишите промис. Получайте в нём рандомное число от 1 до 20. Если число чётное — используйте resolve.
+                    Если нечётное — reject. Можете писать код в последнем примере codepen.</p>
+                <details>
+                    <summary>Посмотреть код</summary>
+                    <div class="main__wrapper-box_grey">
+                        <p>const promise = new Promise((resolve, reject) => {</p>
+                        <blockquote>const randomNum = Math.floor(Math.random() * 20) + 1;</blockquote>
+                        <blockquote>if (randomNum % 2 === 0) {</blockquote>
+                        <blockquote>
+                            <blockquote>resolve(`${randomNum} - чётное`);</blockquote>
+                        </blockquote>
+                        <blockquote>} else {</blockquote>
+                        <blockquote>
+                            <blockquote>reject(`${randomNum} - нечётное`);</blockquote>
+                        </blockquote>
+                        <blockquote>}</blockquote>
+                        <p>});</p>
+                        <blockquote>promise.then((res) => console.log(res)).catch((err) => </blockquote>
+                        <p>console.log(err));</p>
+                    </div>
+                </details>
+                <hr class="hr">
+
+                <h2>then и catch</h2>
+
+                <p>Сейчас в коде появились новые неопознанные объекты. А именно методы then и catch. Это инструменты, с
+                    помощью которых можно легко обрабатывать промисы, дожидаться асинхронных результатов и что-то с ними
+                    делать.</p>
+                <p>Разберём каждый отдельно.</p>
+
+                <h2>then</h2>
+
+                <h3>
+                    <p>then — это метод, который срабатывает, если промис успешный и его статус — fulfilled. В then
+                        нужно передавать функцию-коллбэк, которая выполнится при успешном завершении промиса.</p>
+                    <p>**Вторым аргументом then может принять коллбэк для сценария, где промис отклонён. Но лучше
+                        использовать для этого блок catch.</p>
+                </h3>
+                <p>Само слово then переводится как «тогда». Это лайфхак. Смотрите на строку из нашего последнего
+                    примера:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>promise.then((res) => console.log(res)).catch((err) => console.log(err));</p>
+                </div>
+                <p>Давайте переведём на человеческий: запусти промис, дождись статус fulfilled и тогда выведи результат
+                    res в консоль.</p>
+
+                <h2>catch</h2>
+
+                <p>английского переводится как «поймать». С помощью него мы ловим ошибки, которые могли случиться в
+                    результате запуска промиса.</p>
+                <h3>Если then срабатывает при статусе fulfilled, то catch — при rejected. В этот метод тоже нужно
+                    передавать коллбэк.</h3>
+                <p>Всё довольно просто. Закончим переводить строчку из примера на человеческий, ведь теперь мы освоили и
+                    catch:</p>
+                <p>Запусти промис, дождись статус fullfiled и тогда выведи результат res в консоль. Но если статус
+                    промиса — rejected, поймай ошибку и выведи её в консоль.</p>
+                <p>С помощью then и catch можно создавать цепочки вызовов. И работать с промисами так, чтобы были
+                    предусмотрены и обработаны все сценарии. И тот, где всё успешно, и тот, где всё сломалось.</p>
+                <p>Это очень хорошая практика. Если вы предусмотрите все возможные ситуации, то ваш код будет стабильнее
+                    и надёжнее.</p>
+                <hr class="hr">
+
+                <h2>Упражнение 3.2</h2>
+
+                <p>Напишите промис, который всегда возвращает ошибку. Обработайте эту ситуацию через catch.</p>
+                <details>
+                    <summary>Посмотреть код</summary>
+                    <div class="main__wrapper-box_grey">
+                        <p>const errorPromise = new Promise((resolve, reject) => {</p>
+                        <blockquote>reject(new Error("Возникла ошибка!"));</blockquote>
+                        <p>});</p>
+                        <p>errorPromise</p>
+                        <blockquote>.then((result) => {</blockquote>
+                        <blockquote>
+                            <blockquote>console.log("Результат:", result);</blockquote>
+                        </blockquote>
+                        <blockquote>})</blockquote>
+                        <blockquote>.catch((error) => {</blockquote>
+                        <blockquote>
+                            <blockquote>console.log("Произошла ошибка:", error.message);</blockquote>
+                        </blockquote>
+                        <blockquote>});</blockquote>
+                    </div>
+                </details>
+                <hr class="hr">
+            </div>
+
+            <p>Упражнение 3.3</p>
+
+            <p><b>Какой блок отработает в этом коде: then или catch?</b></p>
+            <div class="main__wrapper-box_grey">
+                <p>let p = new Promise((resolve, reject) => {</p>
+                <blockquote>let number = 14;</blockquote>
+                <blockquote>if (number % 2 === 0) {</blockquote>
+                <blockquote>
+                    <blockquote>resolve("Число чётное");</blockquote>
+                </blockquote>
+                <blockquote>} else {</blockquote>
+                <blockquote>
+                    <blockquote>reject("Число нечетное");</blockquote>
+                </blockquote>
+                <blockquote>}</blockquote>
+                <p>});</p>
+                <p>p.then((res) => console.log(res)).catch((err) => console.log(err));</p>
+            </div>
+            <p><b>then</b></p>
+            <hr class="hr">
+
+            <div class="main__wrapper-conteiner">
+
+                <h2>finally</h2>
+
+                <p>Нам стоит поговорить ещё об одном методе, который похож на then и catch. Это finally.</p>
+                <p>Наше счастье, что этот инструмент назван так же понятно, как и его два предыдущих брата.</p>
+                <h3>Finally переводится как «наконец». И его можно использовать в конце цепочки вызовов, чтобы запустить
+                    какой-то код независимо от того, какой статус у промиса.</h3>
+                <p>Время примеров. Давайте доработаем предыдущий код и сделаем так, чтобы после получения статуса
+                    промиса выводилась строчка «Работа завершена».</p>
+
+                <iframe src="../frame/frame3-2/index.html" width="90%" height="400px" frameborder="0"></iframe>
+
+                <p>Теперь, если вы будете нажимать на кнопку, после каждой отработки промиса выведется эта строка. И не
+                    важно, какой был статус — fulfilled или rejected.</p>
+                <p>Для чего нужно такое поведение? Например, вы наверняка видели колесико загрузки, когда данные на
+                    сайте подгружаются. Если всё пройдёт хорошо, то данные отобразятся. А если плохо, то появится
+                    сообщение об ошибке.</p>
+                <p>Но — колесико загрузки исчезнет в любом случае. Такое поведение можно реализовать как раз с помощью
+                    then, catch и finally. Три брата-акробата всегда на страже ваших интерфейсов.</p>
+                <p>Запомните их и используйте. :)</p>
+
+                <h2>Упражнение 3.4</h2>
+
+                <iframe src="../frame/frame3-3/index.html" width="90%" height="400px" frameborder="0"></iframe>
+
+                <p>Придумайте и допишите логику для блока finally. Например, строку в консоли: «Операция завершена!
+                    Можете попробовать ещё раз».</p>
+
+                <details>
+                    <summary>Посмотреть ответ</summary>
+                    <div class="main__wrapper-box_grey">
+                        <p>promise</p>
+                        <blockquote>.then((result) => {</blockquote>
+                        <blockquote>
+                            <blockquote>resultDiv.textContent = result;</blockquote>
+                            <blockquote>console.log(result);</blockquote>
+                        </blockquote>
+                        <blockquote>})</blockquote>
+                        <blockquote>.catch((error) => {</blockquote>
+                        <blockquote>
+                            <blockquote>resultDiv.textContent = error.message;</blockquote>
+                            <blockquote>console.log(error.message);</blockquote>
+                        </blockquote>
+                        <blockquote>})</blockquote>
+                        <blockquote>.finally(() =></blockquote>
+                        <blockquote>
+                            <blockquote>console.log("Операция завершена! Можете попробовать ещё раз.")</blockquote>
+                        </blockquote>
+                        <blockquote>);</blockquote>
+                    </div>
+                </details>
+                <hr class="hr">
+
+                <h2>Promise.all()</h2>
+
+                <p>До этого момента мы создавали по одному промису и обрабатывали его. Давайте рассмотрим ситуацию, в
+                    которой у нас несколько промисов. И научимся с этим что-то делать.</p>
+                <h3>Для этого разберём Promise.all(). Это метод, который дожидается выполнения всех промисов, которые вы
+                    в него передадите. Передать их можно в массиве.</h3>
+                <p>Вернёмся в магазин. В этот раз нам не нужен хлеб, мы хотим испечь пиццу.</p>
+                <p>Для этого нам нужны мука, яйца и колбаса. Передадим запросы продавцу. И предупредим, что если хотя бы
+                    одного продукта нет — то вечер испорчен. Никакой пиццы. Никакого веселья.</p>
+                <p>Все три запроса — промисы, пока мы ждём у прилавка, а продавец уточняет наличие продуктов. Сначала
+                    разберём случай, когда все продукты на месте:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>function checkAvailability(product) {</p>
+                    <blockquote>return new Promise((resolve, reject) => {</blockquote>
+                    <blockquote>
+                        <blockquote>resolve(`Продукт ${product} доступен`);</blockquote>
+                    </blockquote>
+                    <blockquote>});</blockquote>
+                    <p>}</p>
+                    <p>const promises = [</p>
+                    <blockquote>checkAvailability('мука'),</blockquote>
+                    <blockquote>checkAvailability('яйца'),</blockquote>
+                    <blockquote>checkAvailability('колбаса')</blockquote>
+                    <p>];</p>
+                    <p>Promise.all(promises)</p>
+                    <blockquote>.then(results => {</blockquote>
+                    <blockquote>
+                        <blockquote>console.log(results.join('. '));</blockquote>
+                        <blockquote>console.log('Можно готовить пиццу!');</blockquote>
+                    </blockquote>
+                    <blockquote>})</blockquote>
+                    <blockquote>.catch(error => {</blockquote>
+                    <blockquote>
+                        <blockquote>console.log('Не все продукты доступны. ' + error);</blockquote>
+                        <blockquote>console.log('Вечер испорчен, нельзя готовить пиццу :('));</blockquote>
+                    </blockquote>
+                    <blockquote>});</blockquote>
+                </div>
+
+                <p>Итак, что мы тут написали. Главное, на что нужно обратить внимание, это синтаксис. В Promise.all() мы
+                    передаём массив промисов, который заранее создали в переменной promises.</p>
+                <p>Метод проверил все промисы, убедился, что они завершились успешно, и после этого сам успешно
+                    завершился. Такая вот многоходовочка.</p>
+                <p>Как думаете, как бы закончилась эта история, не будь в магазине хотя бы одного продукта? Давайте
+                    проверим в реальном времени:</p>
+
+                <iframe src="../frame/frame3-4/index.html" width="90%" height="400px" frameborder="0"></iframe>
+
+                <p>Наш самый главный босс Promise.all() проверяет продукты. Обратите внимание на запись об ошибке.</p>
+                <p>Упоминается только один недоступный продукт. Это не значит, что все остальные доступны. Это говорит о
+                    том, что после первой ошибки остальные промисы уже не проверяются.</p>
+                <p>Какова роль этого метода в реальной разработке? Вот два примера:</p>
+                <blockquote>1. Вы хотите сделать несколько параллельных запросов к API. Получить один объект каких-то
+                    данных, а потом второй. И выполнить операцию только когда все данные с обоих запросов у вас на
+                    руках. Например, два запроса: данные о юзере и его посты. Сначала дождитесь их, а потом кладите в
+                    интерфейс.</blockquote>
+                <blockquote>2. Параллельная загрузка изображений. Сначала дожидаетесь всей загрузки, а уже потом что-то
+                    с ними делаете.</blockquote>
+                <hr class="hr">
+            </div>
+
+            <p>Упражнение 3.5</p>
+
+            <p><b>Что выведется в консоль?</b></p>
+            <div class="main__wrapper-box_grey">
+                <p>const firstPromise = new Promise((resolve) =></p>
+                <blockquote>setTimeout(() => resolve(42), 5000)</blockquote>
+                <p>);</p>
+                <p>const secondPromise = new Promise((resolve, reject) =></p>
+                <blockquote>setTimeout(() => reject("Ошибка"), 2000)</blockquote>
+                <p>);</p>
+                <p>const thirdPromise = new Promise((resolve) =></p>
+                <blockquote>setTimeout(() => resolve("Успех"), 1000)</blockquote>
+                <p>);</p>
+                <p>Promise.all([firstPromise, secondPromise, thirdPromise])</p>
+                <blockquote>.then(([firstPromise, secondPromise, thirdPromise]) => {</blockquote>
+                <blockquote>
+                    <blockquote>console.log(firstPromise);</blockquote>
+                    <blockquote>console.log(secondPromise);</blockquote>
+                    <blockquote>console.log(thirdPromise);</blockquote>
+                </blockquote>
+                <blockquote>})</blockquote>
+                <blockquote>.catch((error) => {</blockquote>
+                <blockquote>
+                    <blockquote>console.error(error);</blockquote>
+                </blockquote>
+                <blockquote>});</blockquote>
+            </div>
+            <blockquote><b>ошибка</b></blockquote>
+            <hr class="hr">
+
+            <div class="main__wrapper-conteiner">
+
+                <h2>Promise.race()</h2>
+
+                <p>Продолжаем! Есть ещё один метод, о котором вам надо знать. Это Promise.race().</p>
+                <h3>Этот метод принимает несколько промисов, как и all(). И тоже в массиве. Но race() выберет только тот
+                    промис, который выполнится быстрее, и обработает его результат. Ну а остальные промисы останутся в
+                    пролёте.</h3>
+                <p>На дворе лето, поэтому представим что-то прохладное. В нашем примере вы и ваши приятели пытаетесь
+                    быстрее других добежать до прилавка с мороженым. Победит быстрейший. Давайте опишем эту ситуацию в
+                    коде:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>function runToIceCream(runner) {</p>
+                    <blockquote>const randomDelay = Math.random() * 5000 + 1000; // Случайная задержка от 1 до 6 секунд
+                    </blockquote>
+                    <blockquote>return new Promise((resolve, reject) => {</blockquote>
+                    <blockquote>
+                        <blockquote>setTimeout(() => {</blockquote>
+                    </blockquote>
+                    <blockquote>
+                        <blockquote>
+                            <blockquote>resolve(`${runner} — победитель!`);</blockquote>
+                        </blockquote>
+                    </blockquote>
+                    <blockquote>
+                        <blockquote>}, randomDelay);</blockquote>
+                    </blockquote>
+                    <blockquote>});</blockquote>
+                    <p>}</p>
+                    <p>const you = runToIceCream('Вы');</p>
+                    <p>const friend1 = runToIceCream('Друг 1');</p>
+                    <p>const friend2 = runToIceCream('Друг 2');</p>
+                    <p>Promise.race([you, friend1, friend2])</p>
+                    <blockquote>.then(winner => {</blockquote>
+                    <blockquote>
+                        <blockquote>console.log(winner);</blockquote>
+                    </blockquote>
+                    <blockquote>})</blockquote>
+                    <blockquote>.catch(error => {</blockquote>
+                    <blockquote>
+                        <blockquote>console.error('Что-то пошло не так: ' + error);</blockquote>
+                    </blockquote>
+                    <blockquote>});</blockquote>
+                </div>
+                <p>Сейчас у нас есть рандомное время, за которое вы или ваши друзья добегут до прилавка. Promise.race()
+                    выяснит, чья задержка меньше, и выведет победителя в консоль.</p>
+
+                <div class="main__wrapper-box_blue">
+                    <p>Обсудим сценарий ошибки. Если самый быстрый промис завершился ошибкой, то мы попадаем сразу в
+                        catch(). Остальные промисы опять игнорируются.</p>
+                </div>
+
+                <iframe src="../frame/frame3-5/index.html" width="90%" height="450PX" frameborder="0"></iframe>
+
+                <p>Упражнение переписать логику, добавить сценарий, который окончится ошибкой. Например, если задержка
+                    равна 5 и 6.</p>
+                <p>В каких ситуациях вы можете использовать Promise.race():</p>
+                <blockquote>&bull; Допустим, у вас есть несколько источников с одними и теми же данными. И вы хотите
+                    дождаться тот вариант, который загрузится быстрее. А второй запрос отменить.</blockquote>
+                <blockquote>&bull; Когда надо установить максимальное время ожидания. Вы можете задать один промис с
+                    таймаутом, а второй — с какой-нибудь загрузкой. Если таймаут завершится быстрее, то загрузка
+                    отменится. Так можно избежать долгого ожидания каких-то данных. И обработать это как ошибку.
+                </blockquote>
+                <hr class="hr">
+            </div>
+
+            <p>Упражнение 3.6</p>
+
+            <p><b>Какой блок отработает в этом коде, <span class="blue"> then</span> или <span
+                        class="blue">catch?</span></b></p>
+            <div class="main__wrapper-box_grey">
+                <p>const pr1 = new Promise((resolve, reject) =></p>
+                <blockquote>setTimeout(() => reject("Я пришёл с ошибкой!"), 2000)</blockquote>
+                <p>);</p>
+                <p>const pr2 = new Promise((resolve, reject) =></p>
+                <blockquote>setTimeout(() => reject("Я тоже принёс ошибку!"), 1000)</blockquote>
+                <p>);</p>
+                <p>const pr3 = new Promise((resolve) => setTimeout(() => resolve("Успех"), 3000));</p>
+                <p> Promise.race([pr1, pr2, pr3])</p>
+                <blockquote>.then((res) => {</blockquote>
+                <blockquote>
+                    <blockquote>console.log(res);</blockquote>
+                </blockquote>
+                <blockquote>})</blockquote>
+                <blockquote>.catch((error) => {</blockquote>
+                <blockquote>
+                    <blockquote>console.error(error);</blockquote>
+                </blockquote>
+                <blockquote>});</blockquote>
+            </div>
+            <blockquote><b>Ответ: catch</b></blockquote>
+            <hr class="hr">
+
+            <div class="main__wrapper-conteiner">
+
+                <p>Итак, теперь вы понимаете, что такое промисы, как они работают и что обещают! :) Отработайте
+                    полученные навыки с помощью задач. И до новых встреч в следующем юните!</p>
+
+                <h2>Скринкаст: практика создания Promise</h2>
+                <hr class="hr">
+            </div>
+
+            <p>Упражнение 3.7</p>
+
+            <p><b>Заполните пропуски в коде.</b></p>
+            <div class="main__wrapper-box_grey">
+                <p>const myOwnPromise = 1) ___ Promise((2)_____, 3)_____) => {</p>
+                <blockquote>setTimeout(() => {</blockquote>
+                <blockquote>
+                    <blockquote>resolve("My promise works!");</blockquote>
+                    <blockquote>}, 2000);</blockquote>
+                </blockquote>
+                <p>});</p>
+            </div>
+            <P>1.</P>
+            <BLockquote><b>new</b></BLockquote>
+            <p>2.</p>
+            <blockquote><b>resolve</b></blockquote>
+            <p>3.</p>
+            <blockquote><b>reject</b></blockquote>
+            <hr class="hr">
+
+            <p>Упражнение 3.8</p>
+            <p><b>Что такое Promise:</b></p>
+            <blockquote>Инструмент для работы с асинхронным кодом и обработки его результата</blockquote>
+            <hr class="hr">
+
+            <p>Упражнение 3.9</p>
+            <p><b>Выберите все верные методы цепочки промисов:</b></p>
+            <blockquote>.promise</blockquote>
+            <blockquote>&#10004; <b>.finally</b></blockquote>
+            <blockquote>&#10004; <b>.catch</b></blockquote>
+            <blockquote>.after</blockquote>
+            <blockquote>.finish</blockquote>
+            <hr class="hr">
+
+            <div class="main__wrapper-conteiner">
+                <h2>Упражнение 3.10</h2>
+
+                <p>Напишите код, который применяет promise.all() на трёх промисах с таймаутами. Каждый таймаут отдаёт
+                    число.</p>
+                <p>Если все промисы успешны, то в консоль выведите их сумму. Если нет, то сообщение об ошибке.</p>
+                <p>Логику, по которой промис будет завершаться успешно/неуспешно, можете придумать сами. Использовать
+                    рандомные числа, проверку на чётность и так далее.</p>
+
+                <details>
+                    <summary>Посмотреть код</summary>
+                    <div class="main__wrapper-box_grey">
+                        <p>function getRandomNum() {</p>
+                        <blockquote>return Math.floor(Math.random() * 10) + 1;</blockquote>
+                        <p>}</p>
+                        <p>function getPromise() {</p>
+                        <blockquote>return new Promise((resolve, reject) => {</blockquote>
+                        <blockquote>
+                            <blockquote>const randomNum = getRandomNum();</blockquote>
+                            <blockquote>if (randomNum % 2 === 0) {</blockquote>
+                        </blockquote>
+                        <blockquote>
+                            <blockquote>
+                                <blockquote>resolve(randomNum);</blockquote>
+                            </blockquote>
+                        </blockquote>
+                        <blockquote>
+                            <blockquote>} else {</blockquote>
+                        </blockquote>
+                        <blockquote>
+                            <blockquote>
+                                <blockquote>reject(new Error(`Ошибка! ${randomNum} - нечётное!`));</blockquote>
+                            </blockquote>
+                        </blockquote>
+                        <blockquote>
+                            <blockquote>}</blockquote>
+                        </blockquote>
+                        <blockquote>});</blockquote>
+                        <p>}</p>
+                        <p>const promise1 = getPromise();</p>
+                        <p>const promise2 = getPromise();</p>
+                        <p>const promise3 = getPromise();</p>
+                        <p>Promise.all([promise1, promise2, promise3])</p>
+                        <blockquote>.then((res) => {</blockquote>
+                        <blockquote>
+                            <blockquote>let result = res.reduce((sum, element) => (sum += element), 0);</blockquote>
+                            <blockquote>console.log(result);</blockquote>
+                        </blockquote>
+                        <blockquote>})</blockquote>
+                        <blockquote>.catch((err) => console.log(err.message));</blockquote>
+                    </div>
+                </details>
+            </div>
+
+
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page2.html" class="previous">&laquo; Назад</a>
+                <a href="page4.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page2.html" class="previous round">&#8249;</a>
+                <a href="page4.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

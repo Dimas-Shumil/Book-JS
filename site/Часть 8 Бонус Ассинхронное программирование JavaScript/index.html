@@ -1,0 +1,205 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="site/css/sass.css">
+    <title>Бонус. Асинхронное программирование JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                1. Введение
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page8.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page9.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <figure>
+                    <img src="site/images/m11_cover_end (1).svg" width="50%" alt="">
+                </figure>
+
+                <p>Привет!</p>
+                <p>В прошлом модуле вы погрузились в работу с функциями. Научились их объявлять, передавать аргументы и
+                    использовать в задачах. А также создали свои первые объекты и узнали, что такое область видимости,
+                    замыкания и контекст.</p>
+                <p>В этом модуле мы пойдём ещё дальше и познакомимся с асинхронным программированием. Причина: без него
+                    сложно создавать качественные сайты и приложения, на которые пользователь захочет вернуться.
+                    Например, синхронное программирование не может обеспечить быструю загрузку данных с сервера.</p>
+                <p>Пока что звучит сложно? На деле всё проще.</p>
+                <p>Если вы хоть раз стояли в очереди в магазине и ждали, пока принесут батон или килограмм яблок, то
+                    быстро разберётесь в том, что такое асинхронный код. И почему иногда вы получаете результат каких-то
+                    операций не сразу, а через некоторое время.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <h2>Итак, вы:</h2>
+                    <p>изучите, чем отличается работа асинхронного кода от синхронного;</p>
+                    <p>узнаете, какие сложности возникают при написании асинхронного кода и как <span
+                            class="blue">Promise</span> их решает;</p>
+                    <p>поймёте, как получать данные с сервера с помощью <span class="blue">fetch</span> и <span
+                            class="blue">async/await</span>;</p>
+                    <p>разберётесь, как Event Loop управляет исполнением кода в браузере;</p>
+                    <p>узнаете, что такое микротаски и макротаски и чем они отличаются;</p>
+                    <p>научитесь обрабатывать события в браузере с помощью <span class="blue">addEventListener</span>.
+                    </p>
+                    <p>В конце вас будет ждать итоговое практическое задание. Юниты этого модуля и упражнения на
+                        самопроверку помогут к нему подготовиться.</p>
+                </div>
+
+                <p>Упражнение 1.1.</p>
+
+                <p>Что может быть у функции?</p>
+                <blockquote>название</blockquote>
+                <blockquote>тело функции</blockquote>
+                <blockquote>возвращаемое значение</blockquote>
+                <hr class="hr">
+
+                <p>Упражнение 1.2</p>
+
+                <p>Как вызвать функцию?</p>
+                <blockquote>Написать её название и не забыть круглые скобки</blockquote>
+                <hr class="hr">
+
+                <p>Упражнение 1.3</p>
+
+                <p>Как вызвать эту функцию? Аргументы должны быть равны 4 и 5. В таком порядке.</p>
+                <blockquote>
+                    <div class="main__wrapper-box_grey">
+                        <p>function multiply(a, b) {</p>
+                        <blockquote>console.log(a * b)</blockquote>
+                        <p>}</p>
+                    </div>
+                </blockquote>
+                <blockquote>multiply(4, 5)</blockquote>
+                <hr class="hr">
+
+                <p>Упражнение 1.4</p>
+
+                <p>корректные варианты объявления функции:</p>
+                <blockquote>
+                    <div class="main__wrapper-box_grey">
+                        <p>const someFunction = function (a, b, c) {</p>
+                        <blockquote>return a * b * c</blockquote>
+                        <p>}</p>
+                    </div>
+                    <div class="main__wrapper-box_grey">
+                        <p>const someFunction = (a, b, c) => a * b * c</p>
+                    </div>
+                </blockquote>
+                <hr class="hr">
+
+                <p>Упражнение 1.5</p>
+
+                <p>Для чего используют IIFE?</p>
+                <blockquote>Чтобы не загрязнять глобальную видимость переменными</blockquote>
+                <blockquote>Предотвратить конфликты имён переменных</blockquote>
+                <blockquote>Мгновенно выполнить эту функцию</blockquote>
+                <hr class="hr">
+
+                <p>Упражнение 1.6</p>
+
+                <p>Что такое коллбэк-функция?</p>
+                <blockquote>Функция-аргумент, которая выполняется после завершения каких-то действий или при наступлении
+                    какого-либо события</blockquote>
+                <hr class="hr">
+
+                <p>Упражнение 1.7</p>
+
+                <p>Чем является reduce?</p>
+                <blockquote>
+                    <div class="main__wrapper-box_grey">
+                        <p> let array = [1, 5, 2, 13, 7]</p>
+                        <p>const subtract = array.reduce((accumulator, currentValue) => {</p>
+                        <blockquote>return accumulator - currentValue</blockquote>
+                        <p>}, 0)</p>
+                    </div>
+                    <p>Функцией высшего порядка</p>
+                </blockquote>
+                <hr class="hr">
+
+                <p>Упражнение 1.8</p>
+
+                <p>Что выведется в консоль?</p>
+                <blockquote>
+                    <div class="main__wrapper-box_grey">
+                        <p>let hedgehogName = 'Игнат';</p>
+                        <p>function hedgehogNaming() {</p>
+                        <blockquote>let hedgehogName = 'Васёк';</blockquote>
+                        <blockquote>console.log(hedgehogName);</blockquote>
+                        <p>}</p>
+                        <p>hedgehogNaming();</p>
+                        <p>console.log(hedgehogName);</p>
+                    </div>
+                </blockquote>
+                <blockquote>
+                    <p>Васёк</p>
+                    <p>Игнат</p>
+                </blockquote>
+                <p>Если вдруг какое-то задание вызвало у вас затруднение — не беда. Вернитесь к предыдущему модулю и освежите знания.</p>
+                <p>Итак, поехали!</p>
+
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="site/pages/page9.html" class="previous">&laquo; Назад</a>
+                <a href="site/pages/page2.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="site/pages/page9.html" class="previous round">&#8249;</a>
+                <a href="site/pages/page2.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="site/script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

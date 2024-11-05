@@ -1,0 +1,70 @@
+* {
+  box-sizing: border-box;
+  margin: 0 auto;
+  padding: 0;
+}
+
+.header {
+  box-sizing: border-box;
+  width: 100%;
+  background-color: #fff;
+}
+.header__nav {
+  width: 90%;
+  margin: 30px 20px;
+  display: flex;
+  flex-direction: column;
+}
+.header__nav-title {
+  font-size: 22px;
+  margin-left: 45px;
+  margin-bottom: 20px;
+  letter-spacing: 1px;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, "Helvetica Neue", Arial, "Noto Sans", sans-serif, "Apple Color Emoji", "Segoe UI Emoji", "Segoe UI Symbol", "Noto Color Emoji";
+}
+.header__nav ul {
+  display: flex;
+  width: 80%;
+  gap: 10px;
+}
+.header__nav li {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex: 1 1;
+  border-radius: 8px;
+  min-width: 16px;
+  max-width: 150px;
+  height: 10px;
+  background-color: #00bbf9;
+}
+.header__nav a {
+  cursor: pointer;
+  width: 100%;
+  height: 10px;
+  background-color: #00bbf9;
+  border-radius: 8px;
+}
+.header__nav a:link {
+  background-color: #bdfa07;
+}
+.header__nav a:visited {
+  background-color: #bdfa07;
+}
+.header__nav a:focus {
+  border: 1px solid grey;
+  background: #00bbf9;
+}
+.header__nav a:hover {
+  background-color: #00bbf9;
+  height: 15px;
+}
+.header__nav a:active {
+  background-color: #006daa;
+}
+
+.hr {
+  width: 80%;
+  height: 2px;
+  background-color: #707070;
+}/*# sourceMappingURL=header.css.map */

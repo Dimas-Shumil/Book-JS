@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Функции JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                6. Замыкания
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page9.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <figure>
+                    <img src="../images/m11_cover_visibility.svg" width="50%" alt="">
+                </figure>
+
+                <h2>Область видимости</h2>
+                <hr class="hr">
+
+                <p>Чтобы однозначно определить, с какой переменной связан идентификатор и какое значение он будет
+                    возвращать при обращении к нему, в языках программирования существуют области видимости переменных
+                    (scope).</p>
+                <div class="main__wrapper-box_grey">
+                    <p>Концепция области видимости даёт нам возможность в одной и той же программе использовать
+                        повторяющиеся идентификаторы (имена) переменных и при этом не создавать конфликты.</p>
+                </div>
+                <div class="main__wrapper-border_box">
+                    <p><span class="main__wrapper-green">Область видимости</span> — область, где переменная
+                        ассоциируется с определённым значением.</p>
+                </div>
+                <div class="main__wrapper-box_grey">
+                    <p>const b = 2;</p>
+                    <p>const sum = function() {</p>
+                    <blockquote>const a = 1;</blockquote>
+                    <blockquote>// внутри функции нет переменной b, но она есть выше по коду</blockquote>
+                    <blockquote>return a + b</blockquote>
+                    <p>};</p>
+                    <p>// в переменную result записываем результат выполнения функции</p>
+                    <p>const result = sum();</p>
+                    <p>console.log(result);</p>
+                    <p>3</p>
+                </div>
+                <div class="main__wrapper-box_pink">
+                    <p> ВАЖНО! В примере переменная b — глобальная, доступна (видна) в любом месте программы, а
+                        переменная a — локальная для функции f, доступна (видна) только внутри функции и недоступна
+                        снаружи функции.</p>
+                </div>
+                <p>То есть, при обращении к a вне функции будет ошибка:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const b = 2;</p>
+                    <p>const sum = function() {</p>
+                    <blockquote>const a = 1;</blockquote>
+                    <blockquote>// внутри функции нет переменной b, но она есть выше по коду</blockquote>
+                    <blockquote>return a + b</blockquote>
+                    <p>};</p>
+                    <p>console.log(a);</p>
+                    <p>ReferenceError: a is not defined</p>
+                </div>
+                <p>Переменная ищется сначала в собственной области видимости, а затем, если не была найдена, ищется во
+                    внешней области видимости. Этот процесс называется <span class="main__wrapper-green">разрешением
+                        идентификатора</span> — поиск переменной по
+                    областям видимости.</p>
+                <p>Глубина вложенности областей видимости может быть произвольной, и поиск переменной будет продолжаться
+                    до самого верха.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const a = 10;</p>
+                    <p>function func() {</p>
+                    <blockquote>const a = 100;</blockquote>
+                    <blockquote>console.log(a); // ?</blockquote>
+                    <p>};</p>
+                    <p>func();</p>
+                    <p>100</p>
+                </div>
+
+                <h2>Замыкания</h2>
+                <hr class="hr">
+
+                <div class="main__wrapper-box_grey">
+                    <p>const a = 10;</p>
+                    <p>const func = function() {</p>
+                    <blockquote>console.log(a);</blockquote>
+                    <p>};</p>
+                    <p>func()</p>
+                    <p>10</p>
+                </div>
+                <p>Переменная a внутри функции func называется <strong>нелокальной</strong> или свободной, так как не
+                    находится в области
+                    видимости самой функции, а берётся из внешней области видимости.</p>
+                <div class="main__wrapper-border_box">
+                    <p><span class="main__wrapper-green">Замыкание</span> (<em>closure</em>) — это комбинация функции и
+                        всех лексически сохранённых родительских областей
+                        видимости. При этом, посредством этих сохраненных объектов областей видимости, функция может
+                        использовать свободные переменные.</p>
+                </div>
+                <p>Иначе говоря, замыкание — это функция вместе со всеми внешними переменными, которые ей доступны.</p>
+                <p>Теоретически все функции в <em>JavaScript</em> являются замыканиями.</p>
+                <p>При создании функция получает скрытое свойство [[Environment]], которое ссылается на область
+                    видимости, в которой она была создана. При вызове функции, куда бы её ни передали в коде, она будет
+                    искать переменные сначала у себя, а затем во внешних областях видимости, которые берутся из
+                    [[Environment]].</p>
+                <hr>
+
+                <p><strong>Задание 6.6.1</strong></p>
+
+                <p>Что такое область видимости?</p>
+                <blockquote>Область, где переменная ассоциируется с определённым значением</blockquote>
+                <hr>
+
+                <p><strong>Задание 6.6.2</strong></p>
+                <p>Задание 6.6.2</p>
+                <blockquote>Функция и все доступные ей внешние переменные</blockquote>
+                <hr>
+
+                <p><strong>Задание 6.6.3</strong></p>
+                <blockquote>
+                    <div class="main__wrapper-box_grey">
+                        <p>function getName() {</p>
+                        <blockquote>let name = "Ivan";</blockquote>
+                        <blockquote>console.log(name);</blockquote>
+                        <p>}</p>
+                        <p>let name = "Vasilii";</p>
+                        <p>getName(); </p>
+                    </div>
+                </blockquote>
+                <p>Что будет в консоли? Подумайте, почему так.</p>
+                <blockquote>Ivan</blockquote>
+                <p><strong>Ответ</strong></p>
+                <blockquote>Когда функция использует некую переменную, обращаясь к ней по идентификатору (в нашем случае
+                    console.log(name);), переменная ищется сначала в собственной области видимости, а затем, если не
+                    была найдена, во внешней области видимости. Этот процесс называется разрешением идентификатора —
+                    поиск переменной по областям видимости. В данном случае переменная принадлежит функции (говорят, что
+                    она собственная или локальная), её не нужно искать извне, поэтому в консоли будет Ivan.</blockquote>
+                    <hr>
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page5.html" class="previous">&laquo; Назад</a>
+                <a href="page7.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page5.html" class="previous round">&#8249;</a>
+                <a href="page7.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+    </div>
+</body>
+
+</html>

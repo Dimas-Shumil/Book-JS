@@ -1,0 +1,459 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Бонус DOM</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                5. Атрибуты и свойства
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page9.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+            <!-- <button onclick="openPopup()">Открыть попап</button>
+
+            <div id="popup" class="popup">
+                <span class="close" onclick="closePopup()"></span>
+                <h2>Попап</h2>
+                <p>Содержимое попапа...</p>
+            </div> -->
+            <div class="main__wrapper-conteiner">
+                <p>В этот раз вы познакомитесь с инструментами, которые стилизуют элементы прямо из JS.</p>
+                <p>Создавать элементы вы научились, удалять их, менять внутри них содержание — тоже. Теперь хотелось бы
+                    научиться задавать им стили. Да, у нас есть гибкий и удобный СSS. Однако, прямая стилизация в
+                    СSS-файлах подойдёт не для всех задач.</p>
+                <p>Если вы задали элементам какие-то стили в CSS, то они уже существуют. Их нельзя скрыть или удалить.
+                </p>
+                <p>А JS позволяет динамически задавать элементам стили, так же динамически их удалять. Или же добавлять
+                    и убирать атрибуты тегов. Такая гибкая работа возможна только благодаря JavaScript.</p>
+
+                <h2>style</h2>
+
+                <p>Например, ситуация: вам нужно по истечении какого-то времени скрыть элемент. Или наоборот — показать
+                    его.</p>
+                <p>Можно и сразу, конечно, но это не всегда хорошо для пользовательского опыта. Давайте разберём это на
+                    примере:</p>
+
+                <iframe src="../frame/frame5-1.html" width="90%" height="300px" frameborder="0"></iframe>
+
+                <p>Если вы нажмёте на кнопку, то через какое-то время по центру появится попап авторизации.</p>
+                <p>Обратите внимание на CSS-стили этого попапа. Изначально он скрыт со страницы с помощью display: none.
+                </p>
+                <p>Однако при нажатии кнопки это свойство меняется на flex благодаря свойству style. Посмотрим на эту
+                    строчку:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>popup.style.display = "flex";</p>
+                </div>
+                <p>Мы обратились к переменной popup, в которой лежит элемент с идентификатором popup. А затем сделали
+                    ещё три шага:</p>
+                <blockquote>1. Использовали свойство style.</blockquote>
+                <blockquote>2. В нём нашли display.</blockquote>
+                <blockquote>3. Задали этому свойству нужное значение.</blockquote>
+                <p>Вы помните, что все узлы — это объекты. Свойство style находится в объектах HTML-элементов. И само
+                    является объектом, в котором много свойств. Давайте посмотрим на них в консоли:</p>
+                <figure>
+                    <img src="../images/asset-v1_SkillFactory+INTFR+2023+type@asset+block@INTFR_10_12.png" width="100%"
+                        alt="">
+                    <figcaption>Объект с СSS-стилями</figcaption>
+                </figure>
+                <p>Под $0 имеется в виду зелёная кнопка. В DevTools можно выбрать в дереве какой-то элемент и обращаться
+                    к нему в консоли через такую запись.</p>
+                <p>Для этого перейдите во вкладку Elements и нажмите там на какой-нибудь элемент. Рядом с ним вы увидите
+                    надпись $0.</p>
+                <p>Итак, если вы попробуете достучаться до его свойства style, то получите вот такой большой объект.</p>
+                <p>В нём очень много свойств: для создания анимаций, стилизации фона, шрифта и так далее. В этом
+                    огромном объекте в том числе и наш display, к которому мы обращались в примере.</p>
+
+                <h2>Упражнение 5.1</h2>
+                <p>Поработайте с примером. Получите в консоль текущее значение display для попапа до того, как нажата
+                    кнопка.</p>
+                <hr class="hr">
+            </div>
+
+            <h2>Упражнение 5.2</h2>
+            <p><b>Выберите все свойства, которые существуют в style:</b></p>
+            <blockquote><input type="checkbox"> click</blockquote>
+            <blockquote><input type="checkbox"> alignSelf <span class="green">&#10004;</span> </blockquote>
+            <blockquote><input type="checkbox"> backgroundImg</blockquote>
+            <blockquote><input type="checkbox"> marginBottomLeft</blockquote>
+            <blockquote><input type="checkbox"> order <span class="green">&#10004;</span> </blockquote>
+            <hr class="hr">
+
+            <div class="main__wrapper-conteiner">
+                <p>С помощью свойства style вы можете легко манипулировать элементами в разметке: задавать им разные
+                    стили, добавлять их по клику, создавать анимации и так далее.</p>
+                <p>Так, до стилей мы достучались. Что ещё есть у элементов? Атрибуты. Например, href, value, src и так
+                    далее.</p>
+                <p>Можно ли как-нибудь и к ним обратиться из скрипта? Можно. Давайте посмотрим на элемент:</p>
+                <p>// index.html</p>
+                <div class="main__wrapper-box_grey">
+                    <p><img alt="картинка" src="image.png" class="img" width="500" /></p>
+                </div>
+                <p>Назовём все атрибуты этой картинки:</p>
+                <blockquote>&bull; <b>alt</b> — альтернативный текст, который покажется, если картинка не загрузилась.
+                </blockquote>
+                <blockquote>&bull; <b>src</b> — адрес картинки.</blockquote>
+                <blockquote>&bull; <b>class</b> — класс элемента для стилизации.</blockquote>
+                <blockquote>&bull; <b>width</b> — ширина картинки.</blockquote>
+                <p>У элементов много атрибутов. Есть глобальные, которые можно найти у всех: например, class и id. А
+                    есть специфичные. Например, value и type для инпута или alt для изображения.</p>
+                <p>Атрибуты вы видите в строке элемента. В формате: атрибут = “значение”. А как они хранятся в DOM? В
+                    виде свойств в объекте.</p>
+                <p>Поэтому значение атрибута можно получить как через метод getAttribute, так и обращаясь к нему через
+                    точку, как к свойству. Для начала разберём первый вариант.</p>
+
+                <h2>getAttribute</h2>
+
+                <h3>getAttribute — метод, благодаря которому можно получить значение атрибута.</h3>
+                <p>Синтаксис:</p>
+                <iframe src="../frame/frame5-2.html" width="90%" height="400px" frameborder="0"></iframe>
+                <p>В JS мы получаем её по классу. И теперь можем достать значение любого атрибута картинки.</p>
+                <p>Загляните в консоль и убедитесь в том, что у нас всё получилось.</p>
+
+                <h2>Упражнение 5.3</h2>
+
+                <p>Проделайте то же самое с ссылкой. Получите её атрибуты и выведите их в консоль.</p>
+                <p>Теперь давайте сделаем то же самое, только обратимся к атрибутам как к свойствам объекта.
+                    Продублируем разметку:</p>
+                <iframe src="../frame/frame5-3.html" width="90%" height="400px" frameborder="0"></iframe>
+                <p>И в коде, и в консоли что-то изменилось.</p>
+                <p>Во-первых, когда мы обращаемся к классу, мы используем не class, а className.</p>
+                <p>Дело в том, что <b>class</b> — зарезервированное в JS слово. Поэтому пришлось выкручиваться.</p>
+                <p>Второе отличие: ширина картинки больше не строка, а число.</p>
+                <div class="main__wrapper-box_blue">
+                    <p>Значения атрибутов, которые вы получили через getAttribute — это всегда строки.</p>
+                    <p>Свойства же могут быть в разных форматах: числами, строками, булевыми значениями.</p>
+                </div>
+
+                <h2>Упражнение 5.4</h2>
+
+                <p>Создайте разметку с полем ввода — чекбоксом. Задайте ему атрибут <b>checked</b>. Получите значение
+                    этого атрибута обоими методами и проанализируйте результат.</p>
+                <div class="main__wrapper-box_blue">
+                    <p>Попробуйте получить атрибут <b>checked, hidden</b> или <b>disabled</b>. Значение такого атрибута
+                        — пустая строка, что не соответствует действительности. Подобные атрибуты содержат в себе
+                        булевое значение: <b>true</b> или <b>false</b>.</p>
+                    <p>Если такой атрибут в элементе есть, то его значение — <b>true</b>. Если его нет, то по дефолту
+                        <b>false</b>.
+                    </p>
+                    <p>Чтобы устанавливать и получать значения таких аргументов, обращайтесь к ним как к свойствам.</p>
+                </div>
+
+                <h2>setAttribute</h2>
+
+                <p>Если можно атрибуты получать, значит, их можно и задавать. Для этого есть метод setAttribute.</p>
+                <h3>setAttribute — метод для того, чтобы задать элементу атрибут с каким-то значением.</h3>
+                <p>Синтаксис:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>element.setAttribute('атрибут'.'значение')</p>
+                </div>
+                <iframe src="../frame/frame5-4.html" width="90%" height="300px" frameborder="0"></iframe>
+                <p>В этом примере мы создали четыре строки. У каждой есть идентификатор, по которому мы можем
+                    достучаться до неё из JS.</p>
+                <p>Мы хотели немного оживить текст и создали четыре класса для каждой строки. Эти классы покрасят текст
+                    в разные цвета.</p>
+                <p>Первую строку мы уже покрасили в приятный персиковый цвет. В этом нам помог метод setAttribute.</p>
+
+                <h2>Упражнение 5.5</h2>
+
+                <p>Стилизуйте оставшиеся строки по аналогии.</p>
+                <p>Рассмотрим ситуацию, в которой мы не просто создаём новый атрибут, а обновляем значение уже
+                    существующего.</p>
+                <iframe src="../frame/frame5-5.html" width="90%" height="250px" frameborder="0"></iframe>
+                <p>У нас есть инпут, value которого — Петя. В коде мы получаем этот инпут и меняем значение свойства.
+                    Раскомментируйте последнюю строку и посмотрите в консоль. Значение атрибута не поменялось. В самом
+                    поле ввода мы видим Петю. А в консоли — всё ещё Вася.</p>
+                <p>Иногда обновление свойств не приводит к обновлению атрибутов. Зато обновление атрибутов обязательно
+                    приводит к обновлению свойства.</p>
+
+                <h2>Упражнение 5.6</h2>
+                <p>Самостоятельно поправьте этот пример так, чтобы значение атрибута обновилось.</p>
+                <hr class="hr">
+            </div>
+            <h2>Упражнение 5.7</h2>
+            <p>Запишите строку, в которой задаёте элементу element атрибут id, который равен 2.</p>
+            <blockquote>
+                <input type="text" placeholder="пишу тут">
+            </blockquote>
+            <hr class="hr">
+            <div class="main__wrapper-conteiner">
+                <h2>removeAttribute</h2>
+
+                <p>Нам осталось разобрать, как удалять атрибуты. Вы можете сделать это с помощью метода removeAttribute.
+                </p>
+                <h3>removeAttribute — метод, который удаляет атрибут элемента.</h3>
+                <p>Синтаксис:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>element.removeAttribute('атрибут')</p>
+                </div>
+                <iframe src="../frame/frame5-6.html" width="90%" height=" 400px" frameborder="0"></iframe>
+                <p>Мы создали див и поместили в него картинку. Сейчас всё выглядит красиво.</p>
+                <p>Но попробуйте раскомментировать последнюю строчку, и картинка исчезнет. Всё потому, что мы удалили у
+                    неё атрибут src. И теперь никакой картинки в теге img нет.</p>
+
+                <h2>Упражнение 5.8</h2>
+                <p>Ваша задача — лишить div розового бордера. Используйте для этого removeAttribute.</p>
+
+                <h2>dataset</h2>
+
+                <p>Есть особый тип атрибутов, которые вы можете повесить на элемент. Их называют data-атрибутами.
+                    Например:</p>
+                <p><b>// index.html</b></p>
+                <div class="main__wrapper-box_grey">
+                    <p>&lsaquo;div class="slider"></p>
+                    <blockquote>&lsaquo;div data-id="1" class="slider__slide">&lsaquo;/div></blockquote>
+                    <blockquote>&lsaquo;div data-id="2" class="slider__slide">&lsaquo;/div></blockquote>
+                    <blockquote>&lsaquo;div data-id="3" class="slider__slide">&lsaquo;/div></blockquote>
+                    <p> &lsaquo;/div></p>
+                </div>
+                <p>Здесь мы поместили в контейнер-слайдер три слайда. У каждого есть свой data-атрибут — идентификатор.
+                    По ним можно гибко управлять отображением слайдеров.</p>
+                <p>Но почему бы не использовать обычные id — спросите вы?</p>
+                <p>Задача data-атрибутов — хранить какие-то данные(data) прямо в HTML. И затем получать их в JS или СSS.
+                    Иногда от элемента к элементу они могут совпадать, а вот идентификатор должен быть специфичным.</p>
+                <p>В дата-атрибутах могут быть и не айди слайдов, а значение темы — светлая или тёмная, имена, даты и
+                    вообще что угодно. Вы можете задавать любые дата-атрибуты, присваивать им нужные значения и
+                    использовать всё это в своём коде.</p>
+
+                <iframe src="../frame/frame5-7.html" width="90%" height="400px" frameborder="0"></iframe>
+                <p>В примере мы создали список известных людей и прописали их годы рождения. А также продублировали эти
+                    года в data-year — data-атрибуте.</p>
+                <p>Итак, чтобы получить значение такого атрибута, нам понадобится следующий синтаксис:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const yearOfBirth = person.dataset.year;</p>
+                </div>
+                <p>Обратите внимание, как запись data-year превратилась в dataset.year.</p>
+                <div class="main__wrapper-box_blue">
+                    <p>Чтобы получить в JS значение data-атрибута, нужно применить свойство dataset. А затем обратиться
+                        к свойству, которое следует после data- в HTML.</p>
+                </div>
+
+                <h2>Упражнение 5.9</h2>
+                <p>Создайте ещё один дата-атрибут у каждого элемента и поместите туда фамилии людей. А затем получите их
+                    в коде по аналогии с примером.</p>
+                <p>В этом юните вы освоили новые инструменты по работе с атрибутами элементов и свойствами DOM. В
+                    следующий раз мы поговорим про классы: научимся их удалять, задавать и динамически менять прямо из
+                    JS. До встречи!</p>
+                <hr class="hr">
+
+                <h2>Упражнение 5.10</h2>
+
+                <p>Cоздайте разметку, в которой один div и кнопка. По клику на кнопку у div-а должен меняться цвет фона
+                    — на рандомный. Придумайте логику, чтобы получать рандомные коды цветов. Цвет задавайте с помощью
+                    свойства style.</p>
+                <blockquote>
+                    <details>
+                        <summary><span class="green">Решение</span></summary>
+                        <p>//html</p>
+                        <div class="main__wrapper-box_grey">
+                            <p>&lsaquo;div id="my-div">&lsaquo;/div></p>
+                            <p>&lsaquo;button onclick="changeBackgroundColor()">Изменить цвет фона&lsaquo;/button></p>
+                        </div>
+                        <p>//css</p>
+                        <div class="main__wrapper-box_grey">
+                            <p>#my-div {</p>
+                            <blockquote>width: 200px;</blockquote>
+                            <blockquote>height: 200px;</blockquote>
+                            <blockquote> background-color: #ccc;</blockquote>
+                            <blockquote> margin-bottom: 10px;</blockquote>
+                            <p>}</p>
+                        </div>
+                        <p>//js</p>
+                        <div class="main__wrapper-box_grey">
+                            <p>function changeBackgroundColor() {</p>
+                            <blockquote>const div = document.querySelector("#my-div");</blockquote>
+                            <blockquote>const color = randomColor();</blockquote>
+                            <blockquote>if (color) {</blockquote>
+                            <blockquote>}</blockquote>
+                            <p>}</p>
+                            <p>function randomColor() {</p>
+                            <blockquote>const random = "abcdef0123456789";</blockquote>
+                            <blockquote>const color = [];</blockquote>
+                            <blockquote>for (let i = 0; i < 6; i++) {</blockquote>
+                                    <blockquote>const randomSymbol = random[Math.floor(Math.random() * random.length)];
+                                    </blockquote>
+                                    <blockquote>color.push(randomSymbol);</blockquote>
+                                    <blockquote>}</blockquote>
+                                    <blockquote>return color.join("");</blockquote>
+                                    <p>}</p>
+                        </div>
+                    </details>
+                </blockquote>
+                <hr class="hr">
+
+                <h2>Упражнение 5.11</h2>
+
+                <p>Создайте разметку, которая состоит из 3-х чекбоксов и двух кнопок. Если нажать на первую кнопку, то
+                    все чекбоксы получают атрибут checked. Если на вторую — то этот атрибут снимается со всех инпутов.
+                </p>
+                <blockquote>
+                    <details>
+                        <summary><span class="green">Решение</span></summary>
+                        <p>//html</p>
+                        <div class="main__wrapper-box_grey">
+                            <p>&lsaquo;h3>Чекбоксы&lsaquo;/h3></p>
+                            <p>&lsaquo;input type="checkbox" id="checkbox1"></p>
+                            <p>&lsaquo;label for="checkbox1">Чекбокс 1&lsaquo;/label>&lsaquo;br></p>
+                            <p>&lsaquo;input type="checkbox" id="checkbox2"></p>
+                            <p>&lsaquo;label for="checkbox2">Чекбокс 2&lsaquo;/label>&lsaquo;br></p>
+                            <p>&lsaquo;input type="checkbox" id="checkbox3"></p>
+                            <p>&lsaquo;label for="checkbox3">Чекбокс 3&lsaquo;/label>&lsaquo;br></p>
+                            <p>&lsaquo;br></p>
+                            <p>&lsaquo;button onclick="checkAll()">Выбрать всё&lsaquo;/button></p>
+                            <p>&lsaquo;button onclick="uncheckAll()">Снять выбор со всех чекбоксов&lsaquo;/button></p>
+                        </div>
+                        <p>//js</p>
+                        <div class="main__wrapper-box_grey">
+                            <p>function checkAll() {</p>
+                            <blockquote>const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                            </blockquote>
+                            <blockquote>for (let checkbox of checkboxes) {</blockquote>
+                            <blockquote>
+                                <blockquote>checkbox.checked = true;</blockquote>
+                                }
+                            </blockquote>
+                            <p>}</p>
+                            <p>function uncheckAll() {</p>
+                            <blockquote>const checkboxes = document.querySelectorAll('input[type="checkbox"]');
+                            </blockquote>
+                            <blockquote>for (let checkbox of checkboxes) {</blockquote>
+                            <blockquote>
+                                <blockquote>checkbox.checked = false;</blockquote>
+                                }
+                            </blockquote>
+                            <p>}</p>
+                        </div>
+                    </details>
+                </blockquote>
+                <hr class="hr">
+
+                <h2>Упражнение 5.12</h2>
+
+                <p>Создайте попап, который будет появляться при нажатии на кнопку. Используйте style. По желанию
+                    реализуйте крестик в углу попапа — чтобы его закрывать.</p>
+
+                <blockquote>
+                    <details>
+                        <summary><span class="green">Решение</span></summary>
+                        <p>//html</p>
+                        <div class="main__wrapper-box_grey">
+                            <p>&lsaquo;button onclick="openPopup()">Открыть попап&lsaquo;/button></p>
+                            <p>
+                                &lsaquo;div id="popup" class="popup">
+                            </p>
+                            <blockquote>&lsaquo;span class="close" onclick="closePopup()">&lsaquo;/span></blockquote>
+                            <blockquote>
+                                &lsaquo;h2>Попап&lsaquo;/h2>
+                            </blockquote>
+                            <blockquote>
+                                &lsaquo;p>Содержимое попапа...&lsaquo;/p>
+                            </blockquote>
+                            <p>
+                                &lsaquo;/div>
+                            </p>
+                        </div>
+                        <p>//css</p>
+                        <div class="main__wrapper-box_grey">
+                            <p>.popup {</p>
+                            <blockquote>position: fixed;</blockquote>
+                            <blockquote>top: 50%;</blockquote>
+                            <blockquote>left: 50%;</blockquote>
+                            <blockquote>transform: translate(-50%, -50%);</blockquote>
+                            <blockquote>background-color: lightgreen;</blockquote>
+                            <blockquote>padding: 20px;</blockquote>
+                            <blockquote>box-shadow: 0 2px 8px rgba(0, 0, 0, 0.15);</blockquote>
+                            <blockquote>z-index: 9999;</blockquote>
+                            <blockquote>font-family: helvetica;</blockquote>
+                            <p>}</p>
+                            <p>.popup .close {</p>
+                            <blockquote>position: absolute;</blockquote>
+                            <blockquote>top: 10px;</blockquote>
+                            <blockquote>right: 10px;</blockquote>
+                            <blockquote>cursor: pointer;</blockquote>
+                            <p>}</p>
+                            <p>.popup .close:before {</p>
+                            <blockquote>content: "×";</blockquote>
+                            <blockquote>font-size: 24px;</blockquote>
+                            <p>}</p>
+                        </div>
+                        <p>//JS</p>
+                        <div class="main__wrapper-box_grey">
+                            <p>function openPopup() {</p>
+                            <blockquote>document.getElementById("popup").style.display = "block";</blockquote>
+                            <p>}</p>
+                            <p>function closePopup() {</p>
+                            <blockquote>document.getElementById("popup").style.display = "none";</blockquote>
+                            <p>}</p>
+                        </div>
+                    </details>
+                </blockquote>
+
+
+            </div>
+
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page4.html" class="previous">&laquo; Назад</a>
+                <a href="page6.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page4.html" class="previous round">&#8249;</a>
+                <a href="page6.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

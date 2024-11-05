@@ -1,0 +1,347 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>AJAX</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                2. JSON vs XML
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html" class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+                <figure>
+                    <img src="../images/m14_cover_assets.svg" width="45%" alt="">
+                </figure>
+                <p>Что такое запросы и зачем они нужны</p>
+                <hr class="hr">
+                <div class="main__wrapper-border_green">
+                    <p><span class="green">AJAX</span> (англ. Asynchronous JavaScript and XML — асинхронный JavaScript и
+                        XML) — это не технология сама по себе, а термин, который описывает «новый» подход к
+                        использованию существующих технологий вместе. АJAX включает: HTML или XHTML, CSS, JavaScript,
+                        DOM, XML, XSLT, и объект XMLHttpRequest.</p>
+                    <p>Когда эти технологии объединяются в модель AJAX, web-приложения способны делать быстрые
+                        дополняющие обновления интерфейса пользователя без необходимости полной перезагрузки страницы
+                        браузером. Приложения работают быстрее и становятся более отзывчивыми к действиям пользователей.
+                    </p>
+                </div>
+                <p>Теперь давайте вспомним общий принцип работы интернета. </p>
+                <p>Интернет можно представить как огромную сеть связанных серверов, на которых и хранится каждая
+                    страница (сайт). При введении в адресную строку браузера имени любого сайта (рассмотрим, к примеру,
+                    yandex.ru) на удалённый сервер отправляется соответствующий запрос, ответом на который является
+                    HTML-страница. Как только браузер получает ответ, он парсит HTML и отображает страницу.</p>
+                <div class="main__wrapper-border_green">
+                    <p><span class="green"> Запросы</span> — основной механизм получения данных вашими приложениями,
+                        будь то серверная или клиентская часть. С помощью них вы можете получать данные в разных
+                        форматах, которые мы рассмотрим далее.</p>
+                </div>
+                <p>Рассмотрим пример ниже. Это запрос обычного сайта в браузере:</p>
+                <figure>
+                    <img src="../images/m14_zapros_stranicy.png" width="80%" alt="">
+                </figure>
+                <div class="main__wrapper-box_grey">
+                    <blockquote>1. Вы вводите строку имени сайта (https://yandex.ru/) и происходит запрос к серверу;
+                    </blockquote>
+                    <blockquote>2. Сервер обрабатывает запрос и в ответе отправляет HTML;</blockquote>
+                    <blockquote>3. Браузер получает и парсит HTML, отображая его вам;</blockquote>
+                    <blockquote>4. Процесс парсинга доходит до тега
+                        <link>, с помощью которого осуществляется запрос, в данном случае за CSS;
+                    </blockquote>
+                    <blockquote>5. Сервер обрабатывает запрос и в ответе отправляет CSS;</blockquote>
+                    <blockquote>6. Браузер получает и парсит CSS, применяя стили и стилизуя сайт;</blockquote>
+                    <blockquote>7. Процесс парсинга доходит до тега &lsaquo;script>, с помощью которого осуществляется
+                        запрос, в данном случае за <i>JavaScript</i>;</blockquote>
+                    <blockquote>8. Сервер обрабатывает запрос и в ответе отправляет <i>JavaScript</i>;</blockquote>
+                    <blockquote>9. Браузер получает и парсит <i>JavaScript</i>, после чего исполняет его.</blockquote>
+                </div>
+                <p>Обработкой полученных <i>HTML, CSS</i> и <i>JavaScript</i> занимается <b>браузер</b>. Обрабатывать
+                    некоторые другие типы данных можно с помощью языка <i>JavaScript</i> и интерфейсов, предоставляемых
+                    средой запуска кода (для <i>JavaScript</i> это браузер или <i>Node.js</i>).</p>
+                <hr class="hr">
+
+                <h3>Обмен запросами. Что такое API</h3>
+
+                <p>В процессе работы приложения постоянно делают запросы. Данные запрашивают:</p>
+                <div class="main__wrapper-box_grey">
+                    <blockquote>&bull; Браузеры от серверов,</blockquote>
+                    <blockquote>&bull; Сервера от других серверов,</blockquote>
+                    <blockquote>&bull; Сервера от баз данных.</blockquote>
+                </div>
+                <figure>
+                    <img src="../images/m14_different_services.png" width="80%" alt="">
+                    <figcaption>Осуществление запросов разными сервисами</figcaption>
+                </figure>
+
+                <h3>Форматы передачи данных</h3>
+
+                <p>Форматов передачи данных великое множество, и все они используются для определённых целей. Выше мы
+                    разобрали передачу <i>HTML, CSS</i> и <i>JS</i>.</p>
+                <div class="main__wrapper-border_green">
+                    <p>Также существуют такие форматы данных, как <span class="green">XML</span> и <span
+                            class="green">JSON</span> — текстовые форматы, предназначенные для структурирования,
+                        хранения и передачи информации. Они выполняют одну и ту же роль, разница заключается в их
+                        представлении и обработке, которые мы далее рассмотрим.</p>
+                </div>
+                <hr class="hr">
+
+                <h3>XML. Что это такое и как он устроен</h3>
+
+                <div class="main__wrapper-border_green">
+                    <p><span class="green"> XML</span> (с англ. <i>eXtensible Markup Language</i> — «расширяемый язык
+                        разметки») — текстовый формат, предназначенный для структурирования, хранения и передачи
+                        информации. Поддерживает хранение сложных структур данных. Язык называется <b>расширяемым</b>,
+                        поскольку он не фиксирует разметку, используемую в документах: каждый разработчик может создать
+                        разметку в соответствии с потребностями конкретной области. </p>
+                </div>
+                <p><i>XML</i> похож на <i>HTML</i>, но у них разные предназначения. <i>HTML</i> решает проблему
+                    отображения данных, тогда как <i>XML</i> решает проблему структурирования и транспортировки данных.
+                    В <i>HTML</i> теги соответствуют документации <i>HTML</i>. В <i>XML</i> <b>вы сами придумываете
+                        теги</b>.</p>
+                <p>XML состоит из тегов, которые могут иметь атрибуты и включать в себя текст и другие теги.</p>
+                <p><b>Пример XML:</b></p>
+                <div class="main__wrapper-box_grey">
+                    <p>&lsaquo;book category="CHILDREN"></p>
+                    <blockquote>&lsaquo;title lang="en">Harry Potter&lsaquo;/title></blockquote>
+                    <blockquote>&lsaquo;author>J. K. Rowling&lsaquo;/author></blockquote>
+                    <blockquote>&lsaquo;year>2005&lsaquo;/year></blockquote>
+                    <blockquote>&lsaquo;price>29.99&lsaquo;/price></blockquote>
+                    <p>&lsaquo;/book></p>
+                </div>
+
+                <h3>API для работы с XML</h3>
+
+                <p>Для работы с XML в JavaScript имеется класс <a
+                        href="https://developer.mozilla.org/ru/docs/Web/API/DOMParser">DOMParser</a>, который
+                    предоставляет экземпляр для работы с XML и HTML. Экземпляр предоставляет метод.</p>
+                <div class="main__wrapper-box_grey">
+                    <p><a href="https://developer.mozilla.org/ru/docs/Web/API/DOMParser">DOMParser</a> — это класс с
+                        интерфейсом парсинга HTML и XML.</p>
+                    <p>parser.parseFromString() — преобразует XML в объект JavaScript в виде DOM.</p>
+                </div>
+                <p>Дальнейшая работа с полученным DOM представлением идёт с помощью методов поиска элементов в DOM и
+                    получения атрибутов элементов.</p>
+                <p><a href="https://codepen.io/vvysokiy/pen/oNjKwRj">Пример работы с XML в codepen.io</a></p>
+                <hr class="hr">
+
+                <h2>Задание 9.2.1</h2>
+                <p>Основной класс для работы с XML — это...</p>
+                <blockquote>DOMParser</blockquote>
+                <hr class="hr">
+
+                <h3>JSON. Что это такое и как он устроен</h3>
+                <div class="main__wrapper-border_green">
+                    <p><span class="green"> JSON</span> (<i>JavaScript Object Notation</i> — Объектная нотация
+                        <i>JavaScript</i>) — текстовый формат обмена данными. JSON является синтаксисом для
+                        представления сложных структур, массивов данных различных типов в виде строк. По сравнению с XML
+                        занимает меньше объёма на диске за счёт отсутствия тегов разметки.
+                    </p>
+                </div>
+                <p>Описание JSON задокументировано в <a href="https://datatracker.ietf.org/doc/html/rfc4627">стандарте
+                        RFC 4627</a>. Первоначально он был создан для JavaScript, но многие другие языки также имеют
+                    библиотеки, которые могут работать с ним. Таким образом, JSON легко использовать для обмена данными,
+                    когда клиент использует JavaScript, а сервер написан на Ruby/PHP/Java или любом другом языке.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>JSON очень похож на объекты в JavaScript, но это не одно и тоже. Объекты в JavaScript — это тип
+                        данных и сущность языка, в то время как JSON — это обычная строка с определённым порядком
+                        символов, которую удобно преобразовать и из которой удобно получать данные. Объекты JavaScript
+                        можно преобразовать в JSON и наоборот, если JSON валидный. Невалидным JSON становится, если
+                        содержит недопустимые символы или лишние знаки.</p>
+                </div>
+                <p><b>Пример JSON:</b></p>
+                <div class="main__wrapper-box_grey">
+                    <p>{</p>
+                    <blockquote>"book": {
+                        <blockquote>"category": "CHILDREN",</blockquote>
+                        <blockquote>"title": {
+                            <blockquote>"lang": "en",</blockquote>
+                            <blockquote>"value": "Harry Potter"</blockquote>
+                            },
+                        </blockquote>
+                        <blockquote>"author": "J. K. Rowling",</blockquote>
+                        <blockquote>"year": "2005",</blockquote>
+                        }
+                    </blockquote>
+                    <p>}</p>
+                </div>
+
+                <h3>API для работы с JSON</h3>
+
+                <p>Для работы с JSON в JavaScript имеется объект JSON (и в браузерах, и в Node.js), который
+                    предоставляет несколько методов для преобразования JSON в объекты JS и наоборот:</p>
+                <div class="main__wrapper-box_grey">
+                    <p><a
+                            href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/JSON/stringify">JSON.stringify()</a>
+                        — преобразует объект JavaScript в строку JSON.</p>
+                    <p><a
+                            href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/JSON/parse">JSON.parse()</a>
+                        — преобразует JSON в объект JavaScript.</p>
+                </div>
+                <p><a href="https://codepen.io/vvysokiy/pen/zYvgdpG">Пример работы с JSON в codepen.io</a></p>
+                <hr class="hr">
+
+                <h2>Задание 9.2.2</h2>
+
+                <p>методы для работы с JSON:</p>
+                <blockquote>parse</blockquote>
+                <blockquote>stringify</blockquote>
+                <hr class="hr">
+
+                <h2>Задание 9.2.3</h2>
+                <p>Какие есть методы JSON (до превращения в JS-объект)?</p>
+                <blockquote>Те же, что и у строк</blockquote>
+                <hr class="hr">
+
+                <div class="main__wrapper-box_grey">
+                    <p><b>А что на практике?</b></p>
+                    <p>Мы рассмотрели два текстовых формата: XML и JSON. Если сопоставлять частоту их использования,
+                        можно сказать, что они равнозначны. Использование какого-то определённого — дело вкуса. Но JSON
+                        более удобный и проще обрабатываемый.</p>
+                </div>
+                <hr class="hr">
+
+                <h3>Практика</h3>
+
+                <figure>
+                    <img src="../images/m10_homework.svg" width="45%" alt="">
+                </figure>
+
+                <h3>Задание 1.</h3>
+                <p>Вам дана заготовка и результат, который вы должны получить. Ваша задача — написать код, который будет
+                    преобразовывать XML в JS-объект и выводить его в консоль.</p>
+                <p>XML</p>
+                <div class="main__wrapper-box_grey">
+                    <p>&lsaquo;list></p>
+                    <blockquote>&lsaquo;student></blockquote>
+                    <blockquote>&lsaquo;name lang="en">
+                        <blockquote>&lsaquo;first>Ivan&lsaquo;/first></blockquote>
+                        <blockquote>&lsaquo;second>Ivanov&lsaquo;/second></blockquote>
+                        &lsaquo;age>35&lsaquo;/age>
+                    </blockquote>
+                    <blockquote>&lsaquo;prof>teacher&lsaquo;/prof></blockquote>
+                    <blockquote>&lsaquo;/student></blockquote>
+                    <blockquote>&lsaquo;student></blockquote>
+                    <blockquote>&lsaquo;name lang="ru"></name>
+                    </blockquote>
+                    <blockquote>&lsaquo;first>Петр&lsaquo;/first></blockquote>
+                    <blockquote>&lsaquo;second>Петров&lsaquo;/second></blockquote>
+                    <blockquote>&lsaquo;/name></blockquote>
+                    <blockquote>&lsaquo;age>58&lsaquo;/age></blockquote>
+                    <blockquote>&lsaquo;prof>driver&lsaquo;/prof></blockquote>
+                    <blockquote>&lsaquo;/student></blockquote>
+                    <p>&lsaquo;/list></p>
+                </div>
+                <p>JS-объект:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>{</p>
+                    <blockquote>list:[</blockquote>
+                    <blockquote>
+                        <blockquote>{ name: 'Ivan Ivanov', age: 35, prof: 'teacher', lang: 'en' },</blockquote>
+                        <blockquote>{ name: 'Петр Петров', age: 58, prof: 'driver', lang: 'ru' },</blockquote>
+                        ]
+                    </blockquote>
+                    <p>}</p>
+                </div>
+
+                <h3>Задание 2.</h3>
+
+                <p>Вам дана заготовка и результат, который вы должны получить. Ваша задача — написать код, который будет
+                    преобразовывать JSON в JS-объект и выводить его в консоль.</p>
+                <p><i>JSON:</i></p>
+                <div class="main__wrapper-box_grey">
+                    <p>{</p>
+                    <blockquote>"list": [</blockquote>
+                    <blockquote>{</blockquote>
+                    <blockquote>
+                        <blockquote>"name": "Petr",</blockquote>
+                        <blockquote>"age": "20",</blockquote>
+                        <blockquote>"prof": "mechanic"</blockquote>
+                        },
+                    </blockquote>
+                    <blockquote>{</blockquote>
+                    <blockquote>
+                        <blockquote>"name": "Vova",</blockquote>
+                        <blockquote>"age": "60",</blockquote>
+                        <blockquote>"prof": "pilot"</blockquote>
+                        }
+                    </blockquote>
+                    <blockquote>]</blockquote>
+                    <p>}</p>
+                </div>
+                <p><i>JS-объект:</i></p>
+                <div class="main__wrapper-box_grey">
+                    <p>{</p>
+                    <blockquote>list: [
+                        <blockquote>{ name: 'Petr', age: 20, prof: 'mechanic' },</blockquote>
+                        <blockquote>{ name: 'Vova', age: 60, prof: 'pilot' },</blockquote>
+                        ]
+                    </blockquote>
+                    <p>}</p>
+                </div>
+                <hr class="hr">
+                <!-- кнопки -->
+                <div class="main__btn-box">
+                    <a href="../../index.html" class="previous">&laquo; Назад</a>
+                    <a href="page3.html" class="next">Вперед &raquo;</a>
+                </div>
+                <div class="main__btn-box-o">
+                    <a href="../../index.html" class="previous round">&#8249;</a>
+                    <a href="page3.html" class="next round">&#8250;</a>
+                </div>
+            </div>
+
+            <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+            <script async src="../script/js.js"></script>
+
+            <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+            <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

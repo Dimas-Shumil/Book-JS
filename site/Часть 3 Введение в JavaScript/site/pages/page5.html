@@ -1,0 +1,253 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>js3</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                5. Map и Set
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <p>Когда есть необходимость задать имя свойства любого другого типа (отличного от строки, даже
+                    объектом), можно использовать структуру Map — она позволяет использовать ключи любого типа.</p>
+                <p>Объект Set — это особый вид коллекции: «множество» значений (без ключей), где каждое значение может
+                    появляться только один раз. То есть в таком объекте могут храниться только уникальные значения.</p>
+
+                <h3>Map</h3>
+
+                <p>Map — коллекция для хранения данных любого типа. Состоит из ключей и значений.</p>
+                <p>Каждое значение сохраняется по уникальному ключу, но ключом может быть значение любого типа.</p>
+                <p>Map можно представить как объект на максималках. Суть та же, что и у объекта — хранение данных по
+                    ключам. Но способ работы отличается.</p>
+                <p>Map создаётся с помощью конструктора Map() с ключевым словом new:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p> const map = new Map(); // создали пустую коллекцию</p>
+                </div>
+
+                <p>Мы можем создать также коллекцию сразу с данными. Для этого мы должны передать в коллекцию массив
+                    массивов. Во внутренних массивах должно быть по два элемента: первый элемент — ключ, второй элемент
+                    — значение.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const map = new Map([['first', 1], ['second', 2]]);</p>
+
+                    <p>У коллекции Map есть методы, которые облегчают работу с ней:</p>
+                    <p>&middot; set(ключ, значение) — устанавливает значение;</p>
+                    <p>&middot; get(ключ) — возвращает значение;</p>
+                    <p>&middot; has(ключ) — проверяет наличие переданного ключа;</p>
+                    <p>&middot; values() — возвращает итерируемый объект всех значений коллекции;</p>
+                    <p>&middot; keys() — возвращает итерируемый объект всех ключей коллекции;</p>
+                    <p>&middot; entries() — возвращает итерируемый объект пар [ключ, значение];</p>
+                    <p>&middot; delete(ключ) — удаляет конкретное значение;</p>
+                    <p>&middot; clear() — полностью очищает коллекцию;</p>
+                    <p>&middot; forEach(колбэк) — перебирает ключи и значения коллекции;</p>
+                    <p>&middot; size — показывает количество элементов в коллекции. Работает так же, как свойство
+                        length.</p>
+                    <p>Создание и добавление значений:</p>
+                </div>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const map = new Map();</p>
+                    <p>map.set(1, 'Значение с ключом 1'); // добавляем элемент с ключом типа number</p>
+                    <p>map.set(false, 'Значение с ключом false'); // добавление элемента с ключом типа boolean</p>
+                    <p>map.set('str', 'Значение с ключом str'); // добавление элемента с ключом типа string</p>
+                    <p>console.log(map);</p>
+                    <p>// Map(3) {1 => 'Значение с ключом 1', false => 'Значение с ключом false', 'str' => 'Значение с
+                        ключом str'}</p>
+                    <p>[[Entries]]</p>
+                    <p>0: { 1 => "Значение с ключом 1" }</p>
+                    <p>key: 1</p>
+                    <p>value: "Значение с ключом 1"</p>
+                    <p>1: { false => "Значение с ключом false" }</p>
+                    <p>key: false</p>
+                    <p>value: "Значение с ключом false"</p>
+                    <p>2: { "str" => "Значение с ключом str" }</p>
+                    <p>key: "str"</p>
+                    <p>value: "Значение с ключом str"</p>
+                    <p>size: 3</p>
+                </div>
+
+                <p>Проверка наличия значения, получение и удаление:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>map.has(false); // проверяем наличие значения true</p>
+                    <p>map.get('str'); // получаем значение по ключу “Значение с ключом str”</p>
+                    <p>map.delete('str'); // удаляем значение по ключу</p>
+                    <p>console.log(map);</p>
+                    <p>// Map(2) {1 => 'Значение с ключом 1', false => 'Значение с ключом false'}</p>
+                    <p>[[Entries]]</p>
+                    <p>0: { 1 => "Значение с ключом 1" }</p>
+                    <p>key: 1</p>
+                    <p>value: "Значение с ключом 1"</p>
+                    <p>1: { false => "Значение с ключом false" }</p>
+                    <p>key: false</p>
+                    <p>value: "Значение с ключом false"</p>
+                    <p>size: 2</p>
+                </div>
+
+                <p>Перебор по ключам и значениям. Для этого отлично подойдёт цикл for…of:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p><strong>for</strong> (<strong>let</strong> key <strong>of</strong> map.keys()) { // получаем все
+                        ключи Мар</p>
+                    <blockquote>console.log(key); // 1, false</blockquote>
+                    <p>}</p>
+                    <p><strong>for</strong> (<strong>let</strong> value <strong>of</strong> map.values()) { // получаем
+                        все значения Мар</p>
+                    <blockquote>console.log(value); // "Значение с ключом 1", "Значение с ключом false"</blockquote>
+                    <p>}</p>
+                </div>
+                <hr class="hr">
+            </div>
+
+            <p>Задание 5.1</p>
+
+            <p>Как добавить элемент в Map?</p>
+            <blockquote><strong>someMap.set('key', 'value')</strong></blockquote>
+            <hr class="hr">
+
+            <p>Задание 5.2</p>
+            <p>Как проверить наличие ключа в Map?</p>
+            <blockquote><strong>someMap.has('key')</strong></blockquote>
+            <hr class="hr">
+
+            <div class="main__wrapper-conteiner">
+
+                <h3>Set</h3>
+
+                <p>В переводе на русский множество — коллекция для хранения уникальных значений любого типа. Одно и то же значение нельзя добавить в Set больше одного раза.</p>
+
+                <p><strong>Set</strong> — это неиндексированная коллекция. Положить элемент в коллекцию можно, но достать нельзя. По элементам коллекции можно итерироваться.</p>
+                <p>Set можно представить как массив, в котором не может быть повторяемых значений.</p>
+                <p>Создаётся Set с помощью конструктора new Set();</p>
+                <p>Создать можно как пустой Set, так и сразу со значениями:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const setCollection1 = new Set();</p>
+                    <p>const setCollection2 = new Set(['string', 1,  true, 'any']);</p>
+                </div>
+
+                <p>Основные методы для работы с коллекцией:</p>
+                <p>&middot; add() — добавить элемент.</p>
+                <p>&middot; delete() — удалить элемент.</p>
+                <p>&middot; has() — проверить, есть ли элемент в коллекции.</p>
+                <p>&middot; clear() — очистить коллекцию.</p>
+                <p>&middot; size — показывает количество элементов в коллекции, работает так же, как свойство length.</p>
+                <p>Добавить элемент можно с помощью метода add(), а удалять можно с помощью delete(). В оба метода в качестве параметра передаётся значение элемента.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>setCollection1.add(2);</p>
+                    <p>setCollection2.delete('string');</p>
+                </div>
+                <p>Если нужно проверить нахождение элемента в коллекции, то нужно использовать метод has(). В этот метод мы передаём значение нужного элемента:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>setCollection1.has(3); // false</p>
+                    <p>setCollection2.has(1); // true</p>
+                </div>
+                <p>Проходить по элементам коллекции можно с помощью цикла for…of:</p>
+                <div class="main__wrapper-box_grey">
+                    <p><strong>for</strong> (<strong>let</strong> elem <strong>of</strong> setCollection2) {</p>
+                        <blockquote>console.log(elem); // 1, true, any </blockquote>
+                        <p>}</p>
+                </div>
+                <p>Элемент со значением 'string' отсутствует в выводе, потому что он был удалён ранее.</p>
+                <p>Как может быть использована эта коллекция на практике? Это самый простой способ оставить только уникальные значения. Способ не самый оптимальный с точки зрения скорости работы, но самый удобный по количеству кода.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const unUniqueArr = [1, 2, 1, 3, 4, 2, 5];</p>
+                    <p>const uniqueSet = new Set(unUniqueArr); // [1, 2, 3, 4, 5]</p>
+                    <p>const uniqueArr = Array.from(uniqueSet); // [1, 2, 3, 4, 5]</p>
+                </div>
+                <p>В этом примере мы использовали конструкцию Array.from(). Метод Array.from() создаёт новый экземпляр массива из данных или структур данных. Например, Set, который можно преобразовать в массив.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>Array.from('foo'); // ['f', 'o', 'o']</p>
+                    <p>const s = new Set(['foo', window]);</p>
+                    <p>Array.from(s); // ['foo', window]</p>
+                    <p>const m = new Map([[1, 2], [2, 4], [4, 8]]);</p>
+                    <p>Array.from(m); // [[1, 2], [2, 4], [4, 8]]</p>
+                </div>
+                <hr class="hr">
+            </div>
+
+            <p>Задание 5.3</p>
+            <p>Как будет выглядеть массив после создания его с помощью</p>
+            <blockquote>Array.from(new Set([1, 2, 3, 4, 5, 1, 4, 5, 6]))?</blockquote>
+            <blockquote>
+                <blockquote>[1, 2, 3, 4, 5, 6]</blockquote>
+            </blockquote>
+            <hr class="hr">
+
+            <p>Задание 5.4</p>
+            <p>Как добавить элемент в множество Set?</p>
+            <blockquote><strong>someSet.add('value')</strong></blockquote>
+            <hr class="hr">
+
+            <div class="main__wrapper-conteiner">
+<p>Можно ли считать это заменой уже известных нам объектов и массивов? Нет. Массивы, как и объекты, широко распространены в JavaScript. Данные с сервера нам присылают в виде массивов или объектов. На сервер мы отправляем данные как массивы или объекты.</p>
+<p>Структуры Map и Set скорее являются вспомогательными при работе с массивами и объектами, чем полноценной их заменой.</p>
+<p>Они могут упростить решение рабочих задач. Например, перебор данных с сохранением их порядка. При переборе с помощью методов объекта порядок ключей не гарантирован.</p>
+<p>Также Map и Set облегчают получение уникальных элементов массива.</p>
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page4.html" class="previous">&laquo; Назад</a>
+                <a href="../../index.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page4.html" class="previous round">&#8249;</a>
+                <a href="../../index.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+    </div>
+</body>
+
+</html>

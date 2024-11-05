@@ -1,0 +1,690 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>JS part2</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+            <div class="header__nav-title">
+                <h3>9. Ветвление</h3>
+            </div>
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html" title="Введение">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="pages2.html" title="Переменные">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="page3.html" title="Типы данных в JavaScript">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="page4.html" title="Операции с числами">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="page5.html  " title="Операции со строками">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="page6.html" title="Преобразование типов">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="page7.html" title="Ввод/вывод данных">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="page8.html" title="Операторы сравнения, логические оператор">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="#" title="Ветвление">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="page10.html" title="Промежуточные итоги">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+            <div class="main__wrapper-conteiner">
+
+                <hr class="hr">
+
+                <p>В этом разделе разберём, как выполнять тот или иной кусок кода в зависимости от условия.</p>
+                <p>Начнём с задачи.</p>
+
+                <div class="main__wrapper-box_green">
+                    <h2>Пример</h2>
+                    <p>К нам вернулся технический руководитель и попросил сделать проверку возраста для посетителей
+                        сайта.
+                        На сайте должны быть посетители, чей возраст больше 11, но меньше 25.</p>
+                </div>
+
+                <p>Задача поставлена, файл с будущей проверкой открыт. Приступаем.</p>
+                <p>Давайте для начала зафиксируем алгоритм действий:</p>
+                <ol>
+                    <li>Пользователь входит на сайт. Всплывает окно с просьбой ввода возраста.</li>
+                    <li>Пользователь вводит возраст.</li>
+                    <li>Мы проверяем, входит ли возраст в нужный нам диапазон.</li>
+                    <li>Если возраст нас устраивает, то пользователь попадает на сайт.</li>
+                    <li>Если возраст нас НЕ устраивает, то пользователь видит об этом сообщение.</li>
+                </ol>
+
+                <figure>
+                    <img src="../img/asset-v1_SkillFactory+INTFR+2023+type@asset+block@INTFR_6_9_1.svg" width="40%"
+                        alt="">
+                    <p>Визуализация алгоритма.</p>
+                </figure>
+
+                <p>Техническая реализация:</p>
+                <p>Данные от пользователя мы решили получать с помощью встроенного метода prompt().</p>
+                <p>Сообщение пользователю выведет встроенный метод alert().</p>
+                <p>Но как быть с проверкой? Как нам сделать несколько путей развития событий?</p>
+                <p>В этом нам поможет специальная конструкция if.</p>
+
+                <h3>if</h3>
+
+                <p>Чтобы выполнить какой-нибудь код по какому-либо условию можно использовать конструкцию if.</p>
+                <p>Данная конструкция записывается так:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>if (условие) {</p>
+                    <blockquote>данный блок выполняется, если условие верно</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>Условие в скобках будет приведено к логическому типу данных:</p>
+                <p>&bull; Число 0, пустая строка "", null, undefined и NaN становятся false. Из-за этого их называют
+                    «ложными»
+                    («falsy») значениями.</p>
+                <p>&bull; Остальные значения становятся true, поэтому их называют «правдивыми» («truthy»).</p>
+                <p>Если внутри круглых скобок мы получаем значение true, то блок внутри фигурных скобок будет выполнен.
+                </p>
+                <p>Конструкции if можно вкладывать одну в другую, но увлекаться таким не нужно — это может запутать
+                    других
+                    разработчиков или вас самих.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>if (условие) { // например проверяем чётность числа</p>
+                    <blockquote>if (следующее условие) { // выполняется если предыдущий if вернул true</blockquote>
+                    <blockquote>
+                        <blockquote>// какой-то код</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>В некоторых ситуациях без такой вложенности не обойтись.</p>
+                <p>В большинстве случаев лучше написать несколько блоков if подряд, чтобы сохранить читаемость кода.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>if (условие) {</p>
+                    <blockquote>// код выполняется если условие true</blockquote>
+                    <p>}</p>
+                    <p>if (ещё одно условие) {</p>
+                    <blockquote>// код выполняется если условие true</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>Или использовать несколько условий в одном блоке:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>if (условие && ещё условие) {</p>
+                    <blockquote>// какой-то код</blockquote>
+                    <p>}</p>
+                    <p>if (условие || ещё условие) {</p>
+                    <blockquote>// какой-то код</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>Сейчас давайте рассмотрим пример получения возраста пользователя при входе на сайт.</p>
+                <p>В начале спросим с помощью prompt() возраст пользователя.</p>
+                <p>Затем мы должны проверить проходит ли пользователь по минимальному возрасту. Если у пользователя
+                    возраст
+                    больше или равен минимальному, то выполнение скрипта переходит на следующую строчку и вызывает
+                    всплывающее окно с приветствием.</p>
+                <p>Далее мы хотим дать пользователю рекомендацию и проверяем его возраст ещё раз. Если и в этот раз
+                    пользователь прошёл проверку по возрасту, то показывается всплывающее окно с рекомендацией.</p>
+                <p>Если пользователь не прошёл нашу первую проверку, то работа кода переключается к следующему блоку
+                    кода. В
+                    данном блоке мы показываем уведомление о непрохождении проверки.</p>
+                <p>А теперь посмотрим как это выглядит в коде:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const age = prompt('Введите ваш возраст');</p>
+                    <blockquote>if (age >= 18) { // первое условие: больше или равно 18?</blockquote>
+                    <blockquote>alert('Добро пожаловать на сайт!');</blockquote>
+                    <blockquote>if (age >= 50) { // выполнится если первое вернуло true</blockquote>
+                    <blockquote>
+                        <blockquote>alert('Обратите внимание на раздел "В бой идут одни старики"');</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <p>}</p>
+                    <p>if (age &lt; 18) { // второе условие: меньше 18?</p>
+                    <blockquote>alert('Вам ещё рано посещать сайты с автомобильной тематикой.');</blockquote>
+                    <p>}</p>
+
+                </div>
+
+                <h2>Задание 9.1</h2>
+
+                <p>Попросите пользователя ввести любое число. Если это число — чётное, то покажите alert() с текстом «Вы
+                    ввели чётное число {число, которое ввёл пользователь}». Если пользователь ввёл нечётное число, то
+                    покажите alert() с текстом «Вы ввели нечётное число {число, которое ввёл пользователь}».</p>
+                <p>Сделайте проверку на null. Это пригодится, если пользователь не захочет ничего вводить.</p>
+                <p>Входные данные: 4 и 5.</p>
+                <p>Выходные данные: «Вы ввели чётное число 4» или «Вы ввели нечётное число 5».</p>
+
+                <p>Посмотреть ответ</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const number = prompt("Введите число");</p>
+                    <p>if (number !== null) {</p>
+                    <blockquote>const isEven = +number % 2 === 0; // код будет выполняться, если number не null
+                    </blockquote>
+                    <blockquote>if (isEven) {</blockquote>
+                    <blockquote>
+                        <blockquote>alert(`Вы ввели чётное число ${number}`);</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <blockquote>if (!isEven) {</blockquote>
+                    <blockquote>
+                        <blockquote>alert(`Вы ввели нечётное число ${number}`);</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <p>}</p>
+                </div>
+
+                <h3>if…else</h3>
+
+                <p>Инструкция if() может содержать необязательный блок else. Если такой блок присутствует, то при ложном
+                    условии выполнение кода перейдёт к данному блоку.</p>
+                <p>Записывается эта конструкция так:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>if( условие ) {</p>
+                    <blockquote>данный блок выполняется, если условие верно</blockquote>
+                    <p>} else {</p>
+                    <blockquote>данный блок выполняется, если условие ложно</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>Чтобы записать несколько условий мы просто комбинируем блок else с инструкцией if и получаем else
+                    if():
+                </p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>if( условие ) {</p>
+                    <blockquote>выполняется, если условие верно</blockquote>
+                    <p>} else if( ещё какое-нибудь условие ) {</p>
+                    <blockquote>выполняется, если условие верно</blockquote>
+                    <p>} else {</p>
+                    <blockquote>выполнится, если ни одно из предыдущих условий не выполняется</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>Зная это, мы можем написать полноценную проверку, которая будет выглядеть вот так:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let age; // объявляем переменную для записи возраста</p>
+                    <p>const minAge = 12; // минимальный возраст</p>
+                    <p>const maxAge = 24; // максимальный возраст</p>
+                    <p>age = prompt('Добро пожаловать на сайт!\nЧтобы продолжить работу с сайтом введите свой возраст');
+                    </p>
+                    <p>// записываем значение возраста, переданное пользователем</p>
+                    <p>if( age >= minAge && age &lt;= maxAge) { // выполняем проверку на возраст</p>
+                    <blockquote>alert('Добро пожаловать!'); // выполняется, если проверка пройдена</blockquote>
+                    <p>} else {</p>
+                    <blockquote>alert('К сожалению, вы не можете попасть на сайт.'); // выполняется, если проверка
+                        не пройдена</blockquote>
+                    <p>}</p>
+                </div>
+
+                <h2>Задание 9.2</h2>
+
+                <p>С помощью оператора if…else перепишите задачу 9.1.</p>
+                <p>Посмотреть ответ</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const number = prompt("Введите число");</p>
+                    <p>if(number !== null) {</p>
+                    <blockquote>const isEven = +number % 2 === 0; // код будет выполняться, если number не null
+                    </blockquote>
+                    <blockquote>if(isEven) {</blockquote>
+                    <blockquote>
+                        <blockquote>alert( `Вы ввели чётное число ${number} `);</blockquote>
+                    </blockquote>
+                    <blockquote>}else {</blockquote>
+                    <blockquote>
+                        <blockquote>alert( `Вы ввели нечётное число ${number} `);</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <blockquote>}</blockquote>
+                </div>
+
+                <h2>Задание 9.3</h2>
+
+                <p>Напишите программу, которая запрашивает у пользователя два числа и выводит то, что ближе к 10.</p>
+                <p>Входные данные: 8.34 и 15.</p>
+                <p>Выходные данные: 8.34.</p>
+                <p>Посмотреть ответ</p>
+
+                <div class="main__wrapper-box_grey">
+                    <blockquote>const firstNumber = prompt('Введите первое число');</blockquote>
+                    <blockquote>const secondNumber = prompt('Введите второе число');</blockquote>
+                    <blockquote>if(Math.abs(10 - firstNumber) &lt; Math.abs(10 - secondNumber)) </blockquote>
+                    <p>{alert(firstNumber);</p>
+                    <blockquote>} else {</blockquote>
+                    <blockquote>
+                        <blockquote>alert(secondNumber);</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                </div>
+
+                <h2>Задание 9.4</h2>
+
+                <p>Нам необходимо выяснить у пользователя месяц его рождения.</p>
+                <p>Пользователь может ввести номер месяца, а мы должны показать название месяца.</p>
+                <p>Входные данные: 4.</p>
+                <p>Выходные данные: Апрель.</p>
+                <p>Посмотреть ответ</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const monthNumber = +prompt('Введите номер месяца'); // приводим к типу number</p>
+                    <p>if(monthNumber === 1){</p>
+                    <blockquote>alert('Январь');</blockquote>
+                    <blockquote>} else if(monthNumber === 2){</blockquote>
+                    <blockquote>alert('Февраль');</blockquote>
+                    <blockquote>}</blockquote>
+                    <blockquote>...</blockquote>
+                    <blockquote>else {</blockquote>
+                    <blockquote>alert('Декабрь');</blockquote>
+                    <blockquote>}</blockquote>
+                </div>
+
+                <h3>switch</h3>
+
+                <p>Посмотрите на пример:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>if (result === 0) {</p>
+                    <blockquote>alert("результат равен 0");</blockquote>
+                    <p>} else if (result === 1) {</p>
+                    <blockquote>alert("результат равен 1");</blockquote>
+                    <p>} else if (result === 2) {</p>
+                    <blockquote>alert("результат равен 2");</blockquote>
+                    <p>} else if (result === 3) {</p>
+                    <blockquote>alert("результат равен 3");</blockquote>
+                    <p>} else {</p>
+                    <blockquote>alert("результат не равен числам 1,2,3");</blockquote>
+                    <p>]</p>
+                </div>
+
+                <p>Для него лучше использовать оператор switch. Так как он заменяет собой сразу несколько if.</p>
+                <p>Оператор switch используется, чтобы проверить несколько возможных значений одного выражения.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const a = 1;</p>
+                    <p>const b = 2;</p>
+                    <p>const result = a + b;</p>
+                    <p>switch (result) {</p>
+                    <blockquote>case 0:</blockquote>
+                    <blockquote>
+                        <blockquote>alert('результат равен 0');</blockquote>
+                        <blockquote>break;</blockquote>
+                    </blockquote>
+                    <blockquote>case 1:</blockquote>
+                    <blockquote>
+                        <blockquote>alert('результат равен 1');</blockquote>
+                        <blockquote>break;</blockquote>
+                    </blockquote>
+                    <blockquote>case 2:</blockquote>
+                    <blockquote>
+                        <blockquote>alert('результат равен 2');</blockquote>
+                        <blockquote>break;</blockquote>
+                    </blockquote>
+                    <blockquote>case 3:</blockquote>
+                    <blockquote>
+                        <blockquote>alert('результат равен 3');</blockquote>
+                        <blockquote>break;</blockquote>
+                    </blockquote>
+                    <blockquote>default:</blockquote>
+                    <blockquote>
+                        <blockquote>alert('результат не равен числам 1,2,3');</blockquote>
+                    </blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>У этой конструкции есть несколько блоков case и необязательный блок default.</p>
+                <p>В каждом case нужен оператор break. Иначе после выполнения всех утверждений в каком-то конкретно case
+                    исполнение перейдёт к следующему блоку case без проверки условия:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>switch (result) {</p>
+                    <blockquote>case 0:</blockquote>
+                    <blockquote>
+                        <blockquote>alert('результат равен 0');</blockquote>
+                    </blockquote>
+                    <blockquote>case 1:</blockquote>
+                    <blockquote>
+                        <blockquote>alert('результат равен 1');</blockquote>
+                    </blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>В данном примере отработают оба вызова метода alert().</p>
+                <p>Важно помнить, что в case необходимо размещать значение выражения, а не логическую операцию.</p>
+
+                <h2>Задание 9.5</h2>
+
+                <p>Перепишите задачу 9.4 с использованием switch.</p>
+                <p>Входные данные: 3.</p>
+                <p>Выходные данные: Март.</p>
+                <p>Посмотреть ответ</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const monthNumber = +prompt('Введите номер месяца'); // приводим к типу number</p>
+                    <p>switch (result) {</p>
+                    <blockquote>case 1:</blockquote>
+                    <blockquote>
+                        <blockquote>alert('Январь');</blockquote>
+                        <blockquote>break;</blockquote>
+                    </blockquote>
+                    <blockquote>case 2:</blockquote>
+                    <blockquote>
+                        <blockquote>alert('Февраль');</blockquote>
+                        <blockquote>break;</blockquote>
+                        <blockquote>...</blockquote>
+                    </blockquote>
+                    <blockquote>case 12:</blockquote>
+                    <blockquote>
+                        <blockquote>alert('Декабрь');</blockquote>
+                        <blockquote>break;</blockquote>
+                    </blockquote>
+                    <p>}</p>
+                </div>
+
+                <h2>Задание 9.6</h2>
+
+                <p>Нужно узнать любимое время года пользователя. Попросите пользователя ввести значение от 1 до 4. Если
+                    пользователь ввёл 1, то в переменную должно записаться значение «Зима». Выведите значение переменной
+                    в
+                    консоль или через alert().</p>
+                <p>Входные данные: 1.</p>
+                <p>Выходные данные: Зима.</p>
+                <p>Посмотреть ответ</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const number = +prompt('Введите число от 1 до 4');</p>
+                    <p>let favorite = '';</p>
+                    <p>switch (number) {</p>
+                    <blockquote>case 1:</blockquote>
+                    <blockquote>
+                        <blockquote>favorite = 'Зима';</blockquote>
+                        <blockquote>break;</blockquote>
+                    </blockquote>
+                    <blockquote>case 2:</blockquote>
+                    <blockquote>
+                        <blockquote>favorite = 'Весна';</blockquote>
+                        <blockquote>break;</blockquote>
+                    </blockquote>
+                    <blockquote>case 3:</blockquote>
+                    <blockquote>
+                        <blockquote>favorite = 'Лето';</blockquote>
+                        <blockquote>break;</blockquote>
+                    </blockquote>
+                    <blockquote>case 4:</blockquote>
+                    <blockquote>
+                        <blockquote>favorite = 'Осень';</blockquote>
+                        <blockquote>break;</blockquote>
+                    </blockquote>
+                    <p>}</p>
+                    <p>alert(`Ваше любимое время года ${favorite}`);</p>
+                </div>
+
+                <h3>Тернарный (условный) оператор</h3>
+
+                <p>Уникальный в своем роде оператор, так как состоит из трёх операндов (отсюда и название): логического
+                    условия и двух выражений. Когда значение условия будет true — выполняется первое выражение. Когда
+                    значение условия будет false — выполняется второе выражение.</p>
+                <p>Записывается тернарный оператор так:</p>
+                <figure>
+                    <img src="../img/asset-v1_SkillFactory+INTFR+2023+type@asset+block@INTFR_6_9_2.jpg" width="90%"
+                        alt="">
+                </figure>
+                <p>Запишем две инструкции, которые эквивалентны друг другу:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let text = '';</p>
+                    <p>// 1 вариант</p>
+                    <p>if (result &lt; 4) {</p>
+                    <blockquote>text = "результат меньше 4";</blockquote>
+                    <p>} else {</p>
+                    <blockquote>text = "результат больше или равен 4";</blockquote>
+                    <p>}</p>
+                    <p>// 2 вариант</p>
+                    <p>text = result &lt; 4 ? "результат меньше 4" : "результат больше или равен 4" ;</p>
+                </div>
+
+                <p>Видим, как уменьшилась длина кода. Но есть важное отличие — тернарный оператор всегда возвращает
+                    значение. Поэтому мы должны записать результат в переменную. То есть мы не можем записать вот эту
+                    конструкцию через тернарный оператор:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>if (result &lt; 4) {</p>
+                    <blockquote>alert("результат меньше 4");</blockquote>
+                    <p>} else {</p>
+                    <blockquote>alert("результат больше или равен 4");</blockquote>
+                    <p>}</p>
+                </div>
+
+                <h2>Задание 9.7</h2>
+
+                <p>Перепишите задание 9.3 с использованием тернарного оператора. Присвойте результат переменной и
+                    выведите
+                    её в консоль или alert().</p>
+                <p>Входные данные: 13 и 27.</p>
+                <p>Выходные данные: 13.</p>
+                <p>Посмотреть ответ</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const firstNumber = prompt('Введите первое число');</p>
+                    <p>const secondNumber = prompt('Введите второе число');</p>
+                    <p>const result = Math.abs(10 - firstNumber) &lt; Math.abs(10 - secondNumber) ? firstNumber :
+                        secondNumber;</p>
+                    <p>alert(result);</p>
+                </div>
+
+                <h3>Использование операторов</h3>
+
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>switch</td>
+                            <td>Для сравнения нескольких значений одного выражения. Например, нам нужно узнать, чему
+                                равна
+                                переменная result. В этой ситуации подойдёт switch.</td>
+                        </tr>
+                        <tr>
+                            <td>if-else</td>
+                            <td>Если сравниваемых выражений меньше четырех, лучше использовать if-else, так как он
+                                работает
+                                быстрее switch на маленьком числе проверок.</td>
+                        </tr>
+                        <tr>
+                            <td></td>
+                            <td>Также if-else подойдёт, если нужно выполнять какие-то операции для определения
+                                истинности
+                                условия. Например, сравнивать одно выражение с другим (result === 2).</td>
+                        </tr>
+                        <tr>
+                            <td>Тернарный</td>
+                            <td>
+                                Если нужно записать некоторое значение в переменную после проверки одного условия,
+                                подойдёт
+                                тернарный оператор.</td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <hr class="hr">
+
+                <p>Задание 9.8</p>
+
+                <p>Выводится ли alert:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>if ("0") {</p>
+                    <blockquote>alert ("Привет!");</blockquote>
+                    <p>}</p>
+                </div>
+                <blockquote>да</blockquote>
+                <p>ответ</p>
+                <p>Верно:Любая строка, кроме пустой, в логическом контексте становится true. Поэтому alert сработает.
+                </p>
+
+                <hr class="hr">
+
+                <p>Задание 9.9</p>
+
+                <p><strong>Как будет записано выражение с помощью тернарного оператора:</strong></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let test = "";</p>
+                    <p>if (age > 12) {</p>
+                    <blockquote>test = "Тест пройден";</blockquote>
+                    <p>} else {</p>
+                    <blockquote> test = "Тест не пройден";</blockquote>
+                    <p>}</p>
+                </div>
+
+                <blockquote>let test = age > 12 ? “Тест пройден” : “Тест не пройден”;</blockquote>
+
+                <hr class="hr">
+
+                <p>Задание 9.10</p>
+
+                <p><strong>Что увидит пользователь:</strong></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>switch (true) {</p>
+                    <blockquote>case true:</blockquote>
+                    <blockquote>
+                        <blockquote>alert("true");</blockquote>
+                    </blockquote>
+                    <blockquote>case false:</blockquote>
+                    <blockquote>
+                        <blockquote>alert("false");</blockquote>
+                    </blockquote>
+                    <p>}</p>
+                </div>
+
+                <p><strong>Ответ</strong></p>
+                <p>Верно:Появятся друг за другом 2 алерта из-за того, что в первый case не было добавлено слово break.
+                </p>
+
+                <hr class="hr">
+
+                <p>Задание 9.11</p>
+
+                <p><strong>Заполните пропуск, чтобы вызвался alert (“Привет!”).</strong></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>if (____) {</p>
+                    <blockquote>alert ("Привет!");</blockquote>
+                    <p>}</p>
+                </div>
+                <blockquote>true</blockquote>
+
+                <hr class="hr">
+
+                <p>Задание 9.12</p>
+
+                <p><strong>Заполните пропуски, чтобы вывелся alert (“Привет!”).</strong></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>if( 1 (1)____ 2 && 5 (2)____ 4) {</p>
+                    <blockquote>alert("Привет!");</blockquote>
+                    <p>}</p>
+                </div>
+                <p>(1)</p>
+                <blockquote>&lt;</blockquote>
+                <p>(2)</p>
+                <blockquote>></blockquote>
+
+                <hr class="hr">
+
+                <p>Задание 9.13</p>
+
+                <p><strong>Что нужно дописать, чтобы отработал только второй case?</strong></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>switch ((1)____) {</p>
+                    <blockquote>case 1:</blockquote>
+                    <blockquote>
+                        <blockquote>alert(1);</blockquote>
+                        <blockquote>(2)____;</blockquote>
+                    </blockquote>
+                    <blockquote>case 2:</blockquote>
+                    <blockquote>
+                        <blockquote>alert(2);</blockquote>
+                        <blockquote>(3)____;</blockquote>
+                    </blockquote>
+                    <blockquote>case 3:</blockquote>
+                    <blockquote>
+                        <blockquote>alert(3);</blockquote>
+                        <blockquote>(4)____;</blockquote>
+                    </blockquote>
+                    <p>}</p>
+                </div>
+                <p>(1)</p>
+                <blockquote>2</blockquote>
+                <p>(2)</p>
+                <blockquote>break</blockquote>
+                <p>(3)</p>
+                <blockquote>break</blockquote>
+                <p>(4)</p>
+                <blockquote>break</blockquote>
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page8.html" class="previous">&laquo; Назад</a>
+                <a href="page10.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page8.html" class="previous round">&#8249;</a>
+                <a href="page10.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+    </div>
+    <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+    <script async src="../script/js.js"></script>
+
+    <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+</body>
+
+</html>

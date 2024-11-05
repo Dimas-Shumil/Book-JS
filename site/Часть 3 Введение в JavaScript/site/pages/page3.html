@@ -1,0 +1,503 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>js3</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                3. Массивы
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <p>Мы с вами изучили примитивные типы данных — string, number, boolean, null и undefined. Теперь пора
+                    изучить структуры, которые могут хранить эти данные.</p>
+                <p>Первая такая структура — массив.</p>
+
+                <h3>Массив — это структура, в которой можно хранить коллекции элементов. Например, числа, строки, другие
+                    массивы и т.д.</h3>
+
+                <p>Элементы хранятся в том порядке, в котором они были добавлены.</p>
+                <p>Один из способов создания массива — квадратные скобки [].</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const array = []; // создали пустой массив</p>
+                </div>
+
+                <p>Также можно создавать массив с помощью конструктора new Array():</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const array = new Array(); </p>
+                </div>
+
+                <p>Массив можно создать сразу с элементами. Элементы в массиве разделяются запятыми.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const months =</p>
+                    <p>['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
+                    </p>
+
+                </div>
+
+                <p>Элементов может быть много и они могут быть какими угодно. Максимальное число элементов —
+                    4.294.967.296 (<a
+                        href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array/length"><span
+                            class="wrapper__text">Array.length
+                            — материал из документации MDN</span></a>).</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const different = ['string', 2, 43, false, null, [1, 3, 'inner array']];</p>
+                </div>
+
+                <p>Прежде, чем начать работу с массивами и их методами, давайте разберёмся, как они хранятся в памяти
+                    компьютера.</p>
+
+                <h2>Хранение данных</h2>
+
+                <p>В JavaScript существует 2 способа хранения данных: по ссылке и по значению.</p>
+                <p>По значению хранятся примитивные типы: строки, числа, булевый тип и т.д.</p>
+                <p>Это означает, что при каждом создании переменной выделяется место в памяти, куда записывается
+                    значение переменной.</p>
+                <p>Сложные типы данных хранятся по ссылке. Это значит, что в памяти выделяется небольшая область. И в
+                    переменную записывается ссылка на эту область.</p>
+                <p>Способы хранения можно представить как разговор двух людей.</p>
+                <p>Примитивный тип данных: нам говорят фразу: «Наступило лето». Это фраза, которую мы услышали и сразу
+                    поняли. Нам не нужно куда-то лезть и узнавать её значение.</p>
+                <p>Ссылочный тип данных: нам говорят «Возьми книгу Л.Н. Толстого «Война и мир», открой 35-ую страницу и
+                    прочитай 10-ую строчку сверху». Здесь содержание строки нам сначала непонятно. Как только мы её
+                    найдём, мы узнаем, что там написано. То есть нам дали «ссылку» на нужное значение.</p>
+                <p>У ссылочного типа есть ещё одна особенность — изменение значения. Давайте разберём эту особенность на
+                    примере.</p>
+                <p>Допустим, мы создаём переменную А, присваиваем ей значение. Затем решили создать переменную Б и
+                    присвоить ей значение переменной А. Дальше мы решили поменять значение в переменной А, зная, что у
+                    нас есть переменная Б, в которой хранятся старые данные.</p>
+                <p>Меняем значение переменной А и обнаруживаем, что значение в переменной Б тоже изменилось.</p>
+                <p>Это произошло из-за того, что в переменной А хранится не определённое значение, а лишь ссылка на
+                    него. В переменной Б значение меняется потому, что она «следит» за той же ссылкой, что и переменная
+                    А.</p>
+                <p>Также внутренние значения в таких переменных можно изменять, даже если переменная была объявлена с
+                    помощью ключевого слова const.</p>
+                <p>Изменение значения примитивного типа:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let primitiveA = 5;</p>
+                    <p>let primitiveB = primitiveA;</p>
+                    <p>primitiveA = 10;</p>
+                    <p></p>
+                    <p>console.log(primitiveA); // 10</p>
+                    <p>console.log(primitiveB); // 5</p>
+
+                </div>
+
+                <p>Изменение значения ссылочного типа:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const linkTypeA = ['first', 'second', 'third'];</p>
+                    <p>const linkTypeB = linkTypeA;</p>
+                    <p>linkTypeA[3] = 'fourth'; //добавление элемента в массив</p>
+                    <p>console.log(linkTypeA); // ['first', 'second', 'third', 'fourth']</p>
+                    <p>console.log(linkTypeB); // ['first', 'second', 'third', 'fourth']</p>
+
+                </div>
+
+                <p>Теперь мы знаем, как хранятся массивы в памяти и можем начать их изучать.</p>
+
+                <h2>Получение элемента массива</h2>
+                <p>Нумерация элементов в массиве начинается с нуля. Чтобы получить из массива с месяцами «март», мы
+                    должны написать:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>months[2] // март</p>
+                </div>
+                <p>А для получения первого месяца в году:</p>
+                <div class="main__wrapper-box_grey">
+                    <p> months[0] // январь</p>
+                </div>
+
+                <div class="main__wrapper-box_lightblue">
+                    <p>За один запрос можно получить только один элемент.</p>
+                    <p>month[0] ✅</p>
+                    <p>month[0, 2] ❌</p>
+                </div>
+
+                <p>Не каждый пользователь знает про эту особенность. Поэтому в коде нужно либо прибавлять к полученному
+                    от пользователя значению 1, либо удалять.</p>
+                <p>Номер элемента в массиве называется индексом. В предыдущих примерах мы получали элементы с индексами
+                    0 и 2.</p>
+                <figure>
+                    <img src="../img/INTFR_7_3_1.png" width="50%" alt="">
+                    <p>Схематическое изображение массива</p>
+                </figure>
+
+                <hr class="hr">
+
+
+            </div>
+
+            <p>Задание 3.1</p>
+            <p><strong>Как получить нужный элемент массива?</strong></p>
+            <blockquote>array[4]</blockquote>
+
+            <hr class="hr">
+
+            <p>Задание 3.2</p>
+            <p><strong>У нас есть массив const array = [true, false, true, false]. Как нам получить третий элемент
+                    массива?</strong></p>
+            <blockquote>array[2]</blockquote>
+
+            <div class="main__wrapper-conteiner">
+                <h2>Методы и свойства массива</h2>
+
+                <p>У массива есть методы и свойства, которые облегчают работу с ним. Есть свойство для получения длины
+                    массива, методы удаления или добавления элемента, а также методы для проверки нахождения элемента в
+                    массиве.</p>
+                <p>Теперь перейдём к изучению методов и свойств массивов.</p>
+
+                <h2>length</h2>
+                <p>Свойство называется length. Оно показывает нам длину массива:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>months.length // 12</p>
+                </div>
+
+                <p>Обратите внимание, что свойство length считает длину с 1. А первый индекс массива – 0.</p>
+                <p>С помощью свойства length легко получить последний элемент массива, даже не зная его длины.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>months[months.length - 1] // Декабрь</p>
+                </div>
+
+                <p>В квадратных скобках мы обращаемся к свойству length и отнимаем 1. В массиве находится 12 элементов и
+                    свойство length показывает нам их количество. Индекс первого элемента равен нулю. Значит, при 12
+                    элементах индекс последнего элемента будет равен 11.</p>
+                <p>Такой приём используется в циклах, когда нужно пробежаться по всей длине массива.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>for (let i = 0; i months.length; i += 1) {</p>
+                    <blockquote>console.log(months[i]) // в консоль выводятся все элементы массива</blockquote>
+                    <p>}</p>
+                </div>
+                <p>При обращении к несуществующему индексу массива, мы получаем undefined.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>months[12] // undefined </p>
+                </div>
+
+                <h2>Методы добавления элементов</h2>
+
+                <p>У массивов есть начало — индекс 0. И конец — индекс равный длине массива -1</p>
+                <p>Для массивов в JavaScript были сделаны методы добавления элементов как в начало, так и в конец.</p>
+                <p>Добавление в начало массива считается «дорогой» операцией с точки зрения производительности. В этом
+                    случае JavaScript будет вынужден увеличить индексы всех элементов массива на 1 и сдвинуть их на одну
+                    позицию.</p>
+                <p>Иначе обстоит дело с добавлением в конец массива. JavaScript уже знает длину массива и после
+                    последнего элемента добавляет ещё один. Остальные элементы массива при этом не затрагиваются.</p>
+                <p>Давайте познакомимся с этими методами.</p>
+
+                <h2>push</h2>
+
+                <p>Метод добавляет элемент в конец массива и возвращает новую длину массива.</p>
+                <p>Это означает, что при вызове этого метода мы получаем значение новой длины массива и можем записать
+                    его в переменную.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const arr = ['First', 'Second'];</p>
+                    <p>const newArrLength = arr.push('Third');</p>
+                    <p>console.log(newArrLength); // 3</p>
+                    <p>console.log(arr); // ['First', 'Second', 'Third']</p>
+                </div>
+                <p>Этот метод — «дешёвый» для использования. Потому что массив не пересчитывается, а элемент добавляется
+                    в конец.</p>
+                <p>С помощью этого метода и цикла for мы можем заполнить массив большим количеством чисел:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const numbers = [];</p>
+                    <p>for (let i = 1; i &lsaquo;= 9999; i += 1) {</p>
+                    <blockquote>numbers.push(i);</blockquote>
+                    <p>}</p>
+                    <p>console.log(numbers);// [1, 2, 3, 4, 5 ... 9999]</p>
+                </div>
+
+                <h2>unshift</h2>
+
+                <p>Добавляет элемент в начало массива и возвращает новую длину массива.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const arr = ['First', 'Second'];</p>
+                    <p>const newArrLength = arr.unshift('Third');</p>
+                    <p>console.log(newArrLength); // 3</p>
+                    <p>console.log(arr); // ['Third', 'First', 'Second’]</p>
+                </div>
+                <p>Этот метод «дороже» для исполнения. Системе нужно пересчитать все индексы и вставить элемент в начало
+                    массива.</p>
+                <p>На маленьких массивах это не заметно. Если массив состоит из миллиона элементов, то при выполнении
+                    такой операции система может зависнуть на несколько секунд или дольше.</p>
+
+                <h3>Методы удаления элементов</h3>
+
+                <p>Есть методы удаления элементов как с начала, так и с конца массива. Но, в отличии от методов
+                    добавления, они возвращают значение удалённого элемента, а не новое значение длины массива.</p>
+
+                <h2>pop</h2>
+
+                <p>Удаляет последний элемент массива и возвращает удалённый элемент.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const arr = ['First', 'Second'];</p>
+                    <p>const el = arr.pop();</p>
+                    <p>console.log(el); // Second</p>
+                    <p>console.log(arr); // ['First']</p>
+                </div>
+
+                <p>Эта возможность может быть полезна для проверки удаляемого элемента или для проведения над ним
+                    каких-нибудь манипуляций.</p>
+
+                <h2>shift</h2>
+
+                <p>Удаляет первый элемент массива и возвращает удалённый элемент.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const arr = ['First', 'Second'];</p>
+                    <p>const el = arr.shift();</p>
+                    <p>console.log(el); // First</p>
+                    <p>console.log(arr); // ['Second']</p>
+                </div>
+            </div>
+
+            <hr class="hr">
+
+            <p>Задание 3.3</p>
+            <p><strong>У нас есть массив const array = [true, false, true, false]. Как нам получить третий элемент
+                    массива?</strong></p>
+            <blockquote>array[2]</blockquote>
+
+            <hr class="hr">
+
+            <p>Задание 3.4</p>
+
+            <p><strong>Как можно удалить элемент с конца массива?</strong></p>
+            <blockquote>pop</blockquote>
+
+            <hr class="hr">
+
+            <p>Задание 3.5</p>
+            <p><strong>Что мы получим после выполнения кода:</strong></p>
+
+            <div class="main__wrapper-box_grey">
+                <p>let arr = ['some', 'word', 'are', 'awesome'];</p>
+                <p>let w = arr.pop();</p>
+                <p></p>
+                <p>console.log(w); // ???</p>
+                <p>console.log(arr); // ???</p>
+            </div>
+            <blockquote>'awesome' и ['some', 'word', 'are']</blockquote>
+            <blockquote><strong>Ответ</strong></blockquote>
+            <blockquote>Верно:Метод pop() удаляет последний элемент массива и возвращает его значение</blockquote>
+
+            <hr class="hr">
+
+            <div class="main__wrapper-conteiner">
+
+                <h2>Задание 3.6</h2>
+
+                <p>Запишите в переменную myArray массив состоящий из значений 1, 2, 3, 4, 5.</p>
+                <p>После этого добавьте в конец массива цифру 6. Затем удалите цифру 1 из массива.</p>
+                <p>Входные данные: 1, 2, 3, 4, 5.</p>
+                <p>Выходные данные: 2, 3, 4, 5, 6.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const myArray = [1, 2, 3, 4, 5];</p>
+                    <p>myArray.push(6);</p>
+                    <p>myArray.shift();</p>
+                </div>
+
+                <h3>Перебор элементов массива</h3>
+
+                <p>Возьмём уже известный нам массив с месяцами:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const months = </p>
+                    <p>['январь','февраль','март','апрель','май','июнь','июль','август','сентябрь','октябрь','ноябрь','декабрь'];
+                    </p>
+                </div>
+
+                <p>Перед нами поставили задачу. В начало каждого элемента нужно добавить его порядковый номер, чтобы
+                    получилось «1 – январь», «2 – февраль» и т.д.</p>
+                <p>Задача понятна. Массив небольшой и мы решили, что будем обращаться к каждому элементу по его индексу
+                    и изменять значение.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>months[0] = '1 - январь';</p>
+                    <p>months[1] = '2 - февраль';</p>
+                    <p>...</p>
+                    <p>months[11] = '12 - декабрь';</p>
+                </div>
+                <p>Посмотрите на код. 12 раз у нас дублируется одна и та же операция. Скорее всего, это можно было
+                    сделать красивее. Как — расскажем дальше.</p>
+
+                <h2>Метод № 1</h2>
+
+                <p>Например, можно сделать код аккуратнее с помощью цикла for. Он поможет нам в обходе массива.</p>
+                <p>Мы зададим начальный индекс массива в первой части цикла. Затем добавим условие, чтобы не выйти за
+                    границы массива. И в третьей части цикла будем увеличивать индекс на единицу.</p>
+                <p>Внутри цикла мы будем получать значение массива для текущего индекса и менять его.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>for (let index = 0; index &lsaquo; months.length; index += 1) {</p>
+                    <blockquote>months[index] = `${index + 1} - ${months[index]}`;</blockquote>
+                    <p>}</p>
+                </div>
+
+                <h2>months[index] = `${index + 1} - ${months[index]}`;</h2>
+
+                <p>Другой путь — воспользоваться циклом for…of.</p>
+                <p>Это вариация цикла for для массивов. У него проще структура:</p>
+                <p>&#10144; не нужно создавать переменную и задавать ей значение;</p>
+                <p>&#10144; не нужно создавать условие;</p>
+                <p>&#10144; не нужно писать шаг цикла.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>for (let month of months) {</p>
+                    <blockquote>bloconsole.log(month);</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>Цикл for…of можно применять в случаях, когда нам не важен индекс элемента. Как в примере с выводом в
+                    консоль названия месяца.</p>
+                <p>Для решения задачи с изменением названия элемента в массиве этот метод не подойдёт. Но мы можем
+                    схитрить и не менять исходный массив. Мы будем добавлять уже изменённые названия в новый массив.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const newMonths = [];</p>
+                    <p>let index = 1;</p>
+                    <p>for(let month of months) {</p>
+                    <blockquote>newMonths.push(`${index} - ${month}`);</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>Давайте разберём работу этого цикла:</p>
+                <p>1. for(let month of months) { — создаётся переменная month, в которую записывается значение текущего
+                    элемента массива.</p>
+                <p>2.выполняется код внутри фигурных скобок.</p>
+                <p>3. в ранее созданную переменную month записывается значение следующего элемента списка.</p>
+                <p>Цикл сам знает, какова длина массива. И у нас не получится выйти за его предел.</p>
+                <p>С помощью этих циклов мы можем отфильтровать значения массива по какому-либо условию и записать
+                    итоговый результат в новый массив:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const arr = [1, 2, 3, 4, 5]; // создаём или получаем массив с числами</p>
+                    <p>const newArrayWithEvenNumbers = []; // создаём пустой массив</p>
+                    <p>for (let number of arr) { // перебираем исходный массив</p>
+                    <blockquote>if (number % 2 === 0) { // проверяем каждое значение на условие</blockquote>
+                    <blockquote>
+                        <blockquote>if (number % 2 === 0) { // проверяем каждое значение на условие</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <p>}}</p>
+                    <p>console.log(newArrayWithEvenNumbers) // 2, 4</p>
+                </div>
+
+                <h2>Задание 3.7</h2>
+
+                <p>Заполните массив newArray значениями от 1 до 9999.</p>
+                <p>Входные данные: [].</p>
+                <p>Выходные данные: [1…9999].</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const newArray = [];</p>
+                    <p>for (let i = 1; i &lsaquo;= 9999; i += 1) {</p>
+                    <blockquote>newArray.push(i);</blockquote>
+                    <p>}</p>
+                </div>
+
+                <h2>Задание 3.8</h2>
+
+                <p>Выведите в консоль все числа из массива elements наиболее подходящим вариантом цикла for.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>for (let element of elements) {</p>
+                    <blockquote>console.log(element);</blockquote>
+                    <p>}</p>
+                </div>
+
+                <h2>Задание 3.9</h2>
+
+                <p>Создайте массив numbers и заполните его числами от 1 до 100. Создайте пустой массив filteredNumbers.
+                    Добавьте из первого массива во второй все числа, которые кратны пяти. Выведите второй массив в
+                    консоль.</p>
+                <p>Входные данные: [] и []</p>
+                <p>Выходные данные: [5, 10, 15, 20 … 100]</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const numbers = [];</p>
+                    <p>const filteredNumbers = [];</p>
+                    <p>for (let i = 1; i &lsaquo;= 100; i += 1) {</p>
+                    <blockquote>numbers.push(i);</blockquote>
+                    <p>}</p>
+                    <p>for (let number of numbers) {</p>
+                    <blockquote>if(number % 5 === 0) {</blockquote>
+                    <blockquote>
+                        <blockquote>filteredNumbers.push(number);</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <p>}</p>
+                </div>
+
+                <h3>Поиск по массиву</h3>
+
+
+
+            </div>
+
+
+
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page2.html" class="previous">&laquo; Назад</a>
+                <a href="page4.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page2.html" class="previous round">&#8249;</a>
+                <a href="page4.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+    </div>
+</body>
+
+</html>

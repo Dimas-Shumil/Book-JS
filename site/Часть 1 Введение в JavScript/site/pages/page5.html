@@ -1,0 +1,290 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>JS part1</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+            <div class="header__nav-title">
+                    <p><strong>5.Массивы и базовые методы работы с ними. Практикуемся с командой debugger</strong></p>
+            </div>
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html" title="Введение"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page2.html"
+                        title="Програмирование на JavaScript: основы"></a><span class="header__nav-ul_link"></span></li>
+                <li><a href="../pages/page3.html" title="Логический тип и ветвление"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page4.html" title="Строки. Числа"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"
+                        title="Массивы и базовые методы работы с ними. Практикуемся с командой debugger"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page6.html" title="циклы"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page7.html" title="Ассоциативные массивы"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page8.html" title="итоги"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#" title="обратная связь"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+            <div class="main__wrapper-conteiner">
+
+            <figure>
+                <img src="../img/svg/m10_cover_massive.svg" width="40%" alt="">
+            </figure>
+
+            <div class="main__wrapper-border_green">
+                <p><span class="green">Массив</span> (<em>array</em>) — это последовательное расположение
+                    элементов данных в сочетании с индексом элемента данных. Массив имеет фиксированную размерность.</p>
+            </div>
+            <p>Другими словами, это особая структура данных для хранения упорядоченных коллекций.</p>
+
+            <div class="main__wrapper-box_grey">
+                <p>
+                    Однако, в отличие от Python, массивы в JavaScript могут состоять из данных различного типа. Это
+                    значит, что может быть массив, состоящий только из чисел — <strong>[1, 2, 3]</strong>, а может быть
+                    массив, состоящий
+                    из абсолютно всех типов данных в разных комбинациях — <strong>[true, 'string', 123, false,
+                        null]</strong>.
+                </p>
+            </div>
+            <!-- здесь будет видео -->
+            <p>В JavaScript массивы являются подмножеством объектов, то есть любой массив — это объект. На практике
+                часто возникает потребность узнать, является ли некоторая переменная массивом.</p>
+            <p>Мы могли бы использовать оператор typeof, о котором говорили ранее, но с массивами он работает не совсем
+                так, как ожидается:</p>
+
+            <div class="main__box-list__text">
+                <p>typeof {}; </p>
+                <p>"object"</p>
+            </div>
+            <div class="main__box-list__text">
+                <p>typeof []; </p>
+                <p>"object"</p>
+            </div>
+            <p>Поэтому для того, чтобы узнать, является ли переменная массивом, можно воспользоваться следующими
+                проверками:</p>
+            <p><strong>Наличие свойства length</strong></p>
+
+            <div class="main__wrapper-box_grey">
+                <p>const obj = {a: 1, b: 2};</p>
+                <p>console.log(obj.length);</p>
+                <p>undefined</p>
+            </div>
+            <div class="main__wrapper-box_grey">
+                <p>const arr = [1, 2];</p>
+                <p>console.log(arr.length);</p>
+                <p>2</p>
+            </div>
+
+            <p>Свойство length — встроенное. Оно возвращает количество элементов массива. В большинстве случаев типа
+                object и наличия свойства length достаточно, чтобы считать элемент массивом.</p>
+            <p><strong>Метод Array.isArray()</strong></p>
+
+            <div class="main__wrapper-box_grey">
+                <p>const obj = {a: 1, b: 2};</p>
+                <p>console.log(Array.isArray(obj)) ;</p>
+                <p>false</p>
+            </div>
+            <div class="main__wrapper-box_grey">
+                <p>const arr = [1, 2];</p>
+                <p>console.log(Array.isArray()arr)</p>
+                <p>True</p>
+            </div>
+
+            <h3>Методы работы с массивами</h3>
+
+            <p>Над массивами можно выполнять множество операций: добавлять и удалять элементы, изменять, перебирать
+                элементы, копировать. Традиционно методы делят на <span class="green">мутирующие и
+                    немутирующие</span>.</p>
+
+                    <div class="main__wrapper-box_grey">
+                <p>Мутирующие методы изменяют исходный массив, а немутирующие — не изменяют.</p>
+            </div>
+
+            <h3>Мутирующие методы:</h3>
+
+            <table class="two">
+                <tbody>
+                    <tr>
+                        <td>.push(...items), .unshift(...items)</td>
+                        <td>Добавляют элементы в конец/начало массива.</td>
+                    </tr>
+                    <tr>
+                        <td>.pop(), .shift()</td>
+                        <td>Удаляют элемент из конца/начала массива.</td>
+                    </tr>
+                </tbody>
+            </table>
+
+            <p><strong>Пример:</strong></p>
+
+            <div class="main__wrapper-box_grey">
+                <p>let arr = [ "orange"];</p>
+                <p>arr.unshift("apple");// arr = ["apple", "orange"];</p>
+                <p>arr.push("strawberry");// arr = ["apple", "orange", "strawberry"];</p>
+                <p>arr.shift(); //arr = ["orange", "strawberry"];</p>
+                <p>arr.pop();// arr = ["orange"];</p>
+            </div>
+
+            <p>Как следует из примеров, с помощью методов push и pop мы работаем как раз с хвостом массива: добавляется
+                и удаляется элемент с индексом length - 1 (вычитать единицу нужно, так как свойство length возвращает
+                количество элементов, а индексы нумеруются с 0).</p>
+            <p>Если же необходимо добавить или удалить элемент в начале массива, нам пригодятся методы shift и unshift.
+            </p>
+
+            <table class="two">
+                <tr>
+                    <td>.splice(index[, deleteCount, elem1, ..., elemN])</td>
+                    <td>Удаляет и добавляет элементы.</td>
+                </tr>
+            </table>
+
+            <p>let arr = ["Я", "прохожу", "курс"];</p>
+            <p>// с конца массива (берем длину массива)</p>
+            <p>// удалить 0 элементов</p>
+            <p>// вставить элементы "в", "Skillfactory"</p>
+            <p>arr.splice(arr.length, 0, "в", "Skillfactory");</p>
+            <p><strong>Результат:</strong></p>
+
+            <div class="main__wrapper-box_grey">
+                <p>let arr = ["Я", "прохожу", "курс"];</p>
+                <p>arr.splice(arr.length, 0, "в", "Skillfactory");</p>
+                <p>console.log( arr );</p>
+                <p>["Я", "прохожу", "курс", "в", "Skillfactory"]</p>
+            </div>
+
+            <table class="two">
+                <tr>
+                    <td>.concat()</td>
+                    <td>Склеивает массивы.</td>
+                </tr>
+            </table>
+            <p><strong>Пример:</strong></p>
+
+            <div class="main__wrapper-box_grey">
+                <p>let arr = [ "Сегодня"];</p>
+                <p>arr.concat(["солнечно"]);</p>
+                <p>["Сегодня", "солнечно"]</p>
+            </div>
+
+            <h2>Немутирующие методы:</h2>
+
+            <table class="two">
+                <tr>
+                    <td> .map(cb)</td>
+                    <td>
+                        <p>Перебирающий метод массива, принимающий как аргумент функцию cb.</p>
+                        <p>Он вызывает функцию для каждого элемента массива и возвращает массив результатов выполнения
+                            этой функции.</p>
+                    </td>
+                </tr>
+            </table>
+
+            <p><strong>Синтаксис:</strong></p>
+            <p>let result = arr.map(function(item, index, array) {</p>
+            <p> // возвращается новое значение вместо элемента</p>
+            <p>});</p>
+            <p><strong>Где:</strong></p>
+            <blockquote><em>item</em> — очередной элемент массива,</blockquote>
+            <blockquote><em>index</em> — его индекс,</blockquote>
+            <blockquote><em>array</em> — сам массив.</blockquote>
+
+            <p><strong>Пример:</strong></p>
+
+            <div class="main__wrapper-box_grey">
+                <p>let arr = [1,2,3];</p>
+                <p>let result = arr.map(function(item, index, array) {</p>
+                <blockquote>return item + 1</blockquote>
+                <p>});</p>
+                <p>console.log(arr);</p>
+                <p>[1, 2, 3]</p>
+                <p>console.log(result);</p>
+                <p>[2, 3, 4]</p>
+            </div>
+
+            <table class="two">
+                <tr>
+                    <td>.reduce(cb) или reduceRight(cb)</td>
+                    <td>
+                        Эти методы используются для вычисления какого-нибудь единого значения на основе всего массива.
+                    </td>
+                </tr>
+            </table>
+
+            <p><strong>Синтаксис:</strong></p>
+            <p>let result = arr.reduce(function(previousValue, item, index, array) {</p>
+            <p> // ...</p>
+            <p>}, [initial]);</p>
+            <p><strong>Где:</strong></p>
+            <blockquote><em>item</em> — очередной элемент массива,</blockquote>
+            <blockquote><em>index</em> — его индекс,</blockquote>
+            <blockquote><em>array</em> — сам массив.</blockquote>
+
+            <p>Например, мы хотим получить сумму всех элементов массива:</p>
+
+            <div class="main__wrapper-box_grey">
+                <p>let arr = [1, 2, 3];</p>
+                <p>let result = arr.reduce(function(sum, item, index, array){</p>
+                <blockquote>return sum + item</blockquote>
+                <p>}, 0);</p>
+                <p>console.log(result);</p>
+                <p>6</p>
+            </div>
+
+            <p>
+                Мы рассмотрели самые популярные методы, но их гораздо больше. Существуют методы для поиска элемента,
+                проверки вхождения элемента в массив, сортировки и другие.
+                Полный список вы можете посмотреть <a
+                    href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Array#">здесь</a>.
+            </p>
+
+            <h3>Практика</h3>
+            <figure>
+                <img src="../img/svg/m10_homework (2).svg" width="40%" alt="">
+            </figure>
+
+            <h3>Задание 5.</h3>
+
+            <p>Дан произвольный массив. Необходимо вывести количество элементов массива, затем перебрать его и вывести в
+                консоль каждый элемент массива.</p>
+            </div>
+            <!-- button -->
+            <div class="main__btn-box">
+                <a href="page4.html" class="previous">&laquo; Назад</a>
+                <a href="page6.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page4.html" class="previous round">&#8249;</a>
+                <a href="page6.html" class="next round">&#8250;</a>
+            </div>
+            <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+        </div>
+    </div>
+    <script async src="../script/js.js"></script>
+
+</body>
+
+</html>

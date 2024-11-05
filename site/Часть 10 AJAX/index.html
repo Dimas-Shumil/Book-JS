@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="site/css/sass.css">
+    <title>AJAX</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                1. Введение
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page8.html"><span class="header__nav-ul_link"></span></a></li>
+
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+                <figure>
+                    <img src="site/images/m14_cover_server.svg" width="45%" alt="">
+                </figure>
+                <p>В этом модуле вам предстоит узнать, как происходит взаимодействие клиентской части с сервером. Также
+                    вы научитесь понимать разницу между синхронным и асинхронным кодом и работать с ними. Кроме этого,
+                    вы узнаете возможные способы сохранения состояния на клиенте.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>В этом модуле вам встретятся примеры в <a href="https://codepen.io/trending">Codepen</a> и <a
+                            href="https://codesandbox.io/templates">Codesandbox</a>. Это удобные инструменты разработки,
+                        которые использовались в материале для более наглядного объяснения кода. Рекомендуем в первую
+                        очередь ознакомиться с инструкцией по работе с ними.</p>
+                </div>
+                <div class="main__wrapper-box_grey">
+                    <p>Codepen используется только для стороны клиента и более простых операций.</p>
+                    <p>Codesandbox же использует и клиент, и сервер для демонстрации более сложного кода.</p>
+                </div>
+                <div class="main__wrapper-border_green">
+                    <p>Кроме этого, в <a
+                            href="https://apps.skillfactory.ru/learning/course/course-v1:Skillfactory+FR+2020/block-v1:Skillfactory+FR+2020+type@sequential+block@068083151d5444cebc1cdd0374b008b8/block-v1:Skillfactory+FR+2020+type@vertical+block@993afc528de941d990bf1e5e671369c6">Тренажёре
+                            по JavaScript</a> вы можете дополнительно отработать эту тему в разделах:</p>
+                    <blockquote>1. Promise (5 заданий);</blockquote>
+                    <blockquote>2. Async/Await (2 задания);</blockquote>
+                    <blockquote>3. JSON (3 задания).</blockquote>
+                    <blockquote>4. Event Loop и асинхронность (2 задания).</blockquote>
+                </div>
+                <p>Модуль обещает быть очень насыщенным и не всегда простым. Не падайте духом и помните, что на этапе
+                    обучения вас готовы поддержать менторы и сокурсники. </p>
+                <p>Успехов!</p>
+
+            </div>
+
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="site/pages/page8.html" class="previous">&laquo; Назад</a>
+                <a href="site/pages/page2.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="site/pages/page8.html" class="previous round">&#8249;</a>
+                <a href="site/pages/page2.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="site/script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

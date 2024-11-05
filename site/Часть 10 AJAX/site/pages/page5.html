@@ -1,0 +1,265 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>AJAX</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                5. Promises, async/await
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+            <div class="main__wrapper-conteiner">
+                <figure>
+                    <img src="../images/m14_async_code95.svg" width="45%" alt="">
+                </figure>
+                <h3>Основные способы реализации асинхронного кода в JS</h3>
+
+                <p>Некоторые способы реализации асинхронного кода мы рассматривали ранее. Давайте структурируем их и
+                    рассмотрим новые.</p>
+
+                <h3>1. Асинхронные callback-функции</h3>
+
+                <p>Реализуются конструкциями:</p>
+                <div class="main__wrapper-box_grey">
+                    <blockquote>setTimeout</blockquote>
+                    <blockquote>setInterval</blockquote>
+                    <blockquote>XHR (XMLHttpRequest)</blockquote>
+                    <blockquote>Обработчики событий (addEventListener)</blockquote>
+                </div>
+
+                <h3>2. Promise (обещание)</h3>
+
+                <div class="main__wrapper-box_grey">
+                    <blockquote><a
+                            href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise,</a>
+                    </blockquote>
+                    <blockquote><a href="https://developer.mozilla.org/ru/docs/Web/API/Fetch_API/Using_Fetch">Fetch,</a>
+                    </blockquote>
+                    <blockquote><a
+                            href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/async_function">async/await.</a>
+                    </blockquote>
+                </div>
+                <p>Кроме обработки событий и отдельных хаков оптимизации кода с setTimeout, вся остальная работа с
+                    асинхронным кодом в современных приложениях реализуется через promise. Так происходит, потому что
+                    «промисы» более современные, более удобные в использовании и не имеют некоторых недостатков,
+                    присущих асинхронному коду на callback (например, <a href="http://callbackhell.ru/">callback
+                        hell</a>).</p>
+                <hr class="hr">
+
+                <h3>Promise (обещание)</h3>
+
+                <div class="main__wrapper-border_green">
+                    Promise — механизм, позволяющий реализовать асинхронный код. Его можно использовать для отложенных
+                    вычислений, чтобы не блокировать основной поток работы программы.
+                </div>
+                <p>Для создания promise используется класс-конструктор <a
+                        href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise">Promise</a>,
+                    который принимает callback-функцию с двумя входными параметрами: <a
+                        href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise/resolve">resolve</a>
+                    и <a
+                        href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise/reject">reject</a>.
+                </p>
+                <p>Пример создание promise:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const flag = true;</p>
+                    <p>const myPromise = new Promise((resolve, reject) => {</p>
+                    <blockquote>if (flag) {</blockquote>
+                    <blockquote>
+                        <blockquote>resolve("Успешное выполнение promise");</blockquote>
+                    </blockquote>
+                    <blockquote> } else {
+                        <blockquote>reject("Неуспешное выполнение promise");</blockquote>
+                        }
+                    </blockquote>
+                    <p>});</p>
+                </div>
+                <p>Мы создали новый promise с именем myPromise, но пока его не выполнили. Функция resolve используется
+                    для того, чтобы оповестить об успешном выполнении промиса. Функция reject используется при
+                    неуспешном выполнении и генерирует <a
+                        href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/throw">ошибку
+                        (исключение)</a>.</p>
+                <div class="main__wrapper-box_pink">
+                    <p><b>ВАЖНО!</b> После того как ваш promise выполнился (неважно, успешно или нет), он переходит в
+                        статус исполненного и больше не может быть выполнен.</p>
+                </div>
+                <p>Пример:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const myPromise = new Promise((resolve, reject) => {</p>
+                    <blockquote> setTimeout(() => { reject() }, 1000);</blockquote>
+                    <blockquote>resolve();</blockquote>
+                    <p>}); </p>
+                    <p>// promise выполнится всегда успешно. Выполнение reject не приведёт ни к какому результату</p>
+                </div>
+                <p>Для обработки результатов <span class="blue">promise</span> существует несколько методов:</p>
+                <blockquote><a
+                        href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise/then">then</a>
+                    — используется для обработки успешного результата выполнения promise;</blockquote>
+                <blockquote><a
+                        href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise/catch">catch</a>
+                    — используется для обработки неуспешного результата выполнения promise.</blockquote>
+                <p>Также есть ещё один метод, <a
+                        href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Promise/finally">finally</a>.
+                    Он реже используемый, выполняется при любом исходе работы promise. Нужен для информирования, а не
+                    обработки результата выполнения promise.</p>
+                <div class="main__wrapper-box_pink">
+                    <p><b>ВАЖНО!</b> Хорошей практикой является всегда указывать then и catch у promise.</p>
+                    <p>catch позволяет вам обработать ошибки выполнения promise, даже если вы их не ожидаете. Ошибки
+                        могут привести к остановке работы вашего кода.</p>
+                </div>
+                <p><a href="https://codepen.io/vvysokiy/pen/WNrvowz">Пример реализации promise в codepen.io</a></p>
+                <p><a href="https://codepen.io/vvysokiy/pen/NWxqbaz">Пример реализации promise с отложенным выполнением
+                        с setTimeout в codepen.io</a></p>
+                <hr class="hr">
+
+                <h2>Задание 9.5.1</h2>
+                <p>Какие методы отвечают за обработку результатов выполнения promise?</p>
+                <blockquote>then</blockquote>
+                <blockquote>catch</blockquote>
+                <hr class="hr">
+
+                <h3>Цепочки promise и методы</h3>
+
+                <p>Цепочки promise используются для последовательной асинхронной обработки данных. Это может быть
+                    несколько последовательных запросов (с использованием fetch API), для обработки чтения данных из
+                    нескольких файлов на Node.js и другие случаи. Они строятся на основе функционала, рассмотренного
+                    ранее.</p>
+
+                <p><a href="https://codepen.io/vvysokiy/pen/BajNQqV"></a>Пример цепочки promise в codepen.io</p>
+                <p>Есть удобные методы для обработки нескольких promise:</p>
+                <blockquote><b>Promise.all</b> — принимает массив с promise, возвращает массив результатов всех promise
+                    при успешном выполнении каждого или же ошибку при падении хотя бы одного;</blockquote>
+                <blockquote><b>Promise.allSettled</b> — принимает массив с promise, возвращает массив результатов всех
+                    promise при любом результате выполнения каждого из них;</blockquote>
+                <blockquote><b>Promise.race</b> — принимает массив с promise, возвращает результат или ошибку первого
+                    выполненного promise.</blockquote>
+                <p>Также есть два метода, возвращающих promise:</p>
+                <blockquote><b>Promise.resolve</b> — сразу возвращает успешный promise;</blockquote>
+                <blockquote><b>Promise.reject</b> — сразу возвращает отклонённый promise.</blockquote>
+                <hr class="hr">
+
+                <h3>Конструкция async/await</h3>
+
+                <p><a
+                        href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Statements/async_function">Async/await</a>
+                    позволяет вам работать с асинхронным кодом ещё более удобно.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>async function f1() {</p>
+                    <blockquote>const result = await f2();</blockquote>
+                    <blockquote>return result;</blockquote>
+                    <p>}</p>
+                </div>
+                <p>В данном примере мы объявляем функцию как асинхронную, добавляя ключевое слово async перед ней. Теперь функция асинхронная и будет возвращать Promise.Async/await — это «синтаксический сахар», более удобный и понятный механизм для работы с Promise в JavaScript. Он дополняет работу с Promise, но не заменяет её.</p>
+                <p>Внутри функции f1 происходит вызов функции f2. f2 также является асинхронной функцией, поэтому необходимо дождаться результата её выполнения. Для этого перед вызовом асинхронной функции ставится ключевое слово await, которое говорит, что перед нами асинхронная функция, мы её исполняем и дожидаемся её результата. После получения результата происходит выполнение return.</p>
+
+                <h3>Комбинирование с promise</h3>
+                <table>
+                    <thead>
+                        <tr>
+                            <th> Promise</th>
+                            <th>async/await</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <th>
+                                <p>Используется для более сложной логики;</p>
+                                <p>Преимущество — сложная обработка результата (можно обработать несколько ошибок, преобразовать ответ, сделать цепочку);</p>
+                                <p>Более сложен для написания.</p>
+                            </th>
+                            <th>
+                                <p>Используются для более простой логики;</p>
+                                <p>Предоставляют более простой синтаксис;</p>
+                                <p>Минус — ограничены в функционале.</p>
+                            </th>
+                        </tr>
+                    </tbody>
+                </table>
+                <p><a href="https://codepen.io/vvysokiy/pen/qBbrPBd">Пример работы с async/await и promise в codepen.io</a></p>
+                <hr class="hr">
+
+                <h2>Задание 9.5.2</h2>
+                <p>Для чего используется конструкция async/await?</p>
+                <blockquote>упрощение работы с promise</blockquote>
+                <hr class="hr">
+
+                <h2>Задание 9.5.3</h2>
+                <p>Что возвращает функция, объявленная с ключевым словом async?</p>
+                <blockquote>promise</blockquote>
+                <hr class="hr">
+
+                <h2>Задание 9.5.4</h2>
+                <p>Соотнесите название метода с его функцией.</p>
+                <blockquote><span class="green"> Promise.all</span> - принимает массив с Promise, вщзвращает массив результатов всех promise при успешном выполнении каждого или же ошибку при падении хотябы одого </blockquote>
+                <blockquote><span class="green"> promise.allSettled</span> - принимает массивс promise, возвращает массив результатов всех promise при любом результате выполнение каждого из них</blockquote>
+                <blockquote><span class="green"> Promise.race</span> - принимает массив с promise, возвращает результат или ошибку первого выполненого promise</blockquote>
+                <blockquote><span class="green"> Promise.resolve</span> - сразу возвращает успешный promise</blockquote>
+                <blockquote><span class="green"> Promise.reject</span> - сразу возвращает отклоненный promise</blockquote>
+                <hr class="hr">
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page4.html" class="previous">&laquo; Назад</a>
+                <a href="page6.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page4.html" class="previous round">&#8249;</a>
+                <a href="page6.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

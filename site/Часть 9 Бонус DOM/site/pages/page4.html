@@ -1,0 +1,261 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Бонус DOM</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                4. Создание и изменение HTML-элементов с использован
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page9.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <p>В прошлом юните мы рассмотрели много вариантов, как достать уже существующие элементы и узлы прямо из
+                    JavaScript. А в этом разберём варианты, как их создать.</p>
+                <p>Это может быть полезно для динамического изменения разметки, добавления текста и картинок.</p>
+
+                <h2>createTextNode</h2>
+
+                <p>createTextNode</p>
+                <h3>createTextNode — это метод, который создаёт текстовый узел.</h3>
+                <p>Синтаксис:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>document.createTextNode("строка")</p>
+                </div>
+                <p>Давайте применим на практике:</p>
+
+                <iframe src="../frame/frame4-1.html" width="90%" height="200px" frameborder="0"></iframe>
+                <p>В примере есть пустой параграф. Мы получили его с помощью querySelector. И затем создали текстовый
+                    узел с простым текстом.</p>
+                <p>Раскомментируйте последнюю строку, чтобы этот узел появился в параграфе. Работает!</p>
+                <p>В этом случае мы использовали уже известный вам метод appendChild. Но можно было и по-другому.</p>
+                <p>Например, с помощью метода append. Он может добавлять не только узлы, но и просто строки.</p>
+
+                <h2>Упражнение 4.1</h2>
+                <p>Поэкспериментируйте в последнем примере. Попробуйте добавить в параграф не текстовый узел, а простую
+                    строку через append. Попытайтесь сделать то же самое через appendChild.</p>
+
+                <h2>textContent</h2>
+
+                <p>Освежим в памяти свойство textContent.</p>
+                <p>Продублируем код из предыдущего примера, но изменим логику:</p>
+
+                <iframe src="../frame/frame4-2.html" width="90%" height="400px" frameborder="0"></iframe>
+
+                <p>Чтобы в первом параграфе появился какой-то текст, раскомментируйте первую закомментированную строку в
+                    скрипте.</p>
+                <p>Помимо вставки текста в узел, textContent узла можно положить в переменную и получить это значение.
+                    Синтаксис вот такой:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const text = element.textContent</p>
+                </div>
+                <p>Посмотрите, что окажется в консоли — строка из первого параграфа.</p>
+                <p>Также в примере у нас есть второй параграф. Чтобы посмотреть, как поведёт себя это свойство, если в
+                    элементе есть потомки. Этот блок кода идёт под цифрой 2.</p>
+                <p>Раскомментируйте строку, в которой textContent вызывается на втором параграфе. В консоли окажется
+                    весь текст, который есть в этом узле.</p>
+                <p>Интересное поведение. Пригодится, если вам будет нужно получить текст и из элемента, и из всех его
+                    потомков.</p>
+                <hr class="hr">
+            </div>
+
+            <h2>Упражнение 4.2</h2>
+
+            <div class="main__wrapper-box_grey">
+                <p>&lsaquo;p>Я - проверочный текст!&lsaquo;/p></p>
+            </div>
+            <p>Параграф с текстом получен в переменную text. Запишите одну строку, в которой вы получаете текст внутри
+                этого параграфа. Писать console.log не нужно.</p>
+            <blockquote>text.textContent</blockquote>
+            <hr class="hr">
+
+            <div class="main__wrapper-conteiner">
+                <p>В нашем примере есть ещё и третий параграф, внутри которого span с текстом. Однако текста не видно:
+                    мы скрыли span с помощью display: none.</p>
+                <p>Это нужно для того, чтобы рассмотреть похожее на textContent свойство — innerText.</p>
+
+                <h2>innerText</h2>
+
+                <h3><b>innerText</b> — свойство, которое возвращает текстовое содержимое элемента.</h3>
+                <p>Между ним и textContent есть различия. Рассмотрим одно из них.</p>
+                <p>В блоке 3 раскомментируйте последнюю строку. И понаблюдайте за консолью. В ней ничего не отобразится.
+                </p>
+                <p>А теперь попробуйте то же самое, но с textContent. В консоли появится фраза:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>Я тут немного посижу, посмотрю...</p>
+                </div>
+                <p>innerText проигнорировал текст в скрытом элементе. А вот textContent его отобразил. Знать эту разницу
+                    полезно: в работе бывает всякое.</p>
+                <p>В остальном innerText делает то же самое, что и textContent — задаёт новое текстовое значение или
+                    возвращает текущее.</p>
+                <hr class="hr">
+
+                <h2>Упражнение 4.3</h2>
+                <p>Поработайте со вторым параграфом. Используйте на нём innerText и проанализируйте разницу.</p>
+
+                <h2>Упражнение 4.4</h2>
+                <p>Одно из этих двух свойств может читать текстовое содержимое тегов script и style. А второе не может.
+                    На практике разберитесь, о каком свойстве мы говорим в первом случае, а о каком — во втором.</p>
+
+                <h2>innerHTML</h2>
+                <p>Надеюсь, вам стало понятнее, как менять текстовое содержимое узлов. Но приходило ли вам в голову: а
+                    что если вставить в узел фрагмент HTML?</p>
+                <p>Отобразится ли он как текст или превратится в теги? Свойство innerHTML может помочь с этим вопросом.
+                </p>
+                <h3><b>innerHTML</b> — свойство, которое получает или изменяет HTML-разметку внутри определённого
+                    элемента.</h3>
+                <p>Cинтаксис:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>element.innerHTML = “...”</p>
+                    <p>const html = element.innerHtml</p>
+                </div>
+                <p>Давайте разбираться.</p>
+                <iframe src="../frame/frame4-3.html" width="90%" height="400px" frameborder="0"></iframe>
+                <p>В примере мы сделали следующее:</p>
+                <blockquote>1. Создали объект с ненастоящими товарами.</blockquote>
+                <blockquote>2. Получили контейнер для товаров.</blockquote>
+                <blockquote>3. Написали логику, в которой проходим циклом по товарам и каждый вставляем в div.
+                </blockquote>
+                <p>В этом примере интересен именно третий пункт.</p>
+                <p>Чтобы вставить новый товар в галерею, мы не создаём элемент с помощью createElement. Мы пишем
+                    шаблонную строку, в которую вставляем данные из объекта.</p>
+                <p>И затем, когда строка готова, мы добавляем её в разметку.</p>
+                <p>Помимо innerHTML вас может заинтересовать запись +=. Объясняем, что происходит: innerHTML возвращает
+                    узлы, которые есть в элементе, в виде строки.</p>
+                <p>С помощью += мы каждый раз получаем актуальное содержание галереи, а потом добавляем к этой строке
+                    ещё кусочек. Наш новый товар.</p>
+                <p>Как и в предыдущих случаях, вы можете не только задавать новое значение через innerHTML, но и
+                    получать текущее.</p>
+                <p>Для этого нужно поместить в переменную то, что вернёт это свойство.</p>
+
+                <h2>Упражнение 4.5</h2>
+
+                <iframe src="../frame/frame4-4.html" width="90%" height="250px" frameborder="0"></iframe>
+                <p>Получите HTML-значение контейнера для статьи.</p>
+                <hr class="hr">
+
+                <h2>outerHTML</h2>
+
+                <p>Следующее свойство похоже на innerHTML.</p>
+                <h3><b>outerHTML</b> тоже возвращает HTML-значение, вот только не внутри элемента, а вместе с ним.</h3>
+                <p>Cинтаксис:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>element.outerHTML = “...”</p>
+                    <p>const html = element.outerHtml</p>
+                </div>
+                <iframe src="../frame/frame4-5.html" width="90%" height="300px" frameborder="0"></iframe>
+                <p>В этом примере мы создали несколько товаров, получили все кнопки и на каждую повесили событие. Если
+                    кнопка нажата, то мы получаем её родителя и заменяем его на пустую строку. То есть удаляем из
+                    контейнера.</p>
+                <p>Благодаря outerHTML мы удаляем не только содержимое каждой карточки, но и саму карточку.</p>
+
+                <h2>Упражнение 4.6</h2>
+                <p>Попробуйте в последнем примере поменять outerHTML на innerHTML и понаблюдать, как изменится логика
+                    удаления.</p>
+                <p>На этом тема изменения и создания HTML-узлов завершена. Вы узнали много нового о том, как создавать
+                    разные узлы, получать их текстовое содержание или заменять его. Теперь вы можете динамически менять
+                    разметку из JS, заменять текст в параграфах и удалять HTML-значение элементов с помощью outerHTML и
+                    innerHTML. В следующем юните вы познакомитесь с методами и свойствами, благодаря которым сможете
+                    управлять стилями элементов. До встречи!</p>
+                <hr class="hr">
+
+                <h2>Упражнение 4.7</h2>
+                <p>Напишите разметку из двух инпутов, кнопки и параграфа. При нажатии на кнопку все значения инпутов
+                    помещаются в параграф.</p>
+
+                <h2>Упражнение 4.8</h2>
+                <p>Создайте разметку из инпута и кнопки. В инпут помещается ссылка на картинку с сайта <span
+                        class="green"> Unsplash</span>. После
+                    нажатия кнопки генерируется элемент image с адресом из поля ввода и помещается в контейнер.</p>
+
+                <a href="https://codepen.io/SkillFactory/pen/VwVqJPp"><span class="green">Показать решение</span></a>
+                <hr class="hr">
+            </div>
+
+            <h2>Упражнение 4.9</h2>
+            <p>Назовите метод, который не сможет отобразить текст внутри параграфа с такими стилями:</p>
+            <div class="main__wrapper-box_grey">
+                <p>p {</p>
+                <blockquote>display:none</blockquote>
+                <p>}</p>
+            </div>
+            <blockquote><b>innerText</b></blockquote>
+            <hr class="hr">
+
+            <h2>Упражнение 4.10</h2>
+            <p><b>Выберете все варианты, с помощью которых можно получить текст из div-а с текстом. Div получен в одноименную переменную.</b></p>
+            <blockquote><input type="checkbox"> div.text</blockquote>
+            <blockquote><input type="checkbox"> div.innerText <span class="green"> &#10004;</span></blockquote>
+            <blockquote><input type="checkbox"> div.outerHTML</blockquote>
+            <blockquote><input type="checkbox"> div.innerHTML <span class="green"> &#10004;</span></blockquote>
+            <blockquote><input type="checkbox"> div.textContent <span class="green"> &#10004;</span></blockquote>
+
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page3.html" class="previous">&laquo; Назад</a>
+                <a href="page5.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page3.html" class="previous round">&#8249;</a>
+                <a href="page5.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,294 @@
+<!DOCTYPE html>
+<!-- saved from url=(0072)file:///c%3A/Users/%D0%A8%D0%A3%D0%9C/my-studies/shsrnsrjnsrn/index.html -->
+<html lang="en"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+
+
+    <link rel="apple-touch-icon" type="image/png" href="https://cpwebassets.codepen.io/assets/favicon/apple-touch-icon-5ae1a0698dcc2402e9712f7d01ed509a57814f994c660df9f7a952f3060705ee.png">
+
+    <meta name="apple-mobile-web-app-title" content="CodePen">
+
+    <link rel="shortcut icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico">
+
+    <link rel="mask-icon" type="image/x-icon" href="https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg" color="#111">
+    
+
+
+
+
+
+
+    <title>CodePen - INTFR_9_2_Event Loop, Callback Queue, Call Stack</title>
+
+    <link rel="canonical" href="https://codepen.io/SkillFactory/pen/GRwqwOB">
+
+
+
+
+    <style>
+        body {
+            font-family: helvetica, san-serif;
+        }
+
+        .text-center {
+            text-align: center;
+        }
+
+        .event-loop,
+        .event-loop * {
+            box-sizing: border-box;
+        }
+
+        .event-loop {
+            display: flex;
+            flex-wrap: wrap;
+            position: relative;
+            width: 530px;
+            margin: 0 auto;
+            min-height: 300px;
+            padding: 1em;
+            margin-top: 30px;
+            border: 5px dotted darkgreen;
+        }
+
+        .event-loop__js {
+            position: relative;
+            display: flex;
+            gap: 0.5em;
+            width: 250px;
+            height: 250px;
+            padding: 1.5em 0.5em;
+            border: 2px dotted;
+        }
+
+        .event-loop__js:before {
+            content: "JS";
+            position: absolute;
+            background: green;
+            color: white;
+            width: 20px;
+            height: 20px;
+            padding: 0.2em;
+            font-weight: bold;
+            text-align: center;
+            top: 0;
+            left: 50%;
+            transform: translate(-50%, -50%);
+        }
+
+        .js-column {
+            position: relative;
+            display: flex;
+            flex-flow: column nowrap;
+            gap: 0.5em;
+            width: 45%;
+            height: 100%;
+            padding: 5px;
+            text-align: center;
+            border: 2px solid grey;
+            border-radius: 10px;
+            background-color: lightgray;
+        }
+
+        .js-column.js__stack {
+            width: 60%;
+        }
+
+        .stack__elems {
+            width: 100%;
+            height: 100%;
+            display: flex;
+            flex-direction: column;
+            justify-content: end;
+        }
+
+        .stack__elem {
+            width: 90%;
+            margin: 0 auto;
+            margin-bottom: 10px;
+            background: green;
+            color: white;
+            font-size: 14px;
+            line-height: 20px;
+            border-radius: 5px;
+        }
+
+        /* апи браузера */
+        .web-apis {
+            margin-left: auto;
+            min-width: 200px;
+            text-align: center;
+        }
+
+        .api-elem {
+            background: darkgreen;
+            color: white;
+            line-height: 30px;
+            margin: 5px;
+        }
+
+        /* цикл событий */
+        .event-loop-name {
+            padding: 10px 20px;
+            margin: 20px 40px;
+            background-color: lightgrey;
+            border-radius: 5px;
+        }
+
+        .event-loop-name svg {
+            vertical-align: middle;
+            fill: green;
+        }
+
+        /* блок очереди обратных вызовов  */
+        .callback-queue {
+            position: relative;
+            display: flex;
+            align-items: center;
+            gap: 0.5em;
+        }
+
+        .queue {
+            display: flex;
+            width: 100%;
+            border: 1px solid;
+            padding: 10px;
+        }
+
+        .queue-item {
+            padding: 8px 12px;
+            background: green;
+            color: white;
+            margin-right: 10px;
+            border-radius: 5px;
+        }
+
+        /* стрелки */
+        .arrow {
+            position: absolute;
+            height: 4px;
+            background: green;
+            z-index: 1;
+        }
+
+        .arrow:before {
+            content: "";
+            position: absolute;
+            width: 0;
+            height: 0;
+            right: 0;
+            top: 50%;
+            border: 10px solid transparent;
+            border-left-color: green;
+            transform: translate(100%, -50%);
+        }
+
+        .event-loop__js .arrow {
+            width: 60px;
+            right: 10px;
+            top: 60%;
+            transform: translateX(100%) rotate(-36deg);
+        }
+
+        .web-apis .arrow {
+            width: 140px;
+            right: 55px;
+            top: 230px;
+            transform: rotate(90deg);
+        }
+
+        .callback-queue .arrow {
+            width: 60px;
+            left: -10px;
+            top: -25px;
+            transform: rotate(-90deg);
+        }
+
+        /* анимация */
+        @keyframes rotating {
+            from {
+                transform: rotate(0deg);
+            }
+
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        .rotating {
+            -webkit-animation: rotating 2s linear infinite;
+            -moz-animation: rotating 2s linear infinite;
+            -ms-animation: rotating 2s linear infinite;
+            -o-animation: rotating 2s linear infinite;
+            animation: rotating 2s linear infinite;
+        }
+    </style>
+
+
+
+
+</head>
+
+<body translate="no">
+    <div class="event-loop">
+        <div class="event-loop__js">
+            <div class="arrow"></div>
+            <div class="js-column js__heap">
+                Memory Heap (Глобальная Память или "Куча")
+            </div>
+            <div class="js-column js__stack">
+                Call Stack (Cтек Вызовов)
+                <div class="stack__elems">
+                    <div class="stack__elem">
+                        someFoo()
+                    </div>
+                    <div class="stack__elem">
+                        anotherFoo()
+                    </div>
+                    <div class="stack__elem">
+                        thirdFoo()
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="web-apis">
+            WebAPIs
+            <div class="arrow"></div>
+            <div class="api-elem">
+                DOM (document)
+            </div>
+            <div class="api-elem">
+                Асинхронные запросы
+            </div>
+            <div class="api-elem">
+                setTimeout
+            </div>
+        </div>
+        <div class="event-loop-name">
+            Event Loop (Цикл Событий)
+            <svg xmlns="http://www.w3.org/2000/svg" width="20" height="20" viewBox="0 0 18 18" class="rotating">
+                <path d="M9 13.5c-2.49 0-4.5-2.01-4.5-4.5S6.51 4.5 9 4.5c1.24 0 2.36.52 3.17 1.33L10 8h5V3l-1.76 1.76C12.15 3.68 10.66 3 9 3 5.69 3 3.01 5.69 3.01 9S5.69 15 9 15c2.97 0 5.43-2.16 5.9-5h-1.52c-.46 2-2.24 3.5-4.38 3.5z"></path>
+            </svg>
+        </div>
+
+        <div class="callback-queue">
+            <span>Callback Queue (Очередь коллбэков)</span>
+            <div class="arrow"></div>
+            <div class="queue">
+                <div class="queue-item">
+                    onClick
+                </div>
+                <div class="queue-item">
+                    onLoad
+                </div>
+            </div>
+            <div>
+            </div>
+
+
+
+            <script async="" src="./CodePen - INTFR_9_2_Event Loop, Callback Queue, Call Stack_files/js.js.Без названия"></script>
+                
+
+
+</div></div></body></html>

@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>JS part2</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+            <div class="header__nav-title">
+                4. Операции с числами
+            </div>
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html" title="Введение">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="../pages/pages2.html" title="Переменные">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="../pages/page3.html" title="Типы данных в JavaScript">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="#" title="Операции с числами">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="../pages/page5.html  " title="Операции со строками">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="../pages/page6.html" title="Преобразование типов">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="../pages/page7.html" title="Ввод/вывод данных">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="../pages/page8.html" title="Операторы сравнения, логические оператор">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="../pages/page9.html" title="Ветвление">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="../pages/page10.html" title="Промежуточные итоги">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <hr class="hr">
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+            <div class="main__wrapper-conteiner">
+
+                <p>Взаимодействовать с числами в JavaScript можно по разному. Например, иногда их используют в качестве
+                    констант и выводят на экран. А иногда применяют к ним математические операции.</p>
+                <p>Об этих операциях мы сейчас и поговорим.</p>
+
+                <h3>Базовые операции</h3>
+
+                <p>С числами в JavaScript можно производить все математические операции, которым нас учили в школе:
+                    сложение
+                    ( + ) , вычитание ( - ), умножение ( * ), деление ( / ) и возведение в степень ( ** ).</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let sum = 1 + 2; // 3</p>
+                    <p>let division = 4 / 2; // 2</p>
+                    <p>let multiply = 2 * 2; // 4</p>
+                    <p>let subtraction = 5 - 3; // 2</p>
+                    <p>let exponentiation = 5 ** 2 // 25</p>
+                </div>
+
+                <p>Также имеются сокращённые варианты данных операций. Такой вариант позволяет сразу обновить значение
+                    переменной после операции:</p>
+
+                    <div class="main__wrapper-box_grey">
+                    <p>let example = 1; // определяем через let, потому что значение переменной будет изменяться.</p>
+                    <p>example += 1 // 2</p>
+                    <p>example -= 1 // 1</p>
+                    <p>example *= 2 // 2</p>
+                    <p>example /= 2 // 1</p>
+                    <p>example **= 2 // 1 </p>
+                </div>
+
+                <p>А теперь сравните предыдущую запись с несокращённым вариантом:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let example = 1; // определяем через let, потому что значение переменной будет изменяться.</p>
+                    <p>example = example + 1 // 2</p>
+                    <p>example = example - 1 // 1</p>
+                    <p>example = example * 2 // 2</p>
+                    <p>example = example / 2 // 1</p>
+                    <p>example = example ** 2 // 1</p>
+                </div>
+
+                <h3>Остаток от деления</h3>
+
+                <p>Также есть операция, которая называется «остаток от деления». Она записывается знаком процента ( % ).
+                </p>
+                <p>Ее можно описать выражением «сколько останется, если одно число поделить на другое». Например: 9 % 2
+                    = 1.
+                </p>
+                <p>Чтобы это понять, мы должны задать себе вопрос.</p>
+                <p>Какое самое ближайшее к 9 число, которое делится на 2 без остатка, т.е. чётное?</p>
+                <p>8.</p>
+                <p>Сколько будет 9 - 8?</p>
+                <p>1.</p>
+                <p>Вот так и получаем, что остаток от деления 9 на 2 будет 1.</p>
+                <p>В реальных задачах часто применяют операцию определения остатка от деления. Так хотят узнать,
+                    является
+                    число чётным или нет.</p>
+
+                    <div class="main__wrapper-box_grey">
+                    <p>let even = 8 % 2; // 0 - число 8 чётное</p>
+                    <p>let odd = 11 % 2; // 1 - число 11 нечётное</p>
+                </div>
+
+                <h3>Порядок операций</h3>
+
+                <p>Если в выражении есть несколько операторов, то порядок их выполнения определяется приоритетом. Или,
+                    другими словами, существует определённый порядок выполнения операторов.</p>
+                <p>Из школы мы знаем, что умножение в выражении 1 + 2 * 2 выполняется раньше сложения. Это как раз и
+                    есть
+                    «приоритет». Говорят, что умножение имеет более высокий приоритет, чем сложение.</p>
+                <p>Скобки важнее, чем приоритет. Так что, если мы не удовлетворены порядком по умолчанию, мы можем
+                    использовать их, чтобы поменять приоритет. Например, написать (1 + 2) * 2.</p>
+                <p>В JavaScript много операторов. Каждый оператор имеет соответствующий номер приоритета. Тот, у кого
+                    это
+                    число больше — выполнится раньше. Если приоритет одинаковый, то порядок выполнения — слева направо.
+                </p>
+                <p>Вот полная <a
+                        href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Operators/Operator_precedence#%D1%82%D0%B0%D0%B1%D0%BB%D0%B8%D1%86%D0%B0"><span
+                            class="green">таблица</span></a> приоритета операторов.</p>
+
+                            <div class="main__wrapper-box_grey">
+                    <p>let firstExample = 1 + 2 * 3 // 7, потому что у умножения приоритет выше, чем у сложения</p>
+                    <p>let secondExample = (1 + 2) * 3 // 9, потому что в выражении появились скобки</p>
+                </div>
+
+                <h3>Работа с переменными</h3>
+
+                <p>Производить вычисления мы можем не только с обычными числами, но и с переменными имеющими числовые
+                    значения.</p>
+                <p>Так например присвоив переменной first значение 3, а переменной second значение 5, мы можем сложить
+                    эти
+                    две переменные. Полученное значение мы присвоим переменной sum:</p>
+
+                    <div class="main__wrapper-box_grey">
+                    <p>const first = 3;</p>
+                    <p>const second = 5;</p>
+                    <p>const sum = first + second; // 8</p>
+                </div>
+
+                <p>Также можно переприсвоить значение переменной, если она объявлена с помощью ключевого слова let:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let first = 5;</p>
+                    <p>let second = 3;</p>
+                    <p>let actionWithVariables = first + second; // 8</p>
+                    <p>second = 4;</p>
+                    <p>actionWithVariables = second - first; // -1</p>
+                </div>
+
+                <h3>Задачи на самопроверку</h3>
+
+                <p>Дальше вас ждут несколько задач на самопроверку. Их нужно решить для закрепления материала. Чтобы не
+                    создавать отдельно файл index.html и не подключать к нему js-файл, вы можете воспользоваться <a
+                        href="https://codesandbox.io/"><span class="green">сервисом-песочницей</span></a>.</p>
+                <p>Он позволяет создавать небольшие приложения и сразу видеть результат их работы. Устанавливать на
+                    компьютер при этом ничего не нужно.</p>
+                <p>Для проверки решения используйте вывод в консоль с помощью команды console.log(значение, которое вы
+                    хотите вывести);.</p>
+                <p>Как начать пользоваться сервисом:</p>
+                <p>Перейдите по ссылке и нажмите на кнопку «Try for free»:</p>
+
+                <figure>
+                    <img src="../img/asset-v1_SkillFactory+INTFR+2023+type@asset+block@INTFR_6_4_1.png" width="80%"
+                        alt="">
+                </figure>
+
+                <p>Далее выберите пункт «Vanilla»:</p>
+
+                <figure>
+                    <img src="../img/asset-v1_SkillFactory+INTFR+2023+type@asset+block@INTFR_6_4_2.png" width="80%"
+                        alt="">
+                </figure>
+
+                <p>Начинайте писать код в файле index.js:</p>
+
+                <figure>
+                    <img src="../img/asset-v1_SkillFactory+INTFR+2023+type@asset+block@INTFR_6_4_3.png" width="80%"
+                        alt="">
+                </figure>
+
+                <p>Чтобы открыть консоль, если она свёрнута, нажмите на надпись «Console» в правой нижней части экрана.
+                </p>
+                <p>В задачах будут входные данные: «имеем 3 яблока». И выходные данные: «должно выводиться 5».</p>
+
+                <h3>Задание 4.3</h3>
+
+                <p>Задайте две неизменяемые переменные currentYear со значением 2023 и yearOfBirth со значением 2003.
+                </p>
+                <p>Напишите строку с использованием этих переменных так, чтобы в результате получилась фраза «Тебе
+                    сейчас 20
+                    лет».</p>
+
+                <!-- ссылки вкладки -->
+                <div class="wrapper__box-grey">
+                    <div class="dropdown">
+                        <button onclick="myFunction()" class="dropbtn">просмотреть ответ</button>
+                        <div id="myDropdown" class="dropdown-content">
+                            <p>const currentYear = 2023; const yearOfBirth = 2003;</p>
+                            <p> `Тебе сейчас ${currentYear - yearOfBirth}`;</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Задание 4.4</h3>
+
+                <p>В переменных first и second хранятся 2 натуральных числа. Выведите в консоль остаток от деления first
+                    на
+                    second.</p>
+
+                <table>
+                    <tr>
+                        <td>Пример 1</td>
+                        <td>
+                            <p>Входные данные: 9, 2</p>
+                            <p>Выходные данные: 1</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Пример 2</td>
+                        <td>
+                            <p>Входные данные: 10.5</p>
+                            <p>Выходные данные: 0</p>
+                        </td>
+                    </tr>
+                    <tr>
+                        <td>Пример 3</td>
+                        <td>
+                            <p>Входные данные: 123, 3</p>
+                            <p>Выходные данные: 0</p>
+                        </td>
+                    </tr>
+                </table>
+
+                <div class="main__wrapper-box_grey">
+                    <div class="dropdown">
+                        <button onclick="myFunction()" class="dropbtn">просмотреть ответ</button>
+                        <div id="myDropdown" class="dropdown-content">
+                            <p>let first = 9;</p>
+                            <p>let second = 2;</p>
+                            <p>console.log(first % second);</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Задание 4.5</h3>
+
+                <p>Отцу сейчас dadYearsOld лет, а сыну sonYearsOld. Подсчитайте, сколько лет назад отец был вдвое старше
+                    сына.</p>
+
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Пример 1</td>
+                            <td>
+                                <p>Входные данные: 36 и 7</p>
+                                <p>Выходные данные: 22</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Пример 1</td>
+                            <td>
+                                <p>Входные данные: 42 и 21</p>
+                                <p>Выходные данные: 0</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="main__wrapper-box_grey">
+                    <div class="dropdown">
+                        <button onclick="myFunction()" class="dropbtn">просмотреть ответ</button>
+                        <div id="myDropdown" class="dropdown-content">
+                            <p>let dadYearsOld = 36;</p>
+                            <p>let sonYearsOld = 7;;</p>
+                            <p>console.log(dadYearsOld - (sonYearsOld * 2));</p>
+                        </div>
+                    </div>
+                </div>
+
+                <h3>Задание 4.6</h3>
+
+                <p>Выведите в консоль сумму цифр трёхзначного числа из переменной number. Переменную с суммой назовите
+                    sum. Используйте для решения задачи деление на 10 и операцию остатка от деления. Числа могут
+                    получаться с дробной частью.</p>
+
+                <table>
+                    <tbody>
+                        <tr>
+                            <td>Пример 1</td>
+                            <td>
+                                <p>Входные данные:123</p>
+                                <p>Выходные данные: 6</p>
+                            </td>
+                        </tr>
+                        <tr>
+                            <td>Пример 2</td>
+                            <td>
+                                <p>Входные данные: 111</p>
+                                <p>Выходные данные: 3</p>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+
+                <div class="main__wrapper-box_grey">
+                    <div class="dropdown">
+                        <button onclick="myFunction()" class="dropbtn">просмотреть ответ</button>
+                        <div id="myDropdown" class="dropdown-content">
+                            <p>let dadYearsOld = 36;</p>
+                            <p>let sonYearsOld = 7;;</p>
+                            <p>console.log(dadYearsOld - (sonYearsOld * 2));</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page3.html" class="previous">&laquo; Назад</a>
+                <a href="page5.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page3.html" class="previous round">&#8249;</a>
+                <a href="page5.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+    </div>
+            <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+            <script async src="../script/js.js"></script>
+
+            <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+</body>
+
+</html>

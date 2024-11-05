@@ -1,0 +1,298 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Бонус DOM</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                2. Возможности JavaScript в браузере
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html" class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page9.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <p>В этом юните мы с вами подробнее поговорим о том, какие возможности открывает JavaScript. Вы узнаете:
+                </p>
+                <blockquote>&#10163; как HTML-разметка в вашем редакторе кода превращается в DOM,</blockquote>
+                <blockquote>&#10163; как браузер понимает, что вы нажали на кнопку или ввели что-то в поле ввода,
+                </blockquote>
+                <blockquote>&#10163; как JS понимает, какой элемент ему нужен и где он находится,</blockquote>
+                <blockquote>&#10163; что такое window и document и для чего они нужны.</blockquote>
+                <p>Эти знания помогут создавать привлекательные и удобные пользовательские интерфейсы. А также
+                    анализировать и отслеживать действия пользователей. Например, клики, ввод данных и другие действия.
+                </p>
+                <p>Давайте вспомним про браузер. Иногда он использует свои инструменты, чтобы как-то обработать наш код.
+                </p>
+                <p>Вот мы отдаём ему HTML. Скажем, выглядит он так:</p>
+                <p><b>// index.html</b></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>&lsaquo;!DOCTYPE html></p>
+                    <p>&lsaquo;html lang="ru">&lsaquo;/html></p>
+                    <p>&lsaquo;head></head>
+                    </p>
+                    <blockquote>&lsaquo;meta charset="UTF-8"></blockquote>
+                    <blockquote>&lsaquo;meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    </blockquote>
+                    <blockquote>&lsaquo;title>Наш HTML</title>
+                    </blockquote>
+                    <p>&lsaquo;/head></p>
+                    <p&lsaquo;<body>
+                        </p>
+                        <blockquote>&lsaquo;h1>Всем привет! DOM не видели?&lsaquo;/h1></blockquote>
+                        <p>&lsaquo;/body></p>
+                        <p>&lsaquo;/html></p>
+                </div>
+                <p>Этот код мы написали своими руками в редакторе кода. Можете повторить и напечатать этот код на своём
+                    компьютере. А затем, например, запустить на localhost.</p>
+                <p>Тогда в браузере вы увидите вот такую картину:</p>
+                <hr class="hr">
+
+                <figure>
+                    <img src="../images/asset-v1_SkillFactory+INTFR+2023+type@asset+block@INTFR_10_20.png" width="90%"
+                        alt="">
+                    <p>Наша страница на локальном сервере</p>
+                </figure>
+
+                <p>Итак, в DevTools вы видите аналог того, что мы написали. Древовидную структуру HTML-документа. Это
+                    удобная визуализация DOM.</p>
+                <p>Браузер взял код, превратил его в DOM-объект и установил правила: методы и свойства, с помощью
+                    которых мы теперь можем с этим DOM работать.</p>
+                <p>И если в каком-то месте дерева что-то изменится: исчезнет элемент, поменяется текст в кнопке —
+                    страница перерисуется.</p>
+                <p>Глазами браузера DOM выглядит вот так:</p>
+
+                <blockquote>
+                    <div class="main__wrapper-box_grey">
+                        <p>html lang=”ru”</p>
+                        <p>head</p>
+                        <blockquote> meta charset="UTF-8"</blockquote>
+                        <blockquote>meta name="viewport"</blockquote>
+                        <blockquote>content="width=device-width, initial-scale=1.0"</blockquote>
+                        <blockquote>title Наш HTML</blockquote>
+                        <p>body</p>
+                        <blockquote>h1 Всем привет! DOM не видели?</blockquote>
+                    </div>
+                </blockquote>
+
+                <p>Что здесь есть:</p>
+                <blockquote>&#10149; Элементы или обычные узлы: теги html, head, meta, title, body, h1.</blockquote>
+                <blockquote>&#10149; Атрибуты элементов: lang, charset, name, content.</blockquote>
+                <blockquote>&#10149; Текстовые узлы: текст внутри title и h1.</blockquote>
+
+                <h2>Узлы</h2>
+
+                <p>Допустим, вы хотите динамически добавить элемент в разметку. Этого не сделать без DOM.</p>
+                <p>Давайте разберёмся в его структуре. Начнём с узла — базового элемента.</p>
+                <h3>
+                    <p>Узел или node — минимальная единица DOM. Из них состоит HTML-дерево. Всё, что есть в HTML-файле —
+                        это узел. К узлам можно отнести:</p>
+                    <blockquote>&#10149; Element-узлы (div, h1, body и так далее). Их мы будем называть элементами.
+                    </blockquote>
+                    <blockquote>&#10149; Текстовые узлы.</blockquote>
+                    <blockquote>&#10149; Комментарии в документе.</blockquote>
+                    <p>У элементов может быть сколько угодно дочерних узлов. У текстовых узлов нет потомков.</p>
+                </h3>
+                <p>Давайте ещё немного понаблюдаем за структурой.</p>
+                <p>Есть один классный инструмент, чтобы посмотреть на DOM в режиме реального времени — <a
+                        href="https://software.hixie.ch/utilities/js/live-dom-viewer/"><span class="green"> Live DOM
+                            Viewer</span></a>. Давайте напишем там код и посмотрим, что получилось.</p>
+
+                <figure>
+                    <img src="../images/asset-v1_SkillFactory+INTFR+2023+type@asset+block@INTFR_10_5.png" width="90%"
+                        alt="">
+                    <p>DOM-узлы</p>
+                </figure>
+
+                <p>Итак, мы видим, что узлы связаны со своими атрибутами и стилями. И составляют с ними одно целое.
+                    Например, зелёный цвет на заголовке или оранжевый фон на кнопке.</p>
+                <p>А вот текст внутри них — это уже отдельный текстовый узел. И помечается он так: #text.</p>
+                <p>Заметили, что, например, в начале и в конце body есть пустые текстовые узлы? Это происходит потому,
+                    что мы добавляем перевод строки после каждого тега. И это считается за отдельный узел. Если бы их
+                    там не было — то и пустые текстовые узлы исчезли бы.</p>
+
+                <h2>Упражнение 2.1</h2>
+
+                <p>Перейдите на сервис Live DOM Viewer и перепечатайте код из примера. Сделайте так, чтобы в нём не было
+                    пустых текстовых узлов из-за перевода строки.</p>
+                <p>В определении мы упомянули комментарии. Неужели если мы напишем в index.html какой-нибудь
+                    комментарий, то он появится в DOM? Да. Давайте посмотрим:</p>
+
+                <figure>
+                    <img src="../images/asset-v1_SkillFactory+INTFR+2023+type@asset+block@INTFR_10_10.png" width="90%"
+                        alt="">
+                    <p>Комментарий в DOM</p>
+                </figure>
+
+                <p>Мы добавили комментарий в наш код и он появился в отображении DOM. И не просто отобразился, а под
+                    особым маркером — #comment.</p>
+
+                <h2>Упражнение 2.2</h2>
+
+                <p>В редакторе кода добавьте в HTML-разметку комментарий. И проанализируйте изменения DOM в DevTools.
+                </p>
+                <p>Что такое узлы сами по себе? Это обычные JS-объекты, в которых очень много разных свойств. Например,
+                    классы и идентификаторы у div-ов или свойства type и value у полей ввода.</p>
+                <p>Давайте добавим в наш index.html какой-нибудь инпут и посмотрим на него в консоли с помощью
+                    console.dir(). Он покажет элемент как объект со свойствами.</p>
+                <p><b>//index.html</b></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>&lsaquo;!DOCTYPE html></p>
+                    <p>&lsaquo;html lang="ru">&lsaquo;/html></p>
+                    <p>&lsaquo;head></head>
+                    </p>
+                    <blockquote>&lsaquo;meta charset="UTF-8"></blockquote>
+                    <blockquote>&lsaquo;meta name="viewport" content="width=device-width, initial-scale=1.0">
+                    </blockquote>
+                    <blockquote>&lsaquo;title>Наш HTML</title>
+                    </blockquote>
+                    <p>&lsaquo;/head></p>
+                    <p&lsaquo;<body>
+                        </p>
+                        <blockquote>&lsaquo;h1>Всем привет! DOM не видели?&lsaquo;/h1></blockquote>
+                        <blockquote>&lsaquo;input type="text" placeholder="Введите текст"></blockquote>
+                        <p>&lsaquo;/body></p>
+                        <p>&lsaquo;/html></p>
+                </div>
+
+                <p>А затем в консоли обратимся к нему через console.dir().</p>
+
+                <figure>
+                    <img src="../images/asset-v1_SkillFactory+INTFR+2023+type@asset+block@INTFR_10_8.png" width="90%"
+                        alt="">
+                    <figcaption>Input как объект</figcaption>
+                </figure>
+                <p>В этом объекте много всего. В том числе значения type и value, а также информация о том, какие классы
+                    и стили есть у этого элемента. А если провалиться в прототипы, то можно обнаружить и методы, которые
+                    наследуют поля ввода.</p>
+
+                <h2>Упражнение 2.3</h2>
+
+                <p>Получите в консоли тип и значение инпута. Используйте консоль DevTools.</p>
+                <p>Благодаря тому, что узлы превращаются в объекты со свойствами и методами, мы можем легко управлять
+                    разметкой из JS. Добавлять и удалять стили, вешать классы, менять содержание в текстовых узлах.</p>
+
+                <h2>document</h2>
+
+                <p>Если узлы вкладываются в узлы, то их все куда-то надо складывать. Чтобы хранить столько объектов,
+                    нужен корневой элемент.</p>
+                <p>В нашем случае это Document. Мы его с вами уже встречали, когда доставали кнопки и ссылки из кода.
+                </p>
+                <p>Например, <b>querySelector</b> в деле выглядит вот так:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>document.querySelector("ваш_селектор")</p>
+                </div>
+
+                <p>То же самое происходит с <b>getElementById:</b></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>document.getElementById("айди")</p>
+                </div>
+
+                <p>Именно document — это объект, в который вложены все остальные узлы. <b>Html, head, body, link</b> и
+                    так далее.</p>
+                <p>Например, чтобы получить элемент<b> html</b>, нужно написать в консоль:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>document.documentElement</p>
+                </div>
+
+                <p>Законсольте эту строку и посмотрите, что получится.</p>
+
+                <h2>Упражнение 2.4</h2>
+                <p>В консоли DevTools попробуйте получить body, title и head страницы. Используйте document,
+                    console.dir() или console.log().</p>
+
+                <h2>Window</h2>
+
+                <p>Мы разобрались, что такое document. Он хранит в себе методы и свойства для управления нашим HTML.</p>
+                <p>А есть ли что-то подобное для управления вкладкой браузера? Чтобы узнавать размер окна браузера,
+                    адрес страницы, закрывать или открывать вкладки через JS?</p>
+                <p>Да, такой объект есть. Это window. И именно в нём мы можем обнаружить наш document.</p>
+                <p>С английского window это «окно». Имеется в виду окно браузера или вкладка, в которой запущен сайт.
+                </p>
+                <p>Как document относится к DOM, так window относится к BOM — B-rowser O-bject M-odel. Объектная модель
+                    браузера.</p>
+                <p>Window — это:</p>
+                <blockquote>&#10149; Глобальный объект, благодаря которому глобальные переменные и функции можно
+                    использовать в любом месте кода;</blockquote>
+                <blockquote>&#10149; Объект, который представляет окно браузера.</blockquote>
+                <p>Этот объект содержит в себе свойства и методы, которые разработчики используют для создания удобных и
+                    сложных сайтов.</p>
+                <p>Например, методы <b>setTimeout, setInterval, clearTimeout и clearInterval</b> находятся именно в
+                    объекте window. Вы можете сами убедиться в этом и законсолить window через <b>console.dir()</b>.</p>
+
+                    <h2>Упражнение 2.5</h2>
+                    <p>Поищите и найдите ещё хотя бы один знакомый метод в глобальном объекте window.</p>
+
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="../../index.html" class="previous">&laquo; Назад</a>
+                <a href="page3.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="../../index.html" class="previous round">&#8249;</a>
+                <a href="page3.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,176 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="site/css/sass.css">
+    <title>Функции и объекты JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                1. Введение
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page8.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <p>Привет!</p>
+                <p>Во многих языках программирования функция — это блок кода, который выполняет определённую задачу.
+                    Например, получение данных из сети или математические расчёты. Эти «блоки» представляют собой набор
+                    инструкций для многократного использования. Обращаться к таким инструкциям можно всякий раз, когда
+                    нужно выполнить ту или иную задачу.</p>
+                <p>Под набором инструкций подразумевается исходный код на языке программирования. В нашем случае это
+                    JavaScript.</p>
+                <p>Этот модуль полностью посвящён функциям в JavaScript. После его изучения вы сможете создавать и
+                    использовать функции при решении реальных задач.</p>
+                <p>Будет интересно! А пока давайте освежим знания по предыдущим темам.</p>
+                <hr>
+
+                <p><strong>Задание 1.1</strong></p>
+
+                <p>Какие типы данных можно хранить в переменных в JavaScript?</p>
+                <blockquote>Числа</blockquote>
+                <blockquote>Строки</blockquote>
+                <blockquote>Булевы значения</blockquote>
+                <blockquote>Объекты</blockquote>
+                <hr>
+
+                <p><strong>Задание 1.2</strong></p>
+
+                <p>Что произойдёт, если попытаться использовать переменную, которая не была объявлена?</p>
+                <blockquote>Появится сообщение об ошибке.</blockquote>
+                <hr>
+
+                <p><strong>Задание 1.3</strong></p>
+
+                <p>Есть следующий массив:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const numbers = [2, 5, 7, 3, 8];</p>
+                </div>
+                <p>Как получить длину массива numbers?</p>
+                <blockquote>numbers.length</blockquote>
+                <hr>
+
+                <p><strong>Задание 1.4</strong></p>
+
+                <p>Есть код на JavaScript:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>let x = 10;</p>
+                    <p>let y = 5;</p>
+                    <p>let z = 2;</p>
+                    <p>if (x > y) {</p>
+                    <blockquote>console.log("x больше y");</blockquote>
+                    <p>} else if (x === y) {</p>
+                    <blockquote>console.log("x равно y");</blockquote>
+                    <p>} else {</p>
+                    <blockquote>console.log("y больше x");</blockquote>
+                    <p>}</p>
+                    <p>if (z > y && z < x) {</p>
+                            <blockquote>console.log("z находится между x и y");</blockquote>
+                            <p>} else if (z === y || z === x) {</p>
+                            <blockquote>console.log("z равно x или y");</blockquote>
+                            <p>} else {</p>
+                            <blockquote>console.log("z находится за пределами x и y");</blockquote>
+                            <p>}</p>
+
+                </div>
+                <p><strong>Какой будет вывод в консоль при следующих значениях переменных?</strong></p>
+                <blockquote>"x больше y" и "z находится за пределами x и y".</blockquote>
+                <hr>
+
+                <p><strong>Задание 1.5</strong></p>
+
+                <p>Какие значения будут выведены в консоль?</p>
+                <div class="main__wrapper-box_grey">
+                    <p>// Вариант A:</p>
+                    <p>for (let i = 0; i &lsaquo; 5; i++) {</p>
+                    <blockquote>console.log(i);</blockquote>
+                    <p>}</p>
+                    <p>// Вариант B:</p>
+                    <p>let j = 0;</p>
+                    <p>while (j &lsaquo; 5) {</p>
+                    <blockquote>console.log(j);</blockquote>
+                    <blockquote>j++;</blockquote>
+                    <p>}</p>
+                    <p>// Вариант C:</p>
+                    <p>let k = 0;</p>
+                    <p>do {</p>
+                    <blockquote>console.log(k);</blockquote>
+                    <blockquote>k++;</blockquote>
+                    <p>}</p>
+                    <p>// Вариант D:</p>
+                    <p>let arr = [1, 2, 3, 4, 5];</p>
+                    <p>for (let elem of arr) {</p>
+                    <blockquote>console.log(elem);</blockquote>
+                    <p>}</p>
+                </div>
+                <p><strong>Вариант A выведет в консоль:</strong></p>
+                <blockquote>0,1,2,3,4</blockquote>
+                <p><strong>Вариант B выведет в консоль:</strong></p>
+                <blockquote>0,1,2,3,4</blockquote>
+                <p><strong>Вариант C выведет в консоль:</strong></p>
+                <blockquote>0,1,2,3,4</blockquote>
+                <p><strong>Вариант D выведет в консоль:</strong></p>
+                <blockquote>0,1,2,3,4</blockquote>
+
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="site/pages/page8.html" class="previous">&laquo; Назад</a>
+                <a href="site/pages/page2.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="site/pages/page8.html" class="previous round">&#8249;</a>
+                <a href="site/pages/page2.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="site/script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+    </div>
+</body>
+
+</html>

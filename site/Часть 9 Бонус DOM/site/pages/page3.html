@@ -1,0 +1,287 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Бонус DOM</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                3. Поиск и выборка HTML элементов
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page9.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+                <p>В этот раз мы поговорим про то, как доставать из DOM нужные элементы. Это нужно для того, чтобы
+                    делать сайт интерактивным и динамичным. Стилизовать элементы и управлять ими без изменения HTML или
+                    CSS.</p>
+                <p>Да, вы уже знаете кое-что на эту тему. Например, как применять методы querySelector и getElementById.
+                </p>
+                <p>Но этим тема не ограничивается. Пока что вы в основном доставали элементы по классу или айди. Редко —
+                    по тегу. Этот юнит поможет вам пополнить копилку знаний.</p>
+                <p>В каждой ситуации удобно доставать элементы по-разному. Где-то по тегу, где-то — выбрать все элементы
+                    с одним и тем же классом. А где-то хочется поискать элемент по сложному селектору.</p>
+                <p>Выбор метода зависит от проекта, от того, как выглядит ваш код, и от задачи. Давайте поговорим о
+                    каждом.</p>
+
+                <h2>querySelectorAll</h2>
+
+                <p>Начнём с того, который вам частично знаком.</p>
+                <p>Вспомним логику querySelector. Он достаёт первый попавшийся элемент с селектором, который мы в него
+                    передали. Если в разметке есть и другие элементы с таким же селектором, он их просто проигнорирует.
+                </p>
+                <h3>querySelectorAll — метод, который отдаёт NodeList узлов с селектором, который вы передали.</h3>
+                <p>Взгляните на пример. Здесь у нас стихотворение, в котором каждая строчка — параграф с классом text.
+                </p>
+
+                <iframe src="../frame/frame3-1.html" width="90%" height="350px" frameborder="0"></iframe>
+                <p>Мы смогли получить все строки с помощью querySelectorAll и вывести их в консоль. Как и ожидалось, в
+                    консоли оказался NodeList с нужными нам элементами.</p>
+
+                <h2>Упражнение 3.1</h2>
+                <p>Пройдитесь по lines циклом и выведите каждый узел отдельно в консоль.</p>
+                <hr class="hr">
+
+                <h2>getElementsByTagName</h2>
+
+                <p>Как вы могли догадаться по названию, перед нами метод, задача которого — достать элементы по
+                    заданному тегу.</p>
+                <p>В примере у нас небольшая форма, куда вы записываете имена. И если поле не пустое, то эти имена
+                    встроятся в контейнер под кнопкой.</p>
+
+                <iframe src="../frame/frame3-2.html" width="90%" height="350px" frameborder="0"></iframe>
+
+                <p>Если вы посмотрите в консоль, то увидите странного зверя — HTMLCollection. Это — специфичный формат
+                    данных, который отдаёт коллекцию HTML-элементов.</p>
+                <p>В этом примере не зря есть логика с кнопкой. Обратите внимание, что первый раз эту коллекцию вы
+                    получаете сразу же при запуске кода. И сначала она пустая. Так как пока что элементов с нужным тегом
+                    на странице нет.</p>
+                <p>Но после каждого нажатия на кнопку и добавления имени — в консоль выводится та же коллекция, но уже
+                    на один элемент длиннее.</p>
+                <p>Это происходит потому, что HTMLCollection — это «живая» коллекция. Массив динамически пополняется,
+                    как только вы добавляете на страницу новый элемент. Если, конечно, у этого элемента тот же тег, что
+                    и был передан в метод getElementsByTagName.</p>
+
+                <h2>Упражнение 3.2</h2>
+
+                <p>Проходитесь циклом по коллекции каждый раз, когда нажимаете на кнопку. И выводите внутренний текст
+                    каждого элемента. Подберите цикл, который будет работать с HTMLCollection.</p>
+                <blockquote>
+                    <div class="main__wrapper-box_grey">
+                        <p>for (let name of names) {</p>
+                        <blockquote>console.log (name.textContent)</blockquote>
+                        <p>}</p>
+                    </div>
+                </blockquote>
+                <hr class="hr">
+
+                <h2>Упражнение 3.3</h2>
+
+                <p><b>Выберите все верные значения, которые можно поместить внутри метода getElementsByTagName:</b>
+                </p>
+                <blockquote><input type="checkbox"> .container</blockquote>
+                <blockquote><input type="checkbox"> li[‘data-id’]</blockquote>
+                <blockquote><input type="checkbox"> li <span class="green">&#10004;</span></blockquote>
+                <blockquote><input type="checkbox"> span <span class="green">&#10004;</span></blockquote>
+                <blockquote><input type="checkbox"> #text</blockquote>
+                <hr class="hr">
+
+                <h2>getElementsByClassName</h2>
+
+                <p>Ещё один способ достать коллекцию элементов — это использовать метод getElementsByClassName.</p>
+                <p>Вы помещаете в него класс или несколько классов, по которым хотите найти элементы. Готово.</p>
+                <p>Синтаксис:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>document.getElementsByClassName('классы(ы)');</p>
+                    <p>element.getElementsByClassName('класс(ы)');</p>
+                </div>
+                <p>В первом случае вы получаете элементы по всему DOM. От body и до самых вложенных узлов.</p>
+                <p>А во втором начинаете поиск от элемента, на котором использовали этот метод. Давайте разберём все эти
+                    ситуации на примере.</p>
+
+                <iframe src="../frame/frame3-3.html" width="90%" height="450px" frameborder="0"></iframe>
+
+                <p>В первую очередь посмотрим на переменную links. Туда мы записываем элементы с классом nav__link.</p>
+                <p>Здесь всё просто. Таких ссылок в документе четыре, у них одинаковые классы. Поэтому все они окажутся
+                    в коллекции links.</p>
+                <p>На второй строке мы получаем только активные ссылки. Для этого помещаем в метод не один класс, а
+                    сразу два: nav__link и active через пробел.</p>
+                <p>По дефолту мы поставили класс active на главный раздел. Поэтому в коллекции activeLinks будет только
+                    один элемент: самая первая ссылка в навигации.</p>
+                <p>Классов может быть больше двух.</p>
+
+                <h2>Упражнение 3.4</h2>
+
+                <p>Добавьте к какой-нибудь ссылке несколько классов так, чтобы их стало больше двух. И получите этот
+                    элемент в переменную. Выведите в консоль.</p>
+                <p>Идём дальше по примеру. В разметке у нас есть ссылки как в nav, так и вне его. Самая первая ссылка
+                    оборачивает логотип шапки. И имеет такой же класс, как и ссылки навигации.</p>
+                <p>Сначала давайте получим все ссылки с классом link через document. И выведем их в консоль с помощью
+                    цикла.</p>
+
+                <figure>
+                    <img src="../images/asset-v1_SkillFactory+INTFR+2023+type@asset+block@INTFR_10_18.png" width="90%"
+                        alt="">
+                    <figcaption>Результат консоли</figcaption>
+                </figure>
+
+                <p>Здесь мы получили все ссылки документа. И ту, что перед навигацией, и те, что в ней.</p>
+                <p>Теперь давайте сделаем финт и сменим document на nav. Получим его через класс и повторим манипуляции
+                    с элементами. Консоль:</p>
+
+                <figure>
+                    <img src="../images/asset-v1_SkillFactory+INTFR+2023+type@asset+block@Снимок_экрана_2023-07-12_в_19.32.20.png"
+                        width="90%" alt="">
+                    <figcaption>Результат консоли</figcaption>
+                </figure>
+
+                <p>Теперь мы получили не пять ссылок, а четыре. Потому что поиск по классу начался не от корневого
+                    элемента, а от навигации с классом nav.</p>
+                <p>Иногда это полезно в работе, берите на заметку. К слову, вы можете проделать то же самое с методом
+                    getElementsByTagName.</p>
+
+                <h2>Упражнение 3.5</h2>
+                <p>Задайте одному из элементов списка индивидуальный класс. Получите этот элемент и найдите ссылку с
+                    классом <b>link</b> в нём.</p>
+
+                <h2>Упражнение 3.6</h2>
+                <p>Вернитесь в пример с getElementsByTagName. Получите все заголовки третьего уровня в документе. А
+                    также получите все заголовки третьего уровня внутри <b>form</b>.</p>
+                <blockquote>
+                    <div class="main__wrapper-box_grey">
+                        <p>const form = document.getElementById("form");</p>
+                        <p>const allThirdHeadings = document.getElementsByTagName("h3");</p>
+                        <p>const formThirdHeadings = form.getElementsByTagName("h3");</p>
+                        <p>console.log(allThirdHeadings, formThirdHeadings);</p>
+                    </div>
+                </blockquote>
+                <hr class="hr">
+
+                <h2>Сложные селекторы</h2>
+                <p>Вы попрактиковались в поиске элементов по двум и даже трём классам. Но на классах, тегах и айди всё
+                    не заканчивается.</p>
+                <p>Помните, как стилизовали элементы по атрибутам, сложным селекторам с комбинаторами? Давайте попробуем
+                    сделать то же самое, только в JS. Для этого снова обратимся к старому доброму querySelector.</p>
+
+                <iframe src="../frame/frame3-4.html" width="90%" height="350px" frameborder="0"></iframe>
+
+                <p>В примере есть контейнер с некоторыми товарами. В первом товаре есть дополнительные кнопки, а во
+                    втором — ссылка.</p>
+                <p>Давайте попробуем достать первую кнопку следующим путём:</p>
+                <blockquote>&#10144; мы знаем, что она находится в элементе item--one,</blockquote>
+                <blockquote>&#10144; который находится в элементе content.</blockquote>
+                <p>Можем использовать путь проще и выполнить поиск так:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>document.querySelector(".content .item--one button")</p>
+                </div>
+                <p>Мы использовали вложенность товара в секцию, а саму кнопку нашли по тегу. В консоли вы можете
+                    убедиться, что такой поиск проходит успешно.</p>
+                <p>Мы достали первую кнопку. Давайте достанем и вторую, с типом «submit». И к ней применим знания о
+                    стилизации по атрибутам. Мы писали стили для элементов так:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>input[type="text"] {</p>
+                    <p>...</p>
+                    <p>}</p>
+                </div>
+                <p>Поправим запись:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>document.querySelector(".content .item--one button[type='submit']")</p>
+                </div>
+                <p>И получим нужную кнопку в консоль.</p>
+                <hr class="hr">
+
+                <h2>Упражнение 3.7</h2>
+
+                <p>Получите ссылку из второго товара по аналогии. Воспользуйтесь атрибутом href.</p>
+                <p>Вот, что интересно. Мы могли искать по тегам и классам не только в document, но и в определённых
+                    элементах. А querySelector и querySelectorAll так могут?</p>
+                <p>Могут.</p>
+
+                <iframe src="../frame/frame3-5.html" width="90%" height="500px" frameborder="0"></iframe>
+
+                <p>Здесь мы сделали галерею с картинками. На каждой картинке — кнопка-сердечко.</p>
+                <p>Получим самую первую из них. Но используем querySelector не на document, а на элементе с классом
+                    gallery:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>gallery.querySelector(".heart-button")</p>
+                </div>
+                <p>В консоли окажется нужная кнопка. Так как она — потомок элемента gallery.</p>
+                <hr class="hr">
+
+                <h2>Упражнение 3.8</h2>
+                <p>Найдите все кнопки-сердечки в gallery. Используйте querySelectorAll.</p>
+                <hr class="hr">
+
+                <h2>Итоги</h2>
+                <p>Подведём итоги. Вы узнали, как доставать элементы по разным селекторам: тегам, классам и сложным
+                    комбинациям. А также разобрались, что такое HTMLCollection и в чём его особенности.</p>
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page2.html" class="previous">&laquo; Назад</a>
+                <a href="page4.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page2.html" class="previous round">&#8249;</a>
+                <a href="page4.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

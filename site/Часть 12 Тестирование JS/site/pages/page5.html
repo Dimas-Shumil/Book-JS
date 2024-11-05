@@ -1,0 +1,525 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Тестирование</title>
+</head>
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                5. NPM, YARN
+            </div>
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page9.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <div class="main__wrapper-conteiner">
+                <figure>
+                    <img src="../images/php_m33_intro3.svg" width="45%" alt="">
+                </figure>
+                <p>Пакетные менеджеры упрощают использование чужого кода, предоставляя этот код в виде независимых
+                    модулей — <span class="green"> пакетов</span>. Эти пакеты подключаются к своему коду по принципу
+                    чёрных ящиков — это когда мы не знаем и нам неважно как всё устроено внутри этого ящика, но мы
+                    знаем, что он делает. Благодаря такой слабосвязанной архитектуре появляется возможность легко
+                    обновлять чужой код или заменять один пакет другим со схожей функциональностью.</p>
+                <p>У каждого пакетного менеджера есть файл с настройками, в котором нам нужно указать от каких пакетов
+                    зависит наш код, чтобы пакетный менеджер их скачал и установил к нам в систему. При этом каждый
+                    пакет может зависеть от других пакетов. Пакетный менеджер распутывает эту систему зависимостей и
+                    устанавливает всё что нужно, поэтому их ещё называют <span class="green"> менеджерами
+                        зависимостей</span>.</p>
+                <h3>Что такое node.js?</h3>
+                <div class="main__wrapper-box_blue">
+                    <p><b>Node.js</b> — это JavaScript на сервере, он позволяет вам запускать JavaScript-код вне
+                        браузера.</p>
+                </div>
+                <p>Чтобы ваш JavaScript-код выполнился на вычислительной машине вне браузера (на backend), он должен
+                    быть интерпретирован и, конечно же, выполнен. Именно это и делает Node.js. Для этого он использует
+                    движок V8 VM от Google — ту же самую среду исполнения для JavaScript, которую использует браузер
+                    Google Chrome. Кроме того, Node.js поставляется со множеством полезных модулей, так что вам не
+                    придется писать всё с нуля, как, например, вывод строки в консоль. Таким образом, Node.js состоит из
+                    двух вещей: среды исполнения и полезных библиотек.</p>
+                <figure>
+                    <img src="../images/php_m33_u3_1.png" width="95%" alt="">
+                </figure>
+                <h3>Установка node.js?</h3>
+                <p>Установить Node.js очень просто. Если вы используете Windows или Mac, установочные файлы доступны на
+                    <a href="https://nodejs.org/download/">странице загрузки</a>.
+                </p>
+                <p>Посмотреть, где установлен Node, и проверить версию можно следующими командами:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>$ which node </p>
+                    <p>/usr/local/bin/node</p>
+                    <p>$ node --version </p>
+                    <p>v5.7.0</p>
+                </div>
+                <p>Еще один способ установки и управления версиями node.js — <a
+                        href="https://github.com/SkillfactoryCoding/PHP-Basic-Frontend-nvm">nvm (Node Version
+                        Manager).</a> </p>
+                <p>Это довольно простой скрипт, который позволяет устанавливать, переключать и удалять версии Node.js на
+                    лету. Проще говоря, nvm даёт вам возможность держать на одной машине любое количество версий
+                    Node.js. При установке новой версии для неё создаётся отдельная директория, например 5.0.0 или
+                    4.2.2. При переключении версий скрипт подменяет путь до Node.js в PATH.</p>
+                <div class="main__wrapper-box_grey">
+                    <h2>Полезные ссылки для прочтения </h2>
+                    <blockquote><a
+                            href="https://www.canonium.com/articles/managing-node-versions-with-windows-nvm">Управление
+                            версиями Node.js с помощью nvm в Windows.</a></blockquote>
+                    <blockquote><a href="https://github.com/SkillfactoryCoding/11.6_NPM_YAM">Обновление Node.js с
+                            помощью nvm.</a></blockquote>
+                </div>
+                <p>Сразу после установки вам становится доступна новая команда node. Её можно использовать двумя разными
+                    способами. </p>
+                <h2>Первый способ — без аргументов. </h2>
+                <p>Откроется интерактивная оболочка (REPL: read-eval-print-loop), где вы можете выполнять обычный
+                    JavaScript-код. </p>
+                <blockquote>&bull; <span class="blue"> REPL</span> — простая интерактивная среда программирования. В
+                    такой среде пользователь может вводить выражения, которые среда тут же будет вычислять, а результат
+                    вычисления отображать пользователю.</blockquote>
+                <blockquote>&bull; Функция <span class="blue">read</span> читает одно выражение и преобразует его в
+                    соответствующую структуру данных в памяти.</blockquote>
+                <blockquote>&bull; Функция <span class="blue">eval</span> принимает одну такую структуру данных и
+                    вычисляет соответствующее ей выражение.</blockquote>
+                <blockquote>&bull; Функция <span class="blue">print</span> принимает результат вычисления выражения и
+                    печатает его пользователю.</blockquote>
+                <p>REPL-среда очень удобна при изучении нового языка, так как предоставляет пользователю быструю
+                    обратную связь.</p>
+                <p>Давайте введем команду node в терминале и выполним простой код — console.log('Hello World'):</p>
+                <div class="main__wrapper-box_grey">
+                    <p>$ node </p>
+                    <p>> console.log('Hello World'); </p>
+                    <p>Hello World</p>
+                    <p>undefined</p>
+                </div>
+                <p><i>Node.js</i> выполнит этот код. undefined после него выводится, потому что оболочка отображает
+                    возвращаемое значение каждой команды, а console.log ничего не возвращает. Для выхода из оболочки
+                    необходимо набрать <i>Ctrl + C</i>.</p>
+                <h2>Второй способ установки данной команды — через добавление node в PATH.</h2>
+                <p>Необходимо выполнить следующие действия (для ОС Windows):</p>
+                <blockquote>&bull; Панель управления → Система → расширенные Системные настройки → Переменные среды.
+                </blockquote>
+                <blockquote>&bull; Выберите PATH и выберите его для редактирования. Далее внесите следующие изменения:
+                    C:\Program Files\Nodejs.</blockquote>
+
+                <h3>NPM</h3>
+                <div class="main__wrapper-box_green">
+                    <p><b>npm</b> — пакетный менеджер Node.js. Бездонный ящик с инструментами, с помощью которого вы
+                        сможете получать и устанавливать почти все, что только может пожелать душа веб-разработчика. С
+                        его помощью можно управлять модулями (устанавливать, удалять, обновлять и так далее) и
+                        зависимостями. Во время установки node.js, npm автоматически установится вместе с ним.</p>
+                </div>
+                <figure>
+                    <img src="../images/php_m33_u3_2.png" width="90%" alt="">
+                </figure>
+                <h3>Как работает npm?</h3>
+                <div class="main__wrapper-box_grey">
+                    <p>Он работает, выполняя одну из своих двух ролей:</p>
+
+                    <blockquote>Это широко используемый репозиторий для публикации проектов Node.js с открытым исходным
+                        кодом. Это означает, что это онлайн-платформа, где каждый может публиковать и делиться
+                        инструментами, написанными на JavaScript.</blockquote>
+                    <blockquote><i>npm</i> — это инструмент командной строки, который помогает взаимодействовать с
+                        онлайн-платформами, такими как браузеры и серверы. Эта утилита помогает в установке и удалении
+                        пакетов, управлении версиями и зависимостями, необходимыми для запуска проекта.</blockquote>
+                </div>
+                <p>Чтобы использовать npm, нужно сначала установить node.js, так как они связаны. Утилита командной
+                    строки npm обеспечивает корректную работу node.js. Чтобы использовать пакеты, ваш проект должен
+                    содержать файл с именем package.json. Внутри этого пакета вы найдёте метаданные, касающиеся
+                    проектов.</p>
+                <div class="main__wrapper-box_green">
+                    <p>Метаданные показывают несколько аспектов проекта в следующем порядке:</p>
+                    <blockquote>Название проекта.</blockquote>
+                    <blockquote>Первоначальная версия.</blockquote>
+                    <blockquote>Описание.</blockquote>
+                    <blockquote>Точка входа.</blockquote>
+                    <blockquote>Тестовые команды.</blockquote>
+                    <blockquote>Репозиторий <a href="https://www.hostinger.ru/rukovodstva/chto-takoje-github/">Git</a>.
+                    </blockquote>
+                    <blockquote>Ключевые слова.</blockquote>
+                    <blockquote>Лицензия.</blockquote>
+                    <blockquote>Зависимости.</blockquote>
+                    <blockquote><i>DevDependencies.</i></blockquote>
+                    <p>Метаданные помогают идентифицировать проект и служат основным источником информации о проекте.
+                    </p>
+                </div>
+                <p>Вот пример того, как вы можете идентифицировать проект по его метаданным:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>{</p>
+                    <p>"name": "hostinger-npm",</p>
+                    <p>"version": "1.0.0",</p>
+                    <p>"description": "npm guide for beginner",</p>
+                    <p>"main": "beginner-npm.js",</p>
+                    <p>"scripts": {</p>
+                    <p>"test": "echo \"Error: no test specified\" && exit 1"</p>
+                    <p>},</p>
+                    <p>"keywords": [</p>
+                    <p>"npm",</p>
+                    <p>"example",</p>
+                    <p>"basic"</p>
+                    <p>],</p>
+                    <p>"author": "Hostinger International",</p>
+                    <p>"license": "MIT",</p>
+                    <p>"dependencies": {</p>
+                    <p>"express": "^4.16.4"</p>
+                    <p>}</p>
+                    <p>}</p>
+                </div>
+                <blockquote>&bull; Имя: hostinger-npm.</blockquote>
+                <blockquote>&bull; Версия: 1.0.0.</blockquote>
+                <blockquote>&bull; Это руководство по npm для начинающих.</blockquote>
+                <blockquote>&bull; Точка входа в проект или основной файл: beginner-npm.js.</blockquote>
+                <blockquote>&bull; Ключевые слова или теги для поиска проекта в репозитории: npm, example и basic.
+                </blockquote>
+                <blockquote>&bull; Автор проекта: Hostinger International.</blockquote>
+                <blockquote>&bull; Этот проект лицензирован в рамках MIT.</blockquote>
+                <blockquote>&bull; Зависимости или другие модули, которые использует этот модуль — express 4.16.4.
+                </blockquote>
+                <p>Если у вашего проекта много зависимостей, то устанавливать их каждый раз вручную не очень удобно,
+                    поэтому npm использует файл package.json.</p>
+                <p>Вот еще пример package.json:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>{ "name": "project", </p>
+                    <p>"devDependencies": { </p>
+                    <p>"browser-sync": "^2.11.1", </p>
+                    <p>"gulp": "^3.9.0" </p>
+                    <p>}</p>
+                    <p>}</p>
+                </div>
+                <p>Файл package.json содержит общие сведения о вашем приложении. Он может содержать множество настроек,
+                    но выше указан необходимый минимум. Секция dependencies описывает имя и версию модулей, которые вы
+                    хотите установить. Вы можете перечислить в этой секции столько зависимостей, сколько захотите. </p>
+                <p>Данный файл генерируется с помощью команды npm init, которая выведет в консоль несколько вопросов для
+                    создания файла. Чтобы не отвечать "yes" на каждый вопрос, необходимо ввести:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>$ npm init --yes // параметр --yes позволяет сразу же автоматом ответить на все вопросы yes,
+                        которые будут предложены при команде npm init</p>
+                </div>
+                <p>Теперь вместо установки зависимостей по одной мы можем установить все сразу командой:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>$ npm install</p>
+                </div>
+                <p>При запуске этой команды npm будет искать package.json в текущей директории, и если найдёт, то
+                    установит каждую указанную в нём зависимость.</p>
+                <p>Это очень удобно, особенно, если наш проект использует много зависимостей (например, jQuery,
+                    normalize, browser-cookies и так далее). Если все они прописаны в файле package.json, то для того
+                    чтобы другой разработчик смог начать работать с вашим проектом, ему достаточно будет склонировать с
+                    гита сам проект, прописать команду npm install и все указанные зависимости скачаются автоматически.
+                </p>
+                <h3>Управление кэшем</h3>
+                <p>После установки пакета npm сохраняет его копию в кэше, поэтому при следующей его установке вам не
+                    нужно беспокоить сеть. Кэш хранится в каталоге .npm вашего домашнего каталога.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>$ ls ~/.npm</p>
+                    <p>_locks minimist mkdirp registry.npmjs.org underscore</p>
+                </div>
+                <p>Этот каталог со временем замусоривается старыми пакетами и иногда его полезно очищать.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>$ npm cache clean</p>
+                </div>
+                <h3>Управление зависимостями</h3>
+                <p>В нашем проекте пока только два пакета, но их количество очень быстро возрастает. Установка
+                    зависимостей вручную очень неудобна, поэтому для управления ими мы можем использовать файл
+                    package.json, расположив его в корне нашего проекта. Он генерируется с помощью команды npm init,
+                    которая выведет в консоль несколько вопросов для создания файла:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>$ npm init</p>
+                    <p>This utility will walk you through creating a package.json file.</p>
+                    <p>Press ^C at any time to quit.</p>
+                    <p>name: (project) demo</p>
+                    <p>version: (1.0.0)</p>
+                    <p>description: Demo of package.json</p>
+                    <p>entry point: (index.js)</p>
+                    <p>test command:</p>
+                    <p>git repository:</p>
+                    <p>keywords:</p>
+                    <p>author: Sitepoint</p>
+                    <p>license: (ISC)</p>
+                </div>
+                <p>В результате мы получим файл со следующим содержимым:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>{</p>
+                    <p>"name": "demo",</p>
+                    <p>"version": "1.0.0",</p>
+                    <p>"description": "Demo package.json",</p>
+                    <p>"main": "main.js",</p>
+                    <p> "dependencies": {</p>
+                    <blockquote>"mkdirp": "^0.5.1",</blockquote>
+                    <blockquote>"underscore": "^1.8.3"</blockquote>
+                    <p>},</p>
+                    <p>"devDependencies": {},</p>
+                    <p>"scripts": {</p>
+                    <blockquote>"test": "echo \"Error: no test specified\" && exit 1"</blockquote>
+                    <p>},</p>
+                    <p>"author": "Sitepoint",</p>
+                    <p>"license": "ISC"</p>
+                    <p>}</p>
+                </div>
+                <p>Вы можете сгенерировать это файл и более простым способом, с помощью опции --yes (автоматический
+                    ответ «да» на все вопросы):</p>
+                <div class="main__wrapper-box_grey">
+                    <p>$ npm init --yes</p>
+                </div>
+                <p>Файл package.json будет создан, в качестве name будет использовано название каталога.</p>
+                <p>Вы также можете добавить private: true, чтобы предотвратить случайную публикацию частных репозиториев
+                    или подавление любых предупреждений при выполнении npm install. Создадим новый каталог и используем
+                    package.json для установки зависимостей.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>$ mkdir ~/demo && cd ~/demo</p>
+                    <p>$ cp ~/project/package.json ~/demo</p>
+                    <p>$ npm install</p>
+                    <p>$ npm list</p>
+                    <p>demo@1.0.0 /home/sitepoint/demo</p>
+                    <p>├─┬ mkdirp@0.5.1</p>
+                    <p>│ └── minimist@0.0.8</p>
+                    <p>└── underscore@1.8.3</p>
+                </div>
+                <p>Наш файл package.json также обновился:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>"dependencies": {</p>
+                    <blockquote>"mkdirp": "^0.5.1",</blockquote>
+                    <blockquote>"request": "^2.53.0",</blockquote>
+                    <blockquote>"underscore": "^1.8.3"</blockquote>
+                    <p>}</p>
+                </div>
+                <h3>YARN</h3>
+                <p>Еще одним интересным и удобным пакетным менеджером является <b>yarn</b>. </p>
+                <figure>
+                    <img src="../images/php_m33_u3_3.jpg" width="90%" alt="">
+                </figure>
+                <h3>
+                    <div class="main__wrapper-box_green">
+                        <i>Yarn</i> — это современная альтернатива npm. Yarn работает с тем же файлом package.json и так
+                        же скачивает необходимые модули в папку node-modules. Однако он делает это быстрее, чем npm.
+                        Пожалуй, для большинства разработчиков это его главное и единственное действительно ощутимое
+                        преимущество.
+                    </div>
+                </h3>
+                <div class="main__wrapper-box_green">
+                    <h2>Какие у Yarn преимущества перед npm?</h2>
+                    <ol>
+                        <li><b>Yarn кеширует все модули, которые загружает</b>. Вам никогда не придется загружать один и
+                            тот же модуль дважды.</li>
+                        <li>Это также означает, что <b>вы можете иметь доступ к ранее загруженным модулям</b> удобно и
+                            без подключения к сети интернета.</li>
+                        <li><b>Использует чексуммы</b> (checksums), чтобы верифицировать каждый устанавливаемый модуль.
+                            Это даёт новый уровень безопасности.</li>
+                        <li><b>Использует специальный локфайл</b> (lockfile) в связке с детерминированным алгоритмом
+                            установки модулей, что позволяет Yarn гарантировать, что ваше приложение будет одинаково
+                            устанавливаться и работать на разных системах (у npm это одно из слабых мест).</li>
+                    </ol>
+                </div>
+                <h3>Yarn и npm могут работать вместе?</h3>
+                <p>Могут, без проблем. В рамках одного проекта разные разработчики могут работать с yarn и npm — по
+                    своему вкусу. Вы также всегда можете легко перейти от yarn обратно к npm.</p>
+                <h3>Установка</h3>
+                <p><b>MacOS </b></p>
+                <p>При помощи <a href="https://brew.sh/">brew</a>:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>brew update</p>
+                    <p>brew install yarn</p>
+                </div>
+                <p>После установки Yarn нужно добавить в PATH. Добавьте export PATH=”$PATH:`yarn global bin`” в ваш
+                    профайл ( .profile, .bashrc, .zshrc). После чего проверьте, правильно ли вы всё сделали:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>yarn --version</p>
+                </div>
+                <p><b><i>Windows </i></b></p>
+                <p><a href="https://classic.yarnpkg.com/en/docs/install#windows-stable">Скачайте установщик</a> или
+                    установите с помощью npm:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>npm install --global yarn</p>
+                </div>
+                <h3>Как пользоваться?</h3>
+                <ol>
+                    <li>
+                        <h2>Инициализация нового проекта:</h2>
+                        <div class="main__wrapper-box_grey">
+                            <p>yarn init -y</p>
+                        </div>
+                        <p>Создастся файл <i>package.json</i></p>
+                    </li>
+                    <li>
+                        <h2>Добавьте пакет (зависимость):</h2>
+                        <div class="main__wrapper-box_grey">
+                            <p>yarn add [package]</p>
+                            <p>yarn add [package]@[version]</p>
+                        </div>
+                        <p>После этого Yarn создаст локфайл yarn.lock в корне вашего проекта. В этот файл будут
+                            автоматически записываться чексуммы всех устанавливаемых вами зависимостей. Как говорят сами
+                            разработчики “You don’t need to read or understand this file — just check it into source
+                            control” (то есть не трогайте локфайл и не пытайтесь его понять).</p>
+                        <p>Не забудьте добавить его в git (<span class="blue"> git add yarn.lock</span>).</p>
+                    </li>
+                    <li>
+                        <h2>Обновление:</h2>
+                        <div class="main__wrapper-box_grey">
+                            <p>yarn upgrade [package]</p>
+                            <p>yarn upgrade [package]@[version]</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h2>Удаление:</h2>
+                        <div class="main__wrapper-box_grey">
+                            <p>yarn remove [package]</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h2>Установите все зависимости проекта:</h2>
+                        <div class="main__wrapper-box_grey">
+                            <p>yarn</p>
+                        </div>
+                        <p>или</p>
+                        <div class="main__wrapper-box_grey">
+                            <p>Yarn install</p>
+                        </div>
+                    </li>
+                </ol>
+                <h3>Offline установка пакетов</h3>
+                <p>Любая зависимость, установленная хотя бы один раз попадает в кэш Yarn. Затем эту же зависимость можно
+                    установить для другого проекта, не скачивая её ещё раз из сети интернета. То есть в режиме
+                    «оффлайн».</p>
+                <p>Рассмотрим пример:</p>
+                <ol>
+                    <li>
+                        <h2>Создадим структуру проекта:</h2>
+                        <div class="main__wrapper-box_grey">
+                            <p>mkdir yarn </p>
+                            <p>cd yarn</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h2>Создадим файлы package.json и yarn.lock:</h2>
+                        <div class="main__wrapper-box_grey">
+                            <p>Yarn</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h2>Установим jQuery:</h2>
+                        <div class="main__wrapper-box_grey">
+                            <p>yarn add <i>jquery</i></p>
+                        </div>
+                    </li>
+                    <li>
+                        <h2>Установим browser-sync:</h2>
+                        <div class="main__wrapper-box_grey">
+                            <p>yarn add browser-sync –D</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h2>В результате мы получили файл package.json:</h2>
+                        <div class="main__wrapper-box_grey">
+                            <p>cat package.json {</p>
+                            <p> “dependencies”: { </p>
+                            <p>“jquery”: “^3.1.1” },</p>
+                            <p>“devDependencies”: { </p>
+                            <p>“browser-sync”: “^2.18.7” }</p>
+                            <p>}</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h2>Теперь выйдем из проекта и создадим новый:</h2>
+                        <div class="main__wrapper-box_grey">
+                            <p>cd ..</p>
+                            <p>mkdir yarn-offline</p>
+                            <p>cd yarn-offline</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h2>Выключим интернет.</h2>
+                    </li>
+                    <li>
+                        <h2>Инициализация:</h2>
+                        <div class="main__wrapper-box_grey">
+                            <p>Yarn</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h2>Попробуем установить jQuery:</h2>
+                        <div class="main__wrapper-box_grey">
+                            <p>yarn add jquery </p>
+                            <p>// warning You don’t appear to have an internet connection. Try the --offline flag to use
+                                the cache for registry queries.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h2>Следуем рекомендации:</h2>
+                        <div class="main__wrapper-box_grey">
+                            <p>yarn add jquery –offline</p>
+                            <p>// error Couldn’t find any versions for “jquery” that matches “latest” in our cache.</p>
+                            <p>Possible versions: “3.1.1”</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h2>Видим, что yarn не знает точно, какая версия jQuery последняя. Предполагает, что версия
+                            3.1.1. Нас это вполне устраивает:</h2>
+                        <div class="main__wrapper-box_grey">
+                            <p>yarn add jquery@3.1.1 –offline</p>
+                        </div>
+                    </li>
+                    <li>
+                        <h2>Убедимся, что всё установлено корректно:</h2>
+                        <div class="main__wrapper-box_grey">
+                            <p>cat package.json</p>
+                            <p>ls node_modules/</p>
+                        </div>
+                    </li>
+                </ol>
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page4.html" class="previous">&laquo; Назад</a>
+                <a href="page6.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page4.html" class="previous round">&#8249;</a>
+                <a href="page6.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

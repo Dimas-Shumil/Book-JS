@@ -1,0 +1,152 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>API браузера</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+            <div class="header__nav-title">
+                2. Drag & Drop
+            </div>
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html" class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+            <div class="main__wrapper-conteiner">
+                <figure>
+                    <img src="../images/m15_cover_dragndrop.svg" width="45%" alt="">
+                </figure>
+                <h3>Что такое Drag and Drop</h3>
+
+                <div class="main__wrapper-border_green">
+                    <p><span class="green"> Drag and Drop</span> — комбинация методов и обработчиков для реализации
+                        переноса элементов на странице с помощью зажатой кнопки мыши.</p>
+                </div>
+                <p>Он состоит из нескольких этапов:</p>
+                <div class="main__wrapper-box_grey">
+                    <blockquote>1. Повесить обработчик onMouseDown на элемент, который хотим перетаскивать;</blockquote>
+                    <blockquote>2. Обработчик должен вешать событие onMouseMove на курсор, чтобы следить за ним;
+                    </blockquote>
+                    <blockquote>3. Если сработал onMouseDown, то считаем, что перенос начался, и теперь меняем
+                        координаты элемента в соответствии с координатами курсора;</blockquote>
+                    <blockquote>4. Также вешаем обработчик onMouseUp, который будет всё отменять;</blockquote>
+                    <blockquote>Когда сработал onMouseUp, оставляем координаты элемента и снимаем все обработчики, кроме
+                        onMouseDown.</blockquote>
+                </div>
+                <p>В результате мы получаем переносимый на странице элемент.</p>
+                <p>Разберём каждое событие в отдельности:</p>
+                <blockquote>&bull; <a
+                        href="https://developer.mozilla.org/ru/docs/Web/API/Element/mousedown_event">mousedown</a> —
+                    срабатывает при нажатии кнопки на элемент. В механизме Drag’n’Drop это сигнал к активации
+                    наблюдателя за перемещением мыши.</blockquote>
+                <blockquote>&bull; <a
+                        href="https://developer.mozilla.org/ru/docs/Web/API/Element/mousemove_event">mousemove</a> —
+                    событие, которое срабатывает на перемещение курсора. В механизме Drag’n’Drop, после активации на
+                    нажатие кнопки мыши, мы начинаем следить за этим событием и перемещать элемент на столько же
+                    пикселей, на сколько перемещается курсор мыши.</blockquote>
+                <blockquote>&bull; <a
+                        href="https://developer.mozilla.org/ru/docs/Web/API/Element/mouseup_event">mouseup</a> —
+                    событие, которое срабатывает на отпускание кнопки мыши. В механизме Drag’n’Drop это сигнал к
+                    завершению наблюдения за событием mousemove и снятию всех обработчиков для перемещения элемента.
+                </blockquote>
+                <p>Также механизм Drag’n’Drop может быть реализован на <a
+                        href="https://developer.mozilla.org/ru/docs/Web/API/TouchEvent">touch-события</a> (для сенсорных
+                    экранов телефонов). Комбинируются события так же, только называются соответственно:</p>
+                <blockquote>&bull; touchstart,</blockquote>
+                <blockquote>&bull; touchmove,</blockquote>
+                <blockquote>&bull; touchend.</blockquote>
+                <h2>Области применения</h2>
+                <p>Drag’n’Drop применяется в разных областях. Несколько вариантов приложения с этой технологией:</p>
+                <h3>Трекер задач </h3>
+                <figure>
+                    <img src="../images/m15_dnd_jira.gif" width="80%" alt="">
+                    <figcaption>Источник: <a href="https://www.youtube.com/watch?v=rVYQ63HRPdk">Jira Core Walkthrough
+                            and Review</a></figcaption>
+                </figure>
+                <h3>Конструкторы сайтов, диаграмм, онлайн-рисовалки</h3>
+                <figure>
+                    <img src="../images/m15_dnd_tilda.gif" width="80%" alt="">
+                    <figcaption>Источник: <a href="https://www.youtube.com/watch?v=hTt7FeXBjSc">Пошаговая анимация в
+                            Tilda Publishing</a></figcaption>
+                </figure>
+                <h3>Тесты на соотношение слов на образовательных платформах</h3>
+                <figure>
+                    <img src="../images/m15_dnd_cards.gif" width="80%" alt="">
+                    <figcaption>Источник: <a href="https://www.youtube.com/watch?v=7HUCAYMylCQ">HTML Drag and Drop
+                            API</a></figcaption>
+                </figure>
+                <h2>Реализация</h2>
+                <p>Старая реализация: <a href="https://codepen.io/vvysokiy/pen/bGEeEqO">Пример реализации Drag’n’Drop в
+                        codepen.io</a></p>
+                <div class="main__wrapper-box_grey">
+                    <p>В современном стандарте <i>HTML5</i> есть поддержка <i>Drag’n’Drop</i> при помощи специальных
+                        событий. Но у них есть ряд ограничений, поэтому на практике используют Drag’n’Drop <b>на основе
+                            событий мыши</b>.</p>
+                </div>
+                <hr class="hr">
+                <h2>Задание 10.2.1</h2>
+                <p>Что такое Drag and Drop?</p>
+                <blockquote>Комбинация событий и методов на пользовательские взаимодействия</blockquote>
+                <hr class="hr">
+                <h2>Задание 10.2.2</h2>
+                <p>Из каких событий можно реализовать Drag and Drop?</p>
+                <blockquote>touch-события</blockquote>
+                <blockquote>Событий мыши</blockquote>
+                <hr class="hr">
+                <!-- кнопки -->
+                <div class="main__btn-box">
+                    <a href="../../index.html" class="previous">&laquo; Назад</a>
+                    <a href="page3.html" class="next">Вперед &raquo;</a>
+                </div>
+                <div class="main__btn-box-o">
+                    <a href="../../index.html" class="previous round">&#8249;</a>
+                    <a href="page3.html" class="next round">&#8250;</a>
+                </div>
+            </div>
+            <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+            <script async src="../script/js.js"></script>
+
+            <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+            <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

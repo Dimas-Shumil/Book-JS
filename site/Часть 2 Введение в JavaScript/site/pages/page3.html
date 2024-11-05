@@ -1,0 +1,276 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>JS part2</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                <h3>3. Типы данных в JavaScriptые</h3>
+            </div>
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html" title="Введение">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="../pages/pages2.html" title="Переменные">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="#" title="Типы данных в JavaScript">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="../pages/page4.html" title="Операции с числами">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="../pages/page5.html  " title="Операции со строками">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="../pages/page6.html" title="Преобразование типов">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="page7.html" title="Ввод/вывод данных">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="../pages/page8.html" title="Операторы сравнения, логические оператор">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="../pages/page9.html" title="Ветвление">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            <li><a href="../pages/page10.html" title="Промежуточные итоги">
+                    <span class="header__nav-ul_link"></span>
+                </a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <hr class="hr">
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+            <div class="main__wrapper-conteiner">
+
+                <h2>Примитивный (встроенный, базовый) тип — тип данных, предоставляемый языком программирования как
+                    базовая
+                    встроенная единица языка.</h2>
+
+                <p>В JavaScript есть 6 примитивных типов данных:</p>
+                <table>
+                    <tr>
+                        <td>Название типа</td>
+                        <td>Пример</td>
+                    </tr>
+                    <tr>
+                        <td>number (число)</td>
+                        <td>1, 2, 3.5</td>
+                    </tr>
+                    <tr>
+                        <td>string (строка)</td>
+                        <td>Обычный текст</td>
+                    </tr>
+                    <tr>
+                        <td>boolean (булев, логический тип)</td>
+                        <td>true, falsetrue, false</td>
+                    </tr>
+                    <tr>
+                        <td>undefined (неопределённый тип)</td>
+                        <td>undefined</td>
+                    </tr>
+                    <tr>
+                        <td>BigInt (очень большое число)</td>
+                        <td>1234444444444n</td>
+                    </tr>
+                    <tr>
+                        <td>Symbol (в ECMAScript 6)</td>
+                        <td>new Symbol('a')</td>
+                    </tr>
+                </table>
+                <hr class="hr">
+
+                <h3>number (Число)</h3>
+
+                <p>Числовой тип данных в JS — это обычные числа:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let one = 1;</p>
+                    <p>let two = 2;</p>
+                    <p>let pi = 3.14;</p>
+                    <p>let negativeOne = -1;</p>
+                </div>
+
+                <p>У этого типа данных очень большой интервал возможных значений, но он не бесконечен. Всего для данного
+                    типа данных закладывается в памяти 64 бита.</p>
+                <p>Также существуют специальные значения:</p>
+                <p>&#10148;+Infinity (положительная бесконечность).</p>
+                <p>Получим, если превысим максимальное положительное число.</p>
+                <p>&#10148;-Infinity (отрицательная бесконечность).</p>
+                <p>Получим, если значение будет меньше минимально возможного числа.</p>
+                <p>&#10148;NaN (не число)</p>
+                <p>Получим при разных математических операциях с числами, а также если попробуем строку представить в
+                    виде
+                    числа.</p>
+                <p>Мы можем узнать значения самого большого или самого меньшего доступного значения в пределах
+                    +/-Infinity.
+                    Для этого можно использовать именованные константы, предоставляемые языком: Number.MAX_VALUE или
+                    Number.MIN_VALUE.</p>
+
+                <h3>string (Строка)</h3>
+
+                <p>В JavaScript строки представляют собой последовательность символов, используемых для представления
+                    текста.</p>
+                <p>В JavaScript есть три способа определить строку в коде:</p>
+                <p>1.Одиночные кавычки.</p>
+                <p>2.Двойные кавычки.</p>
+                <p>3.Обратные кавычки.</p>
+
+
+                <div class="main__wrapper-box_grey">
+                    <p>let firstString = "Это строка";</p>
+                    <p>let secondString = 'И это строка';</p>
+                    <p>let thirdString = `И даже это строка`;</p>
+                </div>
+
+                <p>Между первым и вторым способом разницы нет.</p>
+                <p>Третий способ называется шаблонные строки — позволяет вставить внутрь строки специальные языковые
+                    конструкции ${}. Данные конструкции будут выводить результат работы находящегося внутри них кода:
+                </p>
+
+                <div class="main__wrapper-box_grey">
+                    <p> `Если к 1 прибавить 2 будет ${1 + 2}` // Если к 1 прибавить 2 будет 3</p>
+                </div>
+
+                <p>Строки должны начинаться и заканчиваться одинаковыми кавычками.</p>
+                <p>Если нужно внутрь строки вставить ещё одну кавычку или кавычки, то это нужно делать другим типом
+                    кавычек
+                    или экранировать с помощью символа обратного слеша — \.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>"Строка с 'дополнительными' \" кавычками\" " </p>
+                    <p>// Строка с 'дополнительными' "кавычками"</p>
+                </div>
+
+                <h3>boolean (Булев, Логический тип)</h3>
+
+                <p>Может содержать в себе одно из двух значений: true или false.</p>
+                <p>По простому — это ответ «Да» или «Нет»</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let isEquals = true; // да, значения одинаковые</p>
+                    <p>let inputChecked = false; // нет, инпут не выделен</p>
+                </div>
+
+                <h3>undefined (не определено)</h3>
+
+                <p>Если вы сразу не указали переменной какое-либо значение, то переменная получит такой тип:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let variable; // undefined</p>
+                    <p>variable = 5; // 5</p>
+                </div>
+
+                <h3>BigInt (Большое целое)</h3>
+
+                <p>Тип number может хранить в себе огромный диапазон значений. Если число выходит за этот диапазон, то
+                    мы
+                    получаем Infinity. В этом случае для переменной подойдёт тип BigInt.</p>
+                <p>Создавая переменную с типом BigInt мы скажем JavaScript’у, что значение переменной выходит за
+                    диапазон
+                    типа number. Но оно нам нужно и не надо делать его Infinity.</p>
+                <p>Чтобы создать значение типа BigInt нужно в конце числа поставить символ n.</p>
+                <p>const bigInt = 19241924124n</p>
+
+                <h3>Symbol (Символ)</h3>
+
+                <p>Символ — это тип данных, который представляет собой уникальный идентификатор.</p>
+                <p>В отличии от предыдущих типов, Symbol создаётся с помощью специальной функции Symbol().</p>
+                <p>По спецификации, в качестве ключей для свойств объекта могут использоваться только строки или
+                    символы. Ни
+                    числа, ни логические значения не подходят. Разрешены только эти два типа данных.</p>
+                <p>Про объекты подробнее мы поговорим в следующем юните.</p>
+                <p>Вот как можно создать символ с описанием (именем):</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>"id": Symbol("id")</p>
+                </div>
+
+                <h3>Null</h3>
+
+                <p>Стоит особняком. Также, как и undefined.</p>
+                <p>Данный тип не относится ни к одному из вышеописанных. Он формирует отдельный тип, в котором имеется
+                    только одно значение — null.</p>
+                <p>Это специальное значение, которое представляет собой «ничего», «пусто» или «значение неизвестно».</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let userName = null;</p>
+                </div>
+
+                <p>Обычно null используется для присвоения переменной «пустого» или «неизвестного» значения. А undefined
+                    —
+                    для проверок, была ли переменная назначена.</p>
+
+                <h3>Оператор typeof</h3>
+
+                <p>Так как в JavaScript типизация динамическая, возникают ситуации, когда разработчик не уверен, какой
+                    именно тип данных хранится в переменной.</p>
+                <p>Чтобы не допустить ошибок и принять верное решение относительно дальнейших действий, пригодится
+                    оператор
+                    typeof.</p>
+                <p>С помощью этого оператора можно моментально узнать о типе данных.</p>
+                <p>Он возвращает строку с названием типа. Применяется так:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let a = 10;</p>
+                    <p>typeof a; // "number"</p>
+                    <p>a = '10';</p>
+                    <p>typeof a //"string"</p>
+                    <p>let a = 10;</p>
+                    <p>typeof(typeof a); //"string"</p>
+                </div>
+
+                <p>С примитивными типами данных оператор работает предсказуемо. Но есть особенности, с которыми мы
+                    столкнёмся, когда будем изучать объекты.</p>
+            </div>
+
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="../pages/pages2.html" class="previous">&laquo; Назад</a>
+                <a href="../pages/page4.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="pages2.html" class="previous round">&#8249;</a>
+                <a href="page4.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+    </div>
+            <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+            <script async src="../script/js.js"></script>
+
+            <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+</body>
+
+</html>

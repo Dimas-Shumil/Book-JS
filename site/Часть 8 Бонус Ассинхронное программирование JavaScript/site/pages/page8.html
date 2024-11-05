@@ -1,0 +1,116 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Бонус. Асинхронное программирование JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                8. Практическое задание. Галерея с картинками
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page9.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <p>За этот модуль вы изучили огромное количество новых инструментов и сделали ещё несколько важных шагов
+                    к работе в веб-разработке.</p>
+                <p>Предлагаем применить все полученные теоретические знания на практике. Ваша задача — создать небольшую
+                    галерею с фотографиями. Но не всё так просто.</p>
+                <p>Вам нужно, чтобы эти фотографии не были вшиты в разметку вручную. Они должны приходить с сервера по
+                    щелчку на кнопку, а затем помещаться в разметку.</p>
+
+                <figure>
+                    <img src="../images/INTFR_9_8_1.png" width="80%" alt="">
+                </figure>
+
+                <h2>T3</h2>
+
+                <p>1. Для этого вам могут понадобиться следующие инструменты:</p>
+                <blockquote>&#10149; Метод fetch для запроса данных со стороннего API;</blockquote>
+                <blockquote>&#10149; Цепочки вызовов .then().catch().finally();</blockquote>
+                <blockquote>&#10149; async/await;</blockquote>
+                <blockquote>&#10149; try…catch…finally;</blockquote>
+                <blockquote>&#10149; document.querySelector(), document.getElementById;</blockquote>
+                <blockquote>&#10149; addEventListener(), preventDefault().</blockquote>
+                <p>2. Дизайн полностью зависит от вас. Можете использовать что хотите. Единственное правило: сдавать вообще без стилей нельзя. И ещё: при загрузке данных должен появляться лоадер.</p>
+                <p>Кнопки должны быть стилизованы. Размеры для картинок установлены. Отступы между картинками заданы. Адаптивность учтена.</p>
+                <p>3. Соблюдайте кодстайл. Используйте один вариант табуляции и один формат кавычек.</p>
+                <p>Для классов используйте БЭМ.</p>
+                <p>Потренируйтесь задавать переменным осмысленные названия. По ним должно быть ясно, что в них хранится.</p>
+
+                <h2>API</h2>
+
+                <p>Варианты, откуда можно брать картинки:</p>
+                <blockquote>1. <a href="https://dog.ceo/api/breeds/image/random/20"> <span class="green"> https://dog.ceo/api/breeds/image/random/20</span></a> — JSON с 20 картинками собачек. Вы можете поменять число 20 в конце адреса на другое. Максимум — 50 картинок. Минимум — 5.</blockquote>
+                <blockquote>2. <a href="https://api.thecatapi.com/v1/images/search?limit=10"> <span class="green"> https://api.thecatapi.com/v1/images/search?limit=10</span></a> — 10 рандомных фотографий с котами.</blockquote>
+                <blockquote>3. <a href="https://jsonplaceholder.typicode.com/photos?_start=0&_limit=60"> <span class="green"> https://jsonplaceholder.typicode.com/photos?_start=0&_limit=60</span></a> — фейковые картинки. Можете выставить другие числа после limit.</blockquote>
+                <blockquote>4. <a href="https://picsum.photos/v2/list?page=1&limit=50"> <span class="green"> https://picsum.photos/v2/list?page=1&limit=</span></a>50 — лист рандомных картинок. Используйте его, если у вас есть доступ к этому сервису. Работает не во всех странах.</blockquote>
+
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page7.html" class="previous">&laquo; Назад</a>
+                <a href="page9.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page7.html" class="previous round">&#8249;</a>
+                <a href="page9.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

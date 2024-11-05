@@ -1,0 +1,175 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Функции JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                8. Заключение
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <p>Функции — один из самых важных и мощных инструментов в JavaScript. Они позволяют создавать модульный
+                    и переиспользуемый код, улучшать читаемость и облегчать его тестирование.</p>
+                <p>JavaScript предоставляет множество способов объявления и использования функций. Например,
+                    функции-объекты, анонимные функции, стрелочные функции, функции высшего порядка и замыкания.</p>
+                <p>А знание областей видимости, контекста вызова и способов передачи параметров функции критически важно
+                    для создания и использования функций в JavaScript.</p>
+                <p>Понимание всех этих аспектов поможет вам создавать эффективный и масштабируемый код на JavaScript.
+                </p>
+
+                <h2>Задание 8.1</h2>
+
+                <p>Напишите функцию, которая принимает массив чисел в качестве аргумента и возвращает наибольшее число в
+                    массиве.</p>
+                <p>Пример использования:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const numbers = [3, 5, 1, 8, 2];</p>
+                    <p>const result = findMax(numbers);</p>
+                    <p>console.log(result); // 8</p>
+                </div>
+                <blockquote>Посмотреть код</blockquote>
+                <blockquote>
+                    <div class="main__wrapper-box_grey">
+                        <p>const findMax = function (numbers) {</p>
+                        <blockquote>let max = numbers[0];</blockquote>
+                        <blockquote>for (let i = 1; i &lsaquo; numbers.length; i++) {</blockquote>
+                        <blockquote>
+                            <blockquote>if (numbers[i] > max) {</blockquote>
+                        </blockquote>
+                        <blockquote>
+                            <blockquote>
+                                <blockquote>max = numbers[i];</blockquote>
+                            </blockquote>
+                        </blockquote>
+                        <blockquote>
+                            <blockquote>}</blockquote>
+                        </blockquote>
+                        <blockquote>}</blockquote>
+                        <blockquote>return max;</blockquote>
+                        <p>};</p>
+                    </div>
+                </blockquote>
+                <hr class="hr">
+
+                <h2>Задание 8.2</h2>
+
+                <p>Напишите функцию, которая принимает строку в качестве аргумента и возвращает новую строку с
+                    удалёнными гласными.</p>
+                <p>Пример использования:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const input = 'Hello, world!';</p>
+                    <p>const result = removeVowels(input);</p>
+                    <p>console.log(result); // "Hll, wrld!"</p>
+                </div>
+                <blockquote>Посмотреть код</blockquote>
+                <blockquote>
+                    <div class="main__wrapper-box_grey">
+                        <p>const removeVowels = function (str) {</p>
+                        <blockquote>eturn str.replace(/[aeiou]/gi, '');</blockquote>
+                        <p>};</p>
+                    </div>
+                </blockquote>
+                <hr class="hr">
+
+                <h2>Задание 8.3</h2>
+
+                <p>Напишите IIFE-функцию, которая возвращает новый массив, содержащий квадраты чисел из исходного
+                    массива.</p>
+                <blockquote>Посмотреть код</blockquote>
+                <blockquote>
+                    <div class="main__wrapper-box_grey">
+                        <p>const arr = [1, 2, 3, 4, 5];</p>
+                        <p>(function (arr) {</p>
+                        <blockquote>return arr.map(function (num) {</blockquote>
+                        <blockquote>
+                            <blockquote>return num * num;</blockquote>
+                        </blockquote>
+                        <blockquote>});</blockquote>
+                        <p>})(arr);</p>
+                    </div>
+                </blockquote>
+                <hr class="hr">
+
+                <h2>Задание 8.4</h2>
+
+                <p>Напишите IIFE-функцию, которая принимает объект со свойствами width и height, и возвращает площадь
+                    прямоугольника, вычисленную по формуле width * height.</p>
+                <blockquote>Посмотреть код</blockquote>
+                <blockquote>
+                    <div class="main__wrapper-box_grey">
+                        <p>const rectangle = { width: 5, height: 10 };</p>
+                        <p>(function (rect) {</p>
+                        <blockquote>return rect.width * rect.height;</blockquote>
+                        <p>})(rectangle);</p>
+                    </div>
+                </blockquote>
+
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page7.html" class="previous">&laquo; Назад</a>
+                <a href="../../index.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page7.html" class="previous round">&#8249;</a>
+                <a href="../../index.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+    </div>
+</body>
+
+</html>

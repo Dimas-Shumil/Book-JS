@@ -1,0 +1,238 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Функции JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                4. . ООП в JS
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <figure>
+                    <img src="../images/m12_cover_oop.svg" width="50%" alt="">
+                </figure>
+
+                <div class="main__wrapper-box_grey">
+                    <p>1. Идеология объектно-ориентированного программирования разрабатывалась как попытка связать
+                        поведение определенной сущности (объекта) с тем, к какому классу она принадлежит. И также
+                        причина задумки такого подхода в том, что нам проще воспринимать окружающий нас мир как объекты,
+                        которые поддаются определенной классификации (хотя бы даже взять разделение на живую и неживую
+                        природу).</p>
+                    <p>2. Основу ООП составляют два понятия — классы и объекты. Когда мы говорим о классе, мы имеем в
+                        виду то, какими свойствами и поведением будет обладать объект. В программировании мы создаем
+                        классы, то есть описываем свойства, которыми будут обладать объекты, принадлежащие этому классу.
+                    </p>
+                </div>
+
+                <p><span class="green">Основная идея ООП</span> — использовать объекты для отображения моделей из
+                    реального мира в программах и/или упрощения доступа к функциям, которые в противном случае было бы
+                    трудно или невозможно использовать.</p>
+                <p>Объект может содержать следующую информацию:</p>
+                <p>&bull; что это за модель;</p>
+                <p>&bull; какие должны быть функциональные возможности;</p>
+                <p>&bull; поведение модели.</p>
+
+                <h2>Основные принципы ООП</h2>
+
+                <blockquote>&bull; Инкапсуляция</blockquote>
+                <blockquote>&bull; Наследование</blockquote>
+                <blockquote>&bull; Полиморфизм</blockquote>
+                <blockquote>&bull; Абстракция</blockquote>
+
+                <p>Основа JavaScript это объекты. Все сложные структуры данных, включая функции, это объекты. </p>
+                <hr class="hr">
+
+                <h2>Контекст</h2>
+                <hr class="hr">
+
+                <p>This называют контекстом. This является объектом, который ссылается на саму функцию. То есть, таким
+                    образом, мы записываем в функцию свойства, которые затем можно передать новому, созданному через
+                    new, экземпляру.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>1. Ключевое слово this указывает на текущий контекст вызова функции. Контекст есть только у
+                        функций (в том числе, методов объекта, функций–конструкторов).</p>
+                    <p>2. Контекст нужен для доступа к информации внутри объекта. Если внутри функции есть обращение к
+                        this — ожидается, что функция вызвана в контексте какого–то объекта.</p>
+                    <p>3. Контекст не статичен — он определяется в момент выполнения функции. Его называют <span
+                            class="green">динамическим</span>.</p>
+                    <p>4. Ключевое слово this во время вызова функции хранит ссылку на объект, для которого эта функция
+                        была вызвана в качестве метода. Так можно получить доступ к другим свойствам этого объекта.</p>
+                    <p>5. В случае, когда функция вызывается сама по себе, а не как метод объекта, тогда есть два
+                        варианта поведения:</p>
+                    <p>&bull; Ключевое слово this будет ссылаться на глобальный объект window</p>
+                    <p>&bull; Если используется строгий режим ('use strict') – this будет иметь значение undefined</p>
+                </div>
+
+                <div class="main__wrapper-box_pink">
+                    <p><strong>ВАЖНО!</strong> Стрелочные функции не содержат собственный контекст this, а используют
+                        значение this окружающего контекста. Поэтому стрелочные функции не могут быть
+                        функцией-конструктором.</p>
+                </div>
+                <hr>
+                <p>Когда мы хотим создать экземпляр какого-то объекта, мы можем создать его через Object.create и
+                    передать туда прототип, а затем расширить, как это делалось ранее.</p>
+
+                <div class="main__wrapper-border_green">
+                    <p>Наиболее распространенным способом создавать экземпляры какого-либо объекта является
+                        использование <span class="green">функции-конструктора</span>. Функция-конструктор используется
+                        для того, чтобы создавать множество однотипных объектов, обладающих определенными свойствами.
+                    </p>
+                </div>
+                <p>Функцией-конcтруктором может быть любая функция в JavaScript (кроме стрелочной, о которой мы
+                    разговаривали в предыдущем модуле). Их принято именовать с большой буквы.</p>
+
+                <h2>Функция-конструктор</h2>
+
+                <div class="main__wrapper-box_grey">
+                    <p>function Candy(weight){</p>
+                    <blockquote>this.tasty = 'delicious',</blockquote>
+                    <blockquote>this.getWeight = function(){</blockquote>
+                    <blockquote>
+                        <blockquote>console.log(`Weight is ${weight} g`)</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <p>}</p>
+                    <p>const twix = new Candy(47);</p>
+                    <p>const snickers = new Candy(50);</p>
+                    <p>twix.getWeight()</p>
+                    <p>snickers.getWeight()</p>
+                </div>
+
+                <p>В данном случае функция Candy написана не совсем привычным способом — вместо объявления переменных,
+                    использовано this. </p>
+
+                <h2>Функция, запущенная через new, делает следующее:</h2>
+
+                <p>&bull; Создаёт новый пустой объект.</p>
+                <p>&bull; Ключевое слово this получает ссылку на этот объект.</p>
+                <p>&bull; Функция выполняется. Как правило, она модифицирует this (т.е. этот новый объект), добавляет
+                    методы, свойства.</p>
+                <p>&bull; Возвращается this.</p>
+                <p>Иначе говоря, twix после записи вызова new Candy(47), то же самое что:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const twix = {</p>
+                    <p> Tasty: 'delicious',</p>
+                    <p>getWeight = function(weight){</p>
+                    <blockquote>console.log(`Weight is ${weight} g`)</blockquote>
+                    <blockquote>}</blockquote>
+                    <p>}</p>
+                </div>
+                <hr>
+
+                <p>Задание 7.4.1</p>
+
+                <p>Функцией-конструктором в JavaScript может быть</p>
+                <blockquote>Любая функция, кроме стрелочной</blockquote>
+                <hr class="hr">
+
+                <p>Задание 7.4.2</p>
+
+                <p>Если функция, вызванная как конструктор, возвращает в return примитив, то</p>
+                <blockquote>возвращаемое значениебудет проигнорированно, вернется This</blockquote>
+                <hr class="hr">
+
+                <div class="main__wrapper-box_grey">
+                    <p><img src="../images/book_1.png" width="20px" alt="book">  Дополнительно</p>
+                    <p><a href="https://habr.com/ru/articles/149516/"> Ключевое слово this в javascript — учимся определять контекст на практике;</a></p>
+                    <p><a href="https://www.youtube.com/watch?v=UGapN-hrekw">Что такое контекст this. Как работает call, bind, apply.</a></p>
+                </div>
+                <hr class="hr">
+
+                <h2>Практика</h2>
+                <hr class="hr">
+
+                <figure>
+                    <img src="../images/m10_homework (1).svg" width="60%" alt="">
+                </figure>
+
+                <h3>Задание 4.</h3>
+
+                <p>Реализуйте следующее консольное приложение подобно примеру, который разбирался в видео. Реализуйте его на прототипах.</p>
+                <p>Определите иерархию электроприборов. Включите некоторые в розетку. Посчитайте суммарную потребляемую мощность всех включенных приборов (передайте аргумент). </p>
+                <p>Таких приборов должно быть как минимум два (например, настольная лампа и компьютер). Выбрав прибор, подумайте, какими свойствами он обладает.</p>
+                <p><strong>План:</strong></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>1. Определите родительскую функцию с методами, которые включают/выключают прибор из розетки.</p>
+                    <p>2. Создайте делегирующую связь [[Prototype]] для двух конкретных приборов.</p>
+                    <p>3. У каждого из приборов должны быть собственные свойства и, желательно, методы, отличные от родительских методов.</p>
+                    <p>4. Создайте экземпляры каждого прибора.</p>
+                    <p>5. Выведите в консоль и посмотрите на результаты работы, можете гордиться собой :)</p>
+                </div>
+
+                <p><strong>Общие требования:</strong></p>
+                <p>1. Имена функций, свойств и методов должны быть информативными</p>
+                <p>2. Соблюдайте best practices:</p>
+                <blockquote>&bull; использование camelCase нотации для переменных и методов, PascalCase для названия функций-конструкторов и классов;</blockquote>
+                <blockquote>&bull; информативные имена (а не a, b);</blockquote>
+                <blockquote>&bull; четкая связь между классом и его экземплярами (класс описывает множество, а экземпляр — конкретную реализацию);</blockquote>
+                <blockquote>&bull; использование синтаксиса es6 (кроме функции-конструкторов) и так далее.</blockquote>
+
+
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page3.html" class="previous">&laquo; Назад</a>
+                <a href="page5.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page3.html" class="previous round">&#8249;</a>
+                <a href="page5.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+    </div>
+</body>
+
+</html>

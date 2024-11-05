@@ -1,0 +1,377 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Функции JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                7. Функции обратного вызова
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page9.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <figure>
+                    <img src="../images/m11_cover_callback.svg" width="50%" alt="">
+                </figure>
+
+                <h2>Анонимные функции</h2>
+                <hr class="hr">
+
+                <div class="main__wrapper-border_box">
+                    <p>Определение очень простое — если после ключевого слова function есть имя, то функция
+                        <strong>именованная</strong>,
+                        иначе — <strong>анонимная</strong>.
+                    </p>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Именованная</th>
+                            <th>Анонимная</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="main__wrapper-box_grey">
+                                    <p>function sum(a, b) {</p>
+                                    <blockquote>const result = a + b;</blockquote>
+                                    <blockquote>console.log(result);</blockquote>
+                                    <p>};</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="main__wrapper-box_grey">
+                                    <p>const sum = function() {</p>
+                                    <blockquote>const result = a + b;</blockquote>
+                                    <blockquote>console.log(result);</blockquote>
+                                    <p>};</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p> // const sum = — это операции определения и присваивания значения в переменную.</p>
+                <p>Однако <em>JavaScript</em> очень интересный язык, и функция, будучи анонимной, может иметь имя,
+                    поскольку
+                    одновременно является также и объектом. Это называется <span class="main__wrapper-green">именованным
+                        функциональным выражением:</span></p>
+                <div class="main__wrapper-box_grey">
+                    <p>const sum = function summa() {</p>
+                    <blockquote>const result = a + b;</blockquote>
+                    <blockquote>console.log(result);</blockquote>
+                    <p>};</p>
+                </div>
+                <p>Их используют тогда, когда в функции, заданной как Function Expression, необходимо сделать
+                    <strong>рекурсию</strong>.
+                </p>
+                <div class="main__wrapper-border_box">
+                    <p><span class="main__wrapper-green">Рекурсия</span> — ситуация, при которой функция вызывает сама
+                        себя внутри своего тела.</p>
+                </div>
+                <table>
+                    <thead>
+                        <tr>
+                            <th>Function Declaration</th>
+                            <th>Function Expression</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        <tr>
+                            <td>
+                                <div class="main__wrapper-box_grey">
+                                    <p>ffunction fibonacci() {</p>
+                                    <p> // code</p>
+                                    <p>fibonacci(); // функция вызывает сама себя</p>
+                                    <p>};</p>
+                                </div>
+                            </td>
+                            <td>
+                                <div class="main__wrapper-box_grey">
+                                    <p>const fibo = function fibonacci() {</p>
+                                    <p>// тут можно использовать "fibonacci()"</p>
+                                    <p>fibonacci(); // функция вызывает сама себя</p>
+                                    <p>};</p>
+                                </div>
+                            </td>
+                        </tr>
+                    </tbody>
+                </table>
+                <p>// вне функции fibonacci() не сработает, а fibo() — сработает.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>fibonacci();</p>
+                    <p>Reference Error: fibonacci is not defined</p>
+                </div>
+                <p>Анонимные функции используются в качестве колбэков при определении функции через Function Expression
+                    и IIFE*</p>
+                <div class="main__wrapper-border_box">
+                    <p><span class="main__wrapper-green">*IIFE</span> — <em>Immediately Invoked Function Expression</em>
+                        — «немедленно вызывающееся функциональное
+                        выражение», но обычно говорят «самовызывающиеся функции».</p>
+                </div>
+                <p><strong>Пример 1:</strong></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>(function() {</p>
+                    <blockquote>alert("Example 1!");</blockquote>
+                    <p>}());</p>
+                </div>
+
+                <p><strong>Пример 2:</strong></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>(function() {</p>
+                    <blockquote>alert("Example 2");</blockquote>
+                    <p>}());</p>
+                </div>
+                <p>Оба варианта позволяют использовать IIFE. Они немного отличаются в своей работе, но на текущем этапе
+                    обучения не нужно углубляться, достаточно выбрать тот, который нравится, и использовать его</p>
+                <p>Дополнительная информация <a
+                        href="https://stasonmars.ru/javascript/ponimaem-nemedlenno-vyzyvaemie-funkcii-iife-i-nemnogo-bolshe/">здесь</a>.
+                </p>
+                <hr>
+
+                <h2>Callbacks</h2>
+                <hr class="hr">
+
+                <div class="main__wrapper-border_box">
+                    <p><span class="main__wrapper-green">Callback</span> или функция обратного вызова — функция, которая
+                        выполняется в конце операции, когда все
+                        остальные операции уже завершены. </p>
+                </div>
+                <p>Как правило, функция обратного вызова передаётся в качестве последнего аргумента функции.
+                    <strong>Часто
+                        функцию обратного вызова определяют как анонимную функцию.</strong>
+                </p>
+                <p>Для удобства в примерах используется сокращённая запись от callback — cb.</p>
+                <div class="main__wrapper-box_pink">
+                    <p><strong>ВАЖНО!</strong> Колбэки — это обычные Javascript функции. Принято делать их анонимными.
+                    </p>
+                </div>
+                <h2>Области использования:</h2>
+                <ol>
+                    <li>1
+                        <p> Когда необходимо выполнить какой-то код по завершении асинхронного действия (загрузка
+                            информации
+                            из базы данных, например).</p>
+                        <div class="main__wrapper-box_grey">
+                            <p>function loadData(url, cb) {</p>
+                            <p>let result = doSomethingAndGetResult(url)</p>
+                            <p>// onload сработает тогда, когда result полностью прогрузится и колбэк будет вызван
+                                result.onload = function () {</p>
+                            <p>cb();</p>
+                            <p>}</p>
+                            <p>}</p>
+                            <p>loadData('url', function(){</p>
+                            <p>// code</p>
+                            <p>})</p>
+                        </div>
+                        <p>где // code</p>
+                        <p>}) — колбэк.</p>
+                        <p>С помощью колбэка мы контролируем действие. </p>
+                    </li>
+                    <li>
+                        <p>Как аргумент во многих методах массива.</p>
+                        <div class="main__wrapper-box_grey">
+                            <p>const arr = [1, 2, 3]</p>
+                            <p>arr.forEach(function(item){</p>
+                            <p>console.log(item+1)</p>
+                            <p>})</p>
+                        </div>
+                        <p>где (function(item){</p>
+                        <div class="main__wrapper-box_grey">
+                            <p>console.log(item+1)</p>
+                            <p>}) — колбэк.</p>
+                        </div>
+                    </li>
+                    <li>
+                        <p>Как аргумент в методах setTimeout, setInterval и других.</p>
+                    </li>
+                </ol>
+                <hr>
+
+                <p><strong>Задание 6.7.1</strong></p>
+                <p>Callback — это функция, которая...</p>
+                <blockquote>Выполняется в конце операции, когда все остальные операции уже завершены</blockquote>
+                <hr>
+
+                <h2>Методы setTimeout, setInterval</h2>
+                <hr class="hr">
+
+                <p>Иногда возникает потребность выполнить отложенное действие или действие, повторяющееся через
+                    определённый интервал. Для этого существуют методы setTimeout и setInterval, которые доступны, как и
+                    console.log, благодаря тому, что мы работаем в браузере.</p>
+
+                <h3>setTimeout</h3>
+
+                <div class="main__wrapper-box_grey">
+                    <p>setTimeout(func|code, [delay], [arg1], [arg2], ...)</p>
+                </div>
+                <p>где func|code — колбэк или кусок кода,</p>
+                <p>delay — задержка в милисекундах,</p>
+                <p>И далее идут аргументы, которые передаются в колбэк.</p>
+
+                <p><strong>Пример 1. (без аргументов):</strong></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>function sum(a, b) {</p>
+                    <blockquote>console.log(a + b);</blockquote>
+                    <p>}</p>
+                    <p>setTimeout(sum, 1000); // задержка 1 секунда</p>
+                </div>
+                <p>В консоль выведется NaN — так как мы не передали аргументы в колбэк.</p>
+
+                <p><strong>Пример 2. (с двумя аргументами):</strong></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>function sum(a, b) {</p>
+                    <blockquote>console.log(a + b);</blockquote>
+                    <p>}</p>
+                    <p>setTimeout(sum, 1000, 1, 2); // задержка 1 секунда</p>
+                </div>
+                <p>В консоль выведется 3.</p>
+
+                <p><strong>Пример 3. (колбэк передан анонимной функцией):</strong></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>setTimeout(function (a, b) {</p>
+                    <blockquote>console.log(a + b);</blockquote>
+                    <p>}, 1000, 1, 2); // задержка 1 секунда</p>
+                </div>
+                <p>В консоль выведется 3.</p>
+                <p>Вызов функции setTimeout вернёт timerId, который можно записать в переменную и затем очистить. Но это
+                    не является обязательным условием — его можно использовать, если вы запустили таймер, а потом
+                    передумали.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const timerId = setTimeout(function (a, b) {</p>
+                    <blockquote>console.log(a + b);</blockquote>
+                    <p>}, 1000, 1, 2);</p>
+                    <p>clearTimeout(timerId)</p>
+                </div>
+                <hr>
+
+                <h3>setInterval</h3>
+
+                <p>setInterval имеет абсолютно такой же синтаксис, как и setTimeout. Вызов setInterval вернёт
+                    идентификатор, который можно очистить, если вы передумали выполнять регулярное действие.</p>
+                <p>// Каждую секунду в консоль будет падать сумма чисел a и b.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const intervalId = setInterval(function (a, b) {</p>
+                    <blockquote>console.log(a + b);</blockquote>
+                    <p>}, 1000, 1, 2); </p>
+                    <p>clearInterval(intervalId)</p>
+                </div>
+                <hr>
+
+                <div class="main__wrapper-box_pink">
+                    <p><strong>ВАЖНО!</strong> Эти методы работают не очень предсказуемо: если задать выполнение
+                        действие в setTimeout с нулевой задержкой, в 99% случаев оно выполняется не сразу. Это связано с
+                        таким понятием, как Event loop, о котором вам будет рассказано в дальнейших разделах.</p>
+                </div>
+                <p>Подробнее о таймерах в <a
+                        href="https://html.spec.whatwg.org/multipage/timers-and-user-prompts.html#timers">документации</a>.
+                </p>
+                <hr>
+
+                <p><strong>Задание 6.7.2</strong></p>
+
+                <p>Если функция задана так:</p>
+                <blockquote>
+                    <div class="main__wrapper-box_grey">
+                        <p>function foo() {</p>
+                        <blockquote>console.log(123);</blockquote>
+                        <p>}</p>
+                    </div>
+                    <p>То она ...</p>
+                    <blockquote>Именованная</blockquote>
+                </blockquote>
+                <hr>
+
+                <p><strong>Задание 6.7.3</strong></p>
+
+                <p>Чтобы выполнить отложенное действие или действие, повторяющееся через определенный интервал, в
+                    браузере есть специальные методы:</p>
+                <blockquote>setInterval</blockquote>
+                <blockquote>setTimeout</blockquote>
+                <hr>
+
+                <h2>Практика</h2>
+                <hr class="hr">
+
+                <figure>
+                    <img src="../images/m10_homework (3).svg" width="50%" alt="">
+                </figure>
+
+                <h3>Задание 4.</h3>
+
+                <p>Напишите функцию, которая принимает два числа. Каждую секунду необходимо выводить в консоль, начиная
+                    от первого и заканчивая вторым. Используйте setInterval.</p>
+                <p>Например, пользователь ввёл числа 5 и 15. Каждую секунду в консоль должно печататься число, начиная с
+                    5 и заканчивая 15 (всего 11 чисел: 5 6 7 8 9 10 11 12 13 14 15).</p>
+
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page6.html" class="previous">&laquo; Назад</a>
+                <a href="page8.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page6.html" class="previous round">&#8249;</a>
+                <a href="page8.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+    </div>
+</body>
+
+</html>

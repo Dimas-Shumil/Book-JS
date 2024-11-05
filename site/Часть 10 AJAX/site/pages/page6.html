@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>AJAX</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                6.Работа с HTTP (fetch, async/await)
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+            <div class="main__wrapper-conteiner">
+                <figure>
+                    <img src="../images/m14_protocols96.svg" width="45%" alt="">
+                </figure>
+
+                <h3>Протоколы передачи данных. HTTP</h3>
+
+                <div class="main__wrapper-border_green">
+                    <p><span class="green"> Протоколы передачи данных</span> — это набор соглашений о формате передачи
+                        данных, необходимых для того, чтобы программы понимали, как общаться друг с другом.</p>
+                </div>
+                <p>Протоколов достаточно много и они делятся по уровням. Мы будем рассматривать протокол HTTP и
+                    производные от него.</p>
+                <p>Пример HTTP-запроса:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>GET /wiki/страница HTTP/1.1</p>
+                    <p>Host: ru.wikipedia.org</p>
+                    <p>User-Agent: Mozilla/5.0 (X11; U; Linux i686; ru; rv:1.9b5) Gecko/2008050509 Firefox/3.0b5</p>
+                    <p>Accept: text/html</p>
+                    <p>Connection: close</p>
+                    <p>(пустая строка)</p>
+                </div>
+                <p>Кроме основного протокола HTTP, есть его расширенная версия — HTTPS.</p>
+                <div class="main__wrapper-border_green">
+                    <p><span class="green"> HTTPS</span> — протокол HTTP + шифрование данных. Это позволяет избежать
+                        возможности получить полезную информацию из передаваемых данных в случае её перехвата.</p>
+                </div>
+
+                <h3>Fetch как замена XHR на promise</h3>
+
+                <p><a href="https://developer.mozilla.org/ru/docs/Web/API/Fetch_API/Using_Fetch">Fetch</a> позволяет
+                    делать HTTP-запросы и обрабатывать их как promise. </p>
+                <p>Пример HTTP-запроса с помощью fetch:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>fetch('https://picsum.photos/v2/list/?limit=5')</p>
+                    <blockquote> .then((response) => { return response.json(); })</blockquote>
+                    <blockquote>.then((data) => { console.log(data); })</blockquote>
+                    <blockquote>.catch(() => { console.log('error') });</blockquote>
+                </div>
+                <p>Обработка происходит как с обычным promise. В первом then происходит приведение ответа к JSON виду
+                    (как и с XHR). Дальше идёт обработка данных.</p>
+                <p><a href="https://codepen.io/vvysokiy/pen/xxZqXEw">Пример работы с fetch в codepen.io</a></p>
+                <p>У метода fetch есть объект настроек, который позволяет настраивать HTTP-запрос:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const options = {</p>
+                    <blockquote>method: 'GET', // выбор метода запроса</blockquote>
+                    <blockquote>mode: 'cors', // режим работы запроса</blockquote>
+                    <blockquote>headers: { // дополнительные заголовки для запроса
+                        <blockquote>'Content-Type': 'application/json'</blockquote>
+                        },
+                    </blockquote>
+                    <blockquote>body: 'body', // тело запроса</blockquote>
+                    <blockquote>// и тд</blockquote>
+                    <p>}</p>
+                    <p>fetch('https://picsum.photos/v2/list/?limit=5', options)</p>
+                </div>
+
+                <h3>Комбинирование fetch и async/await</h3>
+
+                <p>Как и с promise, можно разделить логику использования fetch и обработки запроса с другим асинхронным кодом, написанным на async/await.</p>
+                <p><a href="https://codepen.io/vvysokiy/pen/pogeWrB">Пример работы с async/await и fetch в codepen.io</a></p>
+
+                <h3>Различные методы запросов и настройка запроса</h3>
+                <p>Методов запросов много. Основные — это GET и POST. Они различаются типом передачи данных при запросе.</p>
+                <blockquote>При запросе методом <span class="green"> GET</span> <b>данные передаются в самом URL запроса</b> (например, <i>https://picsum.photos/v2/list/?limit=5</i>, где limit — это передаваемый параметр).</blockquote>
+                <blockquote>При <span class="green"> POST</span> и других методах запроса <b>данные передаются в теле запроса</b>.</blockquote>
+                <p><a href="https://codepen.io/vvysokiy/pen/MWKpEoM">Пример fetch запроса методом POST в codepen.io</a></p>
+                <hr class="hr">
+
+                <h2>Задание 9.6.1</h2>
+                <p>Чем различаются протоколы HTTP и HTTPS?</p>
+                <blockquote>Наличием шифрования</blockquote>
+                <hr class="hr">
+
+                <h2>Задание 9.6.2</h2>
+                <p>Какой метод запроса используется по умолчанию в fetch?</p>
+                <blockquote>GET</blockquote>
+                <hr class="hr">
+
+                <h3>Практика</h3>
+                <figure>
+                    <img src="../images/m10_homework (1).svg" width="45%" alt="">
+                </figure>
+
+                <h3>Задание 4</h3>
+
+                <p>Напишите код приложения, интерфейс которого представляет собой 2 input и кнопку submit. В input можно ввести любое число.</p>
+                <p>При клике на кнопку происходит следующее:</p>
+                <blockquote>&bull; Если оба числа не попадают в диапазон от 100 до 300 или введено не число — выводить ниже текст «одно из чисел вне диапазона от 100 до 300»;</blockquote>
+                <blockquote>&bull; Если числа попадают в диапазон от 100 до 300 — сделать запрос c помощью fetch по URL  <a href="https://dummyimage.com/640x360/">https://dummyimage.com/100x300/</a>, где первое число — ширина картинки, второе — высота.</blockquote>
+                <div class="main__wrapper-box_grey">
+                    <p><b>Пример</b>. Если пользователь ввёл 150 и 200, то запрос будет вида <a href="https://dummyimage.com/640x360/">https://dummyimage.com/150x200/</a>.</p>
+                </div>
+                <p>После получения данных вывести ниже картинку на экран.</p>
+                <details>
+                    <summary><span class="green">Подсказка</span></summary>
+                    <p>Получение данных из input:</p>
+                    <div class="main__wrapper-box_grey">
+                        <p>const value = document.querySelector('input').value;</p>
+                    </div>
+                </details>
+            </div>
+
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page5.html" class="previous">&laquo; Назад</a>
+                <a href="page7.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page5.html" class="previous round">&#8249;</a>
+                <a href="page7.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

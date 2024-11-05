@@ -1,0 +1,351 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Функции JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                5. Функции высшего порядка
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <h3>Функции высшего порядка (higher-order functions) — это функции, которые могут принимать другие
+                    функции в качестве аргументов и/или возвращать функции в качестве результата своей работы.</h3>
+                <p>В JavaScript функции высшего порядка — ключевой элемент функционального программирования. Они
+                    позволяют создавать более абстрактные и гибкие функции, которые могут работать с разными типами
+                    данных и выполнять разные операции в зависимости от переданных им аргументов.</p>
+                <p>Частично вы уже знакомы с функциями высшего порядка. В этом юните мы углубимся в тему и изучим
+                    несколько важных встроенных функций высшего порядка. Например, map, filter и reduce.</p>
+
+                <div class="main__wrapper-box-ligtGreen">
+                    <p>На самом деле встроенных в JavaScript функций высшего порядка существует гораздо больше. Но мы
+                        разберём только эти 3, так как это самые часто используемые функции в JS и их понимание очень
+                        сильно продвинет вас в изучении языка в целом. Также они отлично подходят как примеры
+                        использования функций в качестве аргументов для других функций.</p>
+                </div>
+                <p>Все 3 нижеперечисленные функции используются при работе с массивами в разных ситуациях.</p>
+
+                <h2>Функция map</h2>
+
+                <p>map — это метод массивов в JavaScript, который принимает в качестве аргумента функцию и создаёт новый
+                    массив, состоящий из результатов вызова этой функции для каждого элемента исходного массива.</p>
+                <p>Синтаксис map:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const newArray = array.map(function (currentValue, index, array) {</p>
+                    <blockquote>// выполнение операции над каждым элементом массива</blockquote>
+                    <blockquote>return result; // возврат результата в новый массив</blockquote>
+                    <p>});</p>
+                </div>
+
+                <p>&middot; array: исходный массив, для которого вызывается метод map;</p>
+                <p>&middot; currentValue: текущий обрабатываемый элемент исходного массива;</p>
+                <p>&middot; index (необязательный): индекс текущего элемента в исходном массиве;</p>
+                <p>&middot; newArray: новый массив, который создаётся методом map;</p>
+                <p>&middot; result: результат, который будет добавлен в новый массив.</p>
+                <p>Возвращаемое значение метода map — это новый массив, который создаётся на основе результатов вызова
+                    функции для каждого элемента исходного массива.</p>
+                <p>Пример использования map:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const numbers = [1, 2, 3, 4, 5];</p>
+                    const doubledNumbers = numbers.map(function (num) {
+                    <blockquote>return num * 2;</blockquote>
+                    <p>});</p>
+                    <p>console.log(doubledNumbers); // [2, 4, 6, 8, 10]</p>
+                </div>
+
+                <p>В этом примере мы создаём новый массив doubledNumbers, который содержит результаты умножения каждого
+                    элемента массива numbers на 2. Для этого мы передаём анонимную функцию в качестве аргумента методу
+                    map. Эта функция принимает каждый элемент массива numbers и возвращает результат умножения на 2.</p>
+                <p>map может быть использован для других операций. Например, для преобразования типов данных, фильтрации
+                    элементов массива и т.д.</p>
+                <p>Обратите внимание, в примере выше мы в качестве аргумента для функции map передаём анонимную функцию.
+                    Но это совсем не обязательно. И мы также можем без каких-либо проблем использовать стрелочные
+                    функции с более лаконичным синтаксисом.</p>
+                <p>Рассмотрим ещё один пример, но теперь с использованием стрелочной функции в качестве аргумента.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const jedi = ["Obi-Wan Kenobi", "Luke Skywalker", "Yoda"];</p>
+                    <p>const jediLengths = jedi.map((name) = {</p>
+                    <blockquote>return name.length;</blockquote>
+                    <p>});</p>
+                    <p>return name.length;</p>
+                </div>
+
+                <p>В этом примере мы создаём новый массив jediLengths, который содержит длины каждого имени из массива
+                    jedi. Для этого мы передаём стрелочную функцию в качестве аргумента методу map, которая возвращает
+                    длину каждой строки в массиве jedi.</p>
+                <p>Можно ещё улучшить нашу функцию map за счёт использования сокращённой записи стрелочной функции.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const jedi = ["Obi-Wan Kenobi", "Luke Skywalker", "Yoda"];</p>
+                    <p>const jediLengths = jedi.map((name) => name.length);</p>
+                    <p>console.log(jediLengths); // [ 14, 14, 4 ]</p>
+                </div>
+                <p>Так как у нас в теле стрелочной функции используется только одно выражение, то мы можем опустить
+                    фигурные скобки и оставить только это выражение. Результат будет идентичным, но запись сократится и
+                    будет лаконичнее.</p>
+
+                <h2>Функция reduce</h2>
+                <p>reduce — это метод массивов в JavaScript, который принимает функцию и применяет её к каждому элементу
+                    массива, чтобы свести их к одному значению. В отличие от метода map, который создаёт новый массив на
+                    основе результатов функции для каждого элемента исходного массива, метод reduce возвращает
+                    единственное значение, которое получается в результате применения функции ко всем элементам
+                    исходного массива.</p>
+                <p>Синтаксис reduce:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>array.reduce(function (accumulator, currentValue, index, array) {</p>
+                    <blockquote>// выполнение операции над текущим элементом и аккумулятором</blockquote>
+                    <blockquote>return result; // возврат результата</blockquote>
+                    <p>}, initialValue);</p>
+                </div>
+                <p>&middot; array: исходный массив, для которого вызывается метод reduce;</p>
+                <p>&middot; accumulator: значение, которое накапливает результат применения функции к каждому элементу
+                    массива;</p>
+                <p>&middot; currentValue: текущий обрабатываемый элемент исходного массива;</p>
+                <p>&middot; index (необязательный): индекс текущего элемента в исходном массиве;</p>
+                <p>&middot; result: результат, который будет добавлен в аккумулятор;</p>
+                <p>&middot; initialValue (необязательный): начальное значение аккумулятора.</p>
+                <p>Возвращаемое значение метода reduce — это значение аккумулятора, которое накапливается в процессе
+                    применения функции к каждому элементу исходного массива.</p>
+                <p>Пример использования reduce:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const numbers = [1, 2, 3, 4, 5];</p>
+                    <p>const sum = numbers.reduce(function (accumulator, currentValue) {</p>
+                    <blockquote> return accumulator + currentValue;</blockquote>
+                    <p>}, 0);</p>
+                    <p>console.log(sum); // 15</p>
+                </div>
+                <p>В этом примере мы используем метод reduce для вычисления суммы всех элементов массива numbers.
+                    Начальное значение аккумулятора задаётся вторым аргументом метода reduce. В данном случае это 0.
+                    Затем мы передаём анонимную функцию, которая принимает аккумулятор и текущий элемент массива и
+                    возвращает сумму аккумулятора и текущего элемента.</p>
+                <p>reduce может быть использован для многих других операций. Например, для нахождения максимального или
+                    минимального элемента, преобразования массива в объект, подсчёта количества элементов и т.д.</p>
+                <p>Рассмотрим ещё один пример — применение метода reduce для нахождения максимального элемента из
+                    массива чисел.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const numbers = [5, 2, 8, 4, 1];</p>
+                    <p>const maxNumber = numbers.reduce((accumulator, currentValue) => {</p>
+                    <blockquote>if (currentValue > accumulator) {</blockquote>
+                    <blockquote>
+                        <blockquote>return currentValue;</blockquote>
+                    </blockquote>
+                    <blockquote>} else {</blockquote>
+                    <blockquote>
+                        <blockquote>return accumulator;</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <p>}, -Infinity);</p>
+                    <p>console.log(maxNumber); // 8</p>
+                </div>
+
+                <h2>Функция filter</h2>
+
+                <p>filter позволяет фильтровать элементы массива на основе определённого условия. Она создаёт новый
+                    массив, который включает только те элементы исходного массива, для которых условие истинно.</p>
+                <p>Синтаксис функции filter выглядит просто:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>array.filter(function (element, index, array) {</p>
+                    <blockquote>// выполнение операции над текущим элементом</blockquote>
+                    <blockquote>// ...</blockquote>
+                    <blockquote>// возврат значения, которое говорит о том, удовлетворяет ли </blockquote>
+                    <blockquote>// элемент условию или нет</blockquote>
+                    <blockquote>return true || false</blockquote>
+                    <p>}, thisArg)</p>
+                </div>
+
+                <p>&middot; Первый параметр — это колбэк функция, которая принимает три параметра:</p>
+                <p>&middot; element — текущий элемент массива;</p>
+                <p>&middot; index (необязательно) — индекс текущего элемента в массиве;</p>
+                <p>&middot; array (необязательно) — сам массив, по которому производится итерация;</p>
+                <p>&middot; Второй параметр (необязательный) — это значение, которое будет использоваться как this в
+                    колбэк функции.</p>
+                <p>Пример использования функции filter:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const numbers = [1, 2, 3, 4, 5];</p>
+                    <p>const filteredNumbers = numbers.filter((number) => {</p>
+                    <blockquote>return number % 2 === 0; // фильтруем только четные числа</blockquote>
+                    <p>});</p>
+                    <p>console.log(filteredNumbers); // [2, 4]</p>
+                </div>
+
+                <p>В этом примере функция filter фильтрует исходный массив numbers и создает новый массив
+                    filteredNumbers, включающий только чётные числа.</p>
+                <p>Кроме этого, можно использовать filter для фильтрации массива объектов по значению свойства:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const users = [</p>
+                    <blockquote>{ name: "Кайло Рен", age: 28 },</blockquote>
+                    <blockquote>{ name: "Дарт Вейдер", age: 31 },</blockquote>
+                    <blockquote> { name: "Лорд Гривус", age: 21 },</blockquote>
+                    <p>];</p>
+                    <p>const filteredUsers = users.filter((user) => {</p>
+                    <blockquote>return user.age > 25; // фильтруем только пользователей старше 25 лет</blockquote>
+                    <p>});</p>
+                    <p>console.log(filteredUsers); // [{ name: "Кайло Рен", age: 28 }, { name: "Дарт Вейдер", age: 31 }]
+                    </p>
+                </div>
+
+                <p>В этом примере функция filter фильтрует массив объектов users по значению свойства age и создаёт
+                    новый массив filteredUsers, который включает только объекты с возрастом старше 25 лет.</p>
+                <p>Теперь вы на практике убедились, что функции высшего порядка — мощный инструмент в функциональном
+                    программировании и конкретно в JavaScript. Они позволяют создавать многократно используемый и
+                    композиционный код. А также писать общие функции, которые могут быть настроены на определённое
+                    поведение за счет использования других функций в качестве аргументов и/или возвращаемых значений.
+                    Это позволяет создать более гибкий и модульный стиль при программировании.</p>
+                <hr>
+
+                <h2>Задание 5.1</h2>
+
+                <p>Напишите стрелочную функцию, которая принимает массив чисел в качестве параметра и возвращает сумму
+                    всех чисел в массиве.</p>
+                <p>Пример использования:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const numbers = [3, 5, 1, 8, 2];</p>
+                    <p>const result = sum(numbers);</p>
+                    <p>console.log(result); // 19</p>
+                </div>
+                <p>При написании функции воспользуйтесь подходящей функций высшего порядка — map, reduce или filter.</p>
+                <blockquote>Посмотреть код</blockquote>
+                <div class="main__wrapper-box_grey">
+                    <p>const sum = numbers => numbers.reduce((total, num) => total + num, 0);</p>
+                </div>
+
+                <h2>Задание 5.2</h2>
+
+                <p>Напишите стрелочную функцию, которая принимает массив строк и возвращает новый массив, содержащий
+                    только строки с более чем пятью символами.</p>
+                <p>Пример использования:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const strings = ['apple', 'banana', 'pear', 'orange', 'grapefruit'];</p>
+                    <p>const longStrings = filterLongStrings(strings);</p>
+                    <p>console.log(longStrings); // ['banana', 'orange', 'grapefruit']</p>
+                </div>
+                <p>При написании функции воспользуйтесь подходящей функций высшего порядка — map, reduce или filter.</p>
+                <blockquote>Посмотреть код</blockquote>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const filterLongStrings = arr => arr.filter(str => str.length > 5);</p>
+                </div>
+
+                <h2>Задание 5.3</h2>
+                <p>Напишите стрелочную функцию, которая принимает массив чисел и возвращает новый массив с каждым
+                    числом, умноженным на 2.</p>
+                <p>Пример использования:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p> const numbers = [2, 4, 6, 8];</p>
+                    <p>const doubled = doubleNumbers(numbers);</p>
+                    <p>console.log(doubled); // [4, 8, 12, 16]</p>
+                </div>
+                <blockquote>Посмотреть код</blockquote>
+                <div class="main__wrapper-box_grey">
+                    <p>const doubleNumbers = arr => arr.map(num => num * 2);</p>
+                </div>
+
+                <h2>Задание 5.4</h2>
+
+                <p>Дан массив строк ["apple", "banana", "cherry", "date", "elderberry"]. Используя функции высшего
+                    порядка, объедините все строки в одну строку, разделенную запятыми. Ожидаемый результат: строка,
+                    представляющая все элементы массива, разделенные запятыми.</p>
+                <blockquote>Посмотреть код</blockquote>
+                <div class="main__wrapper-box_grey">
+                    <p>const arr = ["apple", "banana", "cherry", "date", "elderberry"];</p>
+                    <p>const result = arr.reduce((acc, curr) => acc + ", " + curr);</p>
+                    <p>console.log(result); // "apple, banana, cherry, date, elderberry"</p>
+                </div>
+
+                <h2>Задание 5.5</h2>
+                
+                <p>Есть массив объектов, представляющих собой пользователей, каждый из которых имеет свойство age (возраст). Вычислите средний возраст пользователей. Ожидаемый результат: число, представляющее средний возраст.</p>
+                <blockquote>Посмотреть код</blockquote>
+                <div class="main__wrapper-box_grey">
+                    <p> const users = [</p>
+                    <blockquote>{ name: "John", age: 30 },</blockquote>
+                    <blockquote>{ name: "Jane", age: 25 },</blockquote>
+                    <blockquote>{ name: "Bob", age: 40 },</blockquote>
+                    <blockquote>{ name: "Alice", age: 28 },</blockquote>
+                    <p>];</p>
+                    <p>const averageAge = users.reduce((acc, user) => {</p>
+                        <blockquote>return { sum: acc.sum + user.age, count: acc.count + 1 };</blockquote>
+                        <p>}, { sum: 0, count: 0 });</p>
+                        <p>const result = averageAge.sum / averageAge.count;</p>
+                        <p>console.log(result); // ожидаемый результат: 30.75</p>
+                </div>
+
+
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page4.html" class="previous">&laquo; Назад</a>
+                <a href="page6.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page4.html" class="previous round">&#8249;</a>
+                <a href="page6.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+    </div>
+</body>
+
+</html>

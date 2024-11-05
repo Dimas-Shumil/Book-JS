@@ -1,0 +1,242 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>API браузера</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+            <div class="header__nav-title">
+                5. Geolocation. Notification. Screen size
+            </div>
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page9.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+            <div class="main__wrapper-conteiner">
+                <figure>
+                    <img src="../images/m15_cover_geolocation.svg" width="45%" alt="">
+                </figure>
+                <p>Браузеры содержат большой список API.</p>
+                <p>Мы рассмотрим некоторые специфические, но часто используемые API, с которыми вы столкнётесь на своём
+                    пути:</p>
+                <ol>
+                    <li><a href="https://developer.mozilla.org/ru/docs/Web/API/Geolocation_API">Geolocation,</a></li>
+                    <li><a href="https://developer.mozilla.org/ru/docs/Web/API/Notifications_API">Notification,</a></li>
+                    <li>Определение ширины экрана.</li>
+                </ol>
+                <h3>Geolocation</h3>
+                <p><a href="https://developer.mozilla.org/ru/docs/Web/API/Geolocation_API/Using_the_Geolocation_API">Этот
+                        API</a> позволяет определить местоположение пользователя, если он даёт на то согласие.</p>
+                <p>Работа с ним осуществляется в несколько этапов:</p>
+                <ol>
+                    <li>Определение, есть ли доступ к этому API. Можно сделать с помощью проверки:</li>
+                    <div class="main__wrapper-box_grey">
+                        <p>if ("geolocation" in navigator) {</p>
+                        <blockquote>/* местоположение доступно */</blockquote>
+                        <p>} else {</p>
+                        <blockquote>/* местоположение недоступно */</blockquote>
+                        <p>}</p>
+                    </div>
+                    </li>
+
+                    <li>
+                        Если API доступен, то запросить данные о геолокации с помощью метода getCurrentPosition. В
+                        результате запроса появится окно с запросом разрешения на работу с geo-api у пользователя. Если
+                        пользователь разрешит, то будет производиться попытка получения geo-данных. Она не моментальная,
+                        так что стоит подождать. Метод getCurrentPosition возвращает объект позиции, где есть
+                        координаты, с которыми уже можно работать (например, в картах).</li>
+                </ol>
+                <div class="main__wrapper-box_grey">
+                    <p>if ("geolocation" in navigator) {</p>
+                    <blockquote>navigator.geolocation.getCurrentPosition((position) => {</blockquote>
+                    <blockquote>const { coords } = position;</blockquote>
+                    <blockquote> console.log(coords.latitude, coords.longitude);</blockquote>
+                    <blockquote>});</blockquote>
+                    <p>}</p>
+                </div>
+                <figure>
+                    <img src="../images/m15_notification_permition.png" width="40%" alt="">
+                </figure>
+                <p>Также есть <a
+                        href="https://developer.mozilla.org/ru/docs/Web/API/Geolocation/watchPosition">watchPosition</a>
+                    — получение и регулярное обновление данных о положении.</p>
+                <p><a href="https://codepen.io/vvysokiy/pen/BajzzVm">Пример работы с geolocation в codepen.io</a></p>
+                <hr class="hr">
+                <h3>Notification</h3>
+                <figure>
+                    <img src="../images/m15_cover_notification.svg" width="45%" alt="">
+                </figure>
+                <p><a href="https://developer.mozilla.org/ru/docs/Web/API/Notifications_API">Notification API</a>
+                    позволяет показывать браузерные уведомления, даже если вы находитесь не на вкладке с вашим сайтом.
+                    Часто этот API используют в паре с более сложным — <a
+                        href="https://developer.mozilla.org/ru/docs/Web/API/Push_API">Push API</a>.</p>
+                <p>Для работы с <a href="https://developer.mozilla.org/ru/docs/Web/API/Notifications_API">Notification
+                        API</a> используется класс <a
+                        href="https://developer.mozilla.org/en-US/docs/Web/API/Notification">Notification</a>. Для того
+                    чтобы показать пользователю уведомление, сначала необходимо получить от него разрешение на
+                    уведомления.</p>
+                <figure>
+                    <img src="../images/m15_notification_permission.png" width="45%" alt="">
+                </figure>
+                <p>Для запроса разрешения на уведомления имеется специальный метод <a
+                        href="https://developer.mozilla.org/ru/docs/Web/API/Notification/requestPermission">Notification.requestPermission</a>,
+                    который возвращает promise с результатом, разрешил ли пользователь отправку уведомлений.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>Notification.requestPermission().then(function(permission) {...});</p>
+                </div>
+                <p>Если пользователь дал доступ на отправку уведомлений, то можно отправлять сообщения пользователю,
+                    используя класс <a
+                        href="https://developer.mozilla.org/en-US/docs/Web/API/Notification">Notification</a>.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>new Notification("Hello!")</p>
+                </div>
+                <p>Стандартный код проверки, есть ли у пользователя доступ к подписке, и отправка ему уведомления
+                    выглядят следующим образом:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>function notifyMe() {</p>
+                    <blockquote>// Проверяем наличие Notification API в браузере</blockquote>
+                    <blockquote>if (!("Notification" in window)) {
+                        <blockquote> console.log("Нет поддержки Notification API");</blockquote>
+                    </blockquote>
+                    <blockquote>// Если Notification API и разрешение на отправку</blockquote>
+                    <blockquote>// есть, то отправим уведомление</blockquote>
+                    <blockquote>} else if (Notification.permission === "granted") {
+                        <blockquote>new Notification("Hello!");</blockquote>
+                    </blockquote>
+                    <blockquote>// Если Notification API есть, но нет разрешения и нет</blockquote>
+                    <blockquote>// запрета, то можно запросить разрешение</blockquote>
+                    <blockquote>} else if (Notification.permission !== "denied") {
+                        <blockquote>Notification.requestPermission()
+                            <blockquote>.then(function (permission) {
+                                <blockquote>if (permission === "granted") {
+                                    <blockquote>var notification = new Notification("Hi there!");</blockquote>
+                                    }
+                                </blockquote>
+                                });
+                            </blockquote>
+                        </blockquote>
+                        }
+                    </blockquote>
+                    <blockquote>// Последний случай - пользователь запретил уведомления</blockquote>
+                    <blockquote>// Тогда показать уведомления нельзя</blockquote>
+                    <p>}</p>
+                </div>
+                <h3>Ширина экрана</h3>
+                <figure>
+                    <img src="../images/m15_cover_screensize.svg" width="45%" alt="">
+                </figure>
+                <div class="main__wrapper-box_grey">
+                    <p>Часто в приложениях необходимо определить ширину экрана или браузера пользователя для того, чтобы
+                        правильно расположить элементы на странице, отобразить какую-нибудь анимацию и так далее. Для
+                        этого есть несколько инструментов.</p>
+                </div>
+                <ol>
+                    <li>Размеры экрана девайса\монитора. Для этого используется Screen API и два свойства из списка
+                        этого API: window.screen.width и window.screen.height.</li>
+                    <li>Размер окна браузера. Тут есть два крайних случая:</li>
+                </ol>
+                <blockquote>&bull; Размер экрана с учётом полосы прокрутки. Для этого используются свойства
+                    window.innerWidth и window.innerHeight.</blockquote>
+                <blockquote>&bull; Размер экрана без учёта полосы прокрутки. Тут можно использовать
+                    document.documentElement.clientWidth и document.documentElement.clientHeight.</blockquote>
+                <p>Есть ещё один механизм определения ширины области просмотра. Он основывается на инструменте <a
+                        href="https://developer.mozilla.org/ru/docs/Web/CSS/CSS_media_queries/Using_media_queries">CSS
+                        media queries</a>. Он позволяет применять различные CSS-свойства в зависимости от значения
+                    медиа-запроса. В JavaScript есть механизм для обработки медиа-запросов — <a
+                        href="https://developer.mozilla.org/ru/docs/Web/API/Window/matchMedia">window.matchMedia</a>.
+                </p>
+                <div class="main__wrapper-box_grey">
+                    <p>if (window.matchMedia("(min-width: 400px)").matches) {</p>
+                    <blockquote>// Эта часть выполнится, если ширина области просмотра >=400px</blockquote>
+                    <p>else {</p>
+                    <blockquote>// Эта часть выполнится, если ширина области просмотра &lt; 400px</blockquote>
+                            <p>}</p>
+                </div>
+                <hr class="hr">
+                <h2>// Эта часть выполнится, если ширина области просмотра &lt; 400px</h2>
+                <p>Соотнести свойства и их назначение.</p>
+                <p>Определение размеров экрана</p>
+                <ol>
+                    <li>window.screen.width</li>
+                    <li>window.screen.heigth</li>
+                </ol>
+                <p>Определение области просмотров</p>
+                <ol>
+                    <li>window.matchMedia</li>
+                    <li>document.documentElement.clientWidth</li>
+                    <li>document.documentElement.clientHeight</li>
+                </ol>
+                <p>Определене области просмотра + скролл</p>
+                <ol>
+                    <li>window.innerWidth</li>
+                    <li>window.innerHeight</li>
+                </ol>
+                <hr class="hr">
+                <h3>Практика</h3>
+                <figure>
+                    <img src="../images/m10_homework (1).svg" width="45%" alt="">
+                </figure>
+                <h2>Задание 2.</h2>
+                <p>Сверстайте кнопку, клик на которую будет выводить данные о размерах экрана с помощью <a href="https://developer.mozilla.org/ru/docs/Web/API/Window/alert">alert</a>. </p>
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page4.html" class="previous">&laquo; Назад</a>
+                <a href="page6.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page4.html" class="previous round">&#8249;</a>
+                <a href="page6.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

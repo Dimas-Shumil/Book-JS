@@ -1,0 +1,219 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>JS part2</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+            <div class="header__nav-title">
+                6. Преобразование типов
+            </div>
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html" title="Введение">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="../pages/pages2.html" title="Переменные">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="../pages/page3.html" title="Типы данных в JavaScript">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="../pages/page4.html" title="Операции с числами">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="../pages/page5.html  " title="Операции со строками">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="#" title="Преобразование типов">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="../pages/page7.html" title="Ввод/вывод данных">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="../pages/page8.html" title="Операторы сравнения, логические оператор">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="../pages/page9.html" title="Ветвление">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="../pages/page10.html" title="Промежуточные итоги">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <hr class="hr">
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+            <div class="main__wrapper-conteiner">
+                <hr class="hr">
+
+                <p>Существуют языки программирования со статической и динамической типизацией. Давайте разберёмся, что
+                    это
+                    значит.</p>
+
+                <h3>Статическая типизация определяется тем, что во время объявления переменной ей сразу задаётся тип
+                    данных.
+                    В такую переменную можно записать только тот тип данных, с которым она была создана.</h3>
+
+                <div class="main__wrapper-box_grey">
+                    <p>// Java – статическая типизация</p>
+                    <p>private boolean isTrue = true;</p>
+                    <p>isTrue = "Some string"; // Ошибка! Тип значения не соответствует типу переменной.</p>
+                </div>
+
+                <h3>Динамическая типизация. Все типы выясняются уже во время выполнения программы. То есть можно
+                    объявить
+                    переменную строкового типа, а затем записать в неё число. Интерпретатор на каждом этапе выполнения
+                    будет
+                    считывать новое значение и определять его тип.</h3>
+
+                <p>JavaScript — язык программирования с динамической типизацией, потому что в нём все типы определяются
+                    интерпретатором на этапе выполнения программы.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>// JavaScript - динамическая типизация</p>
+                    <p>let isTrue = true;</p>
+                    <p>isTrue = "Some string" // Ошибки нет. Тип переменной поменялся с булевого на строку</p>
+                </div>
+
+                <h1>Примеры динамической типизации</h1>
+
+                <p>Про типизацию в JavaScript ходит много смешных историй. Давайте разберём, насколько они правдивы.</p>
+
+                <h2>Строки и числа</h2>
+
+                <p>У нас есть задача от технического руководителя:</p>
+                <p>«Нужно сделать на сайте калькулятор, который прибавляет к значению ввода цифру 2».</p>
+                <p>«Пффф! Простейшая задача» — думаем мы и приступаем к реализации.</p>
+                <p>Первое, что мы делаем — получаем данные с сайта и записываем их в переменную userInput.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let userInput = prompt();</p>
+                    <p>const sum = 2 + userInput; // вот, что у нас получилось</p>
+                </div>
+
+                <p>Здесь использовано ключевое слово const, потому что значение суммы в рамках этого запуска скрипта не
+                    изменится</p>
+                <p>Имя переменной указано в нижнем регистре, потому что мы не хотим, чтобы её значение можно было
+                    менять, но
+                    это не глобальная переменная.</p>
+                <p>Один пользователь ввёл значение 2 (number). У нас получилось 4 (number) — значит, всё верно.</p>
+                <p>Другой пользователь решил узнать, что будет, если ввести “2” (string).</p>
+                <p>И тут он получает в ответе “22” (string)!</p>
+                <p>Как это произошло?</p>
+                <p>JavaScript умеет делать неявное преобразование типов. Это значит, что тип переменной определяется во
+                    время её присвоения. Но по ходу программы может меняться.</p>
+                <p>Если в выражении выполняется сложение числа со строкой, то все числа приводятся к типу строка и
+                    происходит конкатенация строк:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>2 + "2" + 2 = "222"</p>
+                </div>
+
+                <p>Если происходит операция вычитания, деления или умножения, то все значения приводятся к числу:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>2 + "2" * 2 = 6</p>
+                    <p>2 + "2" / 2 = 3</p>
+                    <p>2 + "2" - 2 = 20 // здесь приоритет операторов + и - одинаковый, поэтому выражение выполняется
+                        слева
+                        направо.</p>
+                </div>
+
+                <hr class="hr">
+
+                <h3>Булевый тип данных</h3>
+
+                <p>Мы изучили, как себя ведут строки при взаимодействии с числами. Теперь рассмотрим, как JavaScript
+                    может
+                    изменять булевый тип данных — true / false.</p>
+                <p>Начнём с яблок.</p>
+                <p>Мы пришли в огород и сорвали с дерева 1 яблоко. У нас появилось одно яблоко.</p>
+                <p>Если мы зададим JavaScript вопрос: Есть ли у нас яблоко?, то он нам ответит true.</p>
+                <p>Мы съели яблоко, у нас осталось 0 яблок. Если мы теперь спросим JavaScript Есть ли у нас яблоко?, то
+                    он
+                    ответит false.</p>
+
+                <div class="main__wrapper-box_blue">
+                    <p>Стоит помнить, что все числа (положительные и отрицательные) при приведении к булевому типу будут
+                        выдавать true, а 0 будет выдавать false.</p>
+                </div>
+
+                <p>Когда мы проводим какие-либо операции с булевым типом данных, JavaScript может преобразовывать true в
+                    1, а false в 0.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p> true + 1 = 2;</p>
+                    <p>false - 1 = -1;</p>
+                    <p>true * 2 = 2;</p>
+                </div>
+
+                <h2>Пример:</h2>
+
+                <p>Составьте выражение из значений true, 2 и 5 так, чтобы результат был 10.</p>
+                <blockquote><i>true * 2 * 5</i></blockquote>
+
+                <h2>Пример:</h2>
+
+                <p>Составьте выражение из значений false, 6 и 10 так, чтобы результат был 10.</p>
+                <blockquote>false * 6 + 10</blockquote>
+
+                <h2>Пример:</h2>
+                <p>Какие виды типизации бывают?</p>
+                <blockquote>Статическая</blockquote>
+                <blockquote>Динамическая</blockquote>
+
+                <h2>Пример:</h2>
+                <p>Каким будет результат выражения 4 + true * "5"?</p>
+                <blockquote>9</blockquote>
+
+                <h2>Пример:</h2>
+                <p>К какому виду типизации относится пример: let count = 0; count = true;</p>
+                <blockquote><i>Динамической</i></blockquote>
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page5.html" class="previous">&laquo; Назад</a>
+                <a href="page7.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page5.html" class="previous round">&#8249;</a>
+                <a href="page7.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+    </div>
+    <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+    <script async src="../script/js.js"></script>
+
+    <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+</body>
+
+</html>

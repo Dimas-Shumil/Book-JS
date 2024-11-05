@@ -1,0 +1,391 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Функции JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                2. Объекты
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html" class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li> 
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <figure>
+                    <img src="../images/m12_cover_objects.svg" width="50%" alt="">
+                </figure>
+
+                <p>Для начала мысленно перенесемся в наш магазин электронных товаров. Мы уже можем без проблем создать
+                    список наименований товаров и вывести их. И делаем мы это с помощью массивов. Но сейчас мы знаем,
+                    как хранить только простые значения, например, числа или строки. Согласитесь, этого мало, чтобы
+                    открыть полноценный магазин с ценами, характеристиками, налогами и описанием товаров. Для хранения
+                    комплексных данных о продукте, товаре, человеке и многом другом используются объекты.</p>
+                <p>Обьект в <em>JavaScript</em> является сложным (НЕпримитивным) типом данных.</p>
+
+                <div class="main__wrapper-border_green">
+                    <p><span class="green">Объект</span> — это неупорядоченная коллекция свойств, где каждое свойство
+                        состоит из имени (ключа) и
+                        ассоциированного с ним значения. Объекты в JavaScript можно называть ассоциативными массивами,
+                        так как они состоят из пары ключ-значение. Они предназначены для хранения сложных структур
+                        данных.</p>
+                </div>
+                <div class="main__wrapper-box_grey">
+                    <p>const name = 'Andrei';</p>
+                    <p>onst surname = 'Ivanov';</p>
+                    <p>const age = 18;</p>
+                    <p>const position = 'developer';</p>
+                </div>
+                <p>Переменные выше описывают одну сущность, некого пользователя. И лучше сгруппировать их в структуру
+                    данных, которая позволит:</p>
+                <p>&bull; иметь единую переменную для всего набора данных;</p>
+                <p>&bull; удобно работать с данными (добавлять, удалять и искать данные)</p>
+                <p>Объект создается с помощью фигурных скобок {...} с необязательным списком свойств. Свойства
+                    записываются в виде пары 'ключ: значение', где ключ — это строка, а значение может быть выражено чем
+                    угодно.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const user = {</p>
+                    <blockquote>name: 'Andrei',</blockquote>
+                    <blockquote>surname: 'Ivanov',</blockquote>
+                    <blockquote>age: 18,</blockquote>
+                    <blockquote>position: 'developer',</blockquote>
+                    <p>};</p>
+                </div>
+                <p>Можно представить, что объект — коробка, в которой хранятся папки. Каждая папка подписана — это ключи
+                    (то, что записано слева от двоеточия), а содержимое папки — это значение (справа от двоеточия). Если
+                    значений несколько, то они записываются через запятую.</p>
+                <p>Для инициализации объекта используется объектный литерал (декларативная форма).</p>
+                <div class="main__wrapper-border_green">
+                    <p><span class="green">Объектный литерал</span> — { } — первичное выражение, которое может содержать
+                        ноль или несколько пар
+                        свойств, которые состоят из комбинации ключ-значение.</p>
+                </div>
+                <h3>пустой</h3>
+                <div class="main__wrapper-border_green">
+                    <p>const obj = {};</p>
+                </div>
+                <h3>с одной парой ключ-значение</h3>
+                <div class="main__wrapper-border_green">
+                    <p>const obj1 = {a: 1};</p>
+                </div>
+                <h3>с двумя парами ключ-значение</h3>
+                <div class="main__wrapper-border_green">
+                    <p>const obj2 = {</p>
+                    <blockquote>a:'hello';</blockquote>
+                    <blockquote>b: 123;</blockquote>
+                    <p>};</p>
+                </div>
+                <p>Либо используя ключевое слово <em>new</em></p>
+                <h3>пустой, который затем наполняется свойствами</h3>
+                <div class="main__wrapper-border_green">
+                    <p>const obj = new Object();</p>
+                </div>
+                <h2>Синтаксис</h2>
+                <figure>
+                    <img src="../images/m12_object_syntax.png" width="80%" alt="Синтаксис">
+                </figure>
+                <p> <strong>Пример:</strong></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const obj = {</p>
+                    <blockquote>a:1,</blockquote>
+                    <blockquote>b:2,</blockquote>
+                    <blockquote>'':3</blockquote>
+                    <blockquote>123:4,</blockquote>
+                    <blockquote>var:5,</blockquote>
+                    <p>};</p>
+                </div>
+                <p>Если значение свойства объекта является функцией, то такое свойство именуется
+                    <strong>методом</strong>.
+                </p>
+                <div class="main__wrapper-border_green">
+                    <p><span class="green">Метод</span> — свойство, которое может быть вызвано.</p>
+                </div>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const obj={</p>
+                    <blockquote>a: 1,</blockquote>
+                    <blockquote>f: function() {</blockquote>
+                    <blockquote>console.log(1);</blockquote>
+                    <blockquote>},</blockquote>
+                    <p>};</p>
+                </div>
+
+                <h2>Доступ к свойствам объекта</h2>
+                <hr class="hr">
+
+                <p>Объекты являются ассоциативными массивами, то есть каждое свойство ассоциировано с именем, через
+                    которое можно получить доступ к значению свойства.</p>
+                <p>Обращаемся к имени(ключу) свойства объекта, чтобы получить значение данного свойства.</p>
+                <p>Как это можно сделать?</p>
+                <p> &bull; <strong>Точечная нотация</strong> (dot notation): object.IdentifierName</p>
+                <p> &bull; <strong>Скобочная нотация</strong> (bracket notation): object[Expression]</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const obj = {</p>
+                    <blockquote> myProp: 100,</blockquote>
+                    <blockquote>1: 200,</blockquote>
+                    <p>};</p>
+                    <p>const key = 'myProp';</p>
+                    <p>obj.myProp; // 100</p>
+                    <p>obj['myProp']; // 100</p>
+                    <p>obj[1]; // 200</p>
+                    <p>obj[key]; // 100</p>
+                </div>
+
+                <p>Скобочная нотация также позволяет обратиться к свойству, имя которого хранится в переменной. Это
+                    называется вычисляемым свойством.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const lang = prompt("Введите название языка программирования", "javascript");</p>
+                    <p>const collection = {</p>
+                    <blockquote>[lang]: 'Лучший язык программирования!', // имя свойства будет взято из переменной lang
+                    </blockquote>
+                    <p>};</p>
+                    <p>alert(collection.javascript);</p>
+                </div>
+
+                <p>Смысл вычисляемого свойства прост: запись [lang] означает, что имя свойства необходимо взять из
+                    переменной lang.</p>
+                <p>И если вы введёте "javascript", то в объекте collection теперь будет лежать свойство:</p>
+                <p>{javascript: “Лучший язык программирования!”}.</p>
+                <hr>
+
+                <p>Задание 7.2.1</p>
+
+                <p>Как записать объект?</p>
+                <blockquote>{a:1}</blockquote>
+                <hr class="hr">
+
+                <p>Задание 7.2.2</p>
+
+                <p>Какой способ объявления объекта неправильный?</p>
+                <blockquote>et phone = "Nokia, Sweden, 1000, Available";</blockquote>
+                <hr class="hr">
+
+                <p>Задание 7.2.3</p>
+
+                <p>Вы собираетесь создавать объект payment, в котором укажете имена сотрудников отдела бухгалтерии и их
+                    зарплаты. Как нужно записать ключ и значение?</p>
+                <blockquote>Anna:400,</blockquote>
+                <hr>
+
+                <h2>Добавление, изменение и удаление свойства</h2>
+                <hr class="hr">
+
+                <p>Объекты в JavaScript динамические — обычно позволяют добавлять и удалять свойства в любое время.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const obj = {a: 1};</p>
+                    <p>obj.a; // 1 – получаем значение</p>
+                    <p>obj.a = 9; // устанавливаем новое значение</p>
+                    <p>console.log(obj.a); // 9</p>
+                    <p>obj.b = 100; // добавляем новое свойство с ключом b и значением 100</p>
+                    <p>// obj['b'] = 100; добавление нового свойства в скобочной нотации</p>
+                </div>
+
+                <p>Вернемся к примеру с вычисляемым свойством из предыдущего раздела.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const lang = prompt("Введите название языка программирования", "javascript");</p>
+                    <p>const collection = {};</p>
+                </div>
+
+                <p>// имя свойства будет взято из переменной lang и добавлено с помощью скобочной нотации:</p>
+                <p>collection[lang] = “Лучший язык программирования!”;</p>
+                <p>Удаление свойства из объекта — унарный оператор delete:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const obj1 = {a: 1};</p>
+                    <p>delete obj1.a; </p>
+                    <p>console.log(obj1) // {}</p>
+                </div>
+                <hr>
+
+                <h2>Сравнение объектов</h2>
+                <hr class="hr">
+
+                <p>В то время как примитивные типы данных копируются и сравниваются по значению:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const a = 'hello';</p>
+                    <p>const b = a;</p>
+                    <p>a === b; // true</p>
+                    <p>a = 100;</p>
+                    <p>a === b; // false</p>
+                </div>
+
+                <p>Объекты копируются и сравниваются по ссылке:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const obj1 = {a: 1};</p>
+                    <p>obj1 === obj2; // true</p>
+                    <p>obj1.b = 2;</p>
+                    <p>obj1 === obj2; // true</p>
+                </div>
+
+                <p>Существует ли свойство в объекте?</p>
+                <p>Обращение к имени свойства, которое отсутствует в объекте, возвращает значение undefined.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const obj = {a: 1};</p>
+                    <p>obj.b; // undefined</p>
+                </div>
+
+                <p><strong>НО!</strong> Есть вероятность, что существует свойство со значением undefined, нужно об этом
+                    помнить.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const obj = {a: 1, b: undefined};</p>
+                    <p>obj.b; // undefined</p>
+                </div>
+
+                <h3>Проверка наличия свойства</h3>
+
+                <div class="main__wrapper-border_green">
+                    <p><span class="green">Оператор in</span> — возвращает true, если свойство содержится в указанном
+                        объекте.</p>
+                </div>
+                <p><strong>Синтаксис:</strong></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p><strong>expression in object </strong></p>
+                    <p><em>expression</em> — выражение, которое возвращает имя(ключ), которое ищется в свойстве.</p>
+                </div>
+
+                <p>Поиск свойства в объекте осуществляется по его имени (ключу)!</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const obj = {a: 1, c: undefined}; console.log('a' in obj);</p>
+                    <p>'a' in obj; // true</p>
+                    <p>'b' in obj; // false</p>
+                    <p>'c' in obj; // true</p>
+                </div>
+
+                <h3>Итерация по объекту</h3>
+
+                <p>Итерация предполагает проход по каждому из свойств объекта</p>
+
+                <div class="main__wrapper-border_green">
+                    <p><span class="green">Инструкция for...in</span> — проходит по перечисляемым свойствам объекта.</p>
+                    <p><strong>Синтаксис: </strong></p>
+                </div>
+
+                <div class="main__wrapper-box_grey">
+                    <p><strong>for ( variableStatement in object )</strong></p>
+                    <p>variableStatement — объявляем переменную, в которую последовательно будут записаны все
+                        имена(ключи) свойств итерируемого объекта object.</p>
+                </div>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const obj = {a: 1, b: 2};</p>
+                    <p>for (let key in obj) {</p>
+                    <blockquote>// выводим все названия свойств</blockquote>
+                    <blockquote>console.log(key);</blockquote>
+                    <p>}</p>
+                    <p>//a</p>
+                    <p>//b</p>
+                    <p>for (let key in obj) {</p>
+                    <blockquote>// выводим все значения свойств</blockquote>
+                    <blockquote>console.log(obj[key]);</blockquote>
+                    <p>}</p>
+                    <p>//1</p>
+                    <p>//2</p>
+                </div>
+
+                <p><strong></strong>Попробуйте сами</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>1. Создайте пустой объект;</p>
+                    <p>2. Добавьте несколько свойств со значениями разных типов;</p>
+                    <p>3. Добавьте метод;</p>
+                    <p>4. Удалите одно из созданных свойств.</p>
+                </div>
+                <hr>
+
+                <p>Задание 7.2.4</p>
+
+                <p>С помощью оператора in можно</p>
+                <blockquote>проверить наличие свойств в объекте</blockquote>
+                <hr class="hr">
+
+                <p>Задание 7.2.5</p>
+
+                <p>Является ли валидной запись объекта?</p>
+                <blockquote>
+                    <div class="main__wrapper-box_grey">
+                        const obj = { "": "" }
+                    </div>
+                </blockquote>
+                <blockquote>Проанализируйте, почему</blockquote>
+                <blockquote><strong>Ответ:</strong></blockquote>
+                <blockquote>
+                    <blockquote>
+                        объекты в JS, по сути, ассоциативные массивы, у которых ключом могут быть любые валидные
+                        значения языка. Нужно помнить, что обращение, в таком случае, нужно делать через скобочную
+                        нотацию, то есть console.log(obj[""]) // ""
+                    </blockquote>
+                </blockquote>
+
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="../../index.html" class="previous">&laquo; Назад</a>
+                <a href="page3.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="../../index.html" class="previous round">&#8249;</a>
+                <a href="page3.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+    </div>
+</body>
+
+</html>

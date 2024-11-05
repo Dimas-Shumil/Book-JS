@@ -1,0 +1,387 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>JS part1</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+            <div class="header__nav-title">
+                4. Строки. Числа
+            </div>
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html" title="Введение"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page2.html" title="Програмирование на JavaScript: основы"><span
+                            class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page3.html" title="Логический тип и ветвление"><span
+                            class="header__nav-ul_link"></span></a></li>
+                <li><a href="#" title="Строки. Числа"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page5.html"
+                        title="Массивы и базовые методы работы с ними. Практикуемся с командой debugger"><span
+                            class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page6.html" title="циклы"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page7.html" title="Ассоциативные массивы"><span
+                            class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page8.html" title="итоги"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#" title="обратная связь"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+            <div class="main__wrapper-conteiner">
+                <figure>
+                    <img src="../img/svg/m10_cover_strings.svg" width="40%" alt="">
+                </figure>
+
+                <p>В этом юните мы отдельно разберём такие типы данных, как строки (string) и числа (numbers). Начнём со
+                    строк.
+                </p>
+
+
+                <div class="main__wrapper-box_grey">
+                    <p>
+                        <span class="green">Строка</span> — это неизменяемая, упорядоченная
+                        последовательность
+                        16-битных значений, каждое из которых
+                        обычно представляет символ Юникода. Строки являются типом данных, используемым для представления
+                        текста.
+                    </p>
+                </div>
+
+                <p>
+                    В некоторых языках программирования есть специальный тип данных для одного символа. Например, в
+                    языке С#
+                    это char. А в JavaScript есть только тип «строка» — string. Для представления единственного
+                    16-битного
+                    значения просто используется строка с длиной, равной 1.
+                </p>
+                <p>
+                    <span class="green">Строковый литерал</span> — это ноль или более символов, заключенных в
+                    двойные ( " ) или одинарные ( ' )
+                    кавычки. Строка должна быть ограничена кавычками одного типа, то есть либо обе одинарные, либо обе
+                    двойные.
+                </p>
+                <p><strong>Пример объявления строки:</strong></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>
+                        let str = "1234";
+                    </p>
+                </div>
+
+                <p>Строки можно записывать в трёх вариантах кавычек — одинарных ', двойных " и обратных .</p>
+                <p>Во всех случаях строки будут прочитаны одинаково, не имеет значения, какие кавычки вы используете.
+                </p>
+
+                <div class="main__wrapper-box_grey">
+                    <p><strong>Важно помнить</strong>, что если вам потребуется кавычка в строке, то её нужно
+                        экранировать —
+                        используя символ \ перед ней:</p>
+                    <p>let str = "I"m student"; // Syntax error</p>
+                    <p>let str = "I\"m student";</p>
+                    <p>Но если вы используете разные кавычки, то это не обязательно:</p>
+                    <p>let str = "I’m student";</p>
+                </div>
+
+                <h2>Работа со строками</h2>
+
+                <p>Со строками можно делать много интересных вещей. Для этого существует очень много методов. Рассмотрим
+                    самые популярные.</p>
+                <p>Начнём с интересной особенности работы со строками, которые записаны в обратные кавычки. Такие строки
+                    называют <span class="green">шаблонными</span>, а обратные кавычки называют <span
+                        class="green">оператором интерполяции</span>.</p>
+                <p>1.
+                    Используя обратные кавычки как оператор интерполяции, мы можем писать код прямо в строке. Так
+                    интерпретатор выполнит код, как только его встретит. Для этого стоит поместить нужный код внутрь вот
+                    такой конструкции — ${ code }.</p>
+
+                    <div class="main__wrapper-box_grey">
+                    <p>let firstName= 'Ivan';</p>
+                    <p>let result = `${firstName} glad to see you!`;</p>
+                    <p>console.log(result);</p>
+                    <p>Ivan glad to see you!</p>
+                </div>
+
+                <p>2.
+                    Шаблонные строки позволяют задать так называемый теговый шаблон перед первой обратной кавычкой.
+                    Теговый
+                    шаблон — это функция, которая позволяет «разбирать» переданную строку на части и составлять из них
+                    другую строку.
+                </p>
+                <p><strong>Синтаксис метода:</strong> tag `string`.</p>
+                <p>Функция tag (название может быть любым) вызовется автоматически и получит в качестве аргументов
+                    строку и
+                    встроенные в неё выражения, чтобы их обработать. Подробнее об этом можно прочитать в <a
+                        href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Template_literals#%D1%82%D0%B5%D0%B3%D0%BE%D0%B2%D1%8B%D0%B5_%D1%88%D0%B0%D0%B1%D0%BB%D0%BE%D0%BD%D1%8B">документации</a>.
+                </p>
+                <p>Пример</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p><strong>let</strong> carName = 'Porsche';</p>
+                    <p><strong>let</strong> carPrice = 1000000;</p>
+                    <p><strong>function</strong> getCarPrice(strings, carNameExp, carPriceExp) {</p>
+                    <blockquote><strong>let</strong> str0 = strings[0]; // "This car is " </blockquote>
+                    <blockquote><strong>let</strong> str1 = strings[1]; // " and it is "</blockquote>
+                    <blockquote><strong>let</strong> carPriceText = carPriceExp > 50000 ? 'expensive' : 'cheap'
+                    </blockquote>
+                    <blockquote><strong>return</strong> `${str0}${carNameExp}${str1}${carPriceText}`;</blockquote>
+                    <p>}</p>
+                    <p><strong>let</strong> result = getCarPrice`This car is ${carName} and it is ${carPrice}`;</p>
+                    <p>console.log(result); // "This car is Porsche and it is expensive"</p>
+                </div>
+
+                <p>В качестве первого аргумента функция getCarPrice получает массив strings — это элементы строки,
+                    разбитые
+                    на части выражениями ${carName} и ${carPrice}. Соответственно, первым элементом массива будет строка
+                    "This car is ", а вторым — " and it is ".</p>
+                <p>Данная функция также принимает в качестве аргументов значения выражений внутри шаблонной строки, в
+                    нашем
+                    случае это название машины (carNameExp) и цена машины (carPriceExp). Название машины функция
+                    оставляет
+                    без изменений, а вот цену заменяет на определение «дорогая» или «дешёвая», в зависимости от значения
+                    цены. В итоге мы получаем следующую строку: "This car is Porsche and it is expensive".</p>
+                <p>Шаблонные строки очень удобны тем, что могут легко заменить операцию конкатенации (сложения) строк.
+                </p>
+                <p>Оператор конкатенации — обычный бинарный плюс.</p>
+                <p>Когда движок встречает операцию сложения, в которой один из операндов строка, код выполняется как
+                    операция конкатенации и другой операнд превращает в строку.
+                </p>
+
+                <table class="two">
+                    <tbody>
+                        <tr>
+                            <td>
+                                <p>1+2;</p>
+                                <p>3</p>
+                            </td>
+                            <td>Число</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>'1' + 2;</p>
+                                <p>"12"</p>
+                            </td>
+                            <td>Строка</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>'1' + 2 + 3;</p>
+                                <p></p>
+                            </td>"123"
+                            <td>Строка</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>1 + 2 + '3';</p>
+                                <p>"33"</p>
+                            </td>
+                            <td>Строка</td>
+                        </tr>
+                        <tr>
+                            <td>
+                                <p>true + '123';</p>
+                                <p>"true123"</p>
+                            </td>
+                            <td>Строка</td>
+                        </tr>
+                    </tbody>
+
+                </table>
+
+                <p>Помимо сложения строк, часто возникает задача узнать длину строки. Для этого можно использовать
+                    свойство
+                    length, оно является встроенным.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let str= 'Count';</p>
+                    <p>console.log( str.length );</p>
+                    <p>5</p>
+                </div>
+
+                <p>Также может понадобиться перевести строку в верхний/нижний регистр. Для этого используйте методы
+                    .toLowerCase() и .toUpperCase():</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p><strong>let</strong> str= 'Count';</p>
+                    <p>console.log( str.toLowerCase() );</p>
+                    <p>count</p>
+                    <p>console.log( str.toUpperCase() );</p>
+                    <p>COUNT</p>
+                </div>
+
+                <p>Когда хотите получить <strong>подстроку</strong>, воспользуйтесь одним из 3-x методов: substring,
+                    substr
+                    и slice. Они все корректно выполняют задачу. Но формально у метода substr есть небольшой недостаток:
+                    он
+                    описан не в собственно спецификации JavaScript, и он может не работать в другом окружении, отличном
+                    от
+                    браузера. Однако на практике он работает везде.</p>
+                <p>Советуем обратить внимание на slice — он имеет больше «настроек», что позволяет ему быть более
+                    гибким, а
+                    также меньшее количество символов. Если научитесь обращаться с ним, этого метода будет достаточно.
+                </p>
+                <p><strong>Синтаксис метода:</strong> str.slice(start [, end]), где [, end] — необязательная часть и ее
+                    можно опустить, передав только стартовую позицию. Метод возвращает часть строки от start до (не
+                    включая)
+                    end.</p>
+
+                    <div class="main__wrapper-box_grey">
+                    <p>let str = "string";</p>
+                    <p>console.log( str.slice(0, 4) );</p>
+                    <p>stri</p>
+                </div>
+
+                <p>Результат в консоли: 'str' — символы от 0 до 4 (не включая 4 (счёт идет от 0)).</p>
+                <p>Есть ещё очень много полезных методов, с которыми вы можете ознакомиться в спецификации.</p>
+
+                <h3>Числа</h3>
+
+                <div class="main__wrapper-border_green">
+                    <p><span class="green">Number</span> — числовой тип данных в формате 64-битного. Их часто
+                        называют «числа двойной точности с плавающей точкой*» (стандарт IEEE 754) («double precision»).
+                    </p>
+                </div>
+
+                <p>*В каких морях ловить плавающую точку?</p>
+
+                <p>Термин «плавающая точка» — это прямой перевод с английского (floating point). В отличие от России,
+                    где
+                    целая часть отделяется от дробной запятой, в других странах при записи чисел используют точку. В
+                    настоящее время в русскоязычной литературе и технической документации можно встретить оба варианта:
+                    плавающая точка и плавающая запятая.</p>
+                <p>Данный тип включает как целые числа, так и дробные десятичные числа. В отличие от многих популярных
+                    языков, в JS нет отдельного типа для целых чисел, что является давним предметом критики. Числовые
+                    литералы чаще всего используются в виде десятичного числа, например:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>let a = 42; </p>
+                    <p>let b = 42.3;</p>
+                </div>
+                <p>Если целая часть равняется нулю, то её можно опустить и записать:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>let a = 0.42; </p>
+                    <p>let b = .42;</p>
+                </div>
+                <p>Есть одна особенность при работе с числами с плавающей точкой, которую необходимо знать:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>0.1 + 0.2 === 0.3;</p>
+                    <p>false</p>
+                </div>
+                <p>Несмотря на то, что результат должен быть true, мы получаем false, так как дробные числа хранятся в
+                    памяти с некоторой погрешностью, вследствие чего:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>0.1 + 0.2 === 0.30000000000000004;</p>
+                    <p>True</p>
+                </div>
+
+                <p>Максимальное безопасное целочисленное значение — Number.MAX_VALUE.</p>
+                <p>Существуют специальные числовые значения Infinity (как плюс, так и минус бесконечность) и NaN (не
+                    число).
+                </p>
+
+                <p><strong>Тип данных BigInt</strong></p>
+                <p>Совсем недавно в спецификации появился ещё один тип данных — BigInt. Он ещё не вошёл в широкий обиход
+                    разработчиков, так как используется с очень большими числами, но нужно знать о его существовании и
+                    специфике.</p>
+                <p>Из спецификации:</p>
+
+                <div class="main__wrapper-border_green">
+                    <p><span class="content-box-text">BigInt</span> — это встроенный объект, который предоставляет
+                        способ
+                        представлять целые числа больше 2 53 -
+                        1, наибольшего числа, которое JavaScript может надёжно представить с <a
+                            href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Number">Number</a>
+                        примитивом. Это
+                        максимальное значение можно получить, обратившись к <a
+                            href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/Number/MAX_SAFE_INTEGER">Number.MAX_SAFE_INTEGER</a>.
+                    </p>
+                </div>
+
+                <div class="main__wrapper-box_grey">
+                    <p>Он похож на <strong>Number</strong>, но отличается в некоторых ключевых моментах: его нельзя
+                        использовать с математическими методами во встроенном объекте Math (чуть дальше поговорим об
+                        этом) и
+                        нельзя смешивать в операциях с любыми экземплярами Number.</p>
+                </div>
+
+                <p>Подробнее <a
+                        href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects/BigInt">здесь</a>.
+                </p>
+                <p><strong>Объект Math</strong></p>
+                <p>Как правило, с числами мы привыкли делать различные математические действия. Например, простые —
+                    делить,
+                    складывать, умножать. И сложные — возводить в степень, округлять, находить логарифм от числа.</p>
+                <p>С простыми операциями всё понятно — умножаем, используя оператор *, складываем через +, вычитаем
+                    через -,
+                    делим, используя / или % (получаем остаток от деления).</p>
+
+                <div class="main__wrapper-border_green">
+                    <p>Для сложных операций нет специальных операторов, но есть встроенный <span
+                            class="green">объект Math</span>, хранящий в своих
+                        свойствах и методах различные математические константы и функции, которыми можно воспользоваться
+                        для
+                        вычислений.</p>
+                </div>
+
+                <p>Так, например, если нужно получить логарифм числа Пи, можно поступить следующим образом:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const result = Math.log(Math.PI);</p>
+                    <p>console.log(result);</p>
+                    <p>1.1447298858494002</p>
+                </div>
+
+                <h2>Практика</h2>
+                <figure>
+                    <img src="../img/svg/m10_homework (1).svg" width="40%" alt="">
+                </figure>
+
+                <h3>Задание 3.</h3>
+
+                <p>Дана строка. Необходимо вывести в консоль перевёрнутый вариант. Например, "Hello" -> "olleH".</p>
+
+                <h3>Задание 4.</h3>
+
+                <p>Записать в переменную случайное целое число в диапазоне [0; 100]. Используйте объект Math.</p>
+            </div>
+            <!-- button -->
+            <div class="main__btn-box">
+                <a href="page3.html" class="previous">&laquo; Назад</a>
+                <a href="page5.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page3.html" class="previous round">&#8249;</a>
+                <a href="page5.html" class="next round">&#8250;</a>
+            </div>
+            <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+        </div>
+    </div>
+    <script async src="../script/js.js"></script>
+
+</body>
+
+</html>

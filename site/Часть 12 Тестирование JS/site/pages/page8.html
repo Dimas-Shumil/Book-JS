@@ -1,0 +1,153 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Тестирование</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                8.Тестирование в браузере
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page9.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <div class="main__wrapper-conteiner">
+                <figure>
+                    <img src="../images/m16_Browser_testing.svg" width="45%" alt="">
+                </figure>
+                <p>Иногда возникает ситуация, когда разработчику нужно проверить работоспособность приложения со всеми
+                    вовлеченными системами до его выхода на production, несмотря на то, что этим занимаются QA-инженеры.
+                </p>
+                <p>Тогда на помощь приходят инструменты для e2e-тестирования, например, <i>Cypress</i> и
+                    <i>Selenium</i>.
+                </p>
+                <div class="main__wrapper-box_grey">
+                    <p>Разница в том, что Cypress обычно пользуются разработчики, так как тесты нужно писать в коде
+                        репозитория, а Selenium — тестировщики, потому что он не требует вмешательства в основной код.
+                    </p>
+                </div>
+                <p>Мы подробно рассмотрим Cypress и попробуем протестировать сайт с его помощью, а также немного
+                    поговорим о Selenium как о доступном инструменте тестирования.</p>
+                <hr class="hr">
+                <h3>Cypress</h3>
+                <p>Для тестирования <i>UI</i> веб-приложений отлично подходит <a
+                        href="https://www.cypress.io/">Сypress</a>. Основная задача — проверить, как
+                    взаимодействует клиентская часть с серверной (сквозные тесты) и отдельные компоненты страницы друг с
+                    другом (интеграционные тесты).</p>
+                <p>Почему для таких целей стоит выбрать Сypress?</p>
+                <ol>
+                    <li>хорошая <a href="https://docs.cypress.io/api/table-of-contents">документация</a>;</li>
+                    <li>прост и понятен в установке;</li>
+                    <li>разворачивает тесты и интерфейс в отдельном окне с возможностью выбора браузера;</li>
+                    <li>объединяет несколько видов тестирования в одной платформе (несмотря на то, что позиционирует
+                        себя как инструмент для e2e-тестов);</li>
+                    <li>позволяет обратиться к каждому объекту веб-страницы в DOM.</li>
+                </ol>
+                <blockquote>Пример <a
+                        href="https://github.com/aneelia/learn-js/blob/master/cypress/integration/examples/1.spec.js">тут</a>.
+                </blockquote>
+                <hr class="hr">
+                <h3>Selenium</h3>
+                <p>Selenium, на самом деле, является open-source проектом, в рамках которого разрабатывается целая серия
+                    программных продуктов:</p>
+                <blockquote>&bull; <i>Selenium WebDriver;</i></blockquote>
+                <blockquote>&bull; <i>Selenium RC;</i></blockquote>
+                <blockquote>&bull; <i>Selenium Server;</i></blockquote>
+                <blockquote>&bull; <i>Selenium Grid;</i></blockquote>
+                <blockquote>&bull; <i>Selenium IDE.</i></blockquote>
+                <div class="main__wrapper-box_grey">
+                    <p>Для того, чтобы протестировать интерфейс пользователя, достаточно обладать навыками работы с
+                        <i>Selenium IDE</i> — это плагин к браузеру <i>Firefox</i>, который может записывать действия
+                        пользователя,
+                        воспроизводить их, а также генерировать код для других расширений <i>Selenium</i>. По сути, это
+                        «рекордер». Его можно использовать для того, чтобы писать сложные тесты с <i>Selenium
+                            WebDriver</i> и
+                        другими продуктами этой линейки.
+                    </p>
+                </div>
+                <p>Часто Selenium IDE используется как самостоятельный продукт, без преобразования записанных сценариев
+                    в программный код. Этого достаточно для воспроизведения простых линейных сценариев. Под таким
+                    сценарием подразумеваются простые действия пользователя, например, открытие страницы почтового
+                    агента, ввод логина и пароля, клик на кнопку и успешный вход в веб- приложение. Это можно
+                    протестировать на реальных данных, записать сценарий, воспроизводить его сколько угодно раз в
+                    автоматическом режиме, менять тестовые показатели. Selenium IDE имеет более 500 встроенных команд,
+                    которые позволяют зафиксировать практически любые действия пользователя на сайте.</p>
+                <p>Эти тесты можно сохранять и добавлять в коллекцию автотестов проекта, затем, настроив Selenium IDE,
+                    ее можно прогонять на каждое внесение изменения в ваш проект. Записанные сценарии тестов
+                    переиспользуемы.</p>
+                <p>Мы не будем подробно останавливаться на этом инструменте, так как в основном им пользуются
+                    автотестировщики.</p>
+                <div class="main__wrapper-box_grey">
+                    <h2>Дополнительно</h2>
+                    <p>Если возник интерес, рекомендуем ознакомиться со <a
+                            href="https://apps.skillfactory.ru/learning/course/course-v1:Skillfactory+FR+2020/block-v1:Skillfactory+FR+2020+type@sequential+block@068083151d5444cebc1cdd0374b008b8/block-v1:Skillfactory+FR+2020+type@vertical+block@993afc528de941d990bf1e5e671369c6">статьей</a>
+                        и попробовать самостоятельно
+                        протестировать какой-нибудь пользовательский сценарий.</p>
+                </div>
+
+
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page7.html" class="previous">&laquo; Назад</a>
+                <a href="page9.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page7.html" class="previous round">&#8249;</a>
+                <a href="page9.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,540 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Бонус. Асинхронное программирование JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                7. DOM. Обработка событий DOM. addEventListener
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page9.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <p>Вы близки к финишной прямой модуля! Всё это время вы так или иначе встречали странные записи, в
+                    которых было написано: document.querySelector('.button') или btn.addEventListener('click', …).</p>
+                <p>Да, мы ещё не успели затронуть эти инструменты даже поверхностно. Поскольку в тему этого модуля нужно
+                    было погружаться постепенно. Не запутаться и не сбиться с пути.</p>
+                <p>Но время пришло. Надеемся, вы готовы!</p>
+
+                <h2>DOM</h2>
+
+                <p>Что такое DOM? Переводится это так: D-ocument O-bject M-odel или Объектная Модель Документа.</p>
+                <p>Браузер каждый раз создаёт DOM, когда страница загружается. С этого момента к нему можно обращаться
+                    через переменную document. Именно эта переменная помогает работать с HTML-элементами. Стилизовать
+                    их, управлять данными и так далее.</p>
+                <h3>DOM — это дерево вашего документа, благодаря которому вы можете получать доступ к HTML-элементам и
+                    менять их через JS.</h3>
+                <p>Возможно, вы замечали, что HTML-документ похож на дерево. Корень — сам тег html. А все остальные теги
+                    — ветви этого дерева, которые вкладываются друг в друга и создают ещё более витиеватую структуру.
+                </p>
+                <p>Небольшая визуализация. Есть div, в который мы поместили теги. А в эти теги — ещё теги. И так далее.
+                </p>
+
+                <iframe src="../frame/frame7/frame7-1.html" width="90%" height="500px" frameborder="0"></iframe>
+
+                <div class="main__wrapper-box_blue">
+                    <p>
+                        Обратите внимание, что обычно header, main и footer помещаются в тег body. Сейчас мы сделали
+                        условную структуру для наглядности.</p>
+                </div>
+                <p>У DOM есть много методов для работы с разметкой. Перечислим самые популярные:</p>
+                <blockquote>&bull; document.querySelector — позволяет достучаться до элемента по его селектору;
+                </blockquote>
+                <blockquote>&bull; document.querySelectorAll — то же самое, только он выбирает все элементы с таким
+                    селектором. Его можно использовать, например, с классами.</blockquote>
+                <blockquote>&bull; document.getElementById — получает доступ к элементу по его идентификатору;
+                </blockquote>
+                <blockquote>&bull; getElementsByClassName — достаёт из разметки все элементы с определённым классом.
+                </blockquote>
+                <p>Поработаем с одним из них — с querySelector.</p>
+                <hr class="hr">
+            </div>
+
+            <h2>Упражнение 7.1</h2>
+
+            <p><b>верный факт о DOM.</b></p>
+            <blockquote><span class="green">&#10004;</span> DOM — это древовидная структура.</blockquote>
+
+            <div class="main__wrapper-conteiner">
+
+                <h2>querySelector</h2>
+
+                <p>Давайте научимся взаимодействовать с простейшими элементами. Ранее вы уже нажимали кнопки, писали
+                    текст в инпуты, но не писали такую логику самостоятельно. Начнём с неё.</p>
+                <p>Но для начала поймём, из чего состоит эта логика:</p>
+                <blockquote>1. Нам нужен HTML-элемент.</blockquote>
+                <blockquote>2. А затем мы должны до него достучаться. Помните селекторы? Классы, айди, имена тегов и так
+                    далее? Уверены, вы не могли это забыть. И хорошо, ведь они нам понадобятся. На этом этапе нужно
+                    выбрать селектор.</blockquote>
+                <blockquote>3. Для начала используем инструмент document.querySelector('/селектор/'). Он ищет элементы
+                    по селектору, который вы поместите в скобки.</blockquote>
+                <p>Приступим.</p>
+
+                <iframe src="../frame/frame7/frame7-2.html" width="90%" height="350px" frameborder="0"></iframe>
+
+                <p>В этом коде мы сверстали инпут, кнопку и параграф для текста.</p>
+                <p>Также в блоке с JS мы создали две переменных: input и btn. А затем получили в них наши HTML-элементы.
+                </p>
+                <p>Мы законсолили эти переменные. Посмотрите в консоль: вы должны увидеть оба элемента.</p>
+                <p>Обратите внимание на синтаксис:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const переменная = document.querySelector('.класс');</p>
+                    <p>const переменная = document.querySelector('#айди');</p>
+                </div>
+                <p>Обязательно нужно указывать значок селектора: решётка для идентификаторов, точка для классов и так
+                    далее.</p>
+                <hr class="hr">
+
+                <h2>Упражнение 7.2.</h2>
+
+                <p>Попробуйте достать элемент параграфа таким же образом, как предыдущие. Выведите его в консоль.
+                    Используйте querySelector.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>document.querySelector(".result");</p>
+                </div>
+                <hr class="hr">
+
+                <h2>addEventListener</h2>
+
+                <p>Итак, элементы мы получили. Двигаемся дальше. Теперь нам хочется с ними что-то делать, правильно?</p>
+                <p>Мы можем использовать события, которые случаются в браузере, и манипулировать разметкой. Для этого
+                    нам понадобится инструмент <span class="blue"> addEventListener</span>. Кстати, он тоже лежит на
+                    плечах атланта под названием Web API.</p>
+                <h3>
+                    <p>addEventListener — инструмент, который будет отслеживать событие на элементе. И если на нём
+                        произойдёт нужное событие, то запустит логику внутри.</p>
+                    <p>Первый аргумент — тип события. Например, click, submit, change, keydown и так далее. Второй —
+                        функция с логикой, которая должна отработать при наступлении события.</p>
+                </h3>
+                <p>Итак, синтаксис события. Пока что будем разбирать самое базовое — это клик мыши:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>элемент.addEventListener('click', function () {</p>
+                    <blockquote>// ваша логика здесь</blockquote>
+                    <p>})</p>
+                </div>
+
+                <p>либо,</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>элемент.addEventListener('click', () => {</p>
+                    <blockquote>// ваша логика здесь</blockquote>
+                    <p>})</p>
+                </div>
+
+                <p>либо,</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>элемент.addEventListener('click', коллбэк)</p>
+                </div>
+
+                <div class="main__wrapper-box_blue">
+                    <p>Обратите внимание, что в последнем варианте мы передаём функцию, но не вызываем её. Это важно,
+                        чтобы она отработала только при клике на элемент.</p>
+                </div>
+                <p>Давайте изменим наш последний пример и получим то, что запишется в инпут, по клику на кнопку. И
+                    выведем в консоль, а также в параграф.</p>
+
+                <iframe src="../frame/frame7/frame7-3.html" width="90%" height="400px" frameborder="0"></iframe>
+
+                <p>Впишите что-нибудь в поле ввода и понаблюдайте за работой кода.</p>
+                <p>Мы использовали не только addEventListener, но и ещё один прекрасный метод — Element.textContent. Он
+                    создан для того, чтобы помещать какой-то контент в элемент.</p>
+                <p>Его синтаксис:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>element.textContent = "Ваша строка!"</p>
+                </div>
+
+                <h2>Упражнение 7.3.</h2>
+
+                <p>Напишите логику для нажатия на кнопку «Очистить параграф». Используйте querySelector,
+                    addEventListener и textContent.</p>
+                <details>
+                    <summary>Подсказка</summary>
+                    <p>Если в элементе что-то написано, то это строка. Например, «какой-то текст». Чтобы очистить инпут,
+                        надо сделать так, чтобы строка была пустой. И присвоить её элементу с помощью textContent.</p>
+                </details>
+                <details>
+                    <summary>Посмотреть код</summary>
+                    <div class="main__wrapper-box_grey">
+                        <p>const btnClean = document.querySelector(".btn-clean");</p>
+                        <p>btnClean.addEventListener('click', () => {</p>
+                        <blockquote>result.textContent = ""</blockquote>
+                        <p>})</p>
+                    </div>
+                </details>
+                <hr class="hr">
+
+                <h2>Всплытие</h2>
+
+                <p>Вы научились обрабатывать клики на единичных элементах. Но давайте рассмотрим один неоднозначный
+                    пример:</p>
+
+                <iframe src="../frame/frame7/frame7-4.html" width="90%" height="400px" frameborder="0"></iframe>
+
+                <p>Если вы нажмёте на кнопку, то изменятся цвета фона у родительских div-ов. Это явление называется
+                    bubbling — всплытие.</p>
+                <p>Когда вы нажимаете на какой-то элемент, то событие сначала отрабатывает на кнопке, а потом начинает
+                    идти вглубь, к родителю. А потом к родителю родителя. И так далее, до корня документа.</p>
+                <p>Это как кинуть камешек в озеро и наблюдать, как от него расплываются круги.</p>
+
+                <figure>
+                    <img src="../images/INTFR_9_7_1.png" width="90%" alt="">
+                    <p>Визуализация всплытия. Источник: <a href="https://learn.javascript.ru/event-bubbling"><span
+                                class="green"> learn.javascript.ru</span></a></p>
+                </figure>
+                <p>Можете понаблюдать за этим интерактивным примером и понажимать разные элементы:</p>
+
+                <iframe src="../frame/frame7/frame7-5.html" width="90%" height="400px" frameborder="0"></iframe>
+
+                <div class="main__wrapper-box_blue">
+                    <p>Всплывают не только события клика. Например, когда вы наводите мышь на элемент — происходит
+                        событие mouseOver. Оно также всплывает.</p>
+                    <p>Об остальных событиях мы подробнее поговорим в следующем модуле.</p>
+                </div>
+
+                <h2>Погружение</h2>
+
+                <p>Фаза всплытия — это только вершина айсберга. На самом деле есть ещё и фаза погружения. Она работает
+                    наоборот. Начинается не с того элемента, который был нажат, а с самого родительского родителя.</p>
+                <p>Почему мы обсуждаем её после всплытия? Потому что она встречается реже, но знать о ней стоит.</p>
+                <p>Представьте, что вы едите чипсы из очень неудобной цилиндрической упаковки. Кто только такие
+                    придумал?</p>
+                <p>На дне осталась последняя чипсинка, и вы намерены её взять. Для этого вам нужно выполнить три фазы:
+                </p>
+                <blockquote>1. Погружение в упаковку;</blockquote>
+                <blockquote>2. Целевое событие (потрогать пальцами последний чипс);</blockquote>
+                <blockquote>3. Всплывание руки с целью.</blockquote>
+                <p>Четвертая фаза — это съесть цель, её разбирать не будем.</p>
+                <p>Вот тут то же самое.</p>
+                <p>Посмотрим на пример:</p>
+                <iframe src="../frame/frame7/frame7-6.html" width="90%" height="400px" frameborder="0"></iframe>
+                <p>Здесь мы добавляем к привычной записи addEventListener третий аргумент:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>btn.addEventListener(</p>
+                    <blockquote>"click",</blockquote>
+                    <blockquote>() => {</blockquote>
+                    <blockquote>
+                        <blockquote>console.log("Сработала кнопка")</blockquote>
+                    </blockquote>
+                    <blockquote>},</blockquote>
+                    <blockquote>true</blockquote>
+                    <p>);</p>
+                </div>
+                <p>Третий аргумент может принимать булевое значение: true или false.</p>
+                <p>True — значит, вы хотите отследить фазу погружения. False или отсутствие аргумента — значит, не
+                    хотите.</p>
+                <p>Благодаря этому аргументу мы можем посмотреть в консоль и отследить то, как проходят обе фазы:
+                    сначала погружение, а затем всплытие.</p>
+
+                <h2>Упражнение 7.4.</h2>
+
+                <p>Добавьте четвёртый элемент — обёртку над всеми остальными элементами. Задайте ей два события по
+                    аналогии. Один с тремя аргументами, другой с двумя. Задача — встроить этот элемент в фазы всплытия и
+                    погружения.</p>
+                <details>
+                    <summary>Посмотреть код</summary>
+                    <p> HTML:</p>
+                    <div class="main__wrapper-box_grey">
+                        <p>&lsaquo;div class="super-outer"></p>
+                        <blockquote>&lsaquo;div class="outer"></blockquote>
+                        <blockquote>
+                            <blockquote>&lsaquo;div class="iner"></blockquote>
+                            <blockquote>
+                                <blockquote>&lsaquo;button class="btn">Нажать&lsaquo;/button></blockquote>
+                            </blockquote>
+                            <blockquote>&lsaquo;/div></blockquote>
+                        </blockquote>
+                        <blockquote>&lsaquo;/div></blockquote>
+                        <p>&lsaquo;/div></p>
+                    </div>
+                    <p>JS:</p>
+                    <div class="main__wrapper-box_grey">
+                        <p>const superOuter = document.querySelector(".super-outer");</p>
+                        <p>superOuter.addEventListener(</p>
+                        <blockquote>"click",</blockquote>
+                        <blockquote>() => {</blockquote>
+                        <blockquote>
+                            <blockquote>console.log("Cработал super outer div, погружение");</blockquote>
+                        </blockquote>
+                        <blockquote>},</blockquote>
+                        <blockquote>true</blockquote>
+                        <p>);</p>
+                        <p>superOuter.addEventListener(</p>
+                        <blockquote>"click",</blockquote>
+                        <blockquote>() => {</blockquote>
+                        <blockquote>
+                            <blockquote>console.log("Cработал super outer div, всплытие");</blockquote>
+                        </blockquote>
+                        <blockquote>}</blockquote>
+                        <p>);</p>
+                    </div>
+                </details>
+
+                <h2>event</h2>
+
+                <p>Когда мы используем addEventListener и передаём в него handler, ту самую функцию, которая заработает
+                    при наступлении события, мы получаем доступ к event-объекту.</p>
+                <p>В нём хранится много информации по поводу того, что произошло, что вызвало событие, какое это было
+                    событие и так далее.</p>
+                <p>Это как книжка по эксплуатации, которая идёт в комплекте с пылесосом. Можно узнать много интересного.
+                </p>
+                <p>Давайте посмотрим:</p>
+                <iframe src="../frame/frame7/frame7-7.html" width="90%" height="500px" frameborder="0"></iframe>
+
+                <p>У нас тут два элемента: кнопка и ссылка. При нажатии на кнопку вы можете увидеть в консоли две вещи:
+                </p>
+                <blockquote>&#10144; Что сделали — нажали;</blockquote>
+                <blockquote>&#10144; На что нажали — на кнопку.</blockquote>
+                <p>Это удалось благодаря тому, что мы передали в коллбэк аргумент event. А также благодаря свойствам
+                    type, которое показало тип события, и target, которое вычислило, на каком элементе это событие
+                    произошло.</p>
+                <p>Нажмите на ссылку. После этого вы должны попасть на сайт Skillfactory и получить возможность его
+                    полистать. Это здорово, но не всегда то, что нужно.</p>
+
+                <h2>preventDefault</h2>
+
+                <p>Иногда нам не нужно, чтобы кнопки или ссылки обновляли страницу или переходили по адресам. Чтобы это
+                    стало возможно, мы можем использовать метод preventDefault().</p>
+                <p>Синтаксис:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p> link.addEventListener("click", (e) => {</p>
+                    <blockquote>e.preventDefault();</blockquote>
+                    <p>})</p>
+                </div>
+                <div class="main__wrapper-box_blue">
+                    <p>&#128512 Иногда event сокращают до одной буквы — e.</p>
+                </div>
+                <p>После этой записи ссылка не перейдёт по адресу.</p>
+                <div class="main__wrapper-box_grey">
+                    <p> btn.addEventListener("click", (e) => {</p>
+                    <blockquote>e.preventDefault();</blockquote>
+                    <p>})</p>
+                </div>
+                <p>А в этом случае кнопка не обновит страницу.</p>
+
+                <h2>Упражнение 7.5.</h2>
+                <p>Сделайте так, чтобы сайт Skillfactory не открылся. Используйте preventDefault. Можете назвать
+                    аргумент в функции как event, так и e.</p>
+
+                <h2>stopPropagation</h2>
+
+                <p>Вернёмся на шаг назад, к всплытию. Если вас не устраивает такое поведение кода, можете
+                    воспользоваться методом stopPropagation.</p>
+                <h3>С английского это переводится как «остановить распространение». Проще говоря, не дать событиям
+                    всплывать. Чтобы, например, нажатие на кнопку не задело обработчики, которые вы повесили на их
+                    родителей.</h3>
+                <p>Синтаксис такой:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>element.addEventListener('click', function (event) {</p>
+                    <blockquote>event.stopPropagation()</blockquote>
+                    <p>})</p>
+                </div>
+
+                <h2>Упражнение 7.6.</h2>
+
+                <p>Поработайте с <a href="https://codepen.io/SkillFactory/pen/RwqGBXB"><span class="green"> примером</span></a> из раздела про всплытие. Сделайте так, чтобы событие не всплывало дальше
+                    кнопки или дальше внутреннего блока. Используйте stopPropagation. И не забудьте, что этот метод
+                    нуждается в аргумент event.</p>
+                <details>
+                    <summary>Подсказка</summary>
+                    Корректность проверяйте по строчкам, которые выводятся в консоль.
+                </details>
+                <details>
+                    <summary>Посмотреть код</summary>
+                    <div class="main__wrapper-box_grey">
+                        <p>document.getElementById("button").addEventListener("click", function (e) {</p>
+                        <blockquote>e.stopPropagation()</blockquote>
+                        <blockquote>console.log("Кнопка нажата!");</blockquote>
+                        <p>});</p>
+                    </div>
+                </details>
+
+                <h2>Отрисовка DOM</h2>
+
+                <p>В браузере постоянно происходит какое-то движение. И вы наверняка понимаете, что если перед нами рисуется картинка сайта, то у этой отрисовки тоже должны быть какие-то правила.</p>
+                <p>Например, в нашем обратном отсчёте до Нового Года цифры постоянно меняются. А как они так быстро отрисовываются? С какой частотой это происходит?</p>
+                <p>На это есть ответы.</p>
+                <p>Отрисовка страницы ещё называется рендерингом. Возможно, вы знакомы с этим термином.</p>
+                <p>Если вы играете в компьютерные игры, то знаете и то, что такое «кадры в секунду». И как это может повлиять на процесс отображения картинки.</p>
+                <p>В браузере такое тоже есть. Хороший показатель — это 60 кадров в секунду. Столько раз браузер обновляет ваш интерфейс за 1000 миллисекунд.</p>
+                <p>Если провести нехитрые вычисления, то окажется, что это происходит каждые 16,7 миллисекунд. Каждые 16,7 миллисекунд рендер ставит задачу на перерисовку в очередь.</p>
+                <p>Так… Перерисовка — это задача. И её надо выполнять, ставить в какую-то очередь… А если в этот момент браузер считает в консоли от 1 до миллиарда?.. Ну, мало ли.</p>
+                <p>В этом случае рендеринг не сможет произойти.</p>
+                <p>Посмотрите на пример:</p>
+
+                <iframe src="../frame/frame7/frame7-8.html" width="90%" height="500px" frameborder="0"></iframe>
+
+                <h2>Важные методы для работы с DOM-элементами</h2>
+
+                <p>Давайте обсудим ещё несколько методов, которые пригодятся в работе с DOM-элементами.</p>
+
+                <h2>createElement</h2>
+
+                <p>Этот метод создаёт новый элемент. Например:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const newDiv = document.createElement("div");</p>
+                </div>
+                <p>или</p>
+                <div class="main__wrapper-box_grey">
+                    <p>const newParagraph = document.createElement("p");</p>
+                </div>
+
+                <h2>Упражнение 7.7.</h2>
+
+                <p>В уже готовом примере вам нужно создать два инпута и одну кнопку. Используйте createElement и textContent. На этом этапе нужно просто создать их. Чтобы проверить, создались ли элементы — выведите их в консоль.</p>
+                <iframe src="../frame/frame7/frame7-9.html" width="90%" height="400px" frameborder="0"></iframe>
+                <details>
+                    <summary>Посмотреть код</summary>
+                    <div class="main__wrapper-box_grey">
+                        <p>const input = document.createElement('input');</p>
+                        <p>input.textContent = 'click';</p>
+                    </div>
+                </details>
+                <h2>appendChild</h2>
+                <p>С помощью appendChild() вы можете добавить дочерний элемент в конец родительского элемента. Посмотрим на синтаксис:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>parentDiv.appendChild(childParagraph);</p>
+                </div>
+                <p>Не забывайте, что перед тем, как добавлять элементы в другие элементы, нужно получить к ним доступ и записать в переменные.</p>
+                <p>В нашей записи за кадром мы уже создали переменную parentDiv, в которой лежит div-родитель. А также создали переменную childParagraph и присвоили туда элемент параграфа.</p>
+
+                <h2>Упражнение 7.8.</h2>
+
+                <p>Вернитесь в предыдущий пример. Теперь вы можете добавить созданные элементы в контейнер. Используйте appendChild и querySelector.</p>
+                <details>
+                    <summary>Посмотреть код</summary>
+                    <div class="main__wrapper-box_grey">
+                        <p>const container = document.querySelector('.container');</p>
+                        <p>container.appendChild(input)</p>
+                    </div>
+                </details>
+                <h2>removeChild</h2>
+                <p>Этот метод удаляет дочерний элемент из родительского элемента. Синтаксис:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>parentDiv.removeChild(childParagraph);</p>
+                </div>
+                <p>Здесь мы сделали всё наоборот. Не добавили потомка в родителя, а удалили его оттуда. Очень удобный метод, когда нужно очистить элемент от лишних потомков.</p>
+
+                <h2>Упражнение 7.9.</h2>
+
+                <p>В уже готовом примере с картинками поработайте с removeChild. Достучитесь до них с помощью querySelector и удалите из контейнера.</p>
+                <iframe src="../frame/frame7/frame7-10.html" width="90%" height="400px" frameborder="0"></iframe>
+                <details>
+                    <summary>Посмотреть код</summary>
+                    <div class="main__wrapper-box_grey">
+                        <p>const image = document.querySelector('#photo-3');</p>
+                        <p>const container = document.querySelector('.container');</p>
+                        <p>container.removeChild(image);</p>
+                    </div>
+                </details>
+                <p>В этом юните вы освоили важнейшие инструменты для фронтенд-разработки. Научились управлять DOM-деревом, создавать и удалять элементы, получать из них данные и отслеживать на них события. Теперь вы готовы к самостоятельному практическому заданию. Желаю вам успеха!</p>
+
+                <h2>Упражнение 7.10.</h2>
+
+                <p>Напишите форму с двумя инпутами. Первый принимает в себя любимый цвет пользователя. А второй — любимый месяц пользователя. При нажатии на кнопку эти данные выводятся в параграф под формой. Визуал любой.</p>
+                <details>
+                    <summary>Посмотреть код</summary>
+                   <iframe src="../frame/frame7/frame7-11.html" width="80%" height="500px" frameborder="0"></iframe>
+                </details>
+
+                <h2>Упражнение 7.11.</h2>
+
+                <p>Напишите логику для рандомайзера картинок с собаками. Вам нужно получать одну рандомную картинку, обрабатывать её и выводить на страницу. Картинки можно брать на <a href="https://dog.ceo/api/breeds/image/random"><span class="green"> Dog</span></a> API. По этой ссылке каждый раз доступна одна рандомная картинка.</p>
+                <details>
+                    <summary>Подсказка</summary>
+                    <p>Чтобы поместить адрес на картинку через JS используйте запись по типу:</p>
+                    <div class="main__wrapper-box_grey">
+                        <p>const image = document.querySelector("...")</p>
+                        <p>image.src = "https://dog...."</p>
+                    </div>
+                </details>
+                <details>
+                    <summary>Посмотреть код</summary>
+                    <p>Пример кода:</p>
+                    <iframe src="../frame/frame7/frame7-12.html" width="80%" height="500px" frameborder="0"></iframe>
+                </details>
+
+                <h2>Упражнение 7.12.</h2>
+
+                <p>Напишите форму с несколькими инпутами: имя, фамилия и возраст. Создайте из полученных данных объект, а затем превратите его в анкету пользователя. Пройдитесь по ключам объекта и выведите все значения на страницу в виде анкеты. Дизайн любой.</p>
+                <details>
+                    <summary>Посмотреть код</summary>
+                    <p>Пример кода:</p>
+                    <iframe src="../frame/frame7/frame7-13.html" width="80%" height="500px" frameborder="0"></iframe>
+                </details>
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page6.html" class="previous">&laquo; Назад</a>
+                <a href="page8.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page6.html" class="previous round">&#8249;</a>
+                <a href="page8.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

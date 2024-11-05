@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>JS part2</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+            <div class="header__nav-title">
+                7. Ввод / вывод данных
+            </div>
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html" title="Введение">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="../pages/pages2.html" title="Переменные">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="../pages/page3.html" title="Типы данных в JavaScript">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="../pages/page4.html" title="Операции с числами">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="../pages/page5.html  " title="Операции со строками">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="../pages/page6.html" title="Преобразование типов">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="#" title="Ввод/вывод данных">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="../pages/page8.html" title="Операторы сравнения, логические оператор">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="../pages/page9.html" title="Ветвление">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+                <li><a href="../pages/page10.html" title="Промежуточные итоги">
+                        <span class="header__nav-ul_link"></span>
+                    </a></li>
+            </ul>
+        </nav>
+    </header>
+
+    <hr class="hr">
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+            <div class="main__wrapper-conteiner">
+                <hr class="hr">
+                <p>Для взаимодействия с пользователем в JavaScript имеется несколько встроенных функций:</p>
+                <p>&#10144;prompt() — даёт возможность задать вопрос пользователю и ввести ему ответ в текстовое поле.
+                </p>
+                <p>&#10144;alert() — о чём-нибудь информирует пользователя.</p>
+                <p>&#10144;confirm() — даёт возможность пользователю подтвердить выбор или отказаться от него.</p>
+
+                <div class="main__wrapper-box_blue">
+                    <p>Все эти функции вызывают всплывающее окно. Пока оно отображается, работа с сайтом полностью
+                        блокируется.</p>
+                </div>
+
+                <p>Рассмотрим работу с данными функциями подробнее.</p>
+
+                <h2>prompt</h2>
+
+                <figure>
+                    <img src="../img/INTFR_6_7_1.png" width="40%" alt="">
+                </figure>
+
+                <p>Чтобы вызвать функцию достаточно написать prompt(). Обязательно в конце нужно поставить круглые
+                    скобки. Внутри скобок может находиться любой текст. Данный текст увидит пользователь, когда будет
+                    вызвана функция.</p>
+                <p>После вызова функции, пользователь может ввести любое значение в текстовое поле, находящееся внутри
+                    всплывающего окна.</p>
+                <p>Мы можем присвоить данную функцию переменной. Значение из поля ввода будет записано как значение
+                    переменной:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const promptText = prompt('Какой-то текст');</p>
+                    <p>console.log(promptText); // “Текст из поля для ввода”</p>
+                </div>
+
+                <div class="main__wrapper-box_blue">
+                    <p>Значение из поля ввода имеет тип string.</p>
+                </div>
+
+                <h2>alert</h2>
+
+                <figure>
+                    <img src="../img/INTFR_6_7_2.png" width="40%" alt="">
+                </figure>
+
+                <p>Это информационное всплывающее окно.</p>
+                <p>После отправки формы, его можно показать с текстом «Ваша заявка принята».</p>
+                <p>Или показывать его при запрете каких-либо действий — «Данная функция вам недоступна».</p>
+
+                <h2>confirm</h2>
+
+                <figure>
+                    <img src="../img/INTFR_6_7_3.png" width="40%" alt="">
+                </figure>
+
+                <p>Данная функция спрашивает пользователя уверен ли он в своих действиях.</p>
+                <p>Она может использоваться при удалении элемента таблицы или списка, перехода на следующий шаг формы.
+                </p>
+                <p>Также как и prompt() мы можем присвоить данную функцию переменной.</p>
+                <p>Если пользователь нажмёт «OK», то значением переменной будет true.</p>
+                <p>При нажатии «Отмена», значением переменной будет false.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const really = confirm("вы точно хотите выйти");</p>
+                    <p>console.log(really);</p>
+                </div>
+
+                <p>Для решения следующих заданий вы можете воспользоваться <a href="https://codesandbox.io/"><span
+                            class="green">сервисом-песочницей</span></a>.</p>
+
+                <h2>Задание 7.1</h2>
+
+                <p>Запросите у пользователя его имя с помощью prompt(). Запишите его в переменную и выведите с помощью
+                    alert фразу «Привет, {имя пользователя}!»</p>
+                <p>Входные данные: Августин</p>
+                <p>Выходные данные: Привет, Августин!</p>
+
+                <blockquote> const userName = prompt('Введите своё имя');</blockquote>
+                <blockquote>alert(`Привет, ${userName}!`);</blockquote>
+
+                <h2>Задание 7.2</h2>
+
+                <p>У нас есть сервис по продаже чего угодно. Попросите пользователя ввести название вещи, которую он
+                    хочет продать. Затем попросите ввести цену за которую он готов расстаться с вещью. После ввода цены
+                    пользователь должен подтвердить данную цену.</p>
+                <p>Входные данные: Шкаф, 3000</p>
+                <p>Выходные данные: true.</p>
+                <blockquote>const thing = prompt('Что вы хотите продать?');</blockquote>
+                <blockquote>const thingPrice = prompt(`За сколько вы хотите продать ${thing}?`);</blockquote>
+                <blockquote>const assurance = confirm(`Вы уверены, что готовы продать ${thing} за ${thingPrice}?`);
+                </blockquote>
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page6.html" class="previous">&laquo; Назад</a>
+                <a href="page8.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page6.html" class="previous round">&#8249;</a>
+                <a href="page8.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+    </div>
+    <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+    <script async src="../script/js.js"></script>
+
+    <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+</body>
+
+</html>

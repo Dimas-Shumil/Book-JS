@@ -1,0 +1,100 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>JS part1</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+            <div class="header__nav-title">
+                <p><strong>8.итоги</strong></p>
+            </div>
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html" title="Введение"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page2.html" title="Програмирование на JavaScript: основы"><span
+                            class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page3.html" title="Логический тип и ветвление"><span
+                            class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page4.html" title="Строки. Числа"><span class="header__nav-ul_link"></span></a>
+                </li>
+                <li><a href="../pages/page5.html"
+                        title="Массивы и базовые методы работы с ними. Практикуемся с командой debugger"><span
+                            class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page6.html" title="циклы"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page7.html" title="Ассоциативные массивы"><span
+                            class="header__nav-ul_link"></span></a></li>
+                <li><a href="#" title="итоги"><span class="header__nav-ul_link"></span></a></li>
+
+            </ul>
+        </nav>
+    </header>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+            <div class="main__wrapper-conteiner">
+                <figure>
+                    <img src="../img/svg/m10_cover_end.svg" width="40%" alt="">
+                </figure>
+
+                <p>Поздравляем с завершением первого модуля по <em>JavaScript</em>! Вы успешно погрузились в изучение
+                    этого
+                    непростого, но крайне занимательного языка.</p>
+                <p>В этом модуле вы:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <ol>
+                        <li>Узнали о том, что такое JavaScript и EcmaScript, в чём отличие между ними;</li>
+                        <li>Овладели базовым синтаксисом языка;</li>
+                        <li>Познакомились с операторами: логическими, циклическими, условными и научились с ними
+                            работать;
+                        </li>
+                        <li>Изучили все примитивные типы данных, а также некоторые сложные структуры: массивы и
+                            ассоциативные массивы, научились применять специальные методы;</li>
+                        <li>Научились работать с консолью браузера, <em>debugger</em>’ом и выбранным окружением, в
+                            котором
+                            написали и запустили свою первую программу.</li>
+                    </ol>
+                </div>
+                <p>Дальше будет ещё интереснее!</p>
+                <div class="main__btn-box">
+                    <a href="page7.html" class="previous">&laquo; Назад</a>
+                    <a href="../../index.html" class="next">Вперед &raquo;</a>
+                </div>
+                <div class="main__btn-box-o">
+                    <a href="page7.html" class="previous round">&#8249;</a>
+                    <a href="../../index.html" class="next round">&#8250;</a>
+                </div>
+            </div>
+        </div>
+
+        <!-- кнопка прокрутки вверх -->
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+    </div>
+    </div>
+    <script async src="../script/js.js"></script>
+</body>
+
+</html>

@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>API браузера</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                3. SVG
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+            <div class="main__wrapper-conteiner">
+                <figure>
+                    <img src="../images/m15_cover_svg.svg" width="45%" alt="">
+                </figure>
+                <div class="main__wrapper-border_green">
+                    <p><span class="green">SVG</span> — язык разметки векторной графики, похожий на HTML, но имеющий
+                        свои теги и свои атрибуты. Также разные CSS свойства действуют на него по-разному.</p>
+                </div>
+                <figure>
+                    <img src="../images/m15_svg_icons.png" width="60%" alt="">
+                    <figcaption>Источник: <a
+                            href="https://lms.skillfactory.ru/xblock/https://www.svgrepo.com/collections/multicolor/5">svgrepo.com</a>
+                    </figcaption>
+                </figure>
+                <div class="main__wrapper-box_grey">
+                    <p>SVG часто используется для иконок и других мелких изображений. Так как это формат векторной
+                        графики, то при масштабировании изображение не теряет в качестве. Но SVG большой детализации
+                        имеют значительно больший размер, чем в привычных форматах (png и других). Также SVG можно
+                        анимировать, благодаря прямому доступу к тегам внутри SVG-картинки.</p>
+                </div>
+                <p>На практике есть два варианта работы с SVG:</p>
+                <blockquote>1. Дизайнер предоставляет готовые иконки, и их надо просто вставить на сайт — это наиболее
+                    частая ситуация.</blockquote>
+                <blockquote>2. Нужно преобразовать SVG-файл или нарисовать с нуля что-то динамичное и эффектное
+                    (например, график) с применением JavaScript.</blockquote>
+                <p>Опыт эксперта:</p>
+                <figure>
+                    <img src="..//images/m15_vova.png" width="50%" alt="">
+                    <figcaption>«Когда-то мне надо было сделать карту России. Её мне выгрузили в формате SVG, а я уже
+                        поверх делал анимацию и тени с выезжающими регионами и перетаскиванием карты».</figcaption>
+                </figure>
+                <hr class="hr">
+                <h3>Основы синтаксиса</h3>
+                <p>SVG-элемент всегда обернут в тег &lsaquo;svg>. Это отправная точка для создания картинки.</p>
+                <div class="main__wrapper-box_grey">
+                    <p>&lsaquo;svg width="400" height="110"> … &lsaquo;/svg></p>
+                </div>
+                <p>SVG резервирует область заданной ширины и высоты и отображает только те элементы, которые вписываются
+                    в данную область. Координаты элементов внутри тега &lsaquo;svg> ведут свой отсчёт от левого верхнего
+                    угла, где x=0 и y=0.</p>
+                <p>Внутри идёт описание контента &lsaquo;svg>.</p>
+                <h2>Основные фигурные теги</h2>
+                <blockquote>&bull;<a href="https://developer.mozilla.org/ru/docs/Web/SVG/Element/rect">&lsaquo;rect> —
+                        Rectangle</a> — прямоугольник.</blockquote>
+                <div class="main__wrapper-box_grey">
+                    <p>&lsaquo;rect x="10" y="10" width="100" height="100"/></p>
+                </div>
+                <p>С помощью атрибутов <span class="blue"> x</span> и <span class="blue"> y</span> задаётся точка начала
+                    отрисовки прямоугольника. Атрибуты <span class="blue"> width</span> и <span class="blue">
+                        height</span> задают размеры прямоугольника.</p>
+                <blockquote>>&bull; <a
+                        href="https://developer.mozilla.org/ru/docs/Web/SVG/Element/circle">&lsaquo;circle> — Circle</a>
+                    — круг.</blockquote>
+                <div class="main__wrapper-box_grey">
+                    <p>&lsaquo;circle cx="60" cy="60" r="50"/></p>
+                </div>
+                <p>С помощью атрибутов cx и cy задаётся точка центра круга. Атрибут r задаёт радиус круга.</p>
+                <blockquote>&bull; <a
+                        href="https://developer.mozilla.org/ru/docs/Web/SVG/Element/ellipse">&lsaquo;ellipse> —
+                        Ellipse</a> — эллипс.</blockquote>
+                <div class="main__wrapper-box_grey">
+                    <p>&lsaquo;ellipse cx="100" cy="50" rx="100" ry="50" /></p>
+                </div>
+                <p>С помощью атрибутов cx и cy задаётся точка центра эллипсиса. Атрибут rx задаёт радиус круга по оси X.
+                    Атрибут ry задаёт радиус круга по оси Y.</p>
+                <blockquote>&bull; <a href="https://developer.mozilla.org/ru/docs/Web/SVG/Element/line">&lsaquo;line> —
+                        Line</a> — линия.</blockquote>
+                <div class="main__wrapper-box_grey">
+                    <p>&lsaquo;line x1="0" y1="80" x2="100" y2="20" stroke="black" /></p>
+                </div>
+                <p>С помощью атрибутов x1 и y1 задаётся точка начала линии, с помощью x2 и y2 задаётся точка конца
+                    линии. Атрибут stroke задаёт цвет границ линий. Также можно использовать атрибут style.</p>
+                <blockquote>&bull; <a
+                        href="https://developer.mozilla.org/ru/docs/Web/SVG/Element/polyline">&lsaquo;polyline> —
+                        Polyline</a> — кривая линия.</blockquote>
+                <div class="main__wrapper-box_grey">
+                    <p>&lsaquo;polyline points="0,100 50,25 50,75 100,0" /></p>
+                </div>
+                <p>С помощью атрибута points можно задать набор точек, по которым будет проходить линия. Точка состоит
+                    из пары чисел, разделённых запятой. Точки разделяются пробелом. Первая точка — начало линии,
+                    последняя — конец.</p>
+                <blockquote>&bull; <a
+                        href="https://developer.mozilla.org/ru/docs/Web/SVG/Element/polygon">&lsaquo;polygon> —
+                        Polygon</a> — трёх и более сторонняя фигура.</blockquote>
+                <div class="main__wrapper-box_grey">
+                    <p>&lsaquo;polygon points="0,100 50,25 50,75 100,0" /></p>
+                </div>
+                <p>Работает так же, как polyline, только соединяет начальную и конечную точку.</p>
+                <blockquote>&bull; <a href="https://developer.mozilla.org/ru/docs/Web/SVG/Element/path">&lsaquo;path> —
+                        Path</a> — построение любых элементов на основе траектории.</blockquote>
+                <hr class="hr">
+                <h2>Теги и атрибуты</h2>
+                <p><a href="https://developer.mozilla.org/ru/docs/Web/SVG/Element">Список всех SVG-тегов</a></p>
+                <p>Также у тегов есть атрибуты. Некоторые работают аналогично атрибутам в HTML, но есть и уникальные.
+                </p>
+                <div class="main__wrapper-box_grey">
+                    <p>&lt;svg width="400" height="110"></p>
+                    <blockquote>&lt;rect width="300" height="100" style="fill:red;" /></blockquote>
+                    <p>&lt;/svg></p>
+                </div>
+                <p><a href="https://developer.mozilla.org/ru/docs/Web/SVG/Attribute">Список всех SVG-атрибутов</a></p>
+                <p><a href="https://codepen.io/vvysokiy/pen/JjGprEJ">Пример построение графика с помощью SVG в
+                        codepen.io</a></p>
+                <h2>Добавление SVG-иконок в HTML</h2>
+                <p>Когда вы работаете с макетами с Figma, Zeplin и другими, вы можете выгрузить иконки в формате SVG.
+                    Для примера мы возьмём <a href="https://icons.getbootstrap.com/icons/arrow-clockwise/">иконку из
+                        Bootstrap</a>.</p>
+                <p><a href="https://codepen.io/vvysokiy/pen/BajzzLR">Пример работы с SVG иконкой в codepen.io</a></p>
+                <hr class="hr">
+                <h2>Задание 10.3.1</h2>
+                <p>Какой вид графики представляет из себя SVG?</p>
+                <blockquote>Векторная</blockquote>
+                <hr class="hr">
+                <h2>Задание 10.3.2</h2>
+                <p>Где находится точка начала координат (x1=0; y1=0) у SVG?</p>
+                <blockquote>Левый верхний угол</blockquote>
+                <hr class="hr">
+                <h2>Практика</h2>
+                <figure>
+                    <img src="../images/m10_homework.svg" width="45%" alt="">
+                </figure>
+                <h3>Задание 1.</h3>
+                <p>Сверстайте кнопку, которая будет содержать в себе <a href="https://icons.getbootstrap.com/icons/arrow-down-left-circle/">icon_01</a> (как в примере в последнем видео). При клике на кнопку иконка должна меняться на <a href="https://icons.getbootstrap.com/icons/arrow-down-left-circle-fill/">icon_02</a>. Повторный клик меняет иконку обратно.</p>
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page2.html" class="previous">&laquo; Назад</a>
+                <a href="page4.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page2.html" class="previous round">&#8249;</a>
+                <a href="page4.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

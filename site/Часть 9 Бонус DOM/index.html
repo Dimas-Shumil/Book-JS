@@ -1,0 +1,310 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="site/css/sass.css">
+    <title>Бонус DOM</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                1. Введение
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page8.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="site/pages/page9.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <p>В прошлом модуле вы познакомились с асинхронным программированием. Научились делать запросы на
+                    сторонний API, создали свои первые промисы и отловили первые события на DOM-элементах.</p>
+                <p>А также вы самостоятельно сделали галерею с картинками и попрактиковались в добавлении элементов в
+                    разметку.</p>
+                <p>Хватит ли этих знаний для создания конкурентоспособных сайтов? Пока нет.</p>
+                <p>Давайте представим, что вы фронтенд-разработчик сайта про кино. В команду прилетела задача: создать
+                    выпадающее окно поиска.</p>
+                <p>Функции такие:</p>
+                <blockquote>1. Когда пользователь что-то нажимает на поле ввода — появляется окно.</blockquote>
+                <blockquote>2. Параллельно в окне появляются подсказки: фильмы, актёры и режиссёры. Они основываются на
+                    том, что вводит пользователь и меняются с каждой буквой.</blockquote>
+                <blockquote>3. Если пользователь кликнет вне этого окошка — оно закроется.</blockquote>
+                <p>Пока что с имеющимися знаниями реализовать эту фичу у вас не получится. Тут нужно уметь работать с
+                    addEventListener. Обрабатывать ситуации, когда пользователь вводит что-то в инпуты или кликает
+                    мышкой в разных частях страницы.</p>
+
+                <figure>
+                    <img src="site/images/asset-v1_SkillFactory+INTFR+2023+type@asset+block@INTFR_10_1.png" width="90%"
+                        alt="">
+                    <figcaption>Окно с результатами поиска на Kinopoisk.ru
+                        Источник: <a href="https://www.kinopoisk.ru/"><span class="green">kinopoisk.ru</span></a>
+                    </figcaption>
+                </figure>
+                <p>Или другой пример. Вы — часть команды сервиса по поиску и аренде жилья. На ближайшую неделю вы должны
+                    создать меню для сайта, которое появляется по нажатии на кнопку.</p>
+                <p>Это меню:</p>
+                <blockquote>1. Появляется по клику кнопки.</blockquote>
+                <blockquote>2. Содержит ссылки, которые ведут на авторизацию, регистрацию, страницу с помощью и так
+                    далее.</blockquote>
+                <blockquote>3. Исчезает по нажатии на любое другое место.</blockquote>
+                <p>Здесь похожая история. Выполнить это задание можно только в том случае, если вы освоили слушатели
+                    событий и разобрались, какое событие отвечает за отправку данных из формы.</p>
+
+                <figure>
+                    <img src="site/images/asset-v1_SkillFactory+INTFR+2023+type@asset+block@INTFR_10_11 (2).png"
+                        width="90%" alt="">
+                    <figcaption>Меню на Airbnb
+                        Источник: <a
+                            href="https://www.airbnb.ru/?_set_bev_on_new_domain=1727756893_EANTAwMGJkODU0Nz"><span
+                                class="green"> airbnb.com</span></a>
+                    </figcaption>
+                </figure>
+
+                <p>Наконец, третий пример. Вы блестяще прошли курс и пригласил вас на работу. Теперь вы — часть команды
+                    разработки.</p>
+                <p><b>Текущая задача:</b> создать форму, по которой потенциальные ученики смогут оставить свои контакты.
+                    По этим контактам менеджеры свяжутся с клиентами и предложат курсы.</p>
+                <p>Вот параметры формы, которую вы должны реализовать:</p>
+                <blockquote>1. Каждое поле проходит валидацию, когда нажимается кнопка «Отправить» или кнопка Enter на
+                    клавиатуре.</blockquote>
+                <blockquote>2. Если одно из полей эту валидацию не проходит — данные не отправляются. Пользователь
+                    видит, какие из полей нужно заполнить корректно.</blockquote>
+                <blockquote>3. Если все поля правильные, то данные отправляются, а пользователь получает оповещение об
+                    этом.</blockquote>
+                <p>В этом случае вы, как разработчик, должны уметь получать значение из полей ввода, валидировать его и
+                    разрешать или не разрешать отправку данных.</p>
+
+                <figure>
+                    <img src="site/images/asset-v1_SkillFactory+INTFR+2023+type@asset+block@INTFR_10_15.png" width="90%"
+                        alt="">
+                </figure>
+
+                <p>Плохая новость: пока что у вас нет тех знаний, благодаря которым эти фичи будут внедрены в проект.
+                </p>
+                <p>Хорошая новость: они появятся после того, как вы пройдёте этот модуль.</p>
+                <p>В нём вы:</p>
+                <blockquote>&bull; Научитесь доставать элементы из разметки разными способами. Например, с помощью
+                    getElementById, getElementsByClassName и так далее. Это позволит управлять любым элементом из JS и
+                    менять его свойства, не изменяя сам HTML или CSS.</blockquote>
+                <blockquote>&bull; Попрактикуетесь в создании и удалении элементов из разметки, чтобы добавлять сайту
+                    динамику. Динамический сайт может обновлять контент на странице без необходимости полной
+                    перезагрузки. Это необходимо для работы с быстро меняющейся информацией. Например, с актуальными
+                    новостями, индексом ценных бумаг, статусом заказов.</blockquote>
+                <blockquote>&bull; Узнаете, как манипулировать стилями элементов из JS. Изменение стилей элементов из
+                    JavaScript позволяет реагировать на действия пользователя. Вы сможете менять стили элементов при
+                    наведении курсора, клике, фокусе и других событиях. Например, добавлять анимированный эффект при
+                    наведении курсора на кнопку, чтобы привлечь внимание пользователя.</blockquote>
+                <blockquote>&bull; Освоите работу с классами элементов с помощью свойства classList. Сможете управлять
+                    видимостью элементов на странице, создавать сложные анимации и менять стили элементов в зависимости
+                    от действий пользователя.</blockquote>
+                <blockquote>&bull; Научитесь получать и менять размеры элементов прямо из скрипта. Вы можете вычислять
+                    размеры элементов, определять их соотношение или находить расстояния между ними. Это может быть
+                    полезно при разработке интерактивных графиков, диаграмм, игр и других приложений.</blockquote>
+                <blockquote>&bull; Более плотно поработаете с событиями и инструментом addEventListener. Сможете
+                    обрабатывать разные события пользователя. Например, отправку данных из формы, валидацию значений в
+                    инпутах. Научитесь создавать логику для скролла страницы.</blockquote>
+                <p>С этими навыками вы сможете создавать привлекательные, удобные, конкурентоспособные сайты.</p>
+                <p>Но сначала, как всегда, предлагаем освежить знания из предыдущего модуля и пройти небольшой тест.</p>
+                <hr class="hr">
+            </div>
+
+            <h2>Упражнение 1.1</h2>
+
+            <p>верные утверждения.</p>
+            <blockquote>Асинхронные задачи делегируются на Web API.</blockquote>
+            <hr class="hr">
+
+            <h2>Упражнение 1.2</h2>
+
+            <p>Как называется место, в котором отслеживаются вызовы функций?</p>
+            <blockquote>стек вызовов</blockquote>
+            <hr class="hr">
+
+            <h2>Упражнение 1.3</h2>
+
+            <p>Какой блок: try, catch или finally, отработает при выполнении этого кода при условии, что запрос прошёл
+                успешно и его статус 200? Если блоков несколько, запишите их через запятую.</p>
+            <blockquote>
+                <div class="main__wrapper-box_grey">
+                    <p>async function fetchUsers() {</p>
+                    <blockquote>try {</blockquote>
+                    <blockquote>const res = await fetch('https://jsonplaceholder.typicode.com/users');</blockquote>
+                    <blockquote>if (!res.ok) {</blockquote>
+                    <blockquote>
+                        <blockquote>throw new Error('Ошибка!')</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <blockquote>const data = await res.json();</blockquote>
+                    <blockquote>if (data) {</blockquote>
+                    <blockquote>
+                        <blockquote>data.forEach(elem => {
+                            <blockquote>console.log(elem.name)</blockquote>
+                        </blockquote>
+                    </blockquote>
+                    <blockquote>
+                        <blockquote>})</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <blockquote>} catch (e) {</blockquote>
+                    <blockquote>
+                        <blockquote>console.log(e.message)</blockquote>
+                    </blockquote>
+                    <blockquote>} finally {
+                        <blockquote>console.log('Запрос завершён!')</blockquote>
+                        }
+                    </blockquote>
+                    <p>}</p>
+                    <p>fetchUsers();</p>
+                </div>
+            </blockquote>
+            <blockquote><b>try, finally</b></blockquote>
+            <hr class="hr">
+
+            <h2>Упражнение 1.4</h2>
+
+            <p>Напишите метод промисов, который должен быть использован в этом коде.</p>
+            <blockquote>
+                <div class="main__wrapper-box_grey">
+                    <p>const promiseTimeout = (num, delay) => {</p>
+                    <blockquote>return new Promise((resolve) => {</blockquote>
+                    <blockquote>
+                        <blockquote>setTimeout(() => {
+                            <blockquote>resolve(`Я - ${num}! Но пришел первым!`)</blockquote>
+                            }, delay)
+                        </blockquote>
+                        })
+                    </blockquote>
+                    <p>}</p>
+                    <p>const promise1 = promiseTimeout('Первый', 4000);</p>
+                    <p>const promise2 = promiseTimeout('Второй', 2000);</p>
+                    <p>const promise3 = promiseTimeout('Третий', 1000);</p>
+                    <p>Promise.____([promise1, promise2, promise3]).then((res) => console.log(res));</p>
+                </div>
+            </blockquote>
+            <blockquote><b>race</b></blockquote>
+            <hr class="hr">
+
+            <h2>Упражнение 1.5</h2>
+
+            <p>В чём отличие setTimeout от setInterval? Выберите все правильные ответы.</p>
+            <blockquote>setTimeout можно отменить с помощью метода clearTimeout, а setInterval — методом clearInterval;
+            </blockquote>
+            <hr class="hr">
+
+            <h2>Упражнение 1.6</h2>
+
+            <p>Запишите правильную последовательность того, как строчки выведутся в консоль.</p>
+            <blockquote>
+                <div class="main__wrapper-box_grey">
+                    <p>setTimeout(() => {</p>
+                    <blockquote>console.log('Таймаут!')</blockquote>
+                    <p>}, 0);</p>
+                    <p>const pr = Promise.resolve('Промис выполнен.');</p>
+                    <p>console.log('Первый лог в консоль.');</p>
+                    <p>console.log('Второй лог в консоль.');</p>
+                    <p>pr.then(res => console.log(res))</p>
+                </div>
+                <p>1. Таймаут!</p>
+                <p>2. Промис выполнен.</p>
+                <p>3. Первый лог в консоль.</p>
+                <p>4. Второй лог в консоль.</p>
+                <blockquote>Ответ впишите через запятую.</blockquote>
+                <p><b><span class="green"> 3,4,2,1</span></b></p>
+            </blockquote>
+            <hr class="hr">
+
+            <h2>Упражнение 1.7</h2>
+
+            <p>Выберите макрозадачи.</p>
+            <blockquote><input type="checkbox"> событие по клику;</blockquote>
+            <blockquote><input type="checkbox"> setInterval;</blockquote>
+            <hr class="hr">
+
+            <h2>Упражнение 1.8</h2>
+
+            <p> Заполните пропуски в коде.</p>
+            <blockquote>
+                <div class="main__wrapper-box_grey">
+                    <p>const btn = document.___________('.btn');</p>
+                    <p>const text = document.querySelector('.text');</p>
+                    <p>btn.________('click', (___) => {</p>
+                        <blockquote>e._______Default();</blockquote>
+                        <blockquote>text.________ = "Кнопка нажата.";</blockquote>
+                    <p>})</p>
+                </div>
+                <p></p>1.</p>
+                <blockquote>querySelector <span class="green">&#10004;</span></blockquote>
+                <p>2.</p>
+                <blockquote>addEventListener <span class="green">&#10004;</span></blockquote>
+                <p>3.</p>
+                <blockquote>e <span class="green">&#10004;</span></blockquote>
+                <p>4.</p>
+                <blockquote>prevent <span class="green">&#10004;</span></blockquote>
+                <p>5.</p>
+                <blockquote>textContent <span class="green">&#10004;</span></blockquote>
+            </blockquote>
+
+
+
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="site/pages/page9.html" class="previous">&laquo; Назад</a>
+                <a href="site/pages/page2.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="site/pages/page9.html" class="previous round">&#8249;</a>
+                <a href="site/pages/page2.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="site/script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

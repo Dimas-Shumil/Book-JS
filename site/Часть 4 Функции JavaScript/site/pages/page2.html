@@ -1,0 +1,141 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Функции JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                2. Функции без параметров
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html" class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page9.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <figure>
+                    <img src="../images/m11_cover_function1.svg" width="50%" alt="">
+                </figure>
+
+                <p>Что такое функция</p>
+                <hr class="hr">
+
+                <p>Вспомним аналогию с магазином мобильных телефонов. Продавец, скорее всего, не носит с собой
+                    калькулятор, чтобы постоянно подсчитывать налоги на товар и финальную стоимость всех покупок.
+                    Поэтому в каждом магазине есть кассовые аппараты, которые выполняют эти функции за продавцов.</p>
+                <p>Так и в вашей программе будут повторяющиеся куски кода, которые возвращают какой-то результат.
+                    Функции дают названия секциям кода, которые будет удобно вызвать по имени. </p>
+
+                <div class="main__wrapper-border_box">
+                    <p>Функция — это блок программного кода, который определяется один раз и может выполняться
+                        (вызываться) многократно.</p>
+                </div>
+
+                <p>Функция в JavaScript — это объект, который может быть вызван как подпрограмма.</p>
+
+                <p><strong>ВАЖНО!</strong> Все функции в JavaScript — это объекты!</p>
+
+                <p>В дополнение к своим свойствам функция содержит исполняемый код и определённое состояние, которые
+                    определяют поведение функции при вызове.</p>
+                <p>JavaScript имеет множество встроенных функций, например console.log, alert, prompt, с которыми вы
+                    познакомились в предыдущем модуле:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>console.log('hello');</p>
+                </div>
+                <p>Чтобы объявить свою функцию, используется ключевое слово function:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>function funcName() {</p>
+                    <blockquote>const str = 'My first function';</blockquote>
+                    <blockquote>console.log(str);</blockquote>
+                    <p>}</p>
+                </div>
+                <p>После function идёт имя функции funcName, круглые скобки и тело функции в фигурных скобках { // code
+                    }.</p>
+                <p>Чтобы вызвать функцию, надо использовать её имя и круглые скобки:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>funcName()</p>
+                </div>
+                <hr>
+
+                <h2>Практика</h2>
+                <hr class="hr">
+                <figure>
+                    <img src="../images/m10_homework.svg" width="50%" alt="">
+                </figure>
+
+                <h3>Задание 1.</h3>
+                <p>В прошлом модуле в разделе «Циклы» вы выполняли следующее задание:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>Дан массив. Нужно вывести в консоль количество чётных и нечётных элементов в массиве. Если в
+                        массиве есть нулевой элемент, то он учитывается и выводится отдельно.</p>
+                    <p>При выполнении задания необходимо учесть, что массив может содержать не только числа, но и,
+                        например, знаки, null и так далее.</p>
+                </div>
+                <p>На этот раз оформите решение в виде функции, постарайтесь дать этой функции корректное название,
+                    вызовите функцию, проанализируйте синтаксис.</p>
+
+
+
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="../../index.html" class="previous">&laquo; Назад</a>
+                <a href="page3.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="../../index.html" class="previous round">&#8249;</a>
+                <a href="page3.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+    </div>
+</body>
+
+</html>

@@ -1,0 +1,183 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>API браузера</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                4. Canvas
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page9.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+                <figure>
+                    <img src="../images/m15_canvas.svg" width="45%" alt="">
+                </figure>
+                <div class="main__wrapper-border_green">
+                    <p><span class="green"> Canvas</span> — это инструмент для создания графики на JavaScript. Он
+                        состоит из тега &lt;canvas>, который реализует блок (полотно), внутри которого можно отрисовать
+                        графические элементы. Внутри тега &lt;canvas> можно реализовывать графики, анимации, фотографии
+                        (и их анимирование) и другие сложные графические элементы.</p>
+                </div>
+                <p>Первый этап — это вставка тега &lt;canvas>:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>&lt;canvas id="canvas" width="300" height="300">&lt;/canvas></p>
+                </div>
+                <p>Хорошей практикой является задавать ширину и высоту вашего холста, так как всё, что происходит внутри
+                    тега canvas, живёт отдельно от остальной HTML-страницы.</p>
+                <p>Далее идёт работа с JavaScript. Необходимо выбрать контекст исполнения canvas. Для этого существует
+                    метод <a
+                        href="https://developer.mozilla.org/ru/docs/Web/API/HTMLCanvasElement/getContext">getContext</a>.
+                </p>
+                <div class="main__wrapper-box_grey">
+                    <p>const canvas = document.getElementById("canvas");</p>
+                    <p>const ctx = canvas.getContext("2d");</p>
+                </div>
+                <p>В данном случае мы объявили контекст 2d. Он создаёт объект <a
+                        href="https://developer.mozilla.org/ru/docs/Web/API/CanvasRenderingContext2D">CanvasRenderingContext2D</a>,
+                    представляющий двумерный контекст для рисования 2D графики. Есть и другие, более сложные контексты,
+                    но они используются намного реже. Для освоения навыков рисования ими необходимо много времени и
+                    погружение в нюансы технологии. Мы будем разбирать только контекст 2d.</p>
+                <div class="main__wrapper-border_green">
+                    <p><span class="green"> "2d" холст</span> представляет собой координатную плоскость. Устанавливая
+                        width и height, мы задаём размер координатной плоскости. Обычно 1 единица плоскости — это 1
+                        пиксель. Начало координат располагается в левом верхнем углу полотна.</p>
+                </div>
+                <p>Для примера возьмём реализацию квадрата в canvas:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>ctx.strokeRect(10, 20, 30, 40);</p>
+                </div>
+                <p>Эта запись говорит о следующем:</p>
+                <ol>
+                    <li>Отступаем 10 единиц слева и 20 единиц вниз от точки начала координат;</li>
+                    <li>Фигура будет иметь длину 30 единиц по оси X и 40 по оси Y.</li>
+                </ol>
+                <hr class="hr">
+
+                <h3>Методы для рисования</h3>
+                <p>Для рисования внутри 2D холста есть множество методов. Мы рассмотрим некоторые из них.</p>
+                <ol>
+                    <li><span class="green">Прямоугольники</span> (самая простая фигура);</li>
+                    <li><span class="green">Контуры</span> (механизм реализации всех остальных фигур).</li>
+                </ol>
+                <p>Для прямоугольников существуют <b>два метода:</b></p>
+                <div class="main__wrapper-box_grey">
+                    <p>// Полый прямоугольник</p>
+                    <p>ctx.strokeStyle = "yellow"; // Цвет границ прямоугольника</p>
+                    <p>ctx.strokeRect(10, 20, 30, 40); // Метод отрисовки полого прямоугольника</p>
+                    <p>// Залитый прямоугольник</p>
+                    <p>ctx.fillStyle = "green"; // Цвет залитого прямоугольника</p>
+                    <p>ctx.fillRect(70, 10, 50, 50); // Метод отрисовки залитого прямоугольника</p>
+                </div>
+                <p><a href="https://codepen.io/vvysokiy/pen/RwrQjgb">Работа с прямоугольниками в codepen.io</a></p>
+                <div class="main__wrapper-border_green">
+                    <p><span class="green"> Контур</span> — это набор точек, которые, соединяясь в отрезки линий, могут
+                        образовывать различные фигуры, изогнутые или прямые, разной ширины и разного цвета.</p>
+                </div>
+                <p>Создание фигур с использованием контура происходит в несколько важных шагов:</p>
+                <ol>
+                    <li>Сначала вы создаёте контур.</li>
+                    <li>Затем, используя команды рисования, рисуете контур.</li>
+                    <li>Потом закрываете контур.</li>
+                    <li>Созданный контур вы можете обвести или залить для его отображения.</li>
+                </ol>
+                <p>Нарисуем треугольник с помощью контура:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>ctx.beginPath(); // Создаёт новый контур</p>
+                    <p>ctx.moveTo(75,50); // Перемещает перо в точку с координатами x и y</p>
+                    <p>ctx.lineTo(100,75); // Рисует линию с текущей позиции до позиции, определённой x и y</p>
+                    <p>ctx.lineTo(100,25);</p>
+                    <p>ctx.fillStyle = "green"; // Заливаем выбранным цветом фигуру</p>
+                    <p>ctx.fill(); // Рисует фигуру с заливкой внутренней области.</p>
+                </div>
+                <p><a href="https://codepen.io/vvysokiy/pen/gOPvGJN">Работа с контуром в codepen.io</a></p>
+                <div class="main__wrapper-box_grey">
+                    <p>Перечисленные выше инструменты показывают основы и возможности инструмента canvas. Canvas — это
+                        очень большая технология. Изучение всех её аспектов занимает много времени и требует понимания
+                        разных областей.</p>
+                    <p>Но изученные инструменты уже сейчас позволят вам добавлять определённые фигуры и делать небольшие
+                        графики.</p>
+                </div>
+                <hr class="hr">
+                <h2>Задание 10.4.1</h2>
+                <p>Для чего используется canvas?</p>
+                <blockquote>Для графиков</blockquote>
+                <blockquote>Для фотографий</blockquote>
+                <hr class="hr">
+                <h2>Задание 10.4.2</h2>
+                <p>Для чего используется SVG?</p>
+                <blockquote>Для иконок</blockquote>
+                <blockquote>Для графиков</blockquote>
+                <hr class="hr">
+
+
+            </div>
+
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page3.html" class="previous">&laquo; Назад</a>
+                <a href="page5.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page3.html" class="previous round">&#8249;</a>
+                <a href="page5.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

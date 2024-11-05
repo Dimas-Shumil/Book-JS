@@ -1,0 +1,266 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>JS part1</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+            <div class="header__nav-title">
+                <p><strong>6.Циклы</strong></p>
+            </div>
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html" title="Введение"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page2.html" title="Програмирование на JavaScript: основы"><span
+                            class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page3.html" title="Логический тип и ветвление"><span
+                            class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page4.html" title="Строки. Числа"><span class="header__nav-ul_link"></span></a>
+                </li>
+                <li><a href="../pages/page5.html"
+                        title="Массивы и базовые методы работы с ними. Практикуемся с командой debugger"></a>
+                </li>
+                <li><a href="#" title="циклы"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page7.html" title="Ассоциативные массивы"><span
+                            class="header__nav-ul_link"></span></a></li>
+                <li><a href="../pages/page8.html" title="итоги"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#" title="обратная связь"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+        </div>
+
+        <div class="main">
+            <div class="main__wrapper">
+                <div id="mySidenav" class="sidenav">
+                    <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                    <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                    <a href="#">Часть 2 Введение в JavaScript</a>
+                    <a href="#">Часть 3 Введение в JavaScript</a>
+                    <a href="#">Часть 4 Функции JavaScript</a>
+                    <a href="#">часть 5 Функции и объекты JavaScript</a>
+                    <a href="#">часть 6 JavaScript Объекты</a>
+                    <a href="#">Часть 7 JavaScript DOM</a>
+                    <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                    <a href="#">Часть 9 Бонус DOM</a>
+                    <a href="#">Часть 10 AJAX</a>
+                    <a href="#">Часть 12 Тестирование JS</a>
+                    <a href="#">Часть11 API браузера</a>
+                </div>
+                <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+                <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+                <div class="main__wrapper-conteiner">
+
+                    <figure>
+                        <img src="../img/svg/m10_cover_cycle.png" width="40%" alt="">
+                    </figure>
+
+                    <p>Представим, вы выбрали смартфон в магазине и пошли на кассу, где оказалась очередь. Продавцу
+                        необходимо
+                        поочередно обработать заявку каждого покупателя, то есть он выполняет одно и то же действие
+                        несколько
+                        раз, пока не кончится очередь. Для автоматизации множества одинаковых действий в
+                        программировании
+                        придумали <strong>циклы</strong>.
+                    </p>
+
+                    <div class="main__wrapper-border_green">
+                        <p>
+                            <span class="green">Циклом</span> называется многократное выполнение одних и тех
+                            же
+                            действий. Например, чтобы программа
+                            сосчитала от 1, скажем, до миллиона, в ней нужно записать цикл. Цикл — это та часть кода
+                            программы,
+                            которая выполняется заданное количество раз. У цикла, как правило, есть условие выхода
+                            (когда он
+                            должен завершиться).
+                        </p>
+                    </div>
+
+                    <p>В JavaScript, как и в других языках программирования, есть три вида циклов:</p>
+
+                    <p>&#10148;<strong> for</strong></p>
+                    <p>&#10148;<strong>while</strong></p>
+                    <p>&#10148;<strong>do...while</strong></p>
+
+                    <p>Каждый из них обособляется фигурными скобками. Пойдём по порядку.</p>
+
+                    <h3>1. Цикл for</h3>
+
+                    <p>Это самый популярный цикл.</p>
+                    <p><strong>Синтаксис:</strong></p>
+
+                    <div class="main__wrapper-box_grey">
+                        <p>for ([initialization]; [condition]; [incrementExpression]) {</p>
+                        <blockquote>Statement</blockquote>
+                        <p>}</p>
+                    </div>
+                    <p>Statement внутри тела цикла (всё, что заключено в фигурные скобки) выполняется, если выражение
+                        condition
+                        возвращает true.</p>
+                    <p>IncrementExpression выполняется каждую итерацию.</p>
+                    <p><strong>Порядок действий:</strong></p>
+                    <blockquote>// Инициализировали переменную i, которая является счётчиком</blockquote>
+                    <blockquote>// Объявили условие выхода из цикла i &lt; 10</blockquote>
+                    <blockquote>// Написали выражение, которое будет менять шаг цикла (инкремент)</blockquote>
+
+                    <div class="main__wrapper-box_grey">
+                        <p>for (let i = 0; i &lt; 10; i = i + 1) {</p>
+                        <p>console.log(i)</p>
+                        <p>}</p>
+                    </div>
+                    <p>Если условие ложно, то ничего не выводится.</p>
+                    <p>Вот так можно создать бесконечный цикл, который никогда не завершится:</p>
+
+                    <div class="main__wrapper-box_grey">
+                        <p>for (;;) {</p>
+                        <p> console.log('infinity loop')</p>
+                        <p>}</p>
+                    </div>
+
+                    <h3>2. Цикл while</h3>
+
+                    <p>While — цикл с предусловием. Не такой популярный как for, но иногда используется.</p>
+                    <p><strong>Синтаксис:</strong></p>
+
+                    <div class="main__wrapper-box_grey">
+                        <p>while (condition) {</p>
+                        <p>Statement</p>
+                        <p>}</p>
+                    </div>
+
+                    <p>Statement выполняется до тех пор, пока выражение condition возвращает true.</p>
+
+                    <div class="main__wrapper-box_grey">
+                        <p>let i = 0;</p>
+                        <p>while (i &lt; 10) {</p>
+                        <blockquote>i = i + 1</blockquote>
+                        <blockquote>console.log(i)</blockquote>
+                        <p>}</p>
+                    </div>
+
+                    <p>Если условие ложно, ничего не выводится.</p>
+                    <p>Бесконечный цикл:</p>
+
+                    <div class="main__wrapper-box_grey">
+                        <p>while (true) {</p>
+                        <p>console.log('infinity loop')</p>
+                        <p>}</p>
+                    </div>
+
+                    <h2>Цикл do...while</h2>
+
+                    <p>Используется редко. Этот цикл называется «циклом с постусловием». Особенность в том, что он
+                        выполнится по
+                        крайней мере один раз, даже если условие ложно.</p>
+
+                    <div class="main__wrapper-box_grey">
+                        <p>let i = 0;</p>
+                        <p>do {</p>
+                        <blockquote>i = i + 1</blockquote>
+                        <blockquote>console.log(i)</blockquote>
+                        <p>} while (i &lt; 10)</p>
+                    </div>
+
+                    <p>Выводятся числа от 1 до 10. </p>
+                    <p>Бесконечный цикл:</p>
+
+                    <div class="main__wrapper-box_grey">
+                        <p>do {</p>
+                        <blockquote>console.log('infinity loop')</blockquote>
+                        <p>} while (true)</p>
+                    </div>
+
+                    <p>
+                        Помимо вышеперечисленных, в <em>JavaScript</em> также есть и специфичные циклы: for..of и
+                        for..in.
+                        Их мы
+                        рассмотрим в дальнейших уроках.
+                    </p>
+
+                    <h2>Альтернатива циклам</h2>
+
+                    <p>Кроме этого, существует специальный метод массива .forEach(), который является мутирующим методом
+                        массива, а также метод .map(), который является немутирующим (его мы рассмотрели ранее).</p>
+                    <p>Они могут заменить классические циклы при работе с массивами. Какой из них выбрать, зависит от
+                        задачи
+                        и
+                        ожидаемого результата.</p>
+                    <p><strong>Метод .forEach(cb)</strong></p>
+                    <p>Он принимает функцию как аргумент и ничего не возвращает. Если внутри cb изменять элементы, то
+                        исходный
+                        массив также будет изменён.</p>
+
+                        <div class="main__wrapper-box_grey">
+                        <p>arr.forEach(function(item, index, array) {</p>
+                        <p>// возвращается новое значение вместо элемента</p>
+                        <p>});</p>
+                    </div>
+
+                    <p><strong>Где:</strong></p>
+                    <blockquote><em>item</em> — очередной элемент массива,</blockquote>
+                    <blockquote><em>index</em> — его индекс,</blockquote>
+                    <blockquote><em>array</em> — сам массив</blockquote>
+
+                    <hr class="hr">
+
+                    <p><strong>Задание</strong></p>
+
+                    <p>Впишите в поле результат, который выведет консоль на это действие:</p>
+
+                    <div class="main__box-list__text">
+                        <p>let arr = [1,2,3]</p>
+                        <p>arr.forEach(function(item, index, array) {</p>
+                        <blockquote>console.log(item)</blockquote>
+                        <p>});</p>
+                    </div>
+                    <p>Ответ</p>
+                    <blockquote><strong>123</strong></blockquote>
+
+                    <h2>Практика</h2>
+
+                    <figure>
+                        <img src="../img/svg/m10_homework (3).svg" width="45%" alt="">
+                    </figure>
+
+                    <h3>Задание 6.</h3>
+
+                    <p>Дан массив. Проверить, одинаковые ли элементы в массиве и вывести результат <em>true</em> или
+                        <em>false</em> в консоль.
+                        Речь идёт не о двух рядом стоящих одинаковых элементах, а обо всех. Проверить, все ли элементы в
+                        массиве
+                        одинаковые.
+                    </p>
+
+                    <h3>Задание 7.</h3>
+
+                    <p>Дан массив. Нужно вывести в консоль количество чётных и нечётных элементов в массиве. Если в
+                        массиве
+                        есть
+                        нулевой элемент, то он учитывается и выводится отдельно.
+
+                        При выполнении задания необходимо учесть, что массив может содержать не только числа, но и,
+                        например,
+                        знаки, null и так далее.</p>
+                    <p>При возникновении проблем по ходу решения вы всегда можете обратиться к ментору в Slack</p>
+                </div>
+                <!-- button -->
+                <div class="main__btn-box">
+                    <a href="page5.html" class="previous">&laquo; Назад</a>
+                    <a href="page7.html" class="next">Вперед &raquo;</a>
+                </div>
+                <div class="main__btn-box-o">
+                    <a href="page5.html" class="previous round">&#8249;</a>
+                    <a href="page7.html" class="next round">&#8250;</a>
+                </div>
+                <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+            </div>
+        </div>
+        <script async src="../script/js.js"></script>
+</body>
+
+</html>

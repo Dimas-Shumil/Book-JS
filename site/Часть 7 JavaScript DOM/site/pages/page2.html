@@ -1,0 +1,231 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>DOM</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                2. Возможности JavaScript в браузере
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html" class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <figure>
+                    <img src="../images/m13_cover_browser.svg" width="50%" alt="">
+                </figure>
+
+                <h2>Работа с DevTools</h2>
+                <hr class="hr">
+
+                <p>Если цитировать документацию, то «<span class="green">Инструменты разработчика</span> (от англ.
+                    development tools или сокращённо DevTools) — это программы, которые позволяют создавать, тестировать
+                    и отлаживать (debug) программное обеспечение».</p>
+                <p>Современные браузеры имеют встроенные инструменты разработчика, позволяющие просмотреть исходный код
+                    сайта. С их помощью можно просматривать и отлаживать HTML сайта, его CSS и JavaScript. Также можно
+                    проверить сетевой трафик, потребляемый сайтом, его быстродействие и много других параметров.</p>
+                <p>Давайте посмотрим, как с ними работать, на примере наиболее популярного на сегодняшний день браузера
+                    Google Chrome.</p>
+
+                <h2>Рендеринг. Объект Window</h2>
+                <hr class="hr">
+
+                <p>В данном курсе мы работаем с браузером, который выступает так называемым окружением. Окружение
+                    предоставляет нам объекты и функции для работы с ним. К примеру, мы уже использовали метод
+                    setTimeOut, предоставляемый браузером.</p>
+                <p> Схематично браузерное окружение выглядит так:</p>
+
+                <figure>
+                    <img src="../images/m13_browser_environment.png" width="60%" alt="">
+                    <p>Источник:<a href="https://learn.javascript.ru/browser-environment"> learn.javascript.ru</a></p>
+                </figure>
+                <p>Где window — глобальный объект, в котором хранится вся доступная функциональность. Он используется,
+                    когда разработчик хочет использовать методы, предоставляемые браузером.</p>
+                <p>Window выступает в двух ролях:</p>
+                <blockquote>1. Как глобальный объект для JS-кода (подробнее о глобальном объекте <a
+                        href="https://learn.javascript.ru/global-object">тут</a>);</blockquote>
+                <blockquote>2. Как окно браузера. </blockquote>
+
+                <div class="main__wrapper-box_grey">
+                    <p>Попробуйте обратиться к разным свойствам window через консоль.</p>
+                </div>
+                <p>Внутри window мы видим DOM, BOM и JS.</p>
+                <p>1. DOM (document object model) — это объектная модель документа. Является Web API, так как
+                    предоставляется браузером.
+                <p>DOM поддерживает объектно-ориентированное представление веб-страницы, делая возможным её изменение
+                    при помощи, например, JavaScript. Работе с DOM посвящена основная часть этого модуля, подробности
+                    вас ждут в следующих видео.</p>
+                </p>
+                <p>2.
+                    BOM (browser object model) — это браузерное окружение. Оно предоставляет функционал (объекты и
+                    функции), который может использовать JavaScript, например, BOM включает в себя такие часто
+                    используемые вещи, как:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>&bull; <strong>Location</strong> — возвращает объект Location с информацией о текущем
+                        расположении документа;</p>
+                    <p>&bull; <strong>History</strong> — предоставляет интерфейс для манипулирования историей сессии
+                        браузера (например, страницы, посещённые в текущей вкладке);</p>
+                    <p>&bull; <strong>XMLHttpRequest</strong> — для создания запросов к серверу.</p>
+                </div>
+                <p>3. С JS в этом контексте вы уже знакомы — это все <a
+                        href="https://developer.mozilla.org/ru/docs/Web/JavaScript/Reference/Global_Objects">глобальные
+                        объекты</a>, о которых мы много говорили в предыдущих модулях</p>
+                <hr class="hr">
+
+                <h2>Работа с document</h2>
+                <hr class="hr">
+
+                <p>В данном курсе мы работаем с браузером, и многие действия будут связаны с элементами HTML-страницы.
+                </p>
+                <p>Как уже говорилось ранее, <a href="https://dom.spec.whatwg.org/#node">DOM</a> — это объектная модель
+                    документа (вся структура HTML-страницы, её ещё называют деревом). Но JavaScript взаимодействует не с
+                    документом, а с объектами. И чтобы работа со страницей была возможной, браузер предоставляет
+                    специальный объект document.</p>
+                <p>Document включает в себя содержимое веб-страницы (всё DOM-дерево), а также обеспечивает
+                    функциональность, которая является глобальной для документа (например, создание новых элементов). Из
+                    него можно получить доступ к любому узлу.</p>
+
+                <div class="main__wrapper-border_green">
+                    <p>Узлом называют HTML-элемент.</p>
+                </div>
+                <p>Узлы бывают разных типов:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>&bull; Узлы (HEAD),</p>
+                    <p>&bull; Текст (#text),</p>
+                    <p>&bull; Комментарий (#comment),</p>
+                    <p>&bull; Document (входная точка в DOM. По сути — узел).</p>
+                </div>
+
+                <p><strong>Пример кода:</strong></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>
+                        &lsaquo;!DOCTYPE HTML>
+                    </p>
+                    <p>
+                        &lsaquo;html>
+                    </p>
+                    <p>
+                        &lsaquo;head>
+                    </p>
+                    <blockquote>
+                        &lsaquo;title>О лосях&lsaquo;/title>
+                    </blockquote>
+                    <p>
+                        &lsaquo;/head>
+                    </p>
+                    <p>
+                        &lsaquo;body>
+                    </p>
+                    <blockquote> Правда о лосях.</blockquote>
+                    <p>
+                        &lsaquo;/body>
+                    </p>
+                    <p>
+                        &lsaquo;/html>
+                    </p>
+                </div>
+
+                <figure>
+                    <img src="../images/m13_dom-nodes.png" width="60%" alt="">
+                    <figcaption>Источник:<a href="https://learn.javascript.ru/dom-nodes">learn.javascript.ru</a>
+                    </figcaption>
+                </figure>
+
+                <p>Чтобы узнать тип узла, можно воспользоваться свойством elem.nodeType. У каждого объекта есть
+                    свойства, методы и события.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>&bull; <b>Свойства</b> — то, что характеризует объект (узел);</p>
+                    <p>&bull; <b>Методы</b> — то, что объект способен делать сам, без внешнего воздействия;</p>
+                    <p>&bull; <b>События</b> — влияние на объект извне.</p>
+                </div>
+
+                <p>События оказывают какое-либо влияние на объект, который может отреагировать на него, вызвав
+                    собственный метод, и изменить свойство, либо вызвать метод, либо изменить свойство. О событиях
+                    подробно поговорим в одном из следующих разделов.</p>
+                <hr class="hr">
+
+                <p>Задание 8.2.1</p>
+
+                <p>Что такое DOM?</p>
+                <blockquote>Объектная модель документа, нужна чтобы работать с элементами HTML-дерева.</blockquote>
+                <hr class="hr">
+
+                <p>Задание 8.2.2</p>
+
+                <p>Что такое document?</p>
+                <blockquote>Объект, который включает в себя содержимое веб-страницы и обеспечивает функциональность,
+                    которая является глобальной для документа.</blockquote>
+
+
+
+            </div>
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="../../index.html" class="previous">&laquo; Назад</a>
+                <a href="page3.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="../../index.html" class="previous round">&#8249;</a>
+                <a href="page3.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+            &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details> -->
+    </div>
+</body>
+
+</html>

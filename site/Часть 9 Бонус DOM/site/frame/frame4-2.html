@@ -1,0 +1,176 @@
+
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width">
+<title>CodePen Embed - textContent</title>
+<meta name="csrf-param" content="authenticity_token" />
+<meta name="csrf-token" content="0jV1G5vNphH6M06dXHjMN8o+PV/LzrRaywYFNcqm/pHCYAZ/03IGPChjyMsnRyOYsHPtKVO872/sXlDwemGPtg==" />
+<link rel="stylesheet" media="all" href="https://cpwebassets.codepen.io/assets/embed/embed-33cedda414aa70caa96fcf996c35d6ce012ec18cd3e60b3ca5218af0476108ec.css" />
+<style>
+    .hide {
+      display: none !important;
+    }
+    .embed-footer,
+    .embed-nav {
+      background: #fefefe;
+      
+    }
+    .embed-nav .code-types a,
+    .embed-nav .result-button-list a,
+    .action-button {
+      color: #333333;
+      background-color: #eeeeee;
+    }
+    .embed-nav .code-types a.active,
+    .embed-nav .result-button-list a.active,
+    .action-button.active {
+      background: #cccccc;
+      color: #333333;
+      box-shadow: inset 0px 3px #333333;
+    }
+    .embed-nav .logo-wrap .edit-on-codepen {
+      color: #333333;
+    }
+
+    .embed-nav svg {
+      stroke: #333333 !important;
+    }
+  </style>
+<link rel="stylesheet" media="all" href="https://cpwebassets.codepen.io/assets/editor/themes/classic-11a07298fe68d05065b0fe718ba52b0a413be15b705ec0903f296411e9beb8fe.css" />
+</head>
+<body id="the-body" style="border: 1px solid #eeeeee; --borderWidth: 1px;" class="codepen-embed-body split-output ">
+<nav class="embed-nav group" id="embed-nav">
+<ul class="code-types">
+<li class="code-type">
+<a id="html-link" href="#html-box" role="button" aria-pressed="false">
+HTML
+</a>
+</li>
+<li class="code-type">
+<a id="css-link" href="#css-box" role="button" aria-pressed="false">
+CSS
+</a>
+</li>
+<li class="code-type">
+<a id="js-link" href="#js-box" role="button" class="active" aria-pressed="true">
+JS
+</a>
+</li>
+</ul>
+<ul class="result-button-list">
+<li class="results results-type">
+<a id="result-link" href="#result-box" class="active" aria-pressed="true" role="button">
+Result
+</a>
+</li>
+<li>
+<a href="#resources-link" id="skip-results-iframe-link">Skip Results Iframe</a>
+</li>
+</ul>
+<div class="logo-wrap" id="edit-area">
+<a class="edit-on-codepen" target="_blank" rel="noopener" href="https://codepen.io/SkillFactory/pen/WNYLqrg" title="Edit on CodePen">
+<div class="large-logo">
+<span id="edit-on-text" class="open-on">EDIT ON</span>
+<svg id="embed-codepen-logo" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 138 26" fill="none" stroke="#000" stroke-width="2.3" stroke-linecap="round" stroke-linejoin="round" role="img" aria-label="CodePen">
+<path d="M80 6h-9v14h9m34-14h-9v14h9m-3-7h-6m-28 0h-6m51 7V6l11 14V6M22 16.7L33 24l11-7.3V9.3L33 2 22 9.3v7.4zm22 0L33 9.3l-11 7.4m0-7.4l11 7.3 11-7.3M33 2v7.3m0 7.4V24m55-10h6c2.2 0 4-1.8 4-4s-1.8-4-4-4h-6v14M15 8c-1.3-1.3-3-2-5-2-4 0-7 3-7 7s3 7 7 7c2 0 3.7-.8 5-2m49-5c0 4-3 7-7 7h-5V6h5c4 0 7 3 7 7z" />
+</svg>
+</div>
+<div class="box-logo">
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="20 0 26 26" fill="none" stroke="#000" stroke-linecap="round" stroke-linejoin="round" stroke-width="2.3" role="img" aria-label="Edit on CodePen">
+<path id="icon-codepen-box" d="M22 16.7L33 24l11-7.3V9.3L33 2 22 9.3v7.4zm22 0L33 9.3l-11 7.4m0-7.4l11 7.3 11-7.3M33 2v7.3m0 7.4V24" />
+</svg>
+</div>
+</a>
+</div>
+</nav>
+<div id="output" data-border-style="thin" data-header="true">
+<div id="html-box" class="code-wrap code-box box " role="region" aria-label="HTML">
+<div class="editable-badge">
+Live
+</div>
+<textarea id="html" style="display: none" class="code-box"></textarea>
+</div>
+<div id="css-box" class="code-wrap code-box box " role="region" aria-label="CSS">
+<div class="editable-badge">
+Live
+</div>
+<textarea id="css" style="display: none" class="code-box"></textarea>
+</div>
+<div id="js-box" class="code-wrap code-box box active" role="region" aria-label="JS">
+<div class="editable-badge">
+Live
+</div>
+<textarea id="js" style="display: none" class="code-box"></textarea>
+</div>
+<div id="result-box" class="code-box active zoom-1" role="region" aria-label="Result">
+<iframe allow="accelerometer *; bluetooth *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *" allowfullscreen="true" allowpaymentrequest="true" allowTransparency="true" class="result-iframe  " frameborder="0" id="result-iframe" loading="lazy" name="CodePen Preview for textContent" sandbox="allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups-to-escape-sandbox allow-popups allow-presentation allow-same-origin allow-scripts allow-top-navigation-by-user-activation" scrolling="yes" title="CodePen Preview for textContent" data-src="https://codepen.io/SkillFactory/fullembedgrid/WNYLqrg?animations=run&type=embed" src="https://codepen.io/SkillFactory/fullembedgrid/WNYLqrg?animations=run&type=embed">
+  </iframe>
+</div>
+<div id="about-box">
+<div class="about-container">
+<div class="about-user">
+<a href="https://codepen.io/SkillFactory" target="_blank" rel="noopener"><img src="https://assets.codepen.io/7838599/internal/avatars/users/default.png?fit=crop&amp;format=auto&amp;height=256&amp;version=1690207156&amp;width=256" loading="lazy" alt class="about-image"></a>
+<div class="about-user-info">
+<p>
+This Pen is owned by <a href="https://codepen.io/SkillFactory" target="_blank" rel="noopener">Skillfactory</a> on <a href="https://codepen.io" target="_blank" rel="noopener">CodePen</a>.
+It is a fork of <a href="https://codepen.io/elizaveta-malysheva/fullpage/QWJKVOy?default-tab=js%2Cresult&amp;editable=true&amp;height=300&amp;name=cp_embed_2&amp;slug-hash=WNYLqrg&amp;theme-id=light&amp;user=SkillFactory&amp;view=">this Pen.</a>
+</p>
+<p>
+<a href="/SkillFactory" target="_blank" rel="noopener" class="about-user-more">
+See more by @SkillFactory on CodePen
+</a>
+</p>
+</div>
+</div>
+</div>
+</div>
+<div id="resources-box" class="resources-box">
+<h3>External CSS</h3>
+<p>
+This Pen doesn't use any external CSS resources.
+</p>
+<h3>External JavaScript</h3>
+<p>
+This Pen doesn't use any external JavaScript resources.
+</p>
+</div>
+</div>
+<footer class="embed-footer" id="embed-footer">
+<button id="resources-link" class="resources-link action-button bottom left" href="#resources-box" aria-pressed="false" role="button">
+Resources
+</button>
+<ul class="scaling-choices bottom right">
+<li><button class="action-button" id="zoom-button-1">1×</button></li>
+<li><button class="action-button" id="zoom-button-05">0.5×</button></li>
+<li><button class="action-button" id="zoom-button-025">0.25×</button></li>
+</ul>
+<button id="rerun-button" class="action-button rerun-button bottom right">
+Rerun
+</button>
+</footer>
+<textarea id="init-data" style="display:none">{&quot;__browser&quot;:{&quot;country&quot;:&quot;RU&quot;,&quot;device&quot;:&quot;unknown_device&quot;,&quot;mobile&quot;:false,&quot;name&quot;:&quot;chrome&quot;,&quot;platform&quot;:&quot;pc&quot;,&quot;version&quot;:&quot;129&quot;},&quot;__constants&quot;:{},&quot;__CPDATA&quot;:{&quot;domain_iframe&quot;:&quot;https://cdpn.io&quot;,&quot;environment&quot;:&quot;production&quot;,&quot;host&quot;:&quot;codepen.io&quot;,&quot;iframe_allow&quot;:&quot;accelerometer *; bluetooth *; camera *; encrypted-media *; display-capture *; geolocation *; gyroscope *; microphone *; midi *; clipboard-read *; clipboard-write *; web-share *; serial *; xr-spatial-tracking *&quot;,&quot;iframe_sandbox&quot;:&quot;allow-downloads allow-forms allow-modals allow-pointer-lock allow-popups-to-escape-sandbox allow-popups allow-presentation allow-same-origin allow-scripts allow-top-navigation-by-user-activation&quot;},&quot;__graphql&quot;:{&quot;data&quot;:{&quot;errors&quot;:[{&quot;message&quot;:&quot;Cannot return null for non-nullable field Query.sessionUser&quot;}],&quot;data&quot;:null},&quot;url&quot;:&quot;https://codepen.io/graphql&quot;,&quot;api&quot;:&quot;cprails&quot;},&quot;__pay_stripe_public_key&quot;:&quot;pk_live_2GndomDfiklqpSNQn8FrGuwZSMIMzha7DkLJqlYe7IR0ihKAlKdiHg68JJc5eVPt68rzAjzAAVXcUwjySHRCsgjQQ00gtRBUFNH&quot;,&quot;__pay_braintree_env&quot;:&quot;production&quot;,&quot;__boomboom&quot;:{&quot;serve_url&quot;:&quot;https://cdpn.io/cpe/boomboom&quot;,&quot;store_url&quot;:&quot;https://codepen.io/cpe/boomboom/store&quot;},&quot;__pageType&quot;:&quot;embed&quot;,&quot;__item&quot;:&quot;{\&quot;editor_settings\&quot;:{\&quot;auto_run\&quot;:true,\&quot;autocomplete\&quot;:false,\&quot;code_folding\&quot;:true,\&quot;css_pre_processor\&quot;:\&quot;none\&quot;,\&quot;css_prefix\&quot;:\&quot;neither\&quot;,\&quot;css_starter\&quot;:\&quot;neither\&quot;,\&quot;emmet_active\&quot;:true,\&quot;font_size\&quot;:14,\&quot;font_type\&quot;:\&quot;system\&quot;,\&quot;format_on_save\&quot;:true,\&quot;html_pre_processor\&quot;:\&quot;none\&quot;,\&quot;indent_with\&quot;:\&quot;spaces\&quot;,\&quot;js_pre_processor\&quot;:\&quot;none\&quot;,\&quot;key_bindings\&quot;:\&quot;normal\&quot;,\&quot;line_numbers\&quot;:true,\&quot;line_wrapping\&quot;:true,\&quot;match_brackets\&quot;:true,\&quot;snippets\&quot;:{\&quot;markupSnippets\&quot;:{},\&quot;stylesheetSnippets\&quot;:{}},\&quot;tab_size\&quot;:2,\&quot;theme\&quot;:\&quot;twilight\&quot;,\&quot;id\&quot;:\&quot;WNYLqrg\&quot;,\&quot;auto_save\&quot;:true},\&quot;hashid\&quot;:\&quot;WNYLqrg\&quot;,\&quot;itemType\&quot;:\&quot;pen\&quot;,\&quot;resources\&quot;:[],\&quot;tags\&quot;:[],\&quot;id\&quot;:69751727,\&quot;user_id\&quot;:7838599,\&quot;html\&quot;:\&quot;&lt;p class=\\\&quot;text\\\&quot;&gt;&lt;/p&gt;\\n\\n&lt;p class=\\\&quot;text-2\\\&quot;&gt;\\n  &lt;span&gt;Я текст в первом спане. &lt;/span&gt;&lt;span&gt;А я - во втором :)&lt;/span&gt;\\n&lt;/p&gt;\\n\\n&lt;p class=\\\&quot;text-3\\\&quot;&gt;&lt;span&gt;Я тут немного посижу, посмотрю...&lt;/span&gt;&lt;/p&gt;\&quot;,\&quot;css\&quot;:\&quot;.text,\\n.text-2,\\n.text-3 {\\n  padding: 1em;\\n  border: 2px solid lightblue;\\n}\\n.text-3 span {\\n  display: none;\\n}\\n\&quot;,\&quot;js\&quot;:\&quot;// 1\\nconst text = document.querySelector(\\\&quot;.text\\\&quot;);\\nconst text2 = document.querySelector(\\\&quot;.text-2\\\&quot;);\\nconst text3 = document.querySelector(\\\&quot;.text-3\\\&quot;);\\n\\n// text.textContent = \\\&quot;Просто какой-то текст\\\&quot;;\\n\\n// console.log(text.textContent);\\n\\n// 2. работа с несколькими узлами\\n\\n// console.log(text2.textContent)\\n\\n// 3. работа со скрытым элементом\\n\\n// console.log(text3.textContent)\\n\\n// console.log(text3.innerText)\\n\&quot;,\&quot;html_pre_processor\&quot;:\&quot;none\&quot;,\&quot;css_pre_processor\&quot;:\&quot;none\&quot;,\&quot;js_pre_processor\&quot;:\&quot;none\&quot;,\&quot;html_classes\&quot;:\&quot;\&quot;,\&quot;css_starter\&quot;:\&quot;neither\&quot;,\&quot;js_library\&quot;:null,\&quot;created_at\&quot;:\&quot;2023-08-01T18:03:05.861Z\&quot;,\&quot;updated_at\&quot;:\&quot;2023-08-02T11:20:01.429Z\&quot;,\&quot;title\&quot;:\&quot;textContent\&quot;,\&quot;description\&quot;:\&quot;\&quot;,\&quot;slug_hash\&quot;:\&quot;WNYLqrg\&quot;,\&quot;head\&quot;:\&quot;\&quot;,\&quot;private\&quot;:false,\&quot;has_animation\&quot;:false,\&quot;team_id\&quot;:0,\&quot;css_prefix\&quot;:\&quot;neither\&quot;,\&quot;template\&quot;:false,\&quot;parent_id\&quot;:69096494,\&quot;comments_count\&quot;:0,\&quot;custom_screenshot_filename\&quot;:null,\&quot;loves_count\&quot;:0,\&quot;pick\&quot;:false,\&quot;popularity_score\&quot;:0,\&quot;views_count\&quot;:0,\&quot;pick_visible_at\&quot;:null,\&quot;cpid\&quot;:\&quot;0189b244-9305-70a6-948c-2352a40bdcac\&quot;,\&quot;is_new_editor_pen\&quot;:false,\&quot;protected\&quot;:false,\&quot;access\&quot;:\&quot;Public\&quot;,\&quot;pen_hash\&quot;:null}&quot;,&quot;__processorsMap&quot;:{&quot;autoprefixer&quot;:&quot;autoprefixer-10&quot;,&quot;babel&quot;:&quot;babel-7&quot;,&quot;coffeescript&quot;:&quot;coffeescript-2&quot;,&quot;format-1&quot;:&quot;format-1&quot;,&quot;flutter&quot;:&quot;flutter-1&quot;,&quot;haml&quot;:&quot;haml-4&quot;,&quot;less&quot;:&quot;less-3&quot;,&quot;lint-1&quot;:&quot;lint-1&quot;,&quot;livescript&quot;:&quot;livescript-1&quot;,&quot;markdown&quot;:&quot;markdown-11&quot;,&quot;postcss&quot;:&quot;postcss-7&quot;,&quot;pug&quot;:&quot;pug-2&quot;,&quot;sass&quot;:&quot;sass-1&quot;,&quot;scss&quot;:&quot;sass-1&quot;,&quot;sass-ruby-3&quot;:&quot;sass-ruby-3&quot;,&quot;sass-ruby-compass-3&quot;:&quot;sass-ruby-compass-3&quot;,&quot;slim&quot;:&quot;slim-3&quot;,&quot;stylus&quot;:&quot;stylus-0&quot;,&quot;typescript&quot;:&quot;typescript-4&quot;,&quot;vue&quot;:&quot;vue-2&quot;,&quot;vue3&quot;:&quot;vue-3&quot;},&quot;__favicon_mask_icon&quot;:&quot;https://cpwebassets.codepen.io/assets/favicon/logo-pin-b4b4269c16397ad2f0f7a01bcdf513a1994f4c94b8af2f191c09eb0d601762b1.svg&quot;,&quot;__favicon_shortcut_icon&quot;:&quot;https://cpwebassets.codepen.io/assets/favicon/favicon-aec34940fbc1a6e787974dcd360f2c6b63348d4b1f4e06c77743096d55480f33.ico&quot;,&quot;__path_to_iframe_console_runner&quot;:&quot;https://cpwebassets.codepen.io/assets/editor/iframe/iframeConsoleRunner-6d8bf8b4b479137260842506acbb12717dace0823c023e08b96360e60b0840d9.js&quot;,&quot;__path_to_iframe_refresh_css&quot;:&quot;https://cpwebassets.codepen.io/assets/editor/iframe/iframeRefreshCSS-44fe83e49b63affec96918c9af88c0d80b209a862cf87ac46bc933074b8c557d.js&quot;,&quot;__path_to_iframe_runtime_errors&quot;:&quot;https://cpwebassets.codepen.io/assets/editor/iframe/iframeRuntimeErrors-4f205f2c14e769b448bcf477de2938c681660d5038bc464e3700256713ebe261.js&quot;,&quot;__path_to_processor_worker&quot;:&quot;https://cpwebassets.codepen.io/assets/packs/router.js&quot;,&quot;__path_to_stop_execution_on_timeout&quot;:&quot;https://cpwebassets.codepen.io/assets/common/stopExecutionOnTimeout-2c7831bb44f98c1391d6a4ffda0e1fd302503391ca806e7fcc7b9b87197aec26.js&quot;,&quot;__pen_normalize_css_url&quot;:&quot;https://cdnjs.cloudflare.com/ajax/libs/normalize/5.0.0/normalize.min.css&quot;,&quot;__pen_prefix_free_url&quot;:&quot;https://cdnjs.cloudflare.com/ajax/libs/prefixfree/1.0.7/prefixfree.min.js&quot;,&quot;__pen_reset_css_url&quot;:&quot;https://cdnjs.cloudflare.com/ajax/libs/meyer-reset/2.0/reset.min.css&quot;,&quot;__path_to_infinite_loop_detection&quot;:&quot;https://cpwebassets.codepen.io/assets/packs/js/infiniteLoopDetection-82f064ba69873842185f.js&quot;}</textarea>
+<script nonce="CjjMhgEKjWk=">
+    __editor_config = {"id":"classic","editors":[{"id":"html","type":"html","name":"HTML","showEditor":true,"showSettings":true,"showProcessors":true,"embeds":{"showViewCompiled":true},"settings":[{"id":"processor","name":"HTML Preprocessor","type":"select","visible":true,"values":[{"id":"none","name":"None","value":"none","default":true},{"id":"haml","name":"Haml","value":"haml"},{"id":"markdown","name":"Markdown","value":"markdown"},{"id":"slim","name":"Slim","value":"slim"},{"id":"pug","name":"Pug","value":"pug"}]},{"id":"html_classes","name":"Add Class(es) to \u003chtml\u003e","type":"input","placeholder":"e.g. single post post-1234","visible":true},{"id":"head","name":"Stuff for \u003chead\u003e","type":"textarea","placeholder":"e.g. \u003cmeta\u003e, \u003clink\u003e, \u003cscript\u003e","visible":true}],"actions":[{"id":"tidy_html","type":"tidy_code","name":"Format HTML","disabled_processors":["haml","slim"]},{"id":"view_compiled_html","type":"view_compiled","name":"View Compiled HTML","disabled_processors":["none"],"showInEmbeds":true},{"id":"analyze_html","type":"analyze","name":"Analyze HTML"},{"id":"maximize_html_editor","type":"maximize","name":"Maximize HTML Editor"},{"id":"minimize_html_editor","type":"minimize","name":"Minimize HTML Editor"},{"id":"fold_all_html","type":"fold_all","name":"Fold All"},{"id":"unfold_all_html","type":"unfold_all","name":"Unfold All"}],"processors":[{"id":"none","name":"None"},{"id":"haml","name":"Haml"},{"id":"markdown","name":"Markdown"},{"id":"slim","name":"Slim"},{"id":"pug","name":"Pug"}]},{"id":"css","type":"css","name":"CSS","showEditor":true,"showSettings":true,"showProcessors":true,"showVendorPrefixing":true,"embeds":{"showViewCompiled":true},"actions":[{"id":"tidy_css","type":"tidy_code","name":"Format CSS","disabled_processors":["sass","stylus"]},{"id":"view_compiled_css","type":"view_compiled","name":"View Compiled CSS","disabled_processors":["none"],"disabled_prefixes":["neither","prefixfree"]},{"id":"analyze_css","type":"analyze","name":"Analyze CSS"},{"id":"maximize_css_editor","type":"maximize","name":"Maximize CSS Editor"},{"id":"minimize_css_editor","type":"minimize","name":"Minimize CSS Editor"},{"id":"fold_all_css","type":"fold_all","name":"Fold All","disabled_processors":["sass"]},{"id":"unfold_all_css","type":"unfold_all","name":"Unfold All","disabled_processors":["sass"]}],"processors":[{"id":"none","name":"None"},{"id":"less","name":"Less"},{"id":"scss","name":"SCSS"},{"id":"sass","name":"Sass"},{"id":"stylus","name":"Stylus"},{"id":"postcss","name":"PostCSS"}],"parSuffixes":["less","scss","sass","styl"]},{"id":"js","type":"js","name":"JS","showEditor":true,"showSettings":true,"showProcessors":true,"detectImports":true,"externalResourcesHidden":false,"embeds":{"showViewCompiled":true},"actions":[{"id":"tidy_js","type":"tidy_code","name":"Format JavaScript","disabled_processors":["coffeescript, livescript"]},{"id":"view_compiled_js","type":"view_compiled","name":"View Compiled JavaScript","disabled_processors":["none"]},{"id":"analyze_js","type":"analyze","name":"Analyze JavaScript"},{"id":"maximize_js_editor","type":"maximize","name":"Maximize JavaScript Editor"},{"id":"minimize_js_editor","type":"minimize","name":"Minimize JavaScript Editor"},{"id":"fold_all_js","type":"fold_all","name":"Fold All"},{"id":"unfold_all_js","type":"unfold_all","name":"Unfold All"}],"processors":[{"id":"none","name":"None"},{"id":"babel","name":"Babel"},{"id":"typescript","name":"TypeScript"},{"id":"coffeescript","name":"CoffeeScript"},{"id":"livescript","name":"LiveScript"}]}],"formatters":[{"id":"classic","name":"Classic","runOn":[{"eventType":"demand"}],"url":"https://fi593g2v2a.execute-api.us-west-2.amazonaws.com/production/format"}],"layout":{"default":"top"},"linters":[{"id":"classic","name":"Classic","runOn":[{"eventType":"demand"}],"url":"https://fi593g2v2a.execute-api.us-west-2.amazonaws.com/production/lint"}],"preview":{"intervalMaxWaitMS":3500,"intervalMS":1200},"settings":[{"id":"details","name":"Pen Details","type":"setting"},{"id":"privacy","name":"Privacy","pro":true,"type":"setting"},{"id":"behavior","name":"Behavior","type":"setting"},{"id":"editor","name":"Editor","type":"setting"},{"id":"template","name":"Template","type":"setting"},{"id":"screenshot","name":"Screenshot","pro":true,"type":"setting"}]}
+    __processedPen = {"html":"&lt;p class=&quot;text&quot;&gt;&lt;/p&gt;\n\n&lt;p class=&quot;text-2&quot;&gt;\n  &lt;span&gt;Я текст в первом спане. &lt;/span&gt;&lt;span&gt;А я - во втором :)&lt;/span&gt;\n&lt;/p&gt;\n\n&lt;p class=&quot;text-3&quot;&gt;&lt;span&gt;Я тут немного посижу, посмотрю...&lt;/span&gt;&lt;/p&gt;","css":".text,\n.text-2,\n.text-3 {\n  padding: 1em;\n  border: 2px solid lightblue;\n}\n.text-3 span {\n  display: none;\n}","js":"// 1\nconst text = document.querySelector(&quot;.text&quot;);\nconst text2 = document.querySelector(&quot;.text-2&quot;);\nconst text3 = document.querySelector(&quot;.text-3&quot;);\n\n// text.textContent = &quot;Просто какой-то текст&quot;;\n\n// console.log(text.textContent);\n\n// 2. работа с несколькими узлами\n\n// console.log(text2.textContent)\n\n// 3. работа со скрытым элементом\n\n// console.log(text3.textContent)\n\n// console.log(text3.innerText)"};
+    __preprocessors = {
+      "html": "none",
+      "css": "none",
+      "js": "none"
+    };
+    __preprocessorNames = {
+      "html": "HTML",
+      "css": "CSS",
+      "js": "JS"
+    };
+    __editable = true;
+    __embed_prefill = false;
+  </script>
+<script src="https://cpwebassets.codepen.io/assets/embed/embed-d492f8b0f63f0a8ba679c9cd0a2fffbaa24504a7928435ba1bfc1859f904e02b.js"></script>
+<script src="https://cpwebassets.codepen.io/assets/packs/js/vendor-c76350df5465978c6bf5.chunk.js"></script>
+<script src="https://cpwebassets.codepen.io/assets/packs/js/1-b3c618b60e60ebc41d14.chunk.js"></script>
+<script src="https://cpwebassets.codepen.io/assets/packs/js/processorRouter-699d88c9007d1229193a.js"></script>
+<script src="https://cpwebassets.codepen.io/assets/embed/editable_embed-231797bbada9c9ed781bac25b9d7d777292d72dbe37aa6754f5e3aacd91249d1.js"></script>
+</body>
+</html>

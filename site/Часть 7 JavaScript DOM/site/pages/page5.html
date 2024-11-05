@@ -1,0 +1,272 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>DOM JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                5. Объект события
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page4.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#" title="Объект события"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <figure>
+                    <img src="../images/m13_cover_event_object.svg" width="50%" alt="">
+                </figure>
+
+                <h2>Объект события</h2>
+                <hr class="hr">
+
+                <p>Функция <em>handler</em> метода <em>addEventListener</em> может принимать как аргумент некий
+                    <em>event</em>, который называют
+                    <span class="green">объектом события</span>.
+                    * В некоторых источниках функция <em>handler</em> может называться <em>listener</em>.
+                </p>
+
+                <div class="main__wrapper-border_green">
+                    <p>Его не нужно создавать самостоятельно — когда происходит событие, браузер создает этот объект
+                        события и записывает в него детали и передает в обработчик как аргумент. Его принято называть
+                        event или просто e.</p>
+                </div>
+                <p>Обратиться к свойствам объекта можно через event.prop (event[prop]).</p>
+                <p>Часто при разработке приходится обращаться к следующим полям:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p> &bull; <em>event.type</em> — имя события (“click”);</p>
+                    <p> &bull; <em>event.currentTarget</em> — элемент, на котором обрабатывается событие (для которого
+                        событие задано);</p>
+                    <p> &bull; <em>event.target</em> — элемент-триггер, запустивший событие.</p>
+                </div>
+
+                <p>Другие свойства объекта event:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p><em>eventPhase</em> — число, показывающее на каком этапе произошло событие (1 - этапе погружения
+                        (перехвата), 2 - на цели, 3 - на этапе всплытия);</p>
+                    <p><em>timestamp</em> — число (дата), когда произошло событие;</p>
+                    <p><em>bubbles</em> — возвращает логическое значение, указывающее может ли данное событие всплывать;
+                    </p>
+                    <p><em>defaultPrevented</em> — проверяет можно ли вызвать метод preventDefault() для данного
+                        события;</p>
+                    <p><em>view</em> — возвращает ссылку на объект window, в котором произошло событие.</p>
+                </div>
+
+                <p>Второй аргумент для addEventListener — колбэк, который вызовется, когда событие произойдет. Повторить
+                    тему колбэков вы можете в <em>модуле Функции</em>.</p>
+                <p>И третий аргумент — это объект или булево значение, которое интерпретируется как </p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>{</p>
+                    <p>useCapture: <span class="green">true</span> // или <span class="green">false</span></p>
+                    <p>}</p>
+                </div>
+
+                <p>Объект <em>option</em> сейчас вам не понадобится, но если захотите изучить его подробнее —
+                    документация <a
+                        href="https://developer.mozilla.org/ru/docs/Web/API/EventTarget/addEventListener"></a>здесь.</p>
+                <p>А вот булево значение в контексте данного модуля будет уместно рассмотреть.</p>
+                <p>Итак, <span class="green">useCapture</span> — это фаза, на которой должен сработать обработчик.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p><b>Что это значит?</b> События могут срабатывать для любой части документа вследствие
+                        взаимодействия с
+                        ним пользователя или браузера. Они не просто начинаются и заканчиваются в одном месте; они
+                        циркулируют по всему документу, проходя свой собственный жизненный цикл.</p>
+                </div>
+                <hr class="hr">
+
+                <h2>Фазы</h2>
+                <hr class="hr">
+
+                <p>Выделяют две фазы: <span class="green">всплытие</span> (bubbling) и <span
+                        class="green">погружение</span> (capturing).</p>
+                <p>Событие движется от корня документа к цели (фаза перехвата — <em>Capturing</em>), затем срабатывает
+                    для цели
+                    события (фаза цели — <em>Target</em>) и движется назад к корню документа (фаза всплытия —
+                    <em>Bubbling</em>).
+                </p>
+                <p><b>Как работает событие? </b></p>
+
+                <figure>
+                    <img src="../images/m13_scheme.png" width="60%" alt="">
+                    <figcaption>Источник: <a
+                            href="https://learn.javascript.ru/bubbling-and-capturing">learn.javascript.ru</a>
+                    </figcaption>
+                </figure>
+
+                <div class="main__wrapper-box_grey">
+                    <p>1. Когда браузер «триггерит» событие, элемент, на котором оно произошло, помечается как цель —
+                        это <em>event.target</em>.</p>
+                    <p>2. После этого событие сначала двигается вниз от корня документа к <em>event.target</em>, по пути
+                        вызывая
+                        обработчики, поставленные через <em>addEventListener</em>(...., <em>true</em>), где
+                        <em>true</em> – это сокращение для
+                        {<em>capture: true</em>}. Это называется погружением.
+                    </p>
+                    <p>3. Затем обработчики вызываются на <em>event.target</em>.</p>
+                    <p>4. После этого событие двигается от целевого элемента вверх к корню документа, по пути вызывая
+                        обработчики, поставленные через on&lsaquo;<em>event</em>> и <em>addEventListener</em> без
+                        третьего аргумента или с
+                        третьим аргументом равным <em>false</em>. Это фаза всплытия.</p>
+                </div>
+
+                <div class="main__wrapper-box_pink">
+                    <p><B>ВАЖНО!</B> Почти все события всплывают! Исключением, например, является событие<em>
+                            focus</em>.</p>
+                </div>
+                <p>Чаще всего, всплытие событий мешает. Чтобы предотвратить это, используют следующие функции:</p>
+                <blockquote>1. <b>event.stopPropagation()</b></blockquote>
+                <blockquote>События, которые идут за тем, в котором вызвана эта функция, на текущем элементе,
+                    отработают, всплытие остановится.</blockquote>
+
+                <blockquote>2. <b>event.stopImmediatePropagation()</b></blockquote>
+                <blockquote>Все события, идущие за тем, которое вызывает эту функцию, не сработают, всплытие
+                    остановится.</blockquote>
+
+                <blockquote>3. <b>event.preventDefault()</b></blockquote>
+                <blockquote>Он останавливает действия браузера по умолчанию. Аналогично, можно из обработчика, заданного
+                    через on &lsaquo;event> вернуть <em>false</em>.</blockquote>
+                <hr class="hr">
+
+                <h2>Удаление обработчика</h2>
+                <hr class="hr">
+
+                <p>Существует еще один метод для работы с событиями, который называется <em>removeEventListener</em>. Он
+                    нужен
+                    для того, чтобы удалять обработчики событий. Это может быть полезно, когда вы точно знаете, что
+                    событие больше не должно выполняться или существует условие для его отмены. В этом случае необходимо
+                    воспользоваться <em>removeEventListener</em>. </p>
+                <p>Метод имеет такой же синтаксис, как и addEventListener, и использовать они должны строго одну и ту же
+                    функцию.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>element.removeEventListener(event, handler [, phase]);</p>
+                </div>
+                <p>Где:</p>
+                <blockquote><em>event</em> — тип события, которое нужно удалить,</blockquote>
+                <blockquote><em>handler</em> — функция-обработчик, которую мы удаляем,</blockquote>
+                <blockquote><em>phase</em> — фаза (обычно не используется, по умолчанию = false)</blockquote>
+
+                <p><b>ВЕРНО:</b></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>&lsaquo;button onclick=<span class="red"> "click()"</span> id=<span class="red">"btn"</span>>Press</button></p>
+                    <p>&lsaquo;script></p>
+                    <blockquote>function <span class="red">click1()</span> {</blockquote>
+                    <blockquote>
+                        <blockquote><span class="red">alert('Click1')</span>;</blockquote>
+                    </blockquote>
+                    <blockquote>};</blockquote>
+                    <blockquote>btn.<span class="red">addEventListener("click"</span>, click1); // Click1</blockquote>
+                    <blockquote>btn.<span class="red">removeEventListener("click"</span>, click1); // </blockquote>
+                    <p>&lsaquo;/script></p>
+                </div>
+
+                <p><b>НЕВЕРНО:</b></p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>&lsaquo;button onclick=<span class="red">"click()"</span> id=<span class="red">"btn"</span>>Press</button></p>
+                    <p>&lsaquo;script></p>
+                    <blockquote>btn.<span class="red">addEventListener("click"</span>, function() {</blockquote>
+                    <blockquote>
+                        <blockquote><span class="red">alert('Click1')</span>;</blockquote>
+                    </blockquote>
+                    <blockquote>};); // Click1</blockquote>
+                    <blockquote>btn.<span class="red">removeEventListener("click"</span>, function() {</blockquote>
+                    <blockquote>
+                        <blockquote><span class="red">alert('Click1')</span>;</blockquote>
+                    </blockquote>
+                    <blockquote>};); // </blockquote>
+                    <p>&lsaquo;/script></p>
+                </div>
+                <hr class="hr">
+
+                <p>Задание 8.5.1</p>
+                <p>Объект event...</p>
+                <blockquote>создается браузером, который записывает в него детали события, затем передает в обработчик
+                    как аргумент</blockquote>
+                <hr class="hr">
+
+                <p>Задание 8.5.2</p>
+                <p>Что такое всплытие и погружение?</p>
+                <blockquote>Фазы, описывающие путь события, происходящего в браузере</blockquote>
+                <hr class="hr">
+
+                <p>Задание 8.5.3</p>
+                <details>
+                    <summary>Какой из методов останавливает нативное поведение события?</summary>
+                    event.preventDefault()
+                </details>
+                <hr class="hr">
+
+
+
+            </div>
+
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page4.html" class="previous">&laquo; Назад</a>
+                <a href="page6.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page4.html" class="previous round">&#8249;</a>
+                <a href="page6.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>

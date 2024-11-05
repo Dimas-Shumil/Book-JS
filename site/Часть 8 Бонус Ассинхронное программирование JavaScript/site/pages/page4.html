@@ -1,0 +1,764 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="../css/sass.css">
+    <title>Бонус. Асинхронное программирование JS</title>
+</head>
+
+<body>
+    <header class="header">
+        <nav class="header__nav">
+
+            <div class="header__nav-title">
+                4. Запросы к стороннему API: fetch, async/await, try…catch…finally
+            </div>
+
+            <ul class="header__nav-ul">
+                <li><a href="../../index.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page2.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page3.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="#"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page5.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page6.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page7.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page8.html"><span class="header__nav-ul_link"></span></a></li>
+                <li><a href="page9.html"><span class="header__nav-ul_link"></span></a></li>
+            </ul>
+        </nav>
+    </header>
+    <hr class="hr">
+    </div>
+
+    <div class="main">
+        <div class="main__wrapper">
+            <div id="mySidenav" class="sidenav">
+                <a href="javascript:void(0)" class="closebtn" onclick="closeNav()">&times;</a>
+                <a href="#" target="_blank"> Часть 1 Введение в JavScript</a>
+                <a href="#">Часть 2 Введение в JavaScript</a>
+                <a href="#">Часть 3 Введение в JavaScript</a>
+                <a href="#">Часть 4 Функции JavaScript</a>
+                <a href="#">часть 5 Функции и объекты JavaScript</a>
+                <a href="#">часть 6 JavaScript Объекты</a>
+                <a href="#">Часть 7 JavaScript DOM</a>
+                <a href="#">Часть 8 Бонус Ассинхронное программирование JavaScript</a>
+                <a href="#">Часть 9 Бонус DOM</a>
+                <a href="#">Часть 10 AJAX</a>
+                <a href="#">Часть 12 Тестирование JS</a>
+                <a href="#">Часть11 API браузера</a>
+            </div>
+            <span class="sidenav__btn" onclick="openNav()">&#9776;</span>
+            <!-- <span class="sidenav__btn" style="font-size:30px;cursor:pointer; border: 1px solid grey;" onclick="openNav()">&#9776; Открыть</span> -->
+
+            <div class="main__wrapper-conteiner">
+
+                <p>Если вы думали, что на промисах всё закончилось — это не совсем так. Мы продолжаем. :)</p>
+                <p>Промисы — это отлично, но иногда цепочка вызовов может неиронично напоминать разговор двух друзей в
+                    кафе:</p>
+                <p>– А он что?</p>
+                <p>– А она что?</p>
+                <p>– А он что?</p>
+                <p>Ну, как в анекдотах. Визуально это превращается в очень длинную строку. Читать и понимать такой код
+                    становится сложно.</p>
+                <p>Вторая проблема — при отладке на звенья цепочки нельзя поставить точку останова. Это неприятно. Не
+                    так просто проверить, из-за чего всё сломалось.</p>
+                <p>Поэтому четвертый юнит мы посвятим новым инструментам, которые помогут гибко и качественно работать с
+                    асинхронными запросами, получать данные и обрабатывать ошибки. В реальной работе — это необходимые
+                    навыки.</p>
+                <p>Наш план состоит из следующих инструментов:</p>
+                <p>&bull; fetch() — отправляет запросы на сервер, получает и отправляет данные;</p>
+                <p>&bull; async/await — ключевые слова, чтобы дожидаться асинхронных данных и не использовать цепочки
+                    вызовов: then, catch и finally;</p>
+                <p>&bull; try…catch…finally — инструмент для обработки сценариев в запросах.</p>
+
+                <h2>fetch()</h2>
+
+                <p>На большинстве сайтов вы постоянно получаете какие-то данные. Картинки, посты, видео, музыку. Всё это
+                    откуда-то приходит. Где-то хранится. И наверняка не моментально попадает в браузер по щелчку пальца
+                    кнопки.</p>
+                <p>Запахло асинхронностью! Давайте напишем первый запрос на сторонний API и получим с него какие-то
+                    данные. Для этого нам понадобится новый инструмент — функция fetch().</p>
+                <p>Fetch переводится как «получать». Нам повезло: у большинства JS-инструментов говорящие имена. По ним
+                    можно понять, что должен делать метод.</p>
+                <h3>fetch — метод, с помощью которого вы можете отправлять запросы на сервер. В ответ вы получаете
+                    промис с состоянием и ответом на запрос.</h3>
+                <p>Синтаксис:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>fetch('адрес ресурса')</p>
+                </div>
+
+                <p>Чтобы потренироваться в использовании fetch, используем тренировочный сайт с ненастоящими постами: <a
+                        href="https://jsonplaceholder.typicode.com/posts?_start=0&_limit=5"><span class="green">
+                            https://jsonplaceholder.typicode.com/posts?_start=0&_limit=5.</span></a></p>
+                <p>Он отдаст нам массив данных. Перейдите по ссылке и изучите эти данные в браузере.</p>
+                <p>Это похоже на массивы, которые вы успели изучить в прошлом модуле. Только вместо примитивных
+                    элементов, строк или чисел, — объекты.</p>
+                <p>А внутри у каждого объекта — ключи и значения:</p>
+                <p>&bull; ID юзера, чтобы понимать, кто написал пост;</p>
+                <p>&bull; ID самого поста, чтобы отличать его от других постов;</p>
+                <p>&bull; Заголовок поста в ключе title;</p>
+                <p>&bull; Текст поста в ключе body.</p>
+                <p>Он создан для того, чтобы помогать разработчикам тестировать свой код, пробовать новые технологии,
+                    для которых необходимо асинхронно получать какие-то данные.</p>
+                <p>Для работы нам недостаточно просто открыть данные в браузере. Надо получить этот же массив, но уже из
+                    кода:</p>
+
+                <iframe src="../frame/frame4-1/index.html" width="90%" height="450px" frameborder="0"></iframe>
+
+                <p>Давайте обсудим всё, что здесь написано. Ну, почти всё: оставим за кадром первые строки кода, где мы
+                    получаем доступ к кнопкам и контейнеру. А также то место, где мы даём кнопкам инструкции что-то
+                    делать, когда мы на них нажмём.</p>
+                <p>Эти моменты мы обязательно осветим уже очень скоро. А пока сконцентрируемся на функции fetchData.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const fetchData = () => {</p>
+                    <blockquote>fetch("https://jsonplaceholder.typicode.com/posts?_start=0&_limit=5")</blockquote>
+                    <blockquote>
+                        <blockquote>.then((response) => response.json())</blockquote>
+                        <blockquote>.then((data) => {</blockquote>
+                    </blockquote>
+                    <blockquote>
+                        <blockquote>
+                            <blockquote>data.forEach((post) => {</blockquote>
+                        </blockquote>
+                    </blockquote>
+                    <blockquote>
+                        <blockquote>
+                            <blockquote>
+                                <blockquote>const postElement = document.createElement("div");</blockquote>
+                                <blockquote>postElement.classList.add("post");</blockquote>
+                                <blockquote>postElement.innerHTML = `</blockquote>
+                            </blockquote>
+                        </blockquote>
+                    </blockquote>
+                    <blockquote>
+                        <blockquote>
+                            <blockquote>&lsaquo;h2>${post.title}&lsaquo;/h2></blockquote>
+                            <blockquote>&lsaquo;p>${post.body}&lsaquo;/p></blockquote>
+                            <blockquote>`;</blockquote>
+                        </blockquote>
+                    </blockquote>
+                    <blockquote>
+                        <blockquote>
+                            <blockquote>
+                                <blockquote>postsContainer.appendChild(postElement);</blockquote>
+                            </blockquote>
+                        </blockquote>
+                    </blockquote>
+                    <blockquote>
+                        <blockquote>
+                            <blockquote>
+                                <blockquote>});</blockquote>
+                            </blockquote>
+                            <blockquote>});</blockquote>
+                        </blockquote>
+                    </blockquote>
+                    <blockquote>
+                        <blockquote>
+                            <blockquote>.catch((error) => {</blockquote>
+                            <blockquote>
+                                <blockquote>console.error("Error:", error);</blockquote>
+                            </blockquote>
+                            <blockquote>});</blockquote>
+                        </blockquote>
+                    </blockquote>
+                    <p>};</p>
+                </div>
+                <p>Первым делом объявляем саму функцию и используем стрелочный вариант. А затем впервые применяем метод
+                    fetch().</p>
+                <p>Мы передаём в него адрес, на котором лежат какие-то данные.</p>
+                <p>Fetch может принимать не только адрес, но и объект с разными опциями. Нам пока эти опции не
+                    интересны, потому что это наш первый запрос к стороннему API.</p>
+                <p>JsonPlaceholder представляет правила и методы, благодаря которым мы можем поработать с его данными.
+                </p>
+                <p>В частности — делать запрос на получение данных. И получать их.</p>
+
+                <div class="main__wrapper-box_blue">
+                    <p>Такой запрос принято называть GET-запросом. Как и fetch, get переводится как «получить». Он самый
+                        простой и дефолтный.</p>
+                </div>
+                <p>Давайте посмотрим, что можно получить в консоли, если написать всего одну строчку с fetch:</p>
+
+                <figure>
+                    <img src="../images/INTFR_9_4_1.png" width="90%" alt="">
+                    <p>Cкриншот консоли браузера. Промис, который возвращает fetch.</p>
+                </figure>
+
+                <p>Мы присвоили запрос fetch в переменную data. А потом посмотрели, что в ней находится.</p>
+                <p>Как и ожидалось, там промис. И важный объект Response. Рассмотрим некоторые параметры:</p>
+                <p>&bull; ok — статус запроса. Он может принимать либо true, либо false. Параметр примет значение true,
+                    если код запроса входит в диапазон 200-299.</p>
+                <p>&bull; status — здесь мы можем посмотреть код, который отдал сервер на наш запрос. 200 — это очень
+                    хорошо. Могло быть 404, 500 и так далее.</p>
+                <p>&bull; url — адрес, по которому мы делали запрос.</p>
+                <p>&bull; json() — на скриншоте его не видно, он находится глубже, в [[ Prototype ]]. Этот метод поможет
+                    распарсить данные в JS-объект, чтобы их можно было использовать в браузере.</p>
+                <hr class="hr">
+
+                <h2>JSON</h2>
+
+                <p>Сделаем небольшую остановку и поговорим о формате JSON.</p>
+                <h3>JSON — JavaScript Object Notation — это популярный формат для обмена данных. Он очень похож на
+                    обычные объекты в JS. Поэтому очень легко превращать JSON в объект и наоборот</h3>
+                <p>Давайте напишем небольшой JSON. Мы уже говорили про API и сравнивали его с правилами кафе. А меню —
+                    как раз с данными. Вот меню и создадим:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>{</p>
+                    <blockquote>"menu": [</blockquote>
+                    <blockquote>
+                        <blockquote>{</blockquote>
+                    </blockquote>
+                    <blockquote>
+                        <blockquote>
+                            <blockquote>"name": "Стейк",</blockquote>
+                            <blockquote>"image": "steak.jpg",</blockquote>
+                            <blockquote>"ingredients": [</blockquote>
+                            <blockquote>
+                                <blockquote>"говядина",</blockquote>
+                                <blockquote>"соль",</blockquote>
+                                <blockquote>"перец",</blockquote>
+                                <blockquote>"масло"</blockquote>
+                            </blockquote>
+                            <blockquote>],</blockquote>
+                            <blockquote>"price": 3000,</blockquote>
+                            <blockquote>"weight": 250</blockquote>
+                        </blockquote>
+                        <blockquote>},</blockquote>
+                        <blockquote>{</blockquote>
+                        <blockquote>
+                            <blockquote>"name": "Стейк из лосося",</blockquote>
+                            <blockquote>"image": "salmon.jpg",</blockquote>
+                            <blockquote>"ingredients": [</blockquote>
+                            <blockquote>
+                                <blockquote>"лосось",</blockquote>
+                                <blockquote>"лимон",</blockquote>
+                                <blockquote>"укроп",</blockquote>
+                                <blockquote>"оливковое масло"</blockquote>
+                            </blockquote>
+                            <blockquote>],</blockquote>
+                            <blockquote>"price": 2000,</blockquote>
+                            <blockquote>"weight": 200</blockquote>
+                        </blockquote>
+                        <blockquote>},</blockquote>
+                        <blockquote>{</blockquote>
+                        <blockquote>
+                            <blockquote>"name": "Салат Цезарь",</blockquote>
+                            <blockquote>"image": "caesar_salad.jpg",</blockquote>
+                            <blockquote>"ingredients": [</blockquote>
+                            <blockquote>
+                                <blockquote>"салат",</blockquote>
+                                <blockquote>"сухарики",</blockquote>
+                                <blockquote>"пармезан",</blockquote>
+                                <blockquote>"соус"</blockquote>
+                            </blockquote>
+                            <blockquote>],</blockquote>
+                            <blockquote>"price": 1200,</blockquote>
+                            <blockquote>"weight": 150</blockquote>
+                        </blockquote>
+                        <blockquote>},</blockquote>
+                        <blockquote>{</blockquote>
+                        <blockquote>
+                            <blockquote>"name": "Пицца ‘Маргарита’",</blockquote>
+                            <blockquote>"image": "pizza.jpg",</blockquote>
+                            <blockquote>"ingredients": [</blockquote>
+                            <blockquote>
+                                <blockquote>"томатный соус",</blockquote>
+                                <blockquote>"моцарелла",</blockquote>
+                                <blockquote>"базилик",</blockquote>
+                                <blockquote>"оливковое масло"</blockquote>
+                            </blockquote>
+                            <blockquote>],</blockquote>
+                            <blockquote>"price": 1000,</blockquote>
+                            <blockquote>"weight": 300</blockquote>
+                        </blockquote>
+                        <blockquote>}</blockquote>
+                    </blockquote>
+                    <blockquote>]</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>Наш JSON состоит из ключей и значений.</p>
+                <p>Например, у него есть ключ menu. У которого значение — целый массив из объектов. Мы такое уже видели.
+                    Похоже на данные с постами.</p>
+                <p>Такой формат очень удобен для хранения разных данных. Он хорошо структурирован, сразу понятно, что к
+                    чему относится. И данные легко прочитать.</p>
+                <div class="main__wrapper-box_blue">
+                    <p>Обратите внимание, что ключом может быть только строка в двойных кавычках. А вот в значение можно
+                        положить почти всё. Строки, числа, объекты, null и так далее.</p>
+                </div>
+                <hr class="hr">
+            </div>
+
+            <p>Упражнение 4.1</p>
+            <p><b>верный JSON.</b></p>
+            <div class="main__wrapper-box_grey">
+                <p>{</p>
+                <blockquote>"name": "Миша",</blockquote>
+                <blockquote>"job": "Суетолог",</blockquote>
+                <blockquote>"city": "Москва"</blockquote>
+                <p>}</p>
+            </div>
+
+            <div class="main__wrapper-box_grey">
+                <p>{</p>
+                <blockquote>"album": [</blockquote>
+                <blockquote>
+                    <blockquote>{</blockquote>
+                    <blockquote>
+                        <blockquote>"id": 1,</blockquote>
+                        <blockquote>"width": 200,</blockquote>
+                        <blockquote>"height": 200,</blockquote>
+                        <blockquote>"year": 2000,</blockquote>
+                        <blockquote>"place": "Волгоград"</blockquote>
+                    </blockquote>
+                    <blockquote>},</blockquote>
+                    <blockquote>{</blockquote>
+                    <blockquote>
+                        <blockquote>"id": 2,</blockquote>
+                        <blockquote>"width": 200,</blockquote>
+                        <blockquote>"height": 200,</blockquote>
+                        <blockquote>"year": 2001,</blockquote>
+                        <blockquote>"place": "Москва"</blockquote>
+                    </blockquote>
+                    <blockquote>},</blockquote>
+                    <blockquote>{</blockquote>
+                    <blockquote>
+                        <blockquote>"id": 3,</blockquote>
+                        <blockquote>"width": 200,</blockquote>
+                        <blockquote>"height": 200,</blockquote>
+                        <blockquote>"year": 2005,</blockquote>
+                        <blockquote> "place": "Египет"</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                </blockquote>
+                <blockquote>]</blockquote>
+                <p>}</p>
+            </div>
+            <hr class="hr">
+
+            <div class="main__wrapper-conteiner">
+
+                <h2>JSON.stringify() и JSON.parse()</h2>
+
+                <p>Поскольку нам нужно конвертировать JSON в объект и наоборот, для этого придумали специальные методы.
+                </p>
+                <h3>
+                    <p>&bull; JSON.stringify() — чтобы из обычного объекта создать JSON;</p>
+                    <p>&bull; JSON.parse() — чтобы из JSON сделать обычный объект.</p>
+                </h3>
+                <p>Давайте попробуем использовать первый метод. И превратим объект в JSON.</p>
+
+                <iframe src="../frame/frame4-2/index.html" width="90%" height="500px" frameborder="0"></iframe>
+
+                <p>Введите данные в поля и нажмите на кнопку. Данные из инпутов сначала соберутся в обычный объект. А
+                    потом конвертируются в JSON и выведутся в div.</p>
+
+                <h2>Упражнение 4.2</h2>
+
+                <iframe src="../frame/frame4-3/index.html" width="90%" height="500px" frameborder="0"></iframe>
+
+                <p>В примере объект, который состоит из персонажей мультфильма «Подводная Братва». Превратите его в
+                    JSON. И выведите в консоль.</p>
+
+                <details>
+                    <summary>Посмотреть код</summary>
+                    <div class="main__wrapper-box_grey">
+                        <p> const jsonString = JSON.stringify(obj);</p>
+                        <p>console.log(jsonString);</p>
+                    </div>
+                </details>
+                <hr class="hr">
+
+                <h2>Упражнение 4.3</h2>
+
+                <iframe src="../frame/frame4-4/index.html" width="90%" height="450px" frameborder="0"></iframe>
+
+                <p>Понаблюдайте за результатами. Попробуйте конвертировать разные JSON-ы, с разными типами данных в
+                    значениях.</p>
+                <p>Вернёмся к нашему запросу с помощью fetch. Теперь мы понимаем, для чего нужен метод json(). Давайте
+                    выполним его:</p>
+
+                <figure>
+                    <img src="../images/INTFR_9_4_2.png" width="90%" alt="">
+                </figure>
+
+                <p>Вот они, наши данные. В формате обычного массива с объектами. Теперь его можно обработать. Например,
+                    пройтись циклом. Попробуем:</p>
+
+                <figure>
+                    <img src="../images/INTFR_9_4_3.png" width="90%" alt="">
+                    <p>Cкриншот консоли браузера. Вывод полученных данных в консоль с помощью цикла forEach.</p>
+                </figure>
+
+                <p>Здесь мы немного поменяли код, чтобы положить массив в переменную data и работать с ней.</p>
+                <p>Затем мы воспользовались методом forEach, циклично прошлись по массиву и вывели каждый элемент.</p>
+                <p>Поэтому в консоли оказались пять объектов постов. А в каждом объекта — полная информация о посте. На
+                    этот момент с ними можно делать что угодно. Например, поместить на страницу карточки с постами.</p>
+                <p>Обратите внимание, что в нашем коде сразу два then друг за другом. Как думаете, что они передают друг
+                    другу? Ведь визуально кажется, что мы возвращаем только какие-то значения.</p>
+                <div class="main__wrapper-box_blue">
+                    <p>Then-ы передают друг другу промисы. И наши значения оборачиваются именно в них. Следующий then
+                        выполнится, когда предыдущий промис завершится с каким-то результатом. Получается такое
+                        постепенное перебрасывание друг другу значений. Похоже на пасы в футболе.</p>
+                </div>
+                <hr class="hr">
+
+                <h2>Упражнение 4.4.</h2>
+
+                <p>Сделайте в codepen запрос на <a
+                        href="https://jsonplaceholder.typicode.com/posts?_start=0&_limit=5"><span class="green">
+                            https://jsonplaceholder.typicode.com/posts?_start=0&_limit=5</span></a>. Получите
+                    эти посты и выведите в консоль каждый элемент. Работайте по этому плану:</p>
+                <iframe src="../frame/frame4-5/index.html" width="90%" height="300px" frameborder="0"></iframe>
+                <hr class="hr">
+
+                <h2>async/await</h2>
+
+                <p>Мы начали этот юнит с того, что обозначили проблемы, которые возникают при работе с цепочкой вызовов.
+                    Повторим ещё раз:</p>
+                <p>&bull; Код раздувается, вкладывается друг в друга, и его сложно читать;</p>
+                <p>&bull; Сложно отлаживать код, так как нельзя поставить точку останова;</p>
+                <p>&bull; Если хочется обработать ошибку на каждый then, то нужен catch для каждого. Это неудобно.</p>
+                <p>И вообще, код с async/await выглядит проще. Почти как синхронный!</p>
+                <p>Разберём пример:</p>
+
+                <iframe src="../frame/frame4-6/index.html" width="90%" height="400px" frameborder="0"></iframe>
+
+                <p>В разметке у нас одна кнопка и блок для результатов. Всё самое интересное начинается, когда мы на неё
+                    нажимаем. Посмотрим и обсудим построчно:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>const fetchData = async () => {</p>
+                    <blockquote>let data = await fetch(url);</blockquote>
+                    <blockquote>let response = await data.json();</blockquote>
+                    <blockquote>if (response) {</blockquote>
+                    <blockquote>
+                        <blockquote>makeUser(response);</blockquote>
+                    </blockquote>
+                    <blockquote>}</blockquote>
+                    <p>};</p>
+                </div>
+
+                <p>И вот у нас уже добавились слова async и await в код. Что они значат:</p>
+                <blockquote>&bull; async — слово, которое делает функцию асинхронной. Теперь внутри можно использовать
+                    слово await и дожидаться с помощью него данные. Отныне функция возвращает промис!</blockquote>
+                <blockquote>&bull; await — переводится как «ожидать». Благодаря этому слову код не будет выполняться,
+                    пока промис не разрешится. Await — это такой знак «стоп» в коде.</blockquote>
+                <p>То, что мы написали, можно было сделать и с помощью цепочек вызовов:</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>fetch(url).then(res => res.json()).then(json => makeUser(json))</p>
+                </div>
+
+                <p>Однако код с async/await получился проще и понятнее. Его легче читать.</p>
+                <p>Вам не кажется, что здесь чего-то не хватает? Дайте себе пару мгновений подумать самостоятельно. Что
+                    мы забыли?</p>
+
+                <details>
+                    <summary>Посмотреть подсказку</summary>
+                    <p>
+                        Мы забыли обрабатывать сценарий ошибки. В цепочке вызовов нам в этом помогал catch. А как
+                        поступить сейчас, с async/await?
+                    </p>
+                </details>
+                <hr class="hr">
+
+                <h2>try…catch…finally</h2>
+
+                <p>На помощь придёт конструкция try…catch…finally. Давайте посмотрим на синтаксис. Пока разберём try и
+                    catch, а уже потом добавим finally.</p>
+
+                <div class="main__wrapper-box_grey">
+                    <p>try {</p>
+                    <blockquote>функция();</blockquote>
+                    <p>} catch (err) {</p>
+                    <blockquote>console.log('Что-то пошло не так —', err.message)</blockquote>
+                    <p>}</p>
+                </div>
+
+                <p>Что тут происходит: try с английского — это «пытаться». Конструкция пытается запустить операцию и
+                    получить какой-то результат.</p>
+                <p>Если всё пройдёт успешно, то мы не провалимся в catch. Но если случится ошибка, то catch отработает.
+                </p>
+                <p>Давайте попробуем сымитировать ошибку и посмотреть на результат:</p>
+
+                <iframe src="../frame/frame4-7/index.html" width="90%" height="40px" frameborder="0"></iframe>
+                <p>Нажимайте на кнопку и следите за тем, что вывело в консоль. Если рандомное число будет больше 0.5, то
+                    логика провалится в блок catch. А если нет — то операция выполнится успешно.</p>
+
+                <h2>Упражнение 4.5.</h2>
+
+                <p>Добавьте в код try…catch.</p>
+                <iframe src="../frame/frame4-8/index.html" width="90%" height="500px" frameborder="0"></iframe>
+                <details>
+                    <summary>Посмотреть код</summary>
+                    <div class="main__wrapper-box_grey">
+                        <p>const fetchData = async () => {</p>
+                        <blockquote>try {</blockquote>
+                        <blockquote>
+                            <blockquote>let data = await fetch(url);</blockquote>
+                            <blockquote>let response = await data.json();</blockquote>
+                            <blockquote>if (response) {</blockquote>
+                            <blockquote>
+                                <blockquote>makeUser(response);</blockquote>
+                            </blockquote>
+                            <blockquote>}</blockquote>
+                        </blockquote>
+                        <blockquote>} catch (error) {</blockquote>
+                        <blockquote>
+                            <blockquote>console.error(error.message);</blockquote>
+                        </blockquote>
+                        <blockquote>}</blockquote>
+                        <p>};</p>
+                    </div>
+                </details>
+
+                <p>Теперь поговорим немного о finally.</p>
+                <p>Этот блок — то же самое, что и finally в цепочке вызовов. Вы можете использовать его, если хотите
+                    запустить какую-то обязательную логику. На которую не влияет то, успешен запрос или нет.</p>
+                <p>Например, давайте реализуем лоадер загрузки и два запроса — ошибочный и успешный.</p>
+                <p>И сделаем так, чтобы он исчезал после того, как логика запроса окончена.</p>
+
+                <iframe src="../frame/frame4-9/index.html" width="90%" height="500px" frameborder="0"></iframe>
+
+                <p>У нас здесь несколько функций. Первая, showLoader — показывает лоадер. Вторая, hideLoader, его
+                    скрывает.</p>
+                <p>Опустим манипуляции с html-элементами, разберём промис. Мы как всегда воспользовались рандомным
+                    числом и с помощью него обработали промис. Если число больше 0.5, то промис завершится неудачно.
+                    Если меньше — успешно.</p>
+                <p>А ещё мы добавили блок finally и ему передаём функцию hideLoader. И как только статус промиса
+                    становится известен — элемент загрузки исчезает со страницы.</p>
+                <p>Очень удобно и уже похоже на работу настоящего сайта, не правда ли?</p>
+
+                <h2>Упражнение 4.6.</h2>
+
+                <iframe src="../frame/frame4-10.html" width="90%" height="300px" frameborder="0"></iframe>
+                <p>Перепишите код и используйте async/await, try…catch.</p>
+                <details>
+                    <summary>Посмотреть код</summary>
+                    <div class="main__wrapper-box_grey">
+                        <p>async function fetchToDo() {</p>
+                        <blockquote>try {</blockquote>
+                        <blockquote>
+                            <blockquote>const res = await fetch(URL);</blockquote>
+                            <blockquote>const data = await res.json();</blockquote>
+                            <blockquote>if (data) {</blockquote>
+                            <blockquote>
+                                <blockquote>console.log(data);</blockquote>
+                            </blockquote>
+                            <blockquote>}</blockquote>
+                        </blockquote>
+                        <blockquote>} catch (error) {</blockquote>
+                        <blockquote>
+                            <blockquote>console.error(error.message);</blockquote>
+                        </blockquote>
+                        <blockquote>}</blockquote>
+                        <p>}</p>
+                    </div>
+                </details>
+                <hr class="hr">
+
+                <h2>ok и status</h2>
+
+                <p>Вернёмся немного назад. Помните, мы обсуждали значения ok и status. Иногда именно эти инструменты
+                    помогают корректно обработать все ошибки при запросе данных. Например, рассмотрим ситуацию.</p>
+                <p>Вы получаете какие-то данные по id. Но на сервере таких данных нет. В этом случае сервер вернёт 404
+                    ошибку, но промис всё равно завершится успешно. Из-за этого у вас не получится корректно обработать
+                    ошибку. Что делать?</p>
+                <p>Тут-то и пригодятся ok и status. Давайте посмотрим на код:</p>
+                <iframe src="../frame/frame4-11.html" width="90%" height="350px" frameborder="0"></iframe>
+                <p>Мы обращаемся к стороннему API и достаёт посты по id. Для этого функция принимает аргумент id. Всего
+                    по этому адресу 100 постов. И пока вы будете запрашивать их в этом диапазоне, то всё будет
+                    нормально.</p>
+                <hr class="hr">
+
+                <h2>Упражнение 4.7.</h2>
+
+                <p>Получите посты под номером 5, 27 и 100. Для этого передавайте в функцию нужное число.</p>
+                <details>
+                    <summary>Посмотреть код</summary>
+                    <div class="main__wrapper-box_grey">
+                        <p>fetchPosts(27);</p>
+                        <p>fetchPosts(100);</p>
+                    </div>
+                </details>
+                <p>Если вы передали в функцию число до 100, то в консоли появится объект с постом. Например, получим
+                    сотый пост. Выглядит он так:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>{</p>
+                    <blockquote>"userId": 10,</blockquote>
+                    <blockquote>"id": 100,</blockquote>
+                    <blockquote>"title": "at nam consequatur ea labore ea harum",</blockquote>
+                    <blockquote>"body": "cupiditate quo est a modi nesciunt soluta\nipsa voluptas error itaque dicta
+                        in\nautem qui minus magnam et distinctio eum\naccusamus ratione error aut"</blockquote>
+                    <p>}</p>
+                </div>
+                <p>Если сейчас запросить статус ответа с помощью res.status и вывести его в консоль, то вы увидите 200.
+                </p>
+                <hr class="hr">
+
+                <h2>Упражнение 4.8.</h2>
+
+                <p>Допишите строку, благодаря которой в консоли появится только успешный статус запроса.</p>
+                <details>
+                    <summary>Посмотреть код</summary>
+                    <div class="main__wrapper-box_grey">
+                        <p>async function fetchPosts(id) {</p>
+                        <blockquote>try {</blockquote>
+                        <blockquote>
+                            <blockquote>let res = await </blockquote>
+                        </blockquote>
+                        <p>fetch(`https://jsonplaceholder.typicode.com/posts/${id}`);</p>
+                        <blockquote>
+                            <blockquote>if (!res.ok) {</blockquote>
+                            <blockquote>
+                                <blockquote>throw new Error("Нет такого поста");</blockquote>
+                            </blockquote>
+                            <blockquote>}</blockquote>
+                            <blockquote>console.log(res.status)</blockquote>
+                            <blockquote>let post = await res.json();</blockquote>
+                            <blockquote>console.log(post);</blockquote>
+                        </blockquote>
+                        <blockquote>} catch (e) {</blockquote>
+                        <blockquote>
+                            <blockquote>console.log(e.message, "Отработал блок catch");</blockquote>
+                        </blockquote>
+                        <blockquote>}</blockquote>
+                        <p>}</p>
+                    </div>
+                </details>
+                <p>Но что будет, если мы хотим получить 101 пост или 1001? Их там нет, верно? Поймает ли catch эту
+                    ошибку?</p>
+                <p>Закомментируйте блок, в котором мы проверяем res.ok и посмотрите, что будет в консоли.</p>
+                <p>Блок catch не отработает. В консоли мы увидим пустой объект и, если вы уже дописали проверку статуса,
+                    404 код.</p>
+                <p>То есть ошибка не обработалась.</p>
+                <p>Давайте вернём проверку res.ok на место. И посмотрим на неё внимательно:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>if(!res.ok) {</p>
+                    <blockquote>throw new Error("Нет такого поста");</blockquote>
+                    <p>}</p>
+                </div>
+                <p>Здесь мы обращаемся к переменной res, но не проверяем успешность запроса, а наоборот: проверяем его
+                    неуспешность.</p>
+                <p>Поэтому стоит восклицательный знак — отрицание. Как вы помните, ok принимает либо true, либо false.
+                    Нас интересуют ситуации, где ok равен именно false.</p>
+                <p>И если код запроса — 404 или, например, 500, то этот блок выкинет ошибку. Для этого мы используем
+                    метод throw и объект Error. В скобки Error мы передаём строку, которая выведется в консоль.</p>
+                <p>Давайте теперь запустим функцию с аргументом 101 и посмотрим в консоль:</p>
+                <div class="main__wrapper-box_grey">
+                    <p>"Нет такого поста" "Отработал блок catch"</p>
+                </div>
+                <p>Отработал блок catch. Теперь мы знаем, что хоть промис и завершился успешно, поста по этому id он не
+                    нашёл.</p>
+                <hr class="hr">
+
+                <h2>Упражнение 4.9</h2>
+
+                <p>Добавьте логику получения статуса запроса, но уже в блок, где проверяется его неуспешность.</p>
+                <details>
+                    <summary>Посмотреть код</summary>
+                    <div class="main__wrapper-box_grey">
+                        <p>if (!res.ok) {</p>
+                        <blockquote>console.log(res.status);</blockquote>
+                        <blockquote>throw new Error("Нет такого поста");</blockquote>
+                        <p>}</p>
+                    </div>
+                </details>
+                <p>Итак, в этом юните вы разобрали новые инструменты для работы с асинхронными запросами. Узнали о новых
+                    методах обработки ошибок. И научились получать данные со стороннего ресурса. Поздравляю, вы —
+                    большие молодцы! Пора двигаться дальше. :)</p>
+                <hr class="hr">
+
+                <h2>Упражнение 4.10</h2>
+
+                <p>Напишите код, в котором будет fetch-запрос на</p>
+                <p><a href="https://jsonplaceholder.typicode.com/users"><span
+                            class="green">https://jsonplaceholder.typicode.com/users.</span></a></p>
+                <p>Это JSON с 10 юзерами. Обработайте данные, которые вы получите. А затем пройдитесь циклом и выведите
+                    в консоль имя каждого юзера.</p>
+                <details>
+                    <summary>Посмотреть код</summary>
+                    <div class="main__wrapper-box_grey">
+                        <p>async function getUsers() {</p>
+                        <blockquote>try {</blockquote>
+                        <blockquote>
+                            <blockquote>const response = await </blockquote>
+                        </blockquote>
+                        <p>fetch("https://jonplaceholder.typicode.com/users");</p>
+                        <blockquote>
+                            <blockquote>const data = await response.json();</blockquote>
+                            <blockquote>data.forEach((user) => {</blockquote>
+                            <blockquote>
+                                <blockquote>console.log(user.name);</blockquote>
+                            </blockquote>
+                            <blockquote>});</blockquote>
+                        </blockquote>
+                        <blockquote>} catch (error) {</blockquote>
+                        <blockquote>
+                            <blockquote>console.error(error.message);</blockquote>
+                        </blockquote>
+                        <blockquote>}</blockquote>
+                        <p>}</p>
+                    </div>
+                </details>
+                <hr class="hr">
+            </div>
+
+
+            <h2>Упражнение 4.11.</h2>
+
+            <p><b>Вставьте пропуски в код, чтобы он отработал корректно:</b></p>
+            <div class="main__wrapper-box_grey">
+                <p>1.___ {</p>
+                <blockquote>const word = "Меня не изменить.";</blockquote>
+                <blockquote>word = "Но, может, люди меняются...";</blockquote>
+                <p>} catch (2.___) {</p>
+                <blockquote>console.log(err.message, "Люди меняются, а константы в JS - нет!");</blockquote>
+                <p> } 3.____ {</p>
+                <blockquote>console.log("На нет и суда нет.");</blockquote>
+                <p>}</p>
+            </div>
+            <p>1.</p>
+            <blockquote>try</blockquote>
+            <p>2.</p>
+            <blockquote>err</blockquote>
+            <p>3.</p>
+            <blockquote>finally</blockquote>
+            <hr class="hr">
+
+            <h2>Упражнение 4.12</h2>
+
+            <p><b>Напишите метод, который поможет переформатировать JSON в JS-объект.</b></p>
+            <p><b>Ответ:</b></p>
+            <blockquote>JSON.parse()</blockquote>
+
+            <!-- кнопки -->
+            <div class="main__btn-box">
+                <a href="page3.html" class="previous">&laquo; Назад</a>
+                <a href="page5.html" class="next">Вперед &raquo;</a>
+            </div>
+            <div class="main__btn-box-o">
+                <a href="page3.html" class="previous round">&#8249;</a>
+                <a href="page5.html" class="next round">&#8250;</a>
+            </div>
+        </div>
+
+        <button onclick="topFunction()" id="myBtn" title="Перейти к началу">вверх</button>
+
+        <script async src="../script/js.js"></script>
+
+        <!-- &lsaquo;&rsaquo;&lsaquo;/&rsaquo;
+             &lsaquo;script&rsaquo;&lsaquo;/script&rsaquo; -->
+        <!-- <details>
+            <summary>Заголовок</summary>
+            Здесь располагается скрытый контент, который будет отображен после клика по заголовку.
+        </details>
+    </div>
+</body>
+
+</html>
