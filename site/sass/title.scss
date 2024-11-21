@@ -43,12 +43,14 @@ body {
     a {
         color: aliceblue;
         text-decoration: none;
-
-
     }
 }
 @media (max-width: 768.9px) {
     a {
         font-size: 10px;
+        color: red;
+    }
+    li {
+        color: red;
     }
 }

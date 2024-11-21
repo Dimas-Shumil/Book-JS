@@ -103,5 +103,9 @@ body {
 @media (max-width: 768.9px) {
   a {
     font-size: 10px;
+    color: red;
+  }
+  li {
+    color: red;
   }
 }/*# sourceMappingURL=title.css.map */

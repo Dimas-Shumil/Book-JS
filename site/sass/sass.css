@@ -55,4 +55,7 @@
   .sidenav a {
     font-size: 18px;
   }
+  .myBTN {
+    display: none;
+  }
 }/*# sourceMappingURL=sass.css.map */
