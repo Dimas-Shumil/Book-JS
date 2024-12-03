@@ -319,7 +319,7 @@ a:hover {
 }
 // меню ссылок
 .sidenav {
-    height: 100%;
+    // height: 100%;
     width: 0;
     position: fixed;
     z-index: 1;
@@ -329,6 +329,8 @@ a:hover {
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
+    padding-bottom: 40px;
+    border-radius: 10px;
 }
 
 .sidenav a {

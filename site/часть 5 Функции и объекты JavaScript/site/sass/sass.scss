@@ -2,8 +2,8 @@
 
 $blue: #23419f;
 $green: #178253;
-$lightGreen:#B5E91633;
-$lightBlue:#EFEFFE;
+$lightGreen: #B5E91633;
+$lightBlue: #EFEFFE;
 $teal: #006daa;
 $red: #c32d3a;
 $yellow: #ffd900;
@@ -93,6 +93,7 @@ blockquote {
             background-color: $light;
             margin-bottom: 30px;
         }
+
         &-box-ligtGreen {
             width: 90%;
             border: 1px solid grey;
@@ -100,6 +101,7 @@ blockquote {
             background-color: $lightGreen;
             margin-bottom: 30px;
         }
+
         &-box_pink {
             width: 90%;
             border: 1px solid grey;
@@ -108,47 +110,52 @@ blockquote {
             margin-bottom: 30px;
             color: $white;
         }
+
         &-box_blue {
             width: 90%;
             border: 1px solid blue;
             border-radius: 8px;
-            background-color:$lightBlue;
+            background-color: $lightBlue;
             margin-bottom: 30px;
             color: $dark;
 
-            li { 
+            li {
                 list-style: none;
                 padding: 5px 15px;
             }
         }
+
         &-box_lightBlue {
             width: 90%;
             border: 1px solid blue;
             border-radius: 8px;
             background-color: $accent-a;
             margin-bottom: 30px;
-            color: $white;  
+            color: $white;
         }
-    &-span_green {
-        color:$green ;
-    }
+
+        &-span_green {
+            color: $green ;
+        }
 
         &-conteiner {
             width: 80%;
             padding-bottom: 30px;
         }
 
-        
+
     }
 }
 
 table {
-    width: 90%; 
+    width: 90%;
+
     & td {
         border: 1px solid grey;
         padding: 10px 15px;
     }
 }
+
 figure {
     display: flex;
     justify-content: center;
@@ -174,7 +181,7 @@ figure {
     // /* Удалить контур */
     background-color: $accent-a;
     // Установка цвета фона
-    color:$white;
+    color: $white;
     // Цвет текста
     cursor: pointer;
     padding: 15px;
@@ -183,9 +190,11 @@ figure {
     filter: drop-shadow(5px 5px 5px #222);
     filter: drop-shadow(5px 5px 5px #666666);
 }
+
 #myBtn:hover {
     background-color: $teal;
 }
+
 //  для кнопок вперед назад
 .main__btn-box {
     display: flex;
@@ -200,6 +209,7 @@ figure {
     filter: drop-shadow(5px 5px 5px #666666);
 
 }
+
 .main__btn-box-o {
     width: 100%;
     display: none;
@@ -210,6 +220,7 @@ figure {
     filter: drop-shadow(5px 5px 5px #222);
     filter: drop-shadow(5px 5px 5px #666666);
 }
+
 .round {
     text-decoration: none;
     display: inline-block;
@@ -218,7 +229,8 @@ figure {
     border-radius: 4px;
     filter: drop-shadow(5px 5px 5px #222);
     filter: drop-shadow(5px 5px 5px #666666);
-  }
+}
+
 .main__btn-box a {
     text-decoration: none;
     display: inline-block;
@@ -231,19 +243,23 @@ figure {
 
 a:hover {
     color: black;
-    background-color:$teal;
+    background-color: $teal;
 }
+
 .previous {
     background-color: #ddd;
     color: black;
 }
+
 .next {
     background-color: $accent-a;
     color: $white;
 }
+
 .round {
     border-radius: 50%;
 }
+
 .bloc {
     display: flex;
     justify-content: center;
@@ -252,9 +268,10 @@ a:hover {
     filter: drop-shadow(5px 5px 5px #222);
     filter: drop-shadow(5px 5px 5px #666666);
 }
+
 // меню ссылок
 .sidenav {
-    height: 100%;
+    // height: 100%;
     width: 0;
     position: fixed;
     z-index: 1;
@@ -264,6 +281,8 @@ a:hover {
     overflow-x: hidden;
     transition: 0.5s;
     padding-top: 60px;
+    padding-bottom: 40px;
+    border-radius: 10px;
 }
 
 .sidenav a {
@@ -276,7 +295,8 @@ a:hover {
 }
 
 .sidenav a:hover {
-    color: #f1f1f1;
+    // color: #f1f1f1;
+    color: #00b43f;
 }
 
 .sidenav .closebtn {
@@ -295,6 +315,20 @@ a:hover {
     border-radius: 5px;
     cursor: pointer;
     font-size: 30px;
+    box-shadow: 5px 5px 5px gray;
+}
+
+.sidenav__btn:hover {
+    transition: 0.2s;
+    font-size: 32px;
+    background-color: $accent-a;
+    box-shadow: 7px 7px 7px gray;
+}
+
+.sidenav__btn:active {
+    font-size: 30px;
+    background-color: $light;
+    box-shadow: 5px 5px 5px gray;
 }
 
 @media screen and (max-height: 450px) {
@@ -306,6 +340,7 @@ a:hover {
         font-size: 18px;
     }
 }
+
 @media (max-width:700.9px) {
     .main__btn-box {
         display: none;
@@ -317,9 +352,3 @@ a:hover {
         filter: drop-shadow(5px 5px 5px #666666);
     }
 }
-
-
-
-
-
-
