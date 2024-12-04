@@ -316,7 +316,7 @@ a:hover {
 // меню ссылок
 
 .sidenav {
-    height: 100%;
+    // height: 100%;
     width: 0;
     position: fixed;
     z-index: 1;
@@ -326,6 +326,8 @@ a:hover {
     overflow-x: hidden;
     transition: 0.6s;
     padding-top: 60px;
+    padding-bottom: 40px;
+    border-radius: 10px;
 }
 
 .sidenav a {
@@ -351,14 +353,24 @@ a:hover {
 
 .sidenav__btn {
     position: fixed;
-    // margin-top: 15px;
-    // margin-right: 15px;
     top: 15px;
     right: 15px;
     border: 1px solid grey;
     border-radius: 5px;
     cursor: pointer;
     font-size: 30px;
+}
+.sidenav__btn:hover {
+    transition: 0.2s;
+    font-size: 32px;
+    background-color: $accent-a;
+    box-shadow: 7px 7px 7px gray;
+}
+
+.sidenav__btn:active {
+    font-size: 30px;
+    background-color: $light;
+    box-shadow: 5px 5px 5px gray;
 }
 
 @media screen and (max-height: 450px) {

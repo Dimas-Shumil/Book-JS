@@ -346,7 +346,6 @@ a:hover {
 }
 
 .sidenav {
-  height: 100%;
   width: 0;
   position: fixed;
   z-index: 1;
@@ -356,6 +355,8 @@ a:hover {
   overflow-x: hidden;
   transition: 0.5s;
   padding-top: 60px;
+  padding-bottom: 40px;
+  border-radius: 10px;
 }
 
 .sidenav a {
@@ -387,6 +388,19 @@ a:hover {
   border-radius: 5px;
   cursor: pointer;
   font-size: 30px;
+}
+
+.sidenav__btn:hover {
+  transition: 0.2s;
+  font-size: 32px;
+  background-color: #00bbf9;
+  box-shadow: 7px 7px 7px gray;
+}
+
+.sidenav__btn:active {
+  font-size: 30px;
+  background-color: #f3f3f3;
+  box-shadow: 5px 5px 5px gray;
 }
 
 @media screen and (max-height: 450px) {
