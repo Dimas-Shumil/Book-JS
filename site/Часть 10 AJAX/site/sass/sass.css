@@ -400,4 +400,20 @@ a:hover {
     filter: drop-shadow(5px 5px 5px #222);
     filter: drop-shadow(5px 5px 5px #666666);
   }
+  p {
+    font-size: 12px;
+    margin-top: 10px;
+  }
+  h1, h2, h3 {
+    font-size: 15px;
+  }
+  ol li {
+    font-size: 12px;
+  }
+  blockquote {
+    font-size: 12px;
+  }
+  .main__wrapper {
+    width: 100%;
+  }
 }/*# sourceMappingURL=sass.css.map */
